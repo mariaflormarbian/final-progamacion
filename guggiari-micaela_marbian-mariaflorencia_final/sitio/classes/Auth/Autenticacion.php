@@ -52,4 +52,10 @@ class Autenticacion
             $_SESSION['usuarios_id'] :
             null;
     }
+    public function getUsuario(): ?Usuario
+    {
+        return $this->estaAutenticado() ?
+            (new Usuario())->traerPorId($_SESSION['usuarios_id']) :
+            null;
+    }
 }

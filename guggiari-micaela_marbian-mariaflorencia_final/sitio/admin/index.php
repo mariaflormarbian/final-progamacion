@@ -88,6 +88,9 @@ $mensajeError = $session->flash('mensaje_error');
         </a>
         <nav class=" nav navbar-expand navbar-dark pt-4">
             <div id="barra" class="navbar-collapse collapse">
+                <?php
+            if($autenticacion->estaAutenticado()):
+            ?>
                 <ul class="navbar-nav nav-tabs text-center ms-auto">
 
                     <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=productos">Productos</a>
@@ -95,10 +98,14 @@ $mensajeError = $session->flash('mensaje_error');
 
                     <li>
                         <form action="acciones/auth-cerrar-sesion.php" method="post">
-                            <button type="submit" class="cerrar-sesion btn nav-link">Cerrar Sesión</button>
+                            <button type="submit" class="cerrar-sesion btn nav-link">
+                                <?= $autenticacion->getUsuario()->getEmail(); ?> (Cerrar Sesión)</button>
                         </form>
                     </li>
                 </ul>
+                <?php
+            endif;
+            ?>
             </div>
         </nav>
     </header>

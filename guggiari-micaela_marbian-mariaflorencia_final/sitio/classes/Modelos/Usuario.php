@@ -162,18 +162,19 @@ class Usuario
      * @return Usuario|null
      */
 
-    public function traerPorId(int $id): ?self
-    {
-        $db = Conexion::getConexion();
-        $query = "SELECT * FROM usuarios
-                WHERE usuarios_id = ?";
-        $stmt = $db->prepare($query);
-        $stmt->execute([$id]);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
-        $usuario = $stmt->fetch();
-
-        return $usuario ? $usuario : null;
-    }
+   
+     public function traerPorId(int $id): ?self
+     {
+         $db = Conexion::getConexion();
+         $query = "SELECT * FROM usuarios
+                 WHERE usuarios_id = ?";
+         $stmt = $db->prepare($query);
+         $stmt->execute([$id]);
+         $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
+         $usuario = $stmt->fetch();
+ 
+         return $usuario ? $usuario : null;
+     }
 
 
     public function traerPorEmail(string $email): ?Usuario
