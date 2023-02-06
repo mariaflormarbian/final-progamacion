@@ -1,0 +1,18 @@
+Carrera: Diseño y desarrollo web
+Materia: Programación II
+Cuatrimestre: Tercer Cuatrimestre
+Año: Segundo
+Turno: Noche
+Comision: DWN3AV
+Apellido y Nombre: Marbián María Florencia
+Docente: Gallino Santiago
+2do Parcial.
+
+USUARIOS
+1 flormarbian@gmail.com  - pass: morella87
+2 maria@gmail.com -   pass: pacho
+
+
+
+
+

@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "titulo": "Abejas",
+    "precio": "$1500",
+    "imagen": "abejas.jpg",
+    "imagen_descripcion": "Lisa y las abejas",
+    "texto": "Estampado de la escena de lisa con las abejas y la goma de mascar. Calidad viscosa. El calce es suelto, con ruedo asimétrico. Está confeccionada en algodón. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "lisa_abejas.mp3",
+    "video": "embed/wVqRjxSuUXI"
+  },
+  {
+    "id": 2,
+    "titulo": "El resplandor",
+    "precio": "$1600",
+    "imagen": "aun-hay-mas.jpg",
+    "imagen_descripcion": "El resplandor",
+    "texto": "Remera básica en color blanco. Estampado de la escena del resplandor,  El calce es suelto, con ruedo asimétrico. Está confeccionada en viscosa y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "aun_hay_mas.mp3",
+    "video": "embed/gDeW9vxmzDA"
+  },
+  {
+    "id": 3,
+    "titulo": "El coco",
+    "precio": "$1450",
+    "imagen": "coco.jpg",
+    "imagen_descripcion": "El coco está en la casa",
+    "texto": "Estampado de la escena del coco, calidad algodón y lycra. Disponible en color blanco y negro. El calce es suelto, con ruedo asimétrico. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "el_coco.mp3",
+    "video": "embed/-u62ttx-AJ4"
+  },
+  {
+    "id": 4,
+    "titulo": "Cumbancha",
+    "precio": "$1500",
+    "imagen": "cumbancha.jpg",
+    "imagen_descripcion": "Suba a la cumbancha",
+    "texto": "Estampado de la escena de la cumbancha, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. De las más elegidas. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "la_cumbancha.mp3",
+    "video": "embed/1uN21mjo0IA"
+  },
+  {
+    "id": 5,
+    "titulo": "Francia",
+    "precio": "$1400",
+    "imagen": "eleagncia.jpg",
+    "imagen_descripcion": "Que elegancia la de francia",
+    "texto": "Remera blanca y también disponible en color hueso. Estampado de la escena de homero en el casino, calidad algodón y lycra. El calce es suelto, con ruedo asimétrico. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "que_elegancia.mp3",
+    "video": "embed/QiK273PjpV8"
+  },
+  {
+    "id": 6,
+    "titulo": "Nave espacial",
+    "precio": "$1680",
+    "imagen": "espacio.jpg",
+    "imagen_descripcion": "Homero en el espacio",
+    "texto": "Remera blanca con estampado de la escena de homero en el espacio. Disponible en color blanco y negro. El calce es suelto, con ruedo asimétrico. Está confeccionada en visco y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "nave_espacial.mp3",
+    "video": "embed/p9VcwN5hsno"
+  },
+  {
+    "id": 7,
+    "titulo": "El heredero",
+    "precio": "$1800",
+    "imagen": "joroba.jpg",
+    "imagen_descripcion": "Bart el heredero con joroba",
+    "texto": "Remera blanca con estampado de la escena de bart único heredero de burns, calidad algodón y lycra. Disponible en color blanco y negro. El calce es suelto, con ruedo asimétrico. Calidad super suave y cómoda. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "joroba.mp3",
+    "video": "embed/p6CDTqvQFRE"
+  },
+  {
+    "id": 8,
+    "titulo": "Un loquito",
+    "precio": "$1380",
+    "imagen": "loquito.jpg",
+    "imagen_descripcion": "Mira bart, esto es un loquito",
+    "texto": "Remera básica en color blanco. Estampado de la escena del capiítulo del lider,  El calce es suelto, con ruedo asimétrico. Está confeccionada en visco y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "loquito.mp3",
+    "video": "embed/gF2ACavWTAI"
+  },
+  {
+    "id": 9,
+    "titulo": "Maquina invisible",
+    "precio": "$1540",
+    "imagen": "maquina.jpg",
+    "imagen_descripcion": "Maquina de escribir invisible",
+    "texto": "Estampado de la escena de la cumbancha, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Está confeccionada con la mejor calidad del mercado. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "maquina_invisible.mp3",
+    "video": "embed/DiwON2lHR3c"
+  },
+  {
+    "id": 10,
+    "titulo": "Matrimonio",
+    "precio": "$1710",
+    "imagen": "matrimonio.jpg",
+    "imagen_descripcion": "El matrimonio es igual a una naranja",
+    "texto": "Estampado de la escena del matrimonio, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Está confeccionada con la mejor calidad del mercado. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "matrimonio_naranja.mp3",
+    "video": "embed/SMQXM98QneE"
+  },
+  {
+    "id": 11,
+    "titulo": "El padrino",
+    "precio": "$1670",
+    "imagen": "padrino.jpg",
+    "imagen_descripcion": "Homero es el padrino",
+    "texto": "Estampado de la escena de homero siendo el padrino, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Super cómoda y canchera. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "homero_padrino.mp3",
+    "video": "embed/rSvr4akywTQ"
+  },
+  {
+    "id": 12,
+    "titulo": "Burns radiactivo",
+    "precio": "$1384",
+    "imagen": "paz.jpg",
+    "imagen_descripcion": "Les traigo paz",
+    "texto": "Estampado de la escena del señor Burns radioactivo, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Las costuras son espectaculares. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "les_traigo_paz.mp3",
+    "video": "embed/JAR1Reihlew"
+  },
+  {
+    "id": 13,
+    "titulo": "Stacy",
+    "precio": "$1625",
+    "imagen": "stacy.jpg",
+    "imagen_descripcion": "Soy solo una chica",
+    "texto": "Remera básica en color blanco. Estampado de la escena de Stacy malibu,  El calce es suelto, con ruedo asimétrico. Está confeccionada en visco y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "stacy.mp3",
+    "video": "embed/iHLQiq-XeUQ"
+  },
+  {
+    "id": 14,
+    "titulo": "Peces del infierno",
+    "precio": "$1890",
+    "imagen": "tanque.jpg",
+    "imagen_descripcion": "Los peces del infierno",
+    "texto": "Remera básica en color blanco. Estampado de la escena del señor Burns en el tanque,  El calce es suelto, con ruedo asimétrico. Está confeccionada en viscosa y lycra. Tiene escote redondo y mangas cortas Si estas al limite del talle, te recomendamos ir por el talle siguiente! Este top al tener pecho alto ajusta más.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!",
+    "audio": "waterloo_abba.mp3",
+    "video": "embed/sKO1RUb0Zqs"
+  }
+]
