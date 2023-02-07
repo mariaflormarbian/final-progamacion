@@ -21,33 +21,21 @@ class  Etiqueta extends Modelo
         return  $stmt->fetchAll();
     }
     
-    /**
-     * @return int
-     */
     public function getEtiquetasId(): int
     {
         return $this->etiquetas_id;
     }
 
-    /**
-     * @param int $etiquetas_id
-     */
     public function setEtiquetasId(int $etiquetas_id): void
     {
         $this->etiquetas_id = $etiquetas_id;
     }
 
-    /**
-     * @return string
-     */
     public function getNombre(): string
     {
         return $this->nombre;
     }
 
-    /**
-     * @param string $nombre
-     */
     public function setNombre(string $nombre): void
     {
         $this->nombre = $nombre;

@@ -12,13 +12,16 @@ class Producto extends Modelo
     protected int $productos_estados_fk;
     protected string $titulo;
     protected int $precio;
+
     protected ?string $imagen;
     protected ?string $imagen_descripcion;
     protected ?string $video;
     protected ?string $audio;
     protected string $texto;
+
     protected ProductoEstado $estado;
     protected Usuario $autor;
+    
     protected array $etiquetas_fk = [];
     protected array $etiquetas = [];
 
@@ -27,6 +30,9 @@ class Producto extends Modelo
 
     protected array $propiedades = ['productos_id', 'usuarios_fk', 'productos_estados_fk', 'titulo', 'texto', 'precio', 'imagen', 'imagen_descripcion', 'video', 'audio'];
 
+    /**
+     * Obtiene todos los productos.
+     */
     public function todo(array $where = []): array
     {
         $whereQuery = "";
@@ -50,52 +56,65 @@ class Producto extends Modelo
         $stmt->execute($where);
 
         $salida = [];
-    
         while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)){
-        $obj = new Producto();
-        $obj->cargarPropiedades($fila);
+            $obj = new Producto();
+            $obj->cargarPropiedades($fila);
 
-        $estado = new ProductoEstado();
-        $estado->cargarPropiedades([
-            'productos_estados_id' => $fila['productos_estados_id'],
-            'nombre'            => $fila['estado'],
-        ]);
-        $obj->setEstado($estado);
-
-
-        $autor = new Usuario();
-        $autor->cargarPropiedades($fila);
-        $obj->setAutor($autor);
+            $estado = new ProductoEstado();
+            $estado->cargarPropiedades([
+                'productos_estados_id' => $fila['productos_estados_id'],
+                'nombre'            => $fila['estado'],
+            ]);
+            $obj->setEstado($estado);
+            $autor = new Usuario();
+            $autor->cargarPropiedades($fila);
+            $obj->setAutor($autor);
 
         $salida[] = $obj;
     }
         return $salida;
     }
 
+    /**
+     * Retorna los productos publicados.
+     */
     public function publicadas(): array 
     {
         return $this->todo(['productos_estados_fk' => 2]);
     }
 
+    /**
+     * Carga las etiquetas asociadas al producto.
+     */
     public function cargarEtiquetas()
     {
         $db = Conexion::getConexion();
-        $query = "SELECT e.* FROM productos_has_etiquetas phe
-                INNER JOIN etiquetas e ON phe.etiquetas_fk = e.etiquetas_id
+        $query = "SELECT e.* FROM productos_has_etiquetas nte
+                INNER JOIN etiquetas e ON e.etiquetas_id = nte.etiquetas_fk
                 WHERE productos_fk = ?";
         $stmt = $db->prepare($query);
         $stmt->execute([$this->getListadoId()]);
 
+        $etiquetasFk = [];
+        $etiquetas = [];
         while($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $this->etiquetas_fk[] = $fila['etiquetas_id'];
+            $etiquetasFk[] = $fila['etiquetas_id'];
 
             $etiqueta = new Etiqueta();
             $etiqueta->cargarPropiedades($fila);
-            $this->etiquetas[] = $etiqueta;
+            $etiquetas[] = $etiqueta;
         }
+        $this->etiquetas_fk = $etiquetasFk;
+        $this->etiquetas = $etiquetas;
     }
 
-    public function crear(array $data)
+    /**
+     * Crea un producto en la base de datos.
+     * 
+     * @param array $data
+     * @throws PDOException
+     */
+    public function crear(array $data): void
     {
         $db = Conexion::getConexion();
         $query = "INSERT INTO productos (usuarios_fk, productos_estados_fk, precio, titulo, texto, imagen, imagen_descripcion, video) 
@@ -112,18 +131,20 @@ class Producto extends Modelo
             'imagen' => $data['imagen'],
             'imagen_descripcion' => $data['imagen_descripcion'],
             'video' => $data['video'],
-
-
         ]);
 
         $id = $db->lastInsertId();
-        $this->grabarEtiquetas($id, $data['etiquetas']);
-
+        if (!empty($data['etiquetas'])) {
+            $this->grabarEtiquetas($id, $data['etiquetas']);
+        }   
     }
     
+    /**
+     * Graba las etiquetas al producto.
+     */
     protected function grabarEtiquetas(int $productoId, array $etiquetas)
     {
-        if(count($etiquetas) === 0) return;
+        //if(count($etiquetas) === 0) return;
 
         $insertPares = [];
         $valores = [];
@@ -142,28 +163,24 @@ class Producto extends Modelo
     
     /**
      * Editar el producto.
-     *
-     * @return void
-     * @throws PDOException
      */
-    
-    public function editar(int $pk, array $data): void
+    public function editar(int $id, array $data): void
     {
         $db = Conexion::getConexion();
         $query = "UPDATE productos
                 SET usuarios_fk          = :usuarios_fk,
-                    productos_estados_fk          = :productos_estados_fk,
-                    titulo              = :titulo,
-                    precio            = :precio,
-                    texto               = :texto,
-                    imagen              = :imagen,
-                    video              = :video,
-                    audio              = :audio,
-                    imagen_descripcion  = :imagen_descripcion
+                    productos_estados_fk = :productos_estados_fk,
+                    titulo               = :titulo,
+                    precio               = :precio,
+                    texto                = :texto,
+                    imagen               = :imagen,
+                    video                = :video,
+                    audio                = :audio,
+                    imagen_descripcion   = :imagen_descripcion
                 WHERE productos_id = :productos_id";
-
-        $db->prepare($query)->execute([
-            'productos_id' => $this->getListadoId(),
+        $stmt = $db->prepare($query);
+        $stmt->execute([
+            'productos_id' => $id,
             'usuarios_fk' => $data['usuarios_fk'],
             'productos_estados_fk' => $data ['productos_estados_fk'],
             'titulo' => $data['titulo'],
@@ -175,20 +192,18 @@ class Producto extends Modelo
             'imagen_descripcion' => $data['imagen_descripcion'],
         ]);
         $this->actualizarEtiquetas($data['etiquetas']);
-
-
     }
+
     protected function actualizarEtiquetas(array $etiquetas)
     {
         $this->eliminarEtiquetas();
-        $this->grabarEtiquetas($this->getListadoId(), $etiquetas);
+        if(!empty($etiquetas)){
+            $this->grabarEtiquetas($this->getListadoId(), $etiquetas);
+        }
     }
     
     /**
      * Elimina el producto.
-     *
-     * @return void
-     * @throws PDOException
      */
     public function eliminar(): void
     {
@@ -210,24 +225,8 @@ class Producto extends Modelo
     }
 
     /**
-     * @return array
-     */
-    public function getEtiquetasFk(): array
-    {
-        return $this->etiquetas_fk;
-    }
-
-    /**
-     * @param array $etiquetas_fk
-     */
-    public function setEtiquetasFk(array $etiquetas_fk): void
-    {
-        $this->etiquetas_fk = $etiquetas_fk;
-    }
-    
-    /**
      * Setters y Getters.
-     * @return  self.
+     * 
      */
 
     public function getPrecio(): int
@@ -235,9 +234,6 @@ class Producto extends Modelo
         return $this->precio;
     }
 
-    /**
-     * @param int $precio
-     */
     public function setPrecio(int $precio): void
     {
         $this->precio = $precio;
@@ -253,9 +249,6 @@ class Producto extends Modelo
         return $this->productos_id;
     }
 
-    /**
-     * @return int
-     */
     public function setTitulo($titulo): void
     {
         $this->titulo = $titulo;
@@ -266,9 +259,6 @@ class Producto extends Modelo
         return $this->titulo;
     }
 
-    /**
-     * @return int
-     */
     public function setImagen($imagen): void
     {
         $this->imagen = $imagen;
@@ -279,9 +269,6 @@ class Producto extends Modelo
         return $this->imagen;
     }
 
-    /**
-     * @param self $imagen .
-     */
     public function setImagenDescripcion($imagen_descipcion): void
     {
         $this->imagen_descripcion = $imagen_descipcion;
@@ -292,9 +279,6 @@ class Producto extends Modelo
         return $this->imagen_descripcion;
     }
 
-    /**
-     * @param self $imagen_descripcion .
-     */
     public function setAudio($audio): void
     {
         $this->audio = $audio;
@@ -305,9 +289,6 @@ class Producto extends Modelo
         return $this->audio;
     }
 
-    /**
-     * @param self $audio .
-     */
     public function setVideo($video): void
     {
         $this->video = $video;
@@ -318,9 +299,6 @@ class Producto extends Modelo
         return $this->video;
     }
 
-    /**
-     * @param self $video .roles
-     */
     public function setTexto($texto): void
     {
         $this->texto = $texto;
@@ -331,43 +309,26 @@ class Producto extends Modelo
         return $this->texto;
     }
 
-    /**
-     * @param self $texto .
-     */
-
-
     public function getUsuarioFk(): int
     {
         return $this->usuarios_fk;
     }
 
-    /**
-     * @param int $usuarios_fk
-     */
     public function setUsuarioFk(int $usuarios_fk): void
     {
         $this->$usuarios_fk;
     }
 
-    /**
-     * @return int
-     */
     public function getProductosEstadoFk(): int
     {
         return $this->productos_estados_fk;
     }
 
-    /**
-     * @param int $productos_estados_fk
-     */
     public function setProductosEstadoFk(int $productos_estados_fk): void
     {
         $this->productos_estados_fk = $productos_estados_fk;
     }
 
-    /**
-     * @return int
-     */
     public function getEstado(): ProductoEstado
     {
         return $this->estado;
@@ -383,41 +344,26 @@ class Producto extends Modelo
         return $this->autor;
     }
 
-    /**
-     * @param Usuario $autor
-     */
     public function setAutor(Usuario $autor): void
     {
         $this->autor = $autor;
     }
 
-    /**
-     * @return array
-     */
     public function getEtiquetaFk(): array
     {
         return $this->etiquetas_fk;
     }
 
-    /**
-     * @param array $etiquetas_fk
-     */
     public function setEtiquetaFk(array $etiquetas_fk): void
     {
         $this->etiquetas_fk = $etiquetas_fk;
     }
 
-    /**
-     * @return array
-     */
     public function getEtiquetas(): array
     {
         return $this->etiquetas;
     }
 
-    /**
-     * @param array $etiquetas
-     */
     public function setEtiquetas(array $etiquetas): void
     {
         $this->etiquetas = $etiquetas;

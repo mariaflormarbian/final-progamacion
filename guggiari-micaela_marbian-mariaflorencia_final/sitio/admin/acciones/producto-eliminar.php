@@ -16,8 +16,7 @@ if (!$productos) {
 
 try {
     $productos->eliminar();
-
-
+    
     if (!empty($productos->getImagen()) && file_exists(__DIR__ . '/../../imgs/' . $productos->getImagen())) {
         unlink(__DIR__ . '/../../imgs/' . $productos->getImagen());
     }

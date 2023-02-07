@@ -1,16 +1,14 @@
 <?php
 
 use DaVinci\Modelos\Producto;
-use DaVinci\Modelos\Etiqueta;
-
 use DaVinci\Modelos\ProductoEstado;
-
-use DaVinci\Session\Session;
+use DaVinci\Modelos\Etiqueta;
 
 $errores = $_SESSION['errores'] ?? [];
 $dataForm = $_SESSION['data_form'] ?? [];
 
 unset($_SESSION['errores'], $_SESSION['data_form']);
+
 $estados = (new ProductoEstado())->todo();
 $etiquetas = (new Etiqueta())->todo();
 
@@ -116,7 +114,9 @@ $productos->cargarEtiquetas();
                     foreach($etiquetas as $etiqueta):
                         ?>
                     <label>
-                        <input type="checkbox" name="etiquetas_id[]" value="<?= $etiqueta->getEtiquetasId();?>" <?= in_array($etiqueta->getEtiquetasId(), $dataForm['etiquetas_id'] ?? $productos->getEtiquetaFk())
+                        <input type="checkbox" name="etiquetas_id[]" value="
+                        <?= $etiqueta->getEtiquetasId();?>" 
+                        <?= in_array($etiqueta->getEtiquetasId(), $dataForm['etiquetas_id'] ?? $productos->getEtiquetaFk())
                                 ? 'checked'
                                 : ''; ?>>
                         <?= $etiqueta->getNombre();?>

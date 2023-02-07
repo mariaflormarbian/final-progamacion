@@ -3,9 +3,8 @@
 use DaVinci\Modelos\Producto;
 
 $producto =(new Producto())->traerPorId($_GET['id']);
-
+$producto->cargarEtiquetas();
 ?>
-
 
 <section class="container seccion-detalle">
     <h1 class="text-center  fw-bold p-3  my-5">Detalles</h1>
@@ -23,11 +22,27 @@ $producto =(new Producto())->traerPorId($_GET['id']);
             <h2 class="tituo-detalle"><?= $producto->getTitulo();?></h2>
             <p class="text-md-start"><?= $producto->getTexto();?></p>
             <p class="precio-detalle">$<?= $producto->getPrecio();?></p>
+            <div>
+                <span class="visually-hidden">Etiquetas asociadas a esta noticia:</span>
+                <ul class="list-unstyled">
+                <?php
+                foreach($producto->getEtiquetas() as $etiqueta):
+                ?>
+                <li>
+                    <span class="badge bg-primary">
+                        <?= $etiqueta->getNombre();?>
+                    </span>
+                </li>
+                <?php
+                endforeach;
+                ?>
+                </ul>
+                
+            </div>
             <a href="#" class="btn btn-primary desahabilitado">Agregar al carrito</a>
-
         </div>
+        
     </div>
-
 </section>
 
 <section class=" container mt-5 ">
@@ -56,5 +71,4 @@ $producto =(new Producto())->traerPorId($_GET['id']);
                 allowfullscreen></iframe>
         </aside>
     </div>
-
 </section>
