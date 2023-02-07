@@ -1,11 +1,12 @@
 <?php
 
-require_once RUTA_RAIZ . '/classes/Usuario.php';
-require_once RUTA_RAIZ . '/classes/Conexion.php';
+namespace DaVinci\Auth;
 
+use DaVinci\Modelos\Usuario;
+use DaVinci\Database\Conexion;
 
-    class RecuperarPassword
-    {
+class RecuperarPassword
+{
     protected  ?Usuario $usuario;
     protected  string  $token;
     protected DateTime $expiracion;
@@ -57,7 +58,7 @@ require_once RUTA_RAIZ . '/classes/Conexion.php';
         {
             // Noten que llamamos al editar password sobre el usuario que ya obtuvimos y tiene todos los
             // datos de la base. Por eso no necesito pasar el id, ya lo tiene.
-            $this->usuario->editarPassword($password);
+            $this->editarPassword($password);
 
             $this->eliminarToken();
         }
@@ -67,7 +68,7 @@ require_once RUTA_RAIZ . '/classes/Conexion.php';
             $db = Conexion::getConexion();
             $query = "DELETE FROM recuperar_passwords
                 WHERE usuarios_id = ?";
-            $db->prepare($query)->execute([$this->usuario->getUsuarioId()]);
+            $db->prepare($query)->execute([$this->getUsuarioId()]);
         }
 
         /**

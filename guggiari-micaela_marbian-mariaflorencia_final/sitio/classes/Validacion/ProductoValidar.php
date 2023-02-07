@@ -2,7 +2,6 @@
 
 namespace DaVinci\Validacion;
 
-
 class ProductoValidar
 {
     /** @var array La data a validar */

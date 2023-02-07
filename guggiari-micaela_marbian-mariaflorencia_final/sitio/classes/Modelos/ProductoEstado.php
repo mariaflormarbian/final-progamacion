@@ -5,22 +5,12 @@ namespace DaVinci\Modelos;
 use DaVinci\Database\Conexion;
 use PDO;
 
-
-class  ProductoEstado
+class  ProductoEstado extends Modelo
 {
     protected  int $productos_estados_id;
     protected  string $nombre;
-
-
-    protected array $propiedades = ['productos_estados_id', 'nombre'];
-    public function cargarPropiedades(array $data)
-    {
-        foreach($data as $key => $value) {
-            if(in_array($key, $this->propiedades)) {
-                $this->{$key} = $value;
-            }
-        }
-    }
+    
+    protected  $propiedades = ['productos_estados_id', 'nombre'];
 
     public  function  todo():array
     {
@@ -32,6 +22,7 @@ class  ProductoEstado
 
         return  $stmt->fetchAll();
     }
+
     /**
      * @return int
      */
@@ -63,6 +54,4 @@ class  ProductoEstado
     {
         $this->nombre = $nombre;
     }
-
-
 }

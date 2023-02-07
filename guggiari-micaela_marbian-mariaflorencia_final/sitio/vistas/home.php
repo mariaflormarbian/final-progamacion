@@ -1,7 +1,7 @@
 <?php
 use DaVinci\Modelos\Producto;
 
-$productos = (new Producto())->todo();
+$productos = (new Producto())->publicadas();
 
 $rutaTexto= [
     'texto' => [

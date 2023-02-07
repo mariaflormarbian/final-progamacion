@@ -2,7 +2,6 @@
 
 namespace DaVinci\Session;
 
-
 class Session
 {
     /**

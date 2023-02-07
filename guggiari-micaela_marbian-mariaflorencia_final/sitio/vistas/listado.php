@@ -1,9 +1,9 @@
 <?php
 
-
 use DaVinci\Modelos\Producto;
 
-$productos =(new Producto())->todo(['productos_estados_fk' => 2]);
+$productos = (new Producto())->publicadas();
+
 ?>
 
 <section class="container">
@@ -41,7 +41,5 @@ $productos =(new Producto())->todo(['productos_estados_fk' => 2]);
         <?php
         endforeach;
         ?>
-
-
     </ul>
 </section>

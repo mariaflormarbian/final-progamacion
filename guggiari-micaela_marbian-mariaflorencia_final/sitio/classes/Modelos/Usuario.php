@@ -4,7 +4,7 @@ namespace DaVinci\Modelos;
 use DaVinci\Database\Conexion;
 use PDO;
 
-class Usuario
+class Usuario extends Modelo
 {
 
     /**
@@ -29,17 +29,8 @@ class Usuario
      * @return int
      */
 
-    protected array $propiedades = ['usuarios_id', 'email', 'password', 'nombre', 'apellido'];
-
-    public function cargarPropiedades(array $data)
-    {
-        foreach($data as $key => $value) {
-            if(in_array($key, $this->propiedades)) {
-                $this->{$key} = $value;
-            }
-        }
-    }
-
+    protected $propiedades = ['usuarios_id', 'email', 'password', 'nombre', 'apellido'];
+    
     public function getUsuariosId(): int
     {
         return $this->usuarios_id;
@@ -66,7 +57,7 @@ class Usuario
      */
     public function setRolFk(int $roles_fk): void
     {
-        $this->rol_fk = $roles_fk;
+        $this->$roles_fk;
     }
 
     /**
@@ -108,8 +99,7 @@ class Usuario
     {
         $this->propiedades = $propiedades;
     }
-
-
+    
     /**
      * @param string $password
      */
@@ -154,34 +144,32 @@ class Usuario
     {
         return $this->getNombre() . " " . $this->getApellido();
     }
-
-
+    
     /**
      *
      * @param string $email
      * @return Usuario|null
      */
-
-   
-     public function traerPorId(int $id): ?self
-     {
-         $db = Conexion::getConexion();
+    
+    public function traerPorId(int $id): ?self
+    {
+        $db = Conexion::getConexion();
          $query = "SELECT * FROM usuarios
-                 WHERE usuarios_id = ?";
-         $stmt = $db->prepare($query);
-         $stmt->execute([$id]);
-         $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
-         $usuario = $stmt->fetch();
- 
-         return $usuario ? $usuario : null;
-     }
+                WHERE usuarios_id = ?";
+        $stmt = $db->prepare($query);
+        $stmt->execute([$id]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $usuario = $stmt->fetch();
+
+        return $usuario ? $usuario : null;
+    }
 
 
     public function traerPorEmail(string $email): ?Usuario
     {
         $db = Conexion::getConexion();
         $query = "SELECT * FROM usuarios
-                WHERE email = ?";
+        WHERE email = ?";
         $stmt = $db->prepare($query);
         $stmt->execute([$email]);
 

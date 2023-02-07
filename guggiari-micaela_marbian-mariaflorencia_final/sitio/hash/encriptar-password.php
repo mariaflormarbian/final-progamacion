@@ -1,12 +1,5 @@
 <?php
 
-$password1 = "flor";
-
-$hash1 = password_hash($password1, PASSWORD_DEFAULT);
-
-echo "La encriptación del password '" . $password1 . "' generó el hash: " . $hash1;
-
-
 echo "<br>";
 
 $password2 = "pacho";

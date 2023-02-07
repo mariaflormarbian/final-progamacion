@@ -1,13 +1,11 @@
 <?php
 
-
 namespace DaVinci\Modelos;
 
 use DaVinci\Database\Conexion;
 use PDO;
-use PDOException;
 
-class Producto
+class Producto extends Modelo
 {
     protected int $productos_id;
     protected int $usuarios_fk;
@@ -30,38 +28,33 @@ class Producto
      * @return Producto[]  La lista de productos.
      */
 
-    protected array $propiedades = ['productos_id', 'usuarios_fk', 'productos_estados_fk', 'titulo', 'texto', 'precio', 'imagen', 'imagen_descripcion', 'video', 'audio'];
-    public function cargarPropiedades(array $data)
-    {
-        foreach($data as $key => $value) {
-            if(in_array($key, $this->propiedades)) {
-                $this->{$key} = $value;
-            }
-        }
-    }
+    protected $propiedades = ['productos_id', 'usuarios_fk', 'productos_estados_fk', 'titulo', 'texto', 'precio', 'imagen', 'imagen_descripcion', 'video', 'audio'];
 
-    public function todo(?array $where = null): array
+    public function todo(array $where = []): array
     {
         $whereQuery = "";
-        if($where !== null) {
-            $whereConditions = [];
-            foreach($where as $column => $value) {
+        if(count($where) > 0) {
+            $whereCondiciones = [];
+            foreach($where as $columna => $valor) {
 
-                $whereConditions[] = "$column = :$column";
+                $whereCondiciones[] = "{$columna} = :{$columna}";
             }
-            $whereQuery = " WHERE " . implode(" AND ", $whereConditions);
+            $whereQuery = " WHERE " . implode(" AND ", $whereCondiciones);
         }
 
         $db = Conexion::getConexion();
         $query = "SELECT p.*, u.*, pe.productos_estados_id, pe.nombre AS 'estado' FROM productos p
-                INNER JOIN productos_estados pe ON p.productos_estados_fk = pe.productos_estados_id
-                INNER JOIN usuarios u ON p.usuarios_fk = u.usuarios_id". $whereQuery;
+                INNER JOIN productos_estados pe 
+                ON p.productos_estados_fk = pe.productos_estados_id
+                INNER JOIN usuarios u 
+                ON p.usuarios_fk = u.usuarios_id". $whereQuery;
 
         $stmt = $db->prepare($query);
         $stmt->execute($where);
 
         $salida = [];
-    while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)){
+    
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)){
         $obj = new Producto();
         $obj->cargarPropiedades($fila);
 
@@ -82,6 +75,10 @@ class Producto
         return $salida;
     }
 
+    public function publicadas(): array 
+    {
+        return $this->todo(['productos_estados_fk' => 2]);
+    }
 
     public function traerPorId(int $id): ?self
     {
@@ -284,7 +281,7 @@ class Producto
     }
     public function setListadoId(int $productos_id): void
     {
-        $this->id = $productos_id;
+        $this->$productos_id;
 
     }
 
@@ -396,7 +393,7 @@ class Producto
      */
     public function setUsuarioFk(int $usuarios_fk): void
     {
-        $this->usuario_fk = $usuarios_fk;
+        $this->$usuarios_fk;
     }
 
     /**
@@ -472,5 +469,4 @@ class Producto
     {
         $this->etiquetas = $etiquetas;
     }
-
 }
