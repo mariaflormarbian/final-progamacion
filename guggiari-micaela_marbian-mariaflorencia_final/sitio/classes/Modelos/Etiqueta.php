@@ -8,7 +8,7 @@ class  Etiqueta extends Modelo
 {
     protected int $etiquetas_id;
     protected string $nombre;
-    protected $propiedades = ['etiquetas_id', 'nombre'];
+    protected array $propiedades = ['etiquetas_id', 'nombre'];
 
     public  function  todo():array
     {
