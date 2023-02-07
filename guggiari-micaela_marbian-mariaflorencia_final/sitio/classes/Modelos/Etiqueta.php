@@ -6,7 +6,6 @@ use PDO;
 
 class  Etiqueta extends Modelo
 {
-
     protected int $etiquetas_id;
     protected string $nombre;
     protected $propiedades = ['etiquetas_id', 'nombre'];

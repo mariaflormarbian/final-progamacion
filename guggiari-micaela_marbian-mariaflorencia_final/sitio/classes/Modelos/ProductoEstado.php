@@ -9,19 +9,11 @@ class  ProductoEstado extends Modelo
 {
     protected  int $productos_estados_id;
     protected  string $nombre;
+
+    protected string $table = "productos_estados";
+    protected string $primaryKey = "productos_estados_id";
     
-    protected  $propiedades = ['productos_estados_id', 'nombre'];
-
-    public  function  todo():array
-    {
-        $db = Conexion::getConexion();
-        $query = "SELECT * FROM productos_estados";
-        $stmt = $db->prepare($query);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
-
-        return  $stmt->fetchAll();
-    }
+    protected array $propiedades = ['productos_estados_id', 'nombre'];
 
     /**
      * @return int

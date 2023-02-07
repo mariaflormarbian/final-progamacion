@@ -7,29 +7,17 @@ use PDO;
 class Usuario extends Modelo
 {
 
-    /**
-     * @var int
-     */
     protected $usuarios_id;
-    /**
-     * @var int
-     */
     protected $roles_fk;
-    /**
-     * @var string
-     */
     protected $email;
-    /**
-     * @var string
-     */
     protected $password;
     protected ?string $nombre;
     protected ?string $apellido;
-    /**
-     * @return int
-     */
 
-    protected $propiedades = ['usuarios_id', 'email', 'password', 'nombre', 'apellido'];
+    protected string $table = "usuarios";
+    protected string $primaryKey = "usuarios_id";
+    
+    protected array $propiedades = ['usuarios_id', 'email', 'password', 'nombre', 'apellido'];
     
     public function getUsuariosId(): int
     {
@@ -41,7 +29,7 @@ class Usuario extends Modelo
      */
     public function setUsuariosId(int $usuarios_id): void
     {
-        $this->usuarios_id = $usuarios_id;
+        $this->$usuarios_id;
     }
 
     /**
@@ -145,26 +133,6 @@ class Usuario extends Modelo
         return $this->getNombre() . " " . $this->getApellido();
     }
     
-    /**
-     *
-     * @param string $email
-     * @return Usuario|null
-     */
-    
-    public function traerPorId(int $id): ?self
-    {
-        $db = Conexion::getConexion();
-         $query = "SELECT * FROM usuarios
-                WHERE usuarios_id = ?";
-        $stmt = $db->prepare($query);
-        $stmt->execute([$id]);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
-        $usuario = $stmt->fetch();
-
-        return $usuario ? $usuario : null;
-    }
-
-
     public function traerPorEmail(string $email): ?Usuario
     {
         $db = Conexion::getConexion();

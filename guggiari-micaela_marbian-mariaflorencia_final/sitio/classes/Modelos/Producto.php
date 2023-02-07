@@ -22,13 +22,10 @@ class Producto extends Modelo
     protected array $etiquetas_fk = [];
     protected array $etiquetas = [];
 
+    protected string $table = "productos";
+    protected string $primaryKey = "productos_id";
 
-    /**
-     * Obtiene todos los productos disponibles.
-     * @return Producto[]  La lista de productos.
-     */
-
-    protected $propiedades = ['productos_id', 'usuarios_fk', 'productos_estados_fk', 'titulo', 'texto', 'precio', 'imagen', 'imagen_descripcion', 'video', 'audio'];
+    protected array $propiedades = ['productos_id', 'usuarios_fk', 'productos_estados_fk', 'titulo', 'texto', 'precio', 'imagen', 'imagen_descripcion', 'video', 'audio'];
 
     public function todo(array $where = []): array
     {
@@ -80,30 +77,8 @@ class Producto extends Modelo
         return $this->todo(['productos_estados_fk' => 2]);
     }
 
-    public function traerPorId(int $id): ?self
-    {
-        $db = Conexion::getConexion();
-        $query = "SELECT * FROM productos
-                WHERE productos_id = ?";
-
-        $stmt = $db->prepare($query);
-
-        $stmt->execute([$id]);
-
-        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
-
-        $productos = $stmt->fetch();
-
-        if (!$productos) {
-            return null;
-        }
-
-        return $productos;
-    }
-
     public function cargarEtiquetas()
     {
-
         $db = Conexion::getConexion();
         $query = "SELECT e.* FROM productos_has_etiquetas phe
                 INNER JOIN etiquetas e ON phe.etiquetas_fk = e.etiquetas_id
@@ -145,8 +120,7 @@ class Producto extends Modelo
         $this->grabarEtiquetas($id, $data['etiquetas']);
 
     }
-
-
+    
     protected function grabarEtiquetas(int $productoId, array $etiquetas)
     {
         if(count($etiquetas) === 0) return;
@@ -165,17 +139,14 @@ class Producto extends Modelo
         $query = "INSERT INTO productos_has_etiquetas (productos_fk, etiquetas_fk) VALUES {$listaPares}";
         $db->prepare($query)->execute($valores);
     }
-
-
+    
     /**
      * Editar el producto.
      *
      * @return void
      * @throws PDOException
      */
-
-
-
+    
     public function editar(int $pk, array $data): void
     {
         $db = Conexion::getConexion();
@@ -212,10 +183,7 @@ class Producto extends Modelo
         $this->eliminarEtiquetas();
         $this->grabarEtiquetas($this->getListadoId(), $etiquetas);
     }
-
-
-
-
+    
     /**
      * Elimina el producto.
      *
@@ -256,12 +224,7 @@ class Producto extends Modelo
     {
         $this->etiquetas_fk = $etiquetas_fk;
     }
-
-
-
-
-
-
+    
     /**
      * Setters y Getters.
      * @return  self.
@@ -288,15 +251,11 @@ class Producto extends Modelo
     public function getListadoId(): int
     {
         return $this->productos_id;
-
-
     }
 
     /**
      * @return int
      */
-
-
     public function setTitulo($titulo): void
     {
         $this->titulo = $titulo;
@@ -310,11 +269,6 @@ class Producto extends Modelo
     /**
      * @return int
      */
-
-
-
-
-
     public function setImagen($imagen): void
     {
         $this->imagen = $imagen;
@@ -328,7 +282,6 @@ class Producto extends Modelo
     /**
      * @param self $imagen .
      */
-
     public function setImagenDescripcion($imagen_descipcion): void
     {
         $this->imagen_descripcion = $imagen_descipcion;
