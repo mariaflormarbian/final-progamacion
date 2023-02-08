@@ -6,7 +6,6 @@ use PDO;
 
 class Usuario extends Modelo
 {
-
     protected $usuarios_id;
     protected $roles_fk;
     protected $email;
@@ -17,15 +16,24 @@ class Usuario extends Modelo
     protected string $table = "usuarios";
     protected string $primaryKey = "usuarios_id";
     
-    protected array $propiedades = ['usuarios_id', 'email', 'password', 'nombre', 'apellido'];
-
-
-
-
-
+    protected array $propiedades = ['usuarios_id','roles_fk', 'email', 'password', 'nombre', 'apellido'];
+    
     public function getUsuariosId(): int
     {
         return $this->usuarios_id;
+    }
+
+    public function crear(array $data)
+    {
+        $db = Conexion::getConexion();
+        $query = "INSERT INTO usuarios (email, password, roles_fk) 
+        VALUES (:email, :password, :roles_fk)";
+        $db->prepare($query)->execute([
+            'email' => $data['email'],
+            'password' => $data['password'],
+            'roles_fk' => $data['roles_fk'],
+        ]);
+    
     }
 
     /**
@@ -39,7 +47,7 @@ class Usuario extends Modelo
     /**
      * @return int
      */
-    public function getRolesFk(): int
+    public function getRolFk(): int
     {
         return $this->roles_fk;
     }

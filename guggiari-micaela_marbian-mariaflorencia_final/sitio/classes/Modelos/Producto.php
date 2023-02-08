@@ -3,6 +3,7 @@
 namespace DaVinci\Modelos;
 
 use DaVinci\Database\Conexion;
+use EmptyIterator;
 use PDO;
 
 class Producto extends Modelo
@@ -56,23 +57,43 @@ class Producto extends Modelo
         $stmt->execute($where);
 
         $salida = [];
+
         while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)){
-            $obj = new Producto();
-            $obj->cargarPropiedades($fila);
-
-            $estado = new ProductoEstado();
-            $estado->cargarPropiedades([
-                'productos_estados_id' => $fila['productos_estados_id'],
-                'nombre'            => $fila['estado'],
-            ]);
-            $obj->setEstado($estado);
-            $autor = new Usuario();
-            $autor->cargarPropiedades($fila);
-            $obj->setAutor($autor);
-
-        $salida[] = $obj;
-    }
+            $salida[] = $this->generarProductoFila($fila);
+        }
         return $salida;
+    }
+
+    protected function generarProductoFila(array $fila): self
+    {
+        $obj = new Producto();
+        $obj->cargarPropiedades($fila);
+
+        $estado = new ProductoEstado();
+        $estado->cargarPropiedades([
+            'productos_estados_id' => $fila['productos_estados_id'],
+            'nombre'            => $fila['estado'],
+        ]);
+        $obj->setEstado($estado);
+        $autor = new Usuario();
+        $autor->cargarPropiedades($fila);
+        $obj->setAutor($autor);
+
+        if(!empty($fila['etiquetas'])) {
+            $etiquetas = [];
+            $etiquetasFila = explode(' | ', $fila['etiquetas']);
+            foreach($etiquetasFila as $unaEtiqueta) {
+                $etiquetaDatos = explode(' :: ', $unaEtiqueta);
+                $etiqueta = new Etiqueta();
+                $etiqueta->cargarPropiedades([
+                    'etiquetas_id' => $etiquetaDatos[0],
+                    'nombre' => $etiquetaDatos[1],
+            ]);
+                $etiquetas[] = $etiqueta;
+            }
+            $obj->setEtiquetas($etiquetas);
+        }
+        return $obj;
     }
 
     /**

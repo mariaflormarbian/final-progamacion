@@ -1,7 +1,7 @@
 <?php
-use DaVinci\Session\Session;
+use DaVinci\Auth\Autenticacion;
 
-require_once __DIR__ . '/bootstrap/autoload.php';
+require_once __DIR__ . '/bootstrap/init.php';
 require_once __DIR__ . '/bibliotecas/helpers.php';
 
 $rutas = [
@@ -13,6 +13,16 @@ $rutas = [
     ],
     'detalle' => [
     'titulo' => 'Detalles',
+    ],
+    'iniciar-sesion' => [
+        'titulo' => 'Ingresa a tu cuenta',
+    ],
+    'registro' => [
+        'titulo' => 'Crea una nueva cuenta',
+    ],
+    'perfil' => [
+        'titulo' => 'Mi Perfil',
+        'requiereAutenticacion' => true,
     ],
     'contacto' => [
     'titulo' => 'Contactános',
@@ -29,6 +39,20 @@ if(!isset($rutas[$vistas])) {
 }
 $rutaTitulo = $rutas[$vistas];  
 
+//Autenticacion
+$autenticacion = new Autenticacion;
+$requiereAutenticacion = $rutaConfig['requiereAutenticacion'] ?? false;
+
+if ($requiereAutenticacion && !$autenticacion->estaAutenticado()) {
+    $_SESSION['mensaje_error'] = "Se requiere haber iniciado sesión para acceder a esta pantalla.";
+    header("Location: index.php?v=iniciar-sesion");
+    exit;
+}
+
+$mensajeExito = $_SESSION['mensaje_exito'] ?? null;
+$mensajeError = $_SESSION['mensaje_error'] ?? null;
+
+unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
 ?>
 
 <!DOCTYPE html>
@@ -61,13 +85,49 @@ $rutaTitulo = $rutas[$vistas];
                 <ul class="navbar-nav nav-tabs text-center ms-auto">
                     <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=home">Home</a></li>
                     <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=listado">Listado</a></li>
+                    <?php 
+                    if ($autenticacion->estaAutenticado()):
+                    ?>
+                        <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=perfil">Mi Perfil</a>
+                        </li>
+                        <li >
+                            <form action="acciones/auth-cerrar-sesion.php" method="post">
+                                <button class="btn btn-danger" type="submit">
+                                    <?= $autenticacion->getUsuario()->getEmail(); ?> 
+                                    (Cerrar Sesion)
+                                </button>
+                            </form>
+                        </li>
+                    <?php 
+                    else:
+                    ?>
+                        <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=iniciar-sesion">Iniciar Sesion</a></li>
+                        <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=registro">Registrarse</a></li>
+                    <?php 
+                    endif;
+                    ?>
                     <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=contacto">Contacto</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
-    <main>
+    <div class="main-content">
+        <?php 
+        if($mensajeExito):
+        ?>
+            <div class="msg-success"><?= $mensajeExito;?></div>
+        <?php 
+        endif;
+        ?>
+        <?php 
+        if($mensajeError):
+        ?>
+            <div class="msg-error"><?= $mensajeError;?></div>
+        <?php 
+        endif;
+        ?>   
+        
         <?php
         $filename = __DIR__ . '/vistas/' . $vistas . '.php';
         if(file_exists($filename)) {
@@ -76,7 +136,7 @@ $rutaTitulo = $rutas[$vistas];
             require __DIR__ . '/vistas/404.php';
         }
         ?>
-    </main>
+    </div>
     <footer>
         <div>
             <ul class="justify-content-center nav fs-3">

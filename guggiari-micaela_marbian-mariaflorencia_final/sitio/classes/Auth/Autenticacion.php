@@ -29,12 +29,17 @@ class Autenticacion
 
     public function cerrarSesion()
     {
-        unset($_SESSION['usuarios_id']);
+        unset($_SESSION['usuarios_id'], $_SESSION['rol_id']);
     }
 
     public function estaAutenticado(): bool
     {
         return isset($_SESSION['usuarios_id']);
+    }
+
+    public function esAdmin(): bool
+    {
+        return $_SESSION['rol_id'] === 1;
     }
 
     public function getId(): ?int

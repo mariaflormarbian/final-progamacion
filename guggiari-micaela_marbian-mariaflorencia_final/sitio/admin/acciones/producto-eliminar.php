@@ -2,7 +2,14 @@
 use DaVinci\Auth\Autenticacion;
 use DaVinci\Modelos\Producto;
 require_once __DIR__ . '/../../bootstrap/init.php';
-require_once __DIR__ . '/../../bootstrap/autoload.php';
+
+$autenticacion = new Autenticacion();
+
+if(!$autenticacion->estaAutenticado() || !$autenticacion->esAdmin()) {
+    $_SESSION['mensaje_error'] = "Debe iniciar sesión para realizar esta acción";
+    header('Location: ../index.php?v=login');
+    exit;
+}
 
 $id = $_POST['id'];
 

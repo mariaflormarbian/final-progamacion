@@ -24,7 +24,22 @@ $productos = (new Producto())->publicadas();
                     <audio controls>
                         <source src="./audio/<?= $producto->getAudio();?>" type="audio/mpeg">
                     </audio>
-
+                </div>
+                <div>
+                    <span class="visually-hidden">Etiquetas asociadas a esta noticia:</span>
+                    <ul class="list-unstyled">
+                        <?php
+                        foreach($producto->getEtiquetas() as $etiqueta):
+                        ?>
+                        <li>
+                            <span class="badge bg-primary">
+                                <?= $etiqueta->getNombre();?>
+                            </span>
+                        </li>
+                        <?php
+                        endforeach;
+                        ?>
+                    </ul>
                 </div>
                 <div class="card-body text-center">
 

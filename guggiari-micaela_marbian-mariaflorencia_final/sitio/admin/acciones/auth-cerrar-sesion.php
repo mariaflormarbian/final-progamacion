@@ -3,8 +3,6 @@
 use DaVinci\Auth\Autenticacion;
 require_once __DIR__ . '/../../bootstrap/init.php';
 
-
-
 $autenticacion = new Autenticacion();
 $autenticacion->cerrarSesion();
 
