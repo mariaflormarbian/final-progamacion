@@ -1,45 +1,36 @@
 <?php
+
 namespace DaVinci\Auth;
 
 use DaVinci\Modelos\Usuario;
 
 class Autenticacion
 {
-    /**
-     * @var Usuario
-     */
-    protected $usuario;
-
-    /**
-     *
-     * @param string $email
-     * @param string $password
-     * @return bool
-     */
     public function iniciarSesion(string $email, string $password): bool
     {
-        $this->usuario = (new Usuario())->traerPorEmail($email);
-
-        if ($this->usuario === null) {
+        $usuario = (new Usuario())->traerPorEmail($email);
+        if(!$usuario) {
             return false;
         }
 
-        if (!password_verify($password, $this->usuario->getPassword())) {
+        if(!password_verify($password, $usuario->getPassword())) {
             return false;
         }
 
-        $_SESSION['usuarios_id'] = $this->usuario->getUsuariosId();
+        $this->autenticar($usuario);
         return true;
     }
 
-    /**
-     * Cerramos sesion.
-     */
+    public function autenticar(Usuario $usuario)
+    {
+
+        $_SESSION['usuarios_id'] = $usuario->getUsuariosId();
+    }
+
     public function cerrarSesion()
     {
         unset($_SESSION['usuarios_id']);
     }
-
 
     public function estaAutenticado(): bool
     {
@@ -52,6 +43,7 @@ class Autenticacion
             $_SESSION['usuarios_id'] :
             null;
     }
+
     public function getUsuario(): ?Usuario
     {
         return $this->estaAutenticado() ?

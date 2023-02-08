@@ -18,7 +18,11 @@ class Usuario extends Modelo
     protected string $primaryKey = "usuarios_id";
     
     protected array $propiedades = ['usuarios_id', 'email', 'password', 'nombre', 'apellido'];
-    
+
+
+
+
+
     public function getUsuariosId(): int
     {
         return $this->usuarios_id;
@@ -29,7 +33,7 @@ class Usuario extends Modelo
      */
     public function setUsuariosId(int $usuarios_id): void
     {
-        $this->$usuarios_id;
+        $this->usuarios_id = $usuarios_id;
     }
 
     /**
@@ -71,7 +75,13 @@ class Usuario extends Modelo
     {
         return $this->password;
     }
-
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
     /**
      * @return array|string[]
      */
@@ -88,13 +98,7 @@ class Usuario extends Modelo
         $this->propiedades = $propiedades;
     }
     
-    /**
-     * @param string $password
-     */
-    public function setPassword(string $password): void
-    {
-        $this->password = $password;
-    }
+
 
     /**
      * @return string|null
@@ -133,7 +137,7 @@ class Usuario extends Modelo
         return $this->getNombre() . " " . $this->getApellido();
     }
     
-    public function traerPorEmail(string $email): ?Usuario
+    public function traerPorEmail(string $email): ?self
     {
         $db = Conexion::getConexion();
         $query = "SELECT * FROM usuarios
@@ -150,4 +154,17 @@ class Usuario extends Modelo
         }
         return $usuario;
     }
+
+    public function editarPassword(string $password)
+    {
+        $db = Conexion::getConexion();
+        $query = "UPDATE usuarios
+                SET password = :password
+                WHERE usuarios_id = :id";
+        $db->prepare($query)->execute([
+            'id' => $this->getUsuariosId(),
+            'password' => $password,
+        ]);
+    }
+
 }
