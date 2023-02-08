@@ -87,6 +87,21 @@ $productos->cargarEtiquetas();
             <input type="text" id="imagen_descripcion" name="imagen_descripcion" class="form-control"
                 value="<?= e($dataForm['imagen_descripcion'] ?? $productos->getImagenDescripcion()); ?>">
         </div>
+
+        <div class="form-fila">
+            <label for="video">Enlace de Video Youtube, EMBED (opcional)</label>
+            <input type="text" id="video" name="video" class="form-control"
+                   placeholder=" Ejemplo luego del <iframe> aparece Youtube/ (copiar desde embed y pegar)"
+                   value="<?= e($dataForm['video'] ?? $productos->getVideo()); ?>">
+        </div>
+
+        <div class="form-fila">
+            <label for="video">Audio</label>
+            <input type="text" id="video" name="video" class="form-control"
+                   placeholder=" Formato mp3"
+                   value="<?= e($dataForm['audio'] ?? $productos->getAudio()); ?>">
+        </div>
+
         <div class="form-fila">
             <label for="productos_estados_fk">Estado de Publicación</label>
             <select type="text" id="productos_estados_fk" name="productos_estados_fk" class="form-control">
