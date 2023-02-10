@@ -85,7 +85,9 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                 <ul class="navbar-nav nav-tabs text-center ms-auto">
                     <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=home">Home</a></li>
                     <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=listado">Listado</a></li>
-                    <?php 
+                    <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=contacto">Contacto</a>
+                    </li>
+                    <?php
                     if ($autenticacion->estaAutenticado()):
                     ?>
                         <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=perfil">Mi Perfil</a>
@@ -106,8 +108,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                     <?php 
                     endif;
                     ?>
-                    <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=contacto">Contacto</a>
-                    </li>
+
                 </ul>
             </div>
         </nav>

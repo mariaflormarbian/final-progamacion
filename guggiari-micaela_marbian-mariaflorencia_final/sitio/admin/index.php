@@ -33,7 +33,6 @@ $rutas = [
         'titulo' => 'Página no Encontrada',
     ],
 ];
-$rutaTitulo = $rutas[$vistas];
 
 $vistas = $_GET['v'] ?? 'login';
 
@@ -47,13 +46,15 @@ $requiereAutenticacion = $rutas[$vistas]['requiereAutenticacion'] ?? false;
 if($requiereAutenticacion && 
     (!$autenticacion->estaAutenticado() || !$autenticacion->esAdmin())
 ) {
-    $_SESSION['mensaje_error'] = "Se requiere iniciar sesión para acceder a esta pantalla.";
-    header("Location: index.php?s=iniciar-sesion");
+    $_SESSION['mensaje_error'] = "Se requiere ser administrador para acceder a esta pantalla.";
+    header("Location: index.php?v=login");
     exit;
 }
+$rutaTitulo = $rutas[$vistas];
 
-$mensajeExito = $_SESSION['mensaje_exito'] ?? null;
-$mensajeError = $_SESSION['mensaje_error'] ?? null;
+$session = new Session();
+$mensajeExito = $session->flash('mensaje_exito');
+$mensajeError = $session->flash('mensaje_error');
 
 unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
 ?>

@@ -11,7 +11,7 @@ $autenticacion = new Autenticacion();
 
 if ($autenticacion->iniciarSesion($email, $password)) {
     $_SESSION['mensaje_exito'] = "Sesión iniciada correctamente.";
-    header("Location: ../index.php?v=productos");
+    header("Location: ../../index.php?v=perfil");
     exit;
 } else {
     $_SESSION['mensaje_error'] = "Las credenciales ingresadas no coinciden con ningún usuario registrado en el sistema.";

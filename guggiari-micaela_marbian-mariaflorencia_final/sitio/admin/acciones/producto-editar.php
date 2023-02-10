@@ -60,7 +60,7 @@ try {
         'titulo' => $titulo,
         'precio' => $precio,
         'texto' => $texto,
-        'imagen' => $nombreImagen ?? 'logo.png',
+        'imagen' => $nombreImagen,
         'imagen_descripcion'  => $imagen_descripcion,
         'etiquetas' => $etiquetas,
 

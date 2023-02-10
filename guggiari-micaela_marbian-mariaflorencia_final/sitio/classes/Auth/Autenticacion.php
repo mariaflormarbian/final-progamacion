@@ -6,7 +6,7 @@ use DaVinci\Modelos\Usuario;
 
 class Autenticacion
 {
-    public function iniciarSesion(string $email, string $password): bool
+    public function iniciarSesion(string $email, string $password, ?int $roles = null): bool
     {
         $usuario = (new Usuario())->traerPorEmail($email);
         if(!$usuario) {
@@ -14,6 +14,11 @@ class Autenticacion
         }
 
         if(!password_verify($password, $usuario->getPassword())) {
+            return false;
+        }
+
+        // Si se pide verificar el rol, lo hacemos.
+        if($roles !== null && $usuario->getRolesFk() !== $roles) {
             return false;
         }
 
@@ -25,11 +30,13 @@ class Autenticacion
     {
 
         $_SESSION['usuarios_id'] = $usuario->getUsuariosId();
+        $_SESSION['roles_fk']     = $usuario->getRolesFk();
+
     }
 
     public function cerrarSesion()
     {
-        unset($_SESSION['usuarios_id'], $_SESSION['rol_id']);
+        unset($_SESSION['usuarios_id'], $_SESSION['roles_fk']);
     }
 
     public function estaAutenticado(): bool
@@ -39,7 +46,7 @@ class Autenticacion
 
     public function esAdmin(): bool
     {
-        return $_SESSION['rol_id'] === 1;
+        return $_SESSION['roles_fk'] === 1;
     }
 
     public function getId(): ?int

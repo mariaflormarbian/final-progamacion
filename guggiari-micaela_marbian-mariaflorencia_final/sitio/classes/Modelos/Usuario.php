@@ -47,7 +47,7 @@ class Usuario extends Modelo
     /**
      * @return int
      */
-    public function getRolFk(): int
+    public function getRolesFk(): int
     {
         return $this->roles_fk;
     }
@@ -55,7 +55,7 @@ class Usuario extends Modelo
     /**
      * @param int $roles_fk
      */
-    public function setRolFk(int $roles_fk): void
+    public function setRolesFk(int $roles_fk): void
     {
         $this->$roles_fk;
     }

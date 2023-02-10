@@ -67,18 +67,17 @@ $productos->cargarEtiquetas();
             ?>
         </div>
         <?php
-        if (!empty($productos->getImagen()) && file_exists(__DIR__ . '/../../imgs/' . $productos->getImagen())):
+        if(!empty($productos->getImagen()) && file_exists(PATH_IMAGES . '/imgs/' . $productos->getImagen())):
             ?>
-        <div class="form-fila">
-            <p>Imagen actual</p>
-            <img src="<?= '../imgs/big-' . e($productos->getImagen()); ?>" alt="">
-        </div>
+            <div class="form-fila">
+                <p>Imagen actual</p>
+                <img src="<?= '../imgs/' . e($productos->getImagen());?>" alt="">
+            </div>
         <?php
         endif;
         ?>
         <div class="form-fila">
-            <label for="imagen">Imagen <span class="text-small">(<span class="visually-hidden">campo
-                    </span>opcional)</span></label>
+            <label for="imagen">Imagen <span class="text-small">(<span class="visually-hidden">campo </span>opcional)</span></label>
             <input type="file" id="imagen" name="imagen" class="form-control">
         </div>
         <div class="form-fila">
