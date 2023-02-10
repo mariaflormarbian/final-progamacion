@@ -60,7 +60,7 @@ try {
         'titulo' => $titulo,
         'precio' => $precio,
         'texto' => $texto,
-        'imagen' => $nombreImagen,
+        'imagen' => $nombreImagen ?? $productos->getImagen(),
         'imagen_descripcion'  => $imagen_descripcion,
         'etiquetas' => $etiquetas,
 
