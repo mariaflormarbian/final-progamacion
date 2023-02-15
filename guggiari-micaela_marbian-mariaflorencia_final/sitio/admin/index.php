@@ -66,6 +66,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= $rutaTitulo['titulo']; ?>:: Panel de administración</title>
+        <link rel="icon" href="../imgs/logo.png" type="image/x-icon" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
             integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/bootstrap.css">
@@ -81,7 +82,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <body>
         
         <header>
-            <a href="index.php?v=home">
+            <a href="index.php?v=pr">
                 <h1 id="logo">Panel de administración :: <?= $rutaTitulo['titulo']; ?></h1>
             </a>
             <nav class=" nav navbar-expand navbar-dark pt-4">

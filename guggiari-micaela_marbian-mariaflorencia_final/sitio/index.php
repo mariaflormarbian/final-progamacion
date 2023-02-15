@@ -27,6 +27,9 @@ $rutas = [
     'contacto' => [
     'titulo' => 'Contactános',
     ],
+    'carrito' => [
+        'titulo' => 'Carrito',
+    ],
     '404' => [
     'titulo' => 'Página no Encontrada',
     ],
@@ -63,6 +66,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simpsoneras : <?= $rutaTitulo['titulo'];?></title>
+    <link rel="icon" href="imgs/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -86,6 +90,8 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                     <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=home">Home</a></li>
                     <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=listado">Listado</a></li>
                     <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=carrito">Carrito</a>
                     </li>
                     <?php
                     if ($autenticacion->estaAutenticado()):
@@ -139,26 +145,82 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
         ?>
     </div>
     <footer>
-        <div>
-            <ul class="justify-content-center nav fs-3">
-                <li class="nav-item">
-                    <a href="//www.facebook.com" class="nav-link"><i class="bi bi-facebook color"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="//www.twitter.com" class="nav-link"><i class="bi bi-twitter color"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="//www.instagram.com" class="nav-link"><i class="bi bi-instagram color"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="//www.youtube.com" class="nav-link"><i class="bi bi-youtube color"></i>
-                    </a>
-                </li>
-            </ul>
+        <div class="container pt-6">
+
+            <div class="d-flex pt-6 justify-content-center">
+                <div  class="mx-6"><img width="100" src="imgs/logo.png" alt="simpsoneras indumentaria logo" title="exoma remeras logo"></div>
+            <div class="px-6 ">
+                <h3>Encontrános</h3>
+                <ul  class="px-0">
+                    <li>
+                        <i class="fa fa-map-marker"></i>
+                        <p>Local 1: <span>Av. Rivadavia 5040 Piso 1D</span></p>
+                    </li>
+                    <li>
+                        <i class="fa fa-map-marker"></i>
+                        <p>Local 2: <span>Av. Cabildo 3560</span></p>
+                    </li>
+                </ul>
+            </div>
+
+                <div class="px-6">
+                    <h3>Contactános</h3>
+                    <ul class="px-0">
+
+                        <li>
+                            <i class="fa fa-phone"></i>
+                            <p>Teléfono: <span>11 2759-1970 </span></p>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope"></i>
+                            <p>Mail: <a href="mailto:info@simpsoneras.com" class="dropdown">info@simpsoneras.com</a></p>
+                        </li>
+                    </ul>
+                </div>
+
+            <div class="px-6">
+                <h3>Sigamos conectados</h3>
+                <ul class="d-flex px-0">
+
+                    <li>
+                    <li class="nav-item">
+                        <a href="//www.facebook.com" class="nav-link"><i class="bi bi-facebook color"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="//www.twitter.com" class="nav-link"><i class="bi bi-twitter color"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="//www.instagram.com" class="nav-link"><i class="bi bi-instagram color"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="//www.youtube.com" class="nav-link"><i class="bi bi-youtube color"></i>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            </div>
         </div>
+
+
+        <div>
+            <div>
+                <ul class="d-flex justify-content-center">
+                    <li class="p-3"><a href="index.php?v=listado">Sobre Nosotros</a></li>
+                    <li class="p-3"><a href="index.php?v=listado">Showroom</a></li>
+                    <li class="p-3"><a href="index.php?v=contacto">Contactenos</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div>
+            <p class="text-center">Simpsoneras Indumentaria ® 2023. Todos los derechos reservados.</p>
+        </div>
+    </div>
+
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

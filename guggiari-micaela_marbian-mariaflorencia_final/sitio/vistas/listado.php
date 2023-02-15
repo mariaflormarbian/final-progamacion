@@ -58,3 +58,4 @@ $productos = (new Producto())->publicadas();
         ?>
     </ul>
 </section>
+

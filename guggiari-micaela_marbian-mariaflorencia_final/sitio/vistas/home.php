@@ -104,8 +104,8 @@ $texto = $rutaTexto['texto'];
             </li>
         </ul>
     </div>
-</section>
-<section class=" container my-5">
+
+<div class=" container my-5">
     <h2 class="text-center ">¿Quiénes somos?</h2>
     <div class="row container-home">
         <div class="col-12">
@@ -123,4 +123,5 @@ $texto = $rutaTexto['texto'];
         </div>
 
     </div>
+</div>
 </section>

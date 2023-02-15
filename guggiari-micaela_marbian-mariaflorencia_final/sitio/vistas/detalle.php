@@ -8,8 +8,10 @@ $producto->cargarEtiquetas();
 
 <section class="container seccion-detalle">
     <h1 class="text-center  fw-bold p-3  my-5">Detalles</h1>
+    <form action="acciones/add-to-cart.php" method="POST" class="w-100">
 
     <div class="row align-items-lg-center container-detalle">
+
         <div class="col-lg-6">
             <figure>
                 <picture>
@@ -39,10 +41,12 @@ $producto->cargarEtiquetas();
                 </ul>
                 
             </div>
-            <a href="#" class="btn btn-primary desahabilitado">Agregar al carrito</a>
+            <button type="submit" class="btn btn-primary  text-center p-6  text-uppercase  mb-2">Añadir al carrito</button>
         </div>
-        
+
     </div>
+    </form>
+
 </section>
 
 <section class=" container mt-5 ">

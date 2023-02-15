@@ -62,6 +62,6 @@ $errores = (new \DaVinci\Session\Session())->flash('errores', []);
             endif;
             ?>
         </div>
-        <button type="submit" class="button">Registrarse</button>
+        <button type="submit" class="btn btn-primary mt-3">Registrarse</button>
     </form>
 </section>

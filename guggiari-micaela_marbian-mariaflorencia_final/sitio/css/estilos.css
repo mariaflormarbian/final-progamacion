@@ -13,6 +13,7 @@ body {
 
 #logo {
     background: url("../imgs/logo.png") center center;
+    background-size: cover;
     width: 100px;
     height: 100px;
     background-repeat: no-repeat;
@@ -21,6 +22,9 @@ body {
     top: 8px;
     left: 20px;
     z-index: 1;
+}
+li {
+    list-style: none;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -314,3 +318,18 @@ a {
 .button-danger:hover {
     color: red;
 }
+
+footer{
+    background-color: #B8E3F8;
+}
+footer ul,
+footer img{
+    margin-right: 30px;
+}
+
+footer div {
+    padding:  10px 0 10px 0;
+}
+a {text-decoration: none}
+
+section { min-height: 100vh}
