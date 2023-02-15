@@ -73,9 +73,9 @@ $texto = $rutaTexto['texto'];
     </div>
 </section>
 <section class="container my-5">
-    <div class="row">
+    <div>
         <ul class="d-flex" id="home-extraInfo">
-            <li class="col-4 ml-5">
+            <li class="col-4">
                 <picture>
                     <img src=" ./imgs/exchange.png" width=30 alt="Icono cambio y devolución">
                 </picture>

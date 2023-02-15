@@ -198,21 +198,19 @@
 
     }
 
+    #home-extraInfo  {
+    flex-direction: column;
+        margin: 5% 0;
+
+    }
     #home-extraInfo img {
         float: left;
     }
 
-    .linea {
-        border-left: 2px solid grey;
-        height: 100%;
-        padding-left: 5%;
-        margin-left: 10%;
-        position: absolute;
 
-    }
 
-    #home-extraInfo {
-        margin: 5% 0;
+    #home-extraInfo li {
+        margin: 50px 0 50px 0;
     }
 
     #home-extraInfo h3 {
@@ -230,11 +228,13 @@
         background-image: url(../imgs/banner.png);
         background-repeat: no-repeat;
         background-position-x: center;
+        background-size: 200px;
         padding-top: 3%;
     }
 
     .fondo-home .carousel {
-        margin-top: 20%;
+        margin-top: 45%;
+
     }
 
     .container-form {
@@ -370,6 +370,21 @@ footer div div {
         flex-direction: row;
         text-align: start;
     }
+    .fondo-home {
+        background-size: 500px;
+    }
+    .fondo-home .carousel {
+        margin-top: 20%;
+    }
+    #home-extraInfo  {
+        flex-direction: row;
+    }
+    .linea {
+        border-left: 2px solid grey;
+        height: 100%;
+        padding-left: 5%;
+        margin-left: 10%;
+        position: absolute;
 
-
+    }
 }
