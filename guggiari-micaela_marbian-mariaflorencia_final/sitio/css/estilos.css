@@ -1,335 +1,375 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    font-family: "Acme", sans-serif;
-    background-image: url(../imgs/fondo.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+@media (min-width: 320px)  {
 
-#logo {
-    background: url("../imgs/logo.png") center center;
-    background-size: cover;
-    width: 100px;
-    height: 100px;
-    background-repeat: no-repeat;
-    font-size: 0;
-    position: absolute;
-    top: 8px;
-    left: 20px;
-    z-index: 1;
-}
-li {
-    list-style: none;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-.navbar-dark .navbar-nav .nav-link {
-    color: black;
-}
+    body {
+        font-family: "Acme", sans-serif;
+        background-image: url(../imgs/fondo.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 
+    #logo {
+        background: url("../imgs/logo.png") center center;
+        background-size: cover;
+        width: 70px;
+        height: 70px;
+        background-repeat: no-repeat;
+        font-size: 0;
+        position: absolute;
+        top: 8px;
+        left: 20px;
+        z-index: 1;
+    }
 
-.color {
-    color: black;
-}
+    li {
+        list-style: none;
+    }
 
-.color:hover {
-    color: #20e2d2;
-    transition-duration: 1s;
-
-}
-
-
-.banner img {
-    margin: 0px auto;
-    display: block;
-
-}
-
-.error {
-    background-image: url(../imgs/404.png);
-    background-repeat: no-repeat;
-    height: 100vh;
-    background-position: center center;
-}
-
-
-.bg-white {
-    background-color: #9ad7f6;
-}
-
-.card {
-    padding-top: 20px;
-    border: none;
-
-
-}
-
-.contenedor-lista {
-    margin: 5% 5%;
-}
-
-.producto {
-    margin-top: 5%;
-}
-
-.btn {
-    background-color: transparent;
-    color: black;
-    transition: all 500ms ease;
-    border: 2px solid #20e2d2;
-    cursor: pointer;
-
-
-}
-
-.navbar-dark .navbar-nav .nav-link:hover {
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #20e2d2;
-    border-color: #20e2d2;
-    color: black;
-    transition-duration: 1s;
-}
-
-.audio audio {
-    width: 100%;
-}
-
-iframe {
-    width: 80%;
-    margin: 5% auto;
-    display: block;
-}
-
-.container-detalle,
-.quienes-somos {
-    background-color: white;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    padding: 2em;
-
-}
-
-.seccion-detalle {
-    margin-bottom: 5em;
-}
-
-aside {
-    margin-top: 14%;
-}
-
-aside h3 {
-    font-size: 1.5em;
-
-}
-
-.tituo-detalle {
-    font-size: 3em;
-    text-transform: uppercase;
-}
-
-.precio-detalle {
-    font-weight: bold;
-    font-size: 2em;
-}
-
-.form-enviado {
-    width: 90%;
+#barra ul {
+    flex-direction: column;
     margin: 0 auto;
-    background-color: yellow;
 }
 
-.form-enviado p {
-    font-size: 2em;
-
-}
-
-.container-home {
-    margin-top: 5%;
-}
-
-.container-home div p {
-    font-size: 1.2em;
-}
-
-h2 {
-    font-size: 2.5em;
-}
-
-.form-fila{
-    margin-top: 1%;
-}
-.nav-tabs {
-    border-bottom: 0;
-}
-
-.desahabilitado {
-    pointer-events: none;
-    opacity: 0.6;
-    cursor: default;
-}
-
-.fondo1 {
-    background-color: black;
-    color: white;
-    text-transform: uppercase;
-    font-size: 1em;
-    letter-spacing: 1px;
-}
-
-.fondo1 span {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding-right: 4%;
-
-}
-
-#home-extraInfo img {
-    float: left;
-}
-
-.linea {
-    border-left: 2px solid grey;
-    height: 100%;
-    padding-left: 5%;
-    margin-left: 10%;
-    position: absolute;
-
-}
-
-#home-extraInfo {
-    margin: 5% 0;
-}
-
-#home-extraInfo h3 {
-    font-size: 1.5em;
-}
-
-#home-extraInfo p {
-    font-size: 1em;
-    color: grey;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
-}
-
-.fondo-home {
-    background-image: url(../imgs/banner.png);
-    background-repeat: no-repeat;
-    background-position-x: center;
-    padding-top: 3%;
-}
-
-.fondo-home .carousel {
-    margin-top: 20%;
-}
-
-.container-form {
-    margin-top: 10%;
-}
+    .navbar-dark .navbar-nav .nav-link {
+        color: black;
+    }
 
 
-.card-text {
-    font-size: 1.5em;
-}
+    .color {
+        color: black;
+    }
 
-.eliminar-container {
-    margin: 0 auto;
-    width: 50%;
-}
+    .color:hover {
+        color: #20e2d2;
+        transition-duration: 1s;
 
-.eliminar-container .nav-link:hover {
-    color: red
-}
+    }
 
-.login-container {
-    width: 30%;
-    margin: 0 auto;
-    margin-bottom: 20%;
-    border: 2px solid grey;
-    padding: 5%;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
-    background-image: url("../imgs/tecla-cualquiera.jpg");
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    background-size: 45%;
-}
+    .banner img {
+        margin: 0px auto;
+        display: block;
 
-.button-ingresar {
-    margin: 0 auto;
-    margin-bottom: 38%;
-}
+    }
 
-.msg-success {
-    background-color: #00800029;
-    margin-top: 3%;
-    width: 20%;
+    .error {
+        background-image: url(../imgs/404.png);
+        background-repeat: no-repeat;
+        height: 100vh;
+        background-position: center center;
+    }
+
+
+    .bg-white {
+        background-color: #9ad7f6;
+    }
+
+    .card {
+        padding-top: 20px;
+        border: none;
+
+
+    }
+
+    .contenedor-lista {
+        margin: 5% 5%;
+    }
+
+    .producto {
+        margin-top: 5%;
+    }
+
+    .btn {
+        background-color: transparent;
+        color: black;
+        transition: all 500ms ease;
+        border: 2px solid #20e2d2;
+        cursor: pointer;
+
+
+    }
+
+    .navbar-dark .navbar-nav .nav-link:hover {
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #20e2d2;
+        border-color: #20e2d2;
+        color: black;
+        transition-duration: 1s;
+    }
+
+    .audio audio {
+        width: 100%;
+    }
+
+    iframe {
+        width: 80%;
+        margin: 5% auto;
+        display: block;
+    }
+
+    .container-detalle,
+    .quienes-somos {
+        background-color: white;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        padding: 2em;
+
+    }
+
+    .seccion-detalle {
+        margin-bottom: 5em;
+    }
+
+    aside {
+        margin-top: 14%;
+    }
+
+    aside h3 {
+        font-size: 1.5em;
+
+    }
+
+    .tituo-detalle {
+        font-size: 3em;
+        text-transform: uppercase;
+    }
+
+    .precio-detalle {
+        font-weight: bold;
+        font-size: 2em;
+    }
+
+    .form-enviado {
+        width: 90%;
+        margin: 0 auto;
+        background-color: yellow;
+    }
+
+    .form-enviado p {
+        font-size: 2em;
+
+    }
+
+    .container-home {
+        margin-top: 5%;
+    }
+
+    .container-home div p {
+        font-size: 1.2em;
+    }
+
+    h2 {
+        font-size: 2.5em;
+    }
+
+    .form-fila {
+        margin-top: 1%;
+    }
+
+    .nav-tabs {
+        border-bottom: 0;
+    }
+
+    .desahabilitado {
+        pointer-events: none;
+        opacity: 0.6;
+        cursor: default;
+    }
+
+    .fondo1 {
+        background-color: black;
+        color: white;
+        text-transform: uppercase;
+        font-size: 1em;
+        letter-spacing: 1px;
+    }
+
+    .fondo1 span {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        padding-right: 4%;
+
+    }
+
+    #home-extraInfo img {
+        float: left;
+    }
+
+    .linea {
+        border-left: 2px solid grey;
+        height: 100%;
+        padding-left: 5%;
+        margin-left: 10%;
+        position: absolute;
+
+    }
+
+    #home-extraInfo {
+        margin: 5% 0;
+    }
+
+    #home-extraInfo h3 {
+        font-size: 1.5em;
+    }
+
+    #home-extraInfo p {
+        font-size: 1em;
+        color: grey;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    }
+
+    .fondo-home {
+        background-image: url(../imgs/banner.png);
+        background-repeat: no-repeat;
+        background-position-x: center;
+        padding-top: 3%;
+    }
+
+    .fondo-home .carousel {
+        margin-top: 20%;
+    }
+
+    .container-form {
+        margin-top: 10%;
+    }
+
+
+    .card-text {
+        font-size: 1.5em;
+    }
+
+    .eliminar-container {
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    .eliminar-container .nav-link:hover {
+        color: red
+    }
+
+    .login-container {
+        width: 30%;
+        margin: 0 auto;
+        margin-bottom: 20%;
+        border: 2px solid grey;
+        padding: 5%;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+        background-image: url("../imgs/tecla-cualquiera.jpg");
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-size: 45%;
+    }
+
+    .button-ingresar {
+        margin: 0 auto;
+        margin-bottom: 38%;
+    }
+
+    .msg-success {
+        background-color: #00800029;
+        margin-top: 3%;
+        width: 20%;
+        text-align: center;
+        margin: 4% auto;
+    }
+
+    .eliminar-container {
+        background-image: url("../imgs/homero-red.jpg");
+        background-repeat: no-repeat;
+        background-size: 30%;
+        background-position: bottom center;
+        border: 2px solid grey;
+        padding: 5%;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+
+    }
+
+    .button-eliminar {
+        margin-top: 10%;
+        margin-bottom: 20%;
+    }
+
+
+    a {
+        text-decoration: none;
+        color: grey;
+    }
+
+    #error-titulo {
+        color: red;
+    }
+
+    #help-titulo {
+        color: black;
+        background-color: yellow;
+        text-align: center;
+    }
+
+    .msg-error {
+        color: red;
+        text-align: center;
+    }
+
+    .button-small:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+    .button-danger:hover {
+        color: red;
+    }
+
+    footer {
+        background-color: #B8E3F8;
+    }
+footer div div {
+    flex-direction: column;
     text-align: center;
-    margin: 4% auto;
+}
+    footer div ul {
+        justify-content: center;
+    }
+
+    footer ul,
+    footer img {
+        margin-right: 30px;
+    }
+
+    footer div {
+        padding: 10px 0 10px 0;
+    }
+
+
+    section {
+        min-height: 100vh
+    }
+
 }
 
-.eliminar-container {
-    background-image: url("../imgs/homero-red.jpg");
-    background-repeat: no-repeat;
-    background-size: 30%;
-    background-position: bottom center;
-    border: 2px solid grey;
-    padding: 5%;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+@media (min-width: 768px) {
+    #logo {
+        width: 100px;
+        height: 100px;
+    }
+    #barra ul {
+        flex-direction: row;
+        margin-right: 0;
+    }
+
+    footer div div {
+        flex-direction: row;
+        text-align: start;
+    }
 
 
 }
-
-.button-eliminar {
-    margin-top: 10%;
-    margin-bottom: 20%;
-}
-
-
-a {
-    text-decoration: none;
-    color: grey;
-}
-
-#error-titulo {
-    color: red;
-}
-
-#help-titulo {
-    color: black;
-    background-color:yellow;
-    text-align: center;
-}
-
-.msg-error {
-    color: red;
-    text-align: center;
-}
-
-.button-small:hover {
-    color: black;
-    text-decoration: none;
-}
-
-.button-danger:hover {
-    color: red;
-}
-
-footer{
-    background-color: #B8E3F8;
-}
-footer ul,
-footer img{
-    margin-right: 30px;
-}
-
-footer div {
-    padding:  10px 0 10px 0;
-}
-a {text-decoration: none}
-
-section { min-height: 100vh}

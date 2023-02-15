@@ -82,7 +82,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <body>
         
         <header>
-            <a href="index.php?v=pr">
+            <a href="index.php?v=productos">
                 <h1 id="logo">Panel de administración :: <?= $rutaTitulo['titulo']; ?></h1>
             </a>
             <nav class=" nav navbar-expand navbar-dark pt-4">
