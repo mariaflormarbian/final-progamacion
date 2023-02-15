@@ -260,8 +260,8 @@ margin: 0 auto;
     }
 
     .login-container {
-        width: 30%;
-        margin: 0 auto;
+        width: 100%;
+        margin: 10px auto;
         margin-bottom: 20%;
         border: 2px solid grey;
         padding: 5%;
@@ -269,13 +269,17 @@ margin: 0 auto;
 
         background-image: url("../imgs/tecla-cualquiera.jpg");
         background-repeat: no-repeat;
-        background-position: bottom center;
-        background-size: 45%;
+        background-position:  center;
+        background-position-y: 400px;
+        background-size: 40%;
     }
-
+.pass {
+    text-align: center;
+}
     .button-ingresar {
         margin: 0 auto;
         margin-bottom: 38%;
+        text-align: center;
     }
 
     .msg-success {
@@ -393,5 +397,18 @@ footer div div {
     }
     .contenedor-lista {
         flex-direction: row;
+    }
+
+    .login-container {
+        width: 30%;
+        background-position-y: 450px;
+    }
+    .pass {
+        padding-top: 50px;
+
+        text-align: start;
+    }
+    .button-ingresar {
+        text-align: start;
     }
 }
