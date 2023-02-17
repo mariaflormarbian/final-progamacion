@@ -209,9 +209,9 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
         <div>
             <div>
                 <ul class="d-flex justify-content-center">
-                    <li class="p-3"><a href="index.php?v=listado">Sobre Nosotros</a></li>
-                    <li class="p-3"><a href="index.php?v=listado">Showroom</a></li>
-                    <li class="p-3"><a href="index.php?v=contacto">Contactenos</a></li>
+                    <li class="p-3"><a class="btn btn-dark border-0" href="index.php?v=listado">Sobre Nosotros</a></li>
+                    <li class="p-3"><a class="btn btn-dark border-0"  href="index.php?v=listado">Showroom</a></li>
+                    <li class="p-3"><a class="btn btn-dark border-0"  href="index.php?v=contacto">Contactenos</a></li>
                 </ul>
             </div>
 
