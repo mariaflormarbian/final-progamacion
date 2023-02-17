@@ -6,6 +6,11 @@ require_once __DIR__ . '/../../bootstrap/init.php';
 require_once __DIR__ . '/../../bootstrap/autoload.php';
 
 $autenticacion = new Autenticacion();
+if(!$autenticacion->estaAutenticado() || !$autenticacion->esAdmin()) {
+    $_SESSION['mensaje_error'] = "Debe iniciar sesión para realizar esta acción";
+    header('Location: ../index.php?v=login');
+    exit;
+}
 
 $id = $_POST['id'];
 $titulo = $_POST['titulo'];
@@ -17,8 +22,6 @@ $imagen = $_FILES['imagen'];
 $etiquetas          = $_POST['etiquetas_id'] ?? [];
 
 $productos = (new Producto())->traerPorId($id);
-
-
 
 if (!$productos) {
     $_SESSION['mensaje_error'] = "El producto que estás tratando de editar no existe.";
@@ -57,9 +60,9 @@ try {
         'titulo' => $titulo,
         'precio' => $precio,
         'texto' => $texto,
-        'imagen' => $nombreImagen ?? 'logo.png',
-        'imagen_descripcion' => $imagen_descripcion,
-'etiquetas'             => $etiquetas,
+        'imagen' => $nombreImagen ?? $productos->getImagen(),
+        'imagen_descripcion'  => $imagen_descripcion,
+        'etiquetas' => $etiquetas,
 
     ]);
 

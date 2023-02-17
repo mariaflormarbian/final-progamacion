@@ -18,6 +18,7 @@ $productos = (new Producto())->todo();
                 <th>Estado</th>
                 <th>Título</th>
                 <th>Texto</th>
+                <th>Precio</th>
                 <th>Imagen</th>
                 <th>Video</th>
                 <th>Audio</th>
@@ -36,6 +37,7 @@ $productos = (new Producto())->todo();
                 <td><span class="text-info bg-white border p-1"><?= $producto->getEstado()->getNombre();?></span></td>
                 <td><?= e($producto->getTitulo()); ?></td>
                 <td><?= e($producto->getTexto()); ?></td>
+                <td> <?= e($producto->getPrecio()); ?></td>
                 <td><img src="<?= "../imgs/" . e($producto->getImagen()); ?>" width="50"
                         alt="<?= e($producto->getImagenDescripcion()); ?>"></td>
                 <td><?= $producto->getVideo(); ?></td>
@@ -46,12 +48,9 @@ $productos = (new Producto())->todo();
                     <a href="index.php?v=producto-editar&id=<?= $producto->getListadoId(); ?>"
                         class="button button-small">Editar</a>
 
-                    <!--<form action="acciones/producto-eliminar.php" method="post">
-                    <input type="hidden" name="id" value="<?= $producto->getListadoId(); ?>">
-                    <button type="submit" class="button button-small button-danger">Eliminar</button>
-                </form>-->
+
                     <a href="index.php?v=producto-eliminar&id=<?= $producto->getListadoId(); ?>"
-                        class="button button-small button-danger">Eliminar</a>
+                        class="button button-small text-danger">Eliminar</a>
                 </td>
             </tr>
             <?php

@@ -1,3 +1,8 @@
+<?php
+$dataForm = $_SESSION['data_form'] ?? [];
+unset($_SESSION['data_form']);
+?>
+
 <div class="container">
     <div class="login-container">
         <h2>Iniciar sesión</h2>
@@ -7,7 +12,7 @@
         <form action="acciones/auth-iniciar-sesion.php" method="post">
             <div class="form-fila mb-2">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control">
+                <input type="email" id="email" name="email" class="form-control" value="<?= $dataForm['email'] ?? null; ?>">
             </div>
             <a href="#">¿Has olvidado tu mail?</a>
             <div class="form-fila mt-4 mb-2">
@@ -18,6 +23,8 @@
                 <button type="submit" class="button btn btn-primary">Ingresar</button>
             </div>
         </form>
-        <p>¿Olvidaste tu password? <a href="index.php?v=recuperar-password">Solicitá restablecer tu password</a> </p>
-    </div>
+        <div class="pass">
+            <p>¿Olvidaste tu password?</p>
+            <a href="index.php?v=recuperar-password">Solicitá restablecer tu password</a>
+        </div>    </div>
 </div>

@@ -19,6 +19,10 @@ $productos = (new Producto())->traerPorId($_GET['id']);
         <dd><img width="500" src="<?= '../imgs/' . e($productos->getImagen()); ?>" alt=""></dd>
         <dt>Descripción de la Imagen</dt>
         <dd><?= e($productos->getImagenDescripcion()); ?></dd>
+        <dt>Video</dt>
+        <dd><?= e($productos->getVideo()); ?></dd>
+        <dt>Audio</dt>
+        <dd><?= e($productos->getAudio()); ?></dd>
     </dl>
 
     <form action="acciones/producto-eliminar.php" method="post">

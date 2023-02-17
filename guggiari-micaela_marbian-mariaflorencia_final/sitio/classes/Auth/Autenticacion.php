@@ -1,55 +1,65 @@
 <?php
+
 namespace DaVinci\Auth;
 
 use DaVinci\Modelos\Usuario;
 
 class Autenticacion
 {
-    /**
-     * @var Usuario
-     */
-    protected $usuario;
-
-    /**
-     *
-     * @param string $email
-     * @param string $password
-     * @return bool
-     */
-    public function iniciarSesion(string $email, string $password): bool
+    public function iniciarSesion(string $email, string $password, ?int $roles = null): bool
     {
-        $this->usuario = (new Usuario())->traerPorEmail($email);
-
-        if ($this->usuario === null) {
+        $usuario = (new Usuario())->traerPorEmail($email);
+        if(!$usuario) {
             return false;
         }
 
-        if (!password_verify($password, $this->usuario->getPassword())) {
+        if(!password_verify($password, $usuario->getPassword())) {
             return false;
         }
 
-        $_SESSION['usuarios_id'] = $this->usuario->getUsuariosId();
+        // Si se pide verificar el rol, lo hacemos.
+        if($roles !== null && $usuario->getRolesFk() !== $roles) {
+            return false;
+        }
+
+        $this->autenticar($usuario);
         return true;
     }
 
-    /**
-     * Cerramos sesion.
-     */
-    public function cerrarSesion()
+    public function autenticar(Usuario $usuario)
     {
-        unset($_SESSION['usuarios_id']);
+
+        $_SESSION['usuarios_id'] = $usuario->getUsuariosId();
+        $_SESSION['roles_fk']     = $usuario->getRolesFk();
+
     }
 
+    public function cerrarSesion()
+    {
+        unset($_SESSION['usuarios_id'], $_SESSION['roles_fk']);
+    }
 
     public function estaAutenticado(): bool
     {
         return isset($_SESSION['usuarios_id']);
     }
 
+    public function esAdmin(): bool
+    {
+        return $_SESSION['roles_fk'] === 1;
+    }
+
     public function getId(): ?int
     {
         return $this->estaAutenticado() ?
             $_SESSION['usuarios_id'] :
+            null;
+    }
+
+    public function getUsuario(): ?Usuario
+    {
+        return $this->estaAutenticado() ?
+            (new Usuario())->traerPorId($_SESSION['usuarios_id']) :
             null;
     }
 }

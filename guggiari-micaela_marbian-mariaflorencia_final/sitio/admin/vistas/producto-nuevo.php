@@ -1,10 +1,11 @@
 <?php
 use DaVinci\Session\Session;
 
-$estados = (new \DaVinci\Modelos\ProductoEstado())->todo();
-$etiquetas = (new \DaVinci\Modelos\Etiqueta())->todo();
+use DaVinci\Modelos\ProductoEstado;
+use DaVinci\Modelos\Etiqueta;
 
-
+$estados = (new ProductoEstado)->todo();
+$etiquetas = (new Etiqueta)->todo();
 
 $errores = $_SESSION['errores'] ?? [];
 $dataForm = $_SESSION['data_form'] ?? [];
@@ -15,8 +16,7 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
     <h2 class="mb-1">Publicar una Nuevo producto</h2>
 
     <p class="mb-1">Completá los datos del formulario con el producto. Cuando estés conforme dale a "Publicar".</p>
-
-
+    
     <form action="acciones/producto-publicar.php" method="post" enctype="multipart/form-data">
         <div class="form-fila">
             <label for="titulo">Título</label>

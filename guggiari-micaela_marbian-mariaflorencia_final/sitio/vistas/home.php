@@ -1,7 +1,7 @@
 <?php
 use DaVinci\Modelos\Producto;
 
-$productos = (new Producto())->todo();
+$productos = (new Producto())->publicadas();
 
 $rutaTexto= [
     'texto' => [
@@ -73,9 +73,9 @@ $texto = $rutaTexto['texto'];
     </div>
 </section>
 <section class="container my-5">
-    <div class="row">
+    <div>
         <ul class="d-flex" id="home-extraInfo">
-            <li class="col-4 ml-5">
+            <li class="col-4">
                 <picture>
                     <img src=" ./imgs/exchange.png" width=30 alt="Icono cambio y devolución">
                 </picture>
@@ -104,8 +104,8 @@ $texto = $rutaTexto['texto'];
             </li>
         </ul>
     </div>
-</section>
-<section class=" container my-5">
+
+<div class=" container my-5">
     <h2 class="text-center ">¿Quiénes somos?</h2>
     <div class="row container-home">
         <div class="col-12">
@@ -123,4 +123,5 @@ $texto = $rutaTexto['texto'];
         </div>
 
     </div>
+</div>
 </section>

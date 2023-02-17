@@ -1,9 +1,9 @@
 <?php
 
-
 use DaVinci\Modelos\Producto;
 
-$productos =(new Producto())->todo(['productos_estados_fk' => 2]);
+$productos = (new Producto())->publicadas();
+
 ?>
 
 <section class="container">
@@ -24,7 +24,22 @@ $productos =(new Producto())->todo(['productos_estados_fk' => 2]);
                     <audio controls>
                         <source src="./audio/<?= $producto->getAudio();?>" type="audio/mpeg">
                     </audio>
-
+                </div>
+                <div>
+                    <span class="visually-hidden">Etiquetas asociadas a esta noticia:</span>
+                    <ul class="list-unstyled">
+                        <?php
+                        foreach($producto->getEtiquetas() as $etiqueta):
+                        ?>
+                        <li>
+                            <span class="badge bg-primary">
+                                <?= $etiqueta->getNombre();?>
+                            </span>
+                        </li>
+                        <?php
+                        endforeach;
+                        ?>
+                    </ul>
                 </div>
                 <div class="card-body text-center">
 
@@ -41,7 +56,6 @@ $productos =(new Producto())->todo(['productos_estados_fk' => 2]);
         <?php
         endforeach;
         ?>
-
-
     </ul>
 </section>
+

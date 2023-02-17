@@ -5,33 +5,16 @@ namespace DaVinci\Modelos;
 use DaVinci\Database\Conexion;
 use PDO;
 
-
-class  ProductoEstado
+class  ProductoEstado extends Modelo
 {
     protected  int $productos_estados_id;
     protected  string $nombre;
 
-
+    protected string $table = "productos_estados";
+    protected string $primaryKey = "productos_estados_id";
+    
     protected array $propiedades = ['productos_estados_id', 'nombre'];
-    public function cargarPropiedades(array $data)
-    {
-        foreach($data as $key => $value) {
-            if(in_array($key, $this->propiedades)) {
-                $this->{$key} = $value;
-            }
-        }
-    }
 
-    public  function  todo():array
-    {
-        $db = Conexion::getConexion();
-        $query = "SELECT * FROM productos_estados";
-        $stmt = $db->prepare($query);
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
-
-        return  $stmt->fetchAll();
-    }
     /**
      * @return int
      */
@@ -63,6 +46,4 @@ class  ProductoEstado
     {
         $this->nombre = $nombre;
     }
-
-
 }

@@ -4,45 +4,36 @@ namespace DaVinci\Modelos;
 use DaVinci\Database\Conexion;
 use PDO;
 
-class Usuario
+class Usuario extends Modelo
 {
-
-    /**
-     * @var int
-     */
     protected $usuarios_id;
-    /**
-     * @var int
-     */
     protected $roles_fk;
-    /**
-     * @var string
-     */
     protected $email;
-    /**
-     * @var string
-     */
     protected $password;
     protected ?string $nombre;
     protected ?string $apellido;
-    /**
-     * @return int
-     */
 
-    protected array $propiedades = ['usuarios_id', 'email', 'password', 'nombre', 'apellido'];
-
-    public function cargarPropiedades(array $data)
-    {
-        foreach($data as $key => $value) {
-            if(in_array($key, $this->propiedades)) {
-                $this->{$key} = $value;
-            }
-        }
-    }
-
+    protected string $table = "usuarios";
+    protected string $primaryKey = "usuarios_id";
+    
+    protected array $propiedades = ['usuarios_id','roles_fk', 'email', 'password', 'nombre', 'apellido'];
+    
     public function getUsuariosId(): int
     {
         return $this->usuarios_id;
+    }
+
+    public function crear(array $data)
+    {
+        $db = Conexion::getConexion();
+        $query = "INSERT INTO usuarios (email, password, roles_fk) 
+        VALUES (:email, :password, :roles_fk)";
+        $db->prepare($query)->execute([
+            'email' => $data['email'],
+            'password' => $data['password'],
+            'roles_fk' => $data['roles_fk'],
+        ]);
+    
     }
 
     /**
@@ -64,9 +55,9 @@ class Usuario
     /**
      * @param int $roles_fk
      */
-    public function setRolFk(int $roles_fk): void
+    public function setRolesFk(int $roles_fk): void
     {
-        $this->rol_fk = $roles_fk;
+        $this->$roles_fk;
     }
 
     /**
@@ -92,7 +83,13 @@ class Usuario
     {
         return $this->password;
     }
-
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
     /**
      * @return array|string[]
      */
@@ -108,15 +105,8 @@ class Usuario
     {
         $this->propiedades = $propiedades;
     }
+    
 
-
-    /**
-     * @param string $password
-     */
-    public function setPassword(string $password): void
-    {
-        $this->password = $password;
-    }
 
     /**
      * @return string|null
@@ -154,33 +144,12 @@ class Usuario
     {
         return $this->getNombre() . " " . $this->getApellido();
     }
-
-
-    /**
-     *
-     * @param string $email
-     * @return Usuario|null
-     */
-
-    public function traerPorId(int $id): ?self
+    
+    public function traerPorEmail(string $email): ?self
     {
         $db = Conexion::getConexion();
         $query = "SELECT * FROM usuarios
-                WHERE usuarios_id = ?";
-        $stmt = $db->prepare($query);
-        $stmt->execute([$id]);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class);
-        $usuario = $stmt->fetch();
-
-        return $usuario ? $usuario : null;
-    }
-
-
-    public function traerPorEmail(string $email): ?Usuario
-    {
-        $db = Conexion::getConexion();
-        $query = "SELECT * FROM usuarios
-                WHERE email = ?";
+        WHERE email = ?";
         $stmt = $db->prepare($query);
         $stmt->execute([$email]);
 
@@ -193,4 +162,17 @@ class Usuario
         }
         return $usuario;
     }
+
+    public function editarPassword(string $password)
+    {
+        $db = Conexion::getConexion();
+        $query = "UPDATE usuarios
+                SET password = :password
+                WHERE usuarios_id = :id";
+        $db->prepare($query)->execute([
+            'id' => $this->getUsuariosId(),
+            'password' => $password,
+        ]);
+    }
+
 }

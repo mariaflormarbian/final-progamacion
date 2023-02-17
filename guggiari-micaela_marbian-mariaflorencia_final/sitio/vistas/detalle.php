@@ -3,14 +3,15 @@
 use DaVinci\Modelos\Producto;
 
 $producto =(new Producto())->traerPorId($_GET['id']);
-
+$producto->cargarEtiquetas();
 ?>
-
 
 <section class="container seccion-detalle">
     <h1 class="text-center  fw-bold p-3  my-5">Detalles</h1>
+    <form action="acciones/add-to-cart.php" method="POST" class="w-100">
 
     <div class="row align-items-lg-center container-detalle">
+
         <div class="col-lg-6">
             <figure>
                 <picture>
@@ -23,10 +24,28 @@ $producto =(new Producto())->traerPorId($_GET['id']);
             <h2 class="tituo-detalle"><?= $producto->getTitulo();?></h2>
             <p class="text-md-start"><?= $producto->getTexto();?></p>
             <p class="precio-detalle">$<?= $producto->getPrecio();?></p>
-            <a href="#" class="btn btn-primary desahabilitado">Agregar al carrito</a>
-
+            <div>
+                <span class="visually-hidden">Etiquetas asociadas a esta noticia:</span>
+                <ul class="list-unstyled">
+                <?php
+                foreach($producto->getEtiquetas() as $etiqueta):
+                ?>
+                <li>
+                    <span class="badge bg-primary">
+                        <?= $etiqueta->getNombre();?>
+                    </span>
+                </li>
+                <?php
+                endforeach;
+                ?>
+                </ul>
+                
+            </div>
+            <button type="submit" class="btn btn-primary  text-center p-6  text-uppercase  mb-2">Añadir al carrito</button>
         </div>
+
     </div>
+    </form>
 
 </section>
 
@@ -56,5 +75,4 @@ $producto =(new Producto())->traerPorId($_GET['id']);
                 allowfullscreen></iframe>
         </aside>
     </div>
-
 </section>

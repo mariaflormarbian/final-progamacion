@@ -1,18 +1,11 @@
 Carrera: Diseño y desarrollo web
 Materia: Programación II
-Cuatrimestre: Tercer Cuatrimestre
+Cuatrimestre: 3º
 Año: Segundo
-Turno: Noche
-Comision: DWN3AV
 Apellido y Nombre: Marbián María Florencia
-Docente: Gallino Santiago
-2do Parcial.
+Apellido y Nombre: Guggiari Micaela
 
 USUARIOS
-1 flormarbian@gmail.com  - pass: morella87
-2 maria@gmail.com -   pass: pacho
-
-
-
-
-
+1 admin: micaela.guggiari@davinci.edu.ar -   pass: mica 
+2 user: viviana@gmail.com  - pass: pacho
+3 user: flor.marbian@davinci.edu.ar - pass: flor2

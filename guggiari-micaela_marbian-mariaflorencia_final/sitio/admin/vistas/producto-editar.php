@@ -1,16 +1,14 @@
 <?php
 
 use DaVinci\Modelos\Producto;
-use DaVinci\Modelos\Etiqueta;
-
 use DaVinci\Modelos\ProductoEstado;
-
-use DaVinci\Session\Session;
+use DaVinci\Modelos\Etiqueta;
 
 $errores = $_SESSION['errores'] ?? [];
 $dataForm = $_SESSION['data_form'] ?? [];
 
 unset($_SESSION['errores'], $_SESSION['data_form']);
+
 $estados = (new ProductoEstado())->todo();
 $etiquetas = (new Etiqueta())->todo();
 
@@ -69,18 +67,17 @@ $productos->cargarEtiquetas();
             ?>
         </div>
         <?php
-        if (!empty($productos->getImagen()) && file_exists(__DIR__ . '/../../imgs/' . $productos->getImagen())):
+        if(!empty($productos->getImagen()) && file_exists(PATH_IMAGES . '/imgs/' . $productos->getImagen())):
             ?>
-        <div class="form-fila">
-            <p>Imagen actual</p>
-            <img src="<?= '../imgs/big-' . e($productos->getImagen()); ?>" alt="">
-        </div>
+            <div class="form-fila">
+                <p>Imagen actual</p>
+                <img src="<?= '../imgs/' . e($productos->getImagen());?>" alt="">
+            </div>
         <?php
         endif;
         ?>
         <div class="form-fila">
-            <label for="imagen">Imagen <span class="text-small">(<span class="visually-hidden">campo
-                    </span>opcional)</span></label>
+            <label for="imagen">Imagen <span class="text-small">(<span class="visually-hidden">campo </span>opcional)</span></label>
             <input type="file" id="imagen" name="imagen" class="form-control">
         </div>
         <div class="form-fila">
@@ -89,6 +86,21 @@ $productos->cargarEtiquetas();
             <input type="text" id="imagen_descripcion" name="imagen_descripcion" class="form-control"
                 value="<?= e($dataForm['imagen_descripcion'] ?? $productos->getImagenDescripcion()); ?>">
         </div>
+
+        <div class="form-fila">
+            <label for="video">Enlace de Video Youtube, EMBED (opcional)</label>
+            <input type="text" id="video" name="video" class="form-control"
+                   placeholder=" Ejemplo luego del <iframe> aparece Youtube/ (copiar desde embed y pegar)"
+                   value="<?= e($dataForm['video'] ?? $productos->getVideo()); ?>">
+        </div>
+
+        <div class="form-fila">
+            <label for="video">Audio</label>
+            <input type="text" id="video" name="video" class="form-control"
+                   placeholder=" Formato mp3"
+                   value="<?= e($dataForm['audio'] ?? $productos->getAudio()); ?>">
+        </div>
+
         <div class="form-fila">
             <label for="productos_estados_fk">Estado de Publicación</label>
             <select type="text" id="productos_estados_fk" name="productos_estados_fk" class="form-control">
@@ -116,7 +128,9 @@ $productos->cargarEtiquetas();
                     foreach($etiquetas as $etiqueta):
                         ?>
                     <label>
-                        <input type="checkbox" name="etiquetas_id[]" value="<?= $etiqueta->getEtiquetasId();?>" <?= in_array($etiqueta->getEtiquetasId(), $dataForm['etiquetas_id'] ?? $productos->getEtiquetaFk())
+                        <input type="checkbox" name="etiquetas_id[]" value="
+                        <?= $etiqueta->getEtiquetasId();?>" 
+                        <?= in_array($etiqueta->getEtiquetasId(), $dataForm['etiquetas_id'] ?? $productos->getEtiquetaFk())
                                 ? 'checked'
                                 : ''; ?>>
                         <?= $etiqueta->getNombre();?>

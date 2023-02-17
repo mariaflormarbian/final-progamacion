@@ -5,11 +5,9 @@ use DaVinci\Modelos\Producto;
 use DaVinci\Validacion\ProductoValidar;
 require_once __DIR__ . '/../../bootstrap/init.php';
 
-
-
 $autenticacion = new Autenticacion();
 
-if(!$autenticacion->estaAutenticado()) {
+if(!$autenticacion->estaAutenticado() || !$autenticacion->esAdmin()) {
     $_SESSION['mensaje_error'] = "Debe iniciar sesión para realizar esta acción";
     header('Location: ../index.php?v=login');
     exit;
@@ -54,7 +52,6 @@ if (!empty($imagen['tmp_name'])) {
     move_uploaded_file($imagen['tmp_name'], __DIR__ . '/../../imgs/' . $nombreImagen);
 }
 
-
 try {
     (new Producto())->crear([
         'usuarios_fk' => $autenticacion->getId(),
@@ -66,19 +63,17 @@ try {
         'audio' => $audio,
         'imagen' => $nombreImagen,
         'imagen_descripcion' => $imagen_descripcion,
-        'etiquetas'             => $etiquetas,
-
+        'etiquetas' => $etiquetas,
     ]);
-
-
+    
     $_SESSION['mensaje_exito'] = "El producto '<b>" . $titulo . "</b>' fue o con éxito.";
 
     header("Location: ./../index.php?v=productos");
     exit;
 
-    echo "<pre>";
-    var_dump($producto);
-    echo "</pre>";
+    // echo "<pre>";
+    // var_dump($producto);
+    // echo "</pre>";
 } catch (\Exception $e) {
     $_SESSION['mensaje_error'] = "Ocurrió un error inesperado al tratar de grabar la información, el producto no pudo ser publicada. Por favor, probá de nuevo más tarde.";
     $_SESSION['data_form'] = $_POST;
