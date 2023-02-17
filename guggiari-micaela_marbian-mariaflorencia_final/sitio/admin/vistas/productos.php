@@ -48,12 +48,9 @@ $productos = (new Producto())->todo();
                     <a href="index.php?v=producto-editar&id=<?= $producto->getListadoId(); ?>"
                         class="button button-small">Editar</a>
 
-                    <!--<form action="acciones/producto-eliminar.php" method="post">
-                    <input type="hidden" name="id" value="<?= $producto->getListadoId(); ?>">
-                    <button type="submit" class="button button-small button-danger">Eliminar</button>
-                </form>-->
+
                     <a href="index.php?v=producto-eliminar&id=<?= $producto->getListadoId(); ?>"
-                        class="button button-small button-danger">Eliminar</a>
+                        class="button button-small text-danger">Eliminar</a>
                 </td>
             </tr>
             <?php

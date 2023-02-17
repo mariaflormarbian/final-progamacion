@@ -87,16 +87,16 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
         <nav class=" nav navbar-expand navbar-dark pt-4">
             <div id="barra" class="navbar-collapse collapse">
                 <ul class="navbar-nav nav-tabs text-center ms-auto">
-                    <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=home">Home</a></li>
-                    <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=listado">Listado</a></li>
-                    <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=contacto">Contacto</a>
+                    <li class="nav-item px-2 mx-2"><a class="btn btn-dark border-0" href="index.php?v=home">Home</a></li>
+                    <li class="nav-item px-2 mx-2"><a class="btn btn-dark border-0" href="index.php?v=listado">Listado</a></li>
+                    <li class="nav-item px-2 mx-2"><a class="btn btn-dark border-0" href="index.php?v=contacto">Contacto</a>
                     </li>
-                    <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=carrito">Carrito</a>
+                    <li class="nav-item px-2 mx-2"><a class="btn btn-dark border-0" href="index.php?v=carrito">Carrito</a>
                     </li>
                     <?php
                     if ($autenticacion->estaAutenticado()):
                     ?>
-                        <li class="nav-item px-2 mx-2"><a class="btn nav-link" href="index.php?v=perfil">Mi Perfil</a>
+                        <li class="nav-item px-2 mx-2"><a class="btn btn-dark border-0" href="index.php?v=perfil">Mi Perfil</a>
                         </li>
                         <li >
                             <form action="acciones/auth-cerrar-sesion.php" method="post">

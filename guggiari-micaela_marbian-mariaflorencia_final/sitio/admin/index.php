@@ -92,11 +92,11 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                 ?>
                     <ul class="navbar-nav nav-tabs text-center ms-auto">
                         <li class="nav-item px-2 mx-2">
-                            <a class="btn nav-link" href="index.php?v=productos">Productos</a>
+                            <a class="btn btn-dark border-0" href="index.php?v=productos">Productos</a>
                         </li>
                         <li>
                             <form action="acciones/auth-cerrar-sesion.php" method="post">
-                                <button type="submit" class="cerrar-sesion btn nav-link">
+                                <button type="submit" class="cerrar-sesion btn btn-dark border-0">
                                     <?= $autenticacion->getUsuario()->getEmail(); ?> (Cerrar Sesión)</button>
                             </form>
                         </li>
