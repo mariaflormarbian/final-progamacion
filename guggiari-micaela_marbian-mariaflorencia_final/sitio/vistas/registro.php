@@ -5,7 +5,8 @@ $errores = (new \DaVinci\Session\Session())->flash('errores', []);
 
 ?>
 <section class="container">
-    <h1 class="mb-1">Registro</h1>
+
+        <h1 class="text-center fw-bold mt-5 p-3">Registro</h1>
 
     <p class="mb-1">Crear una cuenta es fácil y gratuito.</p>
 
