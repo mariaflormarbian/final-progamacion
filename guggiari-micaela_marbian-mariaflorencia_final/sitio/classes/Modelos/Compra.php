@@ -2,6 +2,7 @@
 
 namespace DaVinci\Modelos;
 
+
 use DaVinci\Database\Conexion;
 use PDO;
 
@@ -14,7 +15,6 @@ class Compra extends Modelo{
     protected float $total;
     protected string $productos;
 
-    protected string $user;
 
     protected string $table = "compra";
     protected string $primaryKey = "compra_id";
@@ -41,16 +41,16 @@ class Compra extends Modelo{
         $db->beginTransaction();
 
         try{
-            $query = "INSERT INTO purchases (cart_fk, user_fk, date, quantity, total, products)
-                VALUES (:cart_fk, :user_fk, :date, :quantity, :total, :products)";
+            $query = "INSERT INTO compra (carrito_fk, usuarios_fk, fecha, cantidad, total, productos)
+                VALUES (:carrito_fk, :usuarios_fk, :fecha, :cantidad, :total, :productos)";
             $stmt = $db->prepare($query);
             $stmt->execute([
-                "cart_fk" => $data["cart_fk"],
-                "user_fk" => $data["user_fk"],
-                "date" => $data["date"],
-                "quantity" => $data["quantity"],
+                "carrito_fk" => $data["carrito_fk"],
+                "usuarios_fk" => $data["usuarios_fk"],
+                "fecha" => $data["fecha"],
+                "cantidad" => $data["cantidad"],
                 "total" => $data["total"],
-                "products" => $data["products"],
+                "productos" => $data["productos"],
             ]);
             $db->commit();
         } catch (Exception $e){

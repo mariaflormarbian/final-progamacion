@@ -8,9 +8,9 @@ require_once __DIR__ . '/../bootstrap/init.php';
 $auth = new Autenticacion;
 
 $id = $_POST["productos_id"];
-$cantidad = $_POST["cantidad"];
-$total = $_POST["total"];
-$titulo = $_POST["titulo"];
+$cantidad = $_POST["productos_cantidad"];
+$subtotal = $_POST["productos_precio"];
+$titulo = $_POST["productos_titulo"];
 
 $products = (new AddProduct)->data();
 
@@ -27,13 +27,14 @@ foreach($products as $product){
         try{
             (new AddProduct)->addProduct($addedProductID, [
                 "cantidad" => $cantidad + $actualQuantity,
-                "subtotal" => $total * ($cantidad + $actualQuantity)
+                "subtotal" => $subtotal * ($cantidad + $actualQuantity)
             ]);
             $_SESSION["mensaje_exito"] = "Productos añadidos correctamente.";
             header("Location: ../index.php?v=carrito");
             exit;
         } catch(Exception $e){
             $_SESSION["mensaje_error"] = "No se pudo añadir el producto. Probá más tarde. ";
+
             header("Location: ../index.php?v=listado");
             exit;
         }
@@ -46,13 +47,15 @@ try{
         "productos_fk" => $id,
         "titulo" => $titulo,
         "cantidad" => $cantidad,
-        "total" => $total * $cantidad
+        "subtotal" => $subtotal * $cantidad
     ]);
     $_SESSION["success_text"] = "Productos añadidos correctamente.";
+    $_SESSION['mensaje_error'] = $auth->getId();
     header("Location: ../index.php?v=carrito");
     exit;
 } catch(Exception $e) {
-    $_SESSION["error_text"] = "No se pudo añadir el producto. Probá más tarde." . $e;
+    $_SESSION["mensaje_error"] = "No se pudo añadir el producto. Probá más tarde." . $e;
     header("Location: ../index.php?v=listado");
+    $_SESSION['mensaje_error'] = $e;
     exit;
 }

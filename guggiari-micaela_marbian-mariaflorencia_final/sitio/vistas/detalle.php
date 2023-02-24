@@ -21,7 +21,7 @@ $producto->cargarEtiquetas();
             </figure>
         </div>
         <div class="col-lg-6 mx-auto text-center">
-            <h2 class="tituo-detalle"><?= $producto->getTitulo();?></h2>
+            <h2 class="titulo-detalle"><?= $producto->getTitulo();?></h2>
             <p class="text-md-start"><?= $producto->getTexto();?></p>
             <p class="precio-detalle">$<?= $producto->getPrecio();?></p>
             <div>
@@ -41,6 +41,31 @@ $producto->cargarEtiquetas();
                 </ul>
                 
             </div>
+
+
+            <div class="mb-4">
+                <label for="cantidad" class="d-block">Cantidad: </label>
+                <select name="productos_cantidad" id="cantidad" class="w-100 p-1">
+                    <?php for ($i = 1; $i <= htmlspecialchars($producto->getStock()); $i++) : ?>
+                        <?php
+                        if ($i > 10) break;
+                        ?>
+
+                        <option value="<?= $i ?>"><?= $i ?>
+                            <?php if ($i <= 1) $option = 'Unidad';
+                            else $option = 'Unidades';
+                            echo $option ?></option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+
+
+
+
+
+            <input type="hidden" name="productos_id" value="<?= $producto->getListadoId(); ?>">
+            <input type="hidden" name="productos_titulo" value="<?= $producto->getTitulo(); ?>">
+            <input type="hidden" name="productos_precio" value="<?= $producto->getPrecio(); ?>">
             <button type="submit" class="btn btn-primary  text-center p-6  text-uppercase  mb-2">Añadir al carrito</button>
         </div>
 

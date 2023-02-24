@@ -20,11 +20,11 @@ $cantidad = $_POST['productos_cantidad'];
 $total = $_POST['productos_total'];
 $productos = $_POST['productos'];
 
-$orders = (new Purchases)->data();
+$orders = (new Compra)->data();
 $addedProducts = new AddProduct;
 
 try{
-    (new Purchases)->addPurchases([
+    (new Compra)->addPurchases([
         "carrito_fk" => $id,
         "usuarios_fk" => $id,
         "fecha" => fecha('Y-m-d H:i:s'),

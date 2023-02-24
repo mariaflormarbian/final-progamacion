@@ -19,6 +19,8 @@ class Producto extends Modelo
     protected ?string $video;
     protected ?string $audio;
     protected string $texto;
+    protected int $stock;
+
 
     protected ProductoEstado $estado;
     protected Usuario $autor;
@@ -29,7 +31,7 @@ class Producto extends Modelo
     protected string $table = "productos";
     protected string $primaryKey = "productos_id";
 
-    protected array $propiedades = ['productos_id', 'usuarios_fk', 'productos_estados_fk', 'titulo', 'texto', 'precio', 'imagen', 'imagen_descripcion', 'video', 'audio'];
+    protected array $propiedades = ['productos_id', 'usuarios_fk', 'productos_estados_fk', 'titulo', 'texto', 'precio', 'imagen', 'imagen_descripcion', 'video', 'audio', 'stock'];
 
     /**
      * Obtiene todos los productos.
@@ -138,8 +140,8 @@ class Producto extends Modelo
     public function crear(array $data): void
     {
         $db = Conexion::getConexion();
-        $query = "INSERT INTO productos (usuarios_fk, productos_estados_fk, precio, titulo, texto, imagen, imagen_descripcion, video) 
-                VALUES (:usuarios_fk, :productos_estados_fk, :precio,  :titulo,  :texto, :imagen, :imagen_descripcion, :video)";
+        $query = "INSERT INTO productos (usuarios_fk, productos_estados_fk, precio, titulo, texto, imagen, imagen_descripcion, video, stock) 
+                VALUES (:usuarios_fk, :productos_estados_fk, :precio,  :titulo,  :texto, :imagen, :imagen_descripcion, :video, :stock)";
 
         $stmt = $db->prepare($query);
 
@@ -152,6 +154,8 @@ class Producto extends Modelo
             'imagen' => $data['imagen'],
             'imagen_descripcion' => $data['imagen_descripcion'],
             'video' => $data['video'],
+            'stock' => $data['stock'],
+
         ]);
 
         $id = $db->lastInsertId();
@@ -197,7 +201,9 @@ class Producto extends Modelo
                     imagen               = :imagen,
                     video                = :video,
                     audio                = :audio,
-                    imagen_descripcion   = :imagen_descripcion
+                    imagen_descripcion   = :imagen_descripcion,
+                    stock   = :stock,
+                    
                 WHERE productos_id = :productos_id";
         $stmt = $db->prepare($query);
         $stmt->execute([
@@ -211,6 +217,7 @@ class Producto extends Modelo
             'video' => $data['video'],
             'audio' => $data['audio'],
             'imagen_descripcion' => $data['imagen_descripcion'],
+            'stock' => $data['stock'],
         ]);
         $this->actualizarEtiquetas($data['etiquetas']);
     }
@@ -345,6 +352,22 @@ class Producto extends Modelo
         return $this->productos_estados_fk;
     }
 
+    /**
+     * @return int
+     */
+    public function getProductosId(): int
+    {
+        return $this->productos_id;
+    }
+
+    /**
+     * @param int $productos_id
+     */
+    public function setProductosId(int $productos_id): void
+    {
+        $this->productos_id = $productos_id;
+    }
+
     public function setProductosEstadoFk(int $productos_estados_fk): void
     {
         $this->productos_estados_fk = $productos_estados_fk;
@@ -389,4 +412,15 @@ class Producto extends Modelo
     {
         $this->etiquetas = $etiquetas;
     }
+
+    public function getStock(): int
+    {
+        return $this->stock;
+    }
+
+    public function setStock(array $stock): void
+    {
+        $this->stock = $stock;
+    }
+
 }

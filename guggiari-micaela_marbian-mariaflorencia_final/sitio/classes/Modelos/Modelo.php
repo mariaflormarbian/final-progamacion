@@ -39,7 +39,8 @@ class Modelo
         $stmt->setFetchMode(PDO::FETCH_CLASS, static::class);
         return $stmt->fetchAll();
     }
-    
+
+
     /**
      * Retorna el objeto correspondiente al $id provisto.
      * 

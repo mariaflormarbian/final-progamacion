@@ -38,7 +38,6 @@ class AddProduct extends Modelo
     {
         $db = Conexion::getConexion();
         $db->beginTransaction();
-
         try{
             $query = "INSERT INTO agregar_producto (carrito_fk, productos_fk, titulo, cantidad, subtotal)
                     VALUES (:carrito_fk, :productos_fk, :titulo, :cantidad, :subtotal)";
@@ -150,12 +149,12 @@ class AddProduct extends Modelo
         return $this;
     }
 
-    public function getProductFk()
+    public function getProductsFk()
     {
         return $this->productos_fk;
     }
 
-    public function setProductFk($productos_fk)
+    public function setProductsFk($productos_fk)
     {
         $this->productos_fk = $productos_fk;
 
