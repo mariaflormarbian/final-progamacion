@@ -74,8 +74,8 @@ $texto = $rutaTexto['texto'];
 </section>
 <section class="container my-5">
     <div>
-        <ul class="d-flex" id="home-extraInfo">
-            <li class="col-4">
+        <ul class="d-flex align-items-md-center" id="home-extraInfo">
+            <li class="col-md-4">
                 <picture>
                     <img src=" ./imgs/exchange.png" width=30 alt="Icono cambio y devolución">
                 </picture>
@@ -84,7 +84,7 @@ $texto = $rutaTexto['texto'];
                     <p>Gratis, a todo el país</p>
                 </div>
             </li>
-            <li class=" col-4">
+            <li class="col-md-4">
                 <picture>
                     <img src="./imgs/pago-seguro.png" width=30 alt="Icono pagos seguros">
                 </picture>
@@ -93,7 +93,7 @@ $texto = $rutaTexto['texto'];
                     <p>Tarjeta, efectivo, mercado pago</p>
                 </div>
             </li>
-            <li class=" col-4">
+            <li class="col-md-4">
                 <picture>
                     <img src="./imgs/caja.png" width=30 alt="Icono envio express">
                 </picture>
