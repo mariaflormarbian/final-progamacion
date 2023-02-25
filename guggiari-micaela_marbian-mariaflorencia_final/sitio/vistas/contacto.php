@@ -1,4 +1,4 @@
-<section class="container  mt-5">
+<section class="mt-5">
     <h2 class="text-center fw-bold mt-5 p-3 ">
         ¿Dudas?
     </h2>
