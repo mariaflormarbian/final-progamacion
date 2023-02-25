@@ -1,7 +1,4 @@
-
-@media (min-width: 320px)  {
-
-    * {
+* {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -23,6 +20,21 @@
         font-size: 0;
     }
 
+    header nav{
+        background: #b8e3f8;
+    }
+    
+    .nav-link{
+        font-size: 19px;
+        color: #db70a9;
+    }
+    
+    .nav-link:hover, .nav-link:focus, .nav-link.active{
+        color: #a65e83;
+        background: rgb(238 240 245 / 41%);
+        border-radius: 10px;
+    }
+
     li {
         list-style: none;
     }
@@ -34,13 +46,11 @@
     .color:hover {
         color: #20e2d2;
         transition-duration: 1s;
-
     }
     
     .banner img {
         margin: 0px auto;
         display: block;
-
     }
 
     .error {
@@ -49,8 +59,7 @@
         height: 100vh;
         background-position: center center;
     }
-
-
+    
     .bg-white {
         background-color: #9ad7f6;
     }
@@ -58,8 +67,6 @@
     .card {
         padding-top: 20px;
         border: none;
-
-
     }
 
     .contenedor-lista {
@@ -67,7 +74,7 @@
         flex-direction: column;
     }
     .contenedor-lista li{
-margin: 0 auto;
+        margin: 0 auto;
     }
 
     .producto {
@@ -104,7 +111,6 @@ margin: 0 auto;
         background-color: white;
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
         padding: 2em;
-
     }
 
     .seccion-detalle {
@@ -117,7 +123,6 @@ margin: 0 auto;
 
     aside h3 {
         font-size: 1.5em;
-
     }
 
     .tituo-detalle {
@@ -138,7 +143,6 @@ margin: 0 auto;
 
     .form-enviado p {
         font-size: 2em;
-
     }
 
     .container-home {
@@ -164,7 +168,7 @@ margin: 0 auto;
     }
 
     .fondo1 {
-        background-color: black;
+        background-color: #9d7da2;
         color: white;
         text-transform: uppercase;
         font-size: 1em;
@@ -174,13 +178,11 @@ margin: 0 auto;
     .fondo1 span {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         padding-right: 4%;
-
     }
 
     #home-extraInfo  {
-    flex-direction: column;
+        flex-direction: column;
         margin: 5% 0;
-
     }
     
     #home-extraInfo img {
@@ -188,7 +190,7 @@ margin: 0 auto;
     }
     
     #home-extraInfo li {
-        margin: 50px 0 50px 0;
+        margin: 20px 0 20px 0;
     }
 
     #home-extraInfo h3 {
@@ -199,22 +201,17 @@ margin: 0 auto;
         font-size: 1em;
         color: grey;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
     }
 
     .fondo-home {
         background-image: url(../imgs/banner.png);
         background-repeat: no-repeat;
         background-position-x: center;
-        background-size: 200px;
+        background-size: 289px;
         padding-top: 3%;
+        height: 25vh;
     }
-
-    .fondo-home .carousel {
-        margin-top: 45%;
-
-    }
-
+    
     .container-form {
         margin-top: 10%;
     }
@@ -239,7 +236,6 @@ margin: 0 auto;
         border: 2px solid grey;
         padding: 5%;
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-
         background-image: url("../imgs/tecla-cualquiera.jpg");
         background-repeat: no-repeat;
         background-position:  center;
@@ -248,8 +244,9 @@ margin: 0 auto;
     }
     
     .pass {
-    text-align: center;
+        text-align: center;
     }
+
     .button-ingresar {
         margin: 0 auto;
         margin-bottom: 38%;
@@ -272,16 +269,13 @@ margin: 0 auto;
         border: 2px solid grey;
         padding: 5%;
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-
-
     }
 
     .button-eliminar {
         margin-top: 10%;
         margin-bottom: 20%;
     }
-
-
+    
     a {
         text-decoration: none;
         color: grey;
@@ -314,10 +308,12 @@ margin: 0 auto;
     footer {
         background-color: #B8E3F8;
     }
-footer div div {
+
+    footer div div {
     flex-direction: column;
     text-align: center;
-}
+    }
+
     footer div ul {
         justify-content: center;
     }
@@ -331,13 +327,6 @@ footer div div {
         padding: 10px 0 10px 0;
     }
 
-
-    section {
-        min-height: 100vh
-    }
-
-}
-
 @media (min-width: 768px) {
     footer div div {
         flex-direction: row;
@@ -345,20 +334,20 @@ footer div div {
     }
     .fondo-home {
         background-size: 500px;
-    }
-    .fondo-home .carousel {
-        margin-top: 20%;
+        height: 32vh;
+        margin-top: 40px;
     }
     #home-extraInfo  {
         flex-direction: row;
-    }
-    .linea {
-        border-left: 2px solid grey;
-        height: 100%;
-        padding-left: 5%;
-        margin-left: 10%;
-        position: absolute;
+    } 
 
+    #home-extraInfo {
+        margin-left: 97px;
+        margin-right: -97px;
+    }
+
+    #home-extraInfo img {
+        float: left;
     }
     .contenedor-lista {
         flex-direction: row;
@@ -375,5 +364,12 @@ footer div div {
     }
     .button-ingresar {
         text-align: start;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px){
+    #home-extraInfo {
+        margin-left: 0px;
+        margin-right: 0px;
     }
 }

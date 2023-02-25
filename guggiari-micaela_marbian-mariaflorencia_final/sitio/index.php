@@ -79,7 +79,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
 </head>
 
 <body>
-    <header class="navbar navbar-expand-md navbar-dark bd-navbar">
+    <header class="navbar navbar-expand-md bd-navbar">
         <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="navegacion principal">
             <a href="index.php?v=home" id="logo" class="navbar-brand p-0 me-2" aria-label="Simpsoneras">
                 Simpsoneras :: <?= $rutaTitulo['titulo'];?>
@@ -91,16 +91,16 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
             </button>
             <div class="navbar-collapse collapse justify-content-md-end" id="bdNavbar">
                 <ul class="navbar-nav flex-md-row flex-wrap bd-navbar-nav pt-2 py-md-0">
-                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-3" href="index.php?v=home">Home</a></li>
-                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-3" href="index.php?v=listado">Listado</a></li>
-                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-3" href="index.php?v=contacto">Contacto</a>
+                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=home">Home</a></li>
+                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=listado">Listado</a></li>
+                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=contacto">Contacto</a>
                     </li>
-                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-3" href="index.php?v=carrito">Carrito</a>
+                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=carrito">Carrito</a>
                     </li>
                     <?php
                     if ($autenticacion->estaAutenticado()):
                     ?>
-                        <li class="nav-item col-6 col-md-auto"><a class="nav-link p-3" href="index.php?v=perfil">Mi Perfil</a>
+                        <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=perfil">Mi Perfil</a>
                         </li>
                         <li class="nav-item col-6 col-md-auto">
                             <form action="acciones/auth-cerrar-sesion.php" method="post">
@@ -113,8 +113,8 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                     <?php 
                     else:
                     ?>
-                        <li class="nav-item col-6 col-md-auto"><a class="nav-link p-3" href="index.php?v=iniciar-sesion">Iniciar Sesion</a></li>
-                        <li class="nav-item col-6 col-md-auto"><a class="nav-link p-3" href="index.php?v=registro">Registrarse</a></li>
+                        <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=iniciar-sesion">Iniciar Sesion</a></li>
+                        <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=registro">Registrarse</a></li>
                     <?php 
                     endif;
                     ?>
@@ -123,7 +123,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
             </div>
         </nav>
     </header>
-    <div class="main-content">
+    <div class="main-content container">
         <?php 
         if($mensajeExito):
         ?>
@@ -148,11 +148,10 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
         }
         ?>
     </div>
-    <footer>
-        <div class="container pt-6">
-
-                <div class="d-flex pt-6 justify-content-center">
-                    <div  class="mx-6"><img width="100" src="imgs/logo.png" alt="simpsoneras indumentaria logo" title="exoma remeras logo"></div>
+    <footer class="container-fluid">
+        <div class=" pt-6">
+            <div class="d-flex pt-6 justify-content-center justify-content-md-evenly">
+                <div  class="mx-6"><img width="100" src="imgs/logo.png" alt="simpsoneras indumentaria logo" title="exoma remeras logo"></div>
                 <div class="px-6 ">
                     <h3>Encontrános</h3>
                     <ul  class="px-0">
@@ -166,65 +165,47 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                         </li>
                     </ul>
                 </div>
-
-                    <div class="px-6">
-                        <h3>Contactános</h3>
-                        <ul class="px-0">
-
-                            <li>
-                                <i class="fa fa-phone"></i>
-                                <p>Teléfono: <span>11 2759-1970 </span></p>
-                            </li>
-                            <li>
-                                <i class="fa fa-envelope"></i>
-                                <p>Mail: <a href="mailto:info@simpsoneras.com" class="dropdown">info@simpsoneras.com</a></p>
-                            </li>
-                        </ul>
-                    </div>
-
+                <div class="px-6">
+                    <h3>Contactános</h3>
+                    <ul class="px-0">
+                        <li>
+                            <i class="fa fa-phone"></i>
+                            <p>Teléfono: <span>11 2759-1970 </span></p>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope"></i>
+                            <p>Mail: <a href="mailto:info@simpsoneras.com" class="dropdown">info@simpsoneras.com</a></p>
+                        </li>
+                    </ul>
+                </div>
                 <div class="px-6">
                     <h3>Sigamos conectados</h3>
                     <ul class="d-flex px-0">
-
-                        <li>
                         <li class="nav-item">
-                            <a href="//www.facebook.com" class="nav-link"><i class="bi bi-facebook color"></i>
-                            </a>
+                            <a href="//www.facebook.com" class="nav-link"><i class="bi bi-facebook color"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a href="//www.twitter.com" class="nav-link"><i class="bi bi-twitter color"></i>
-                            </a>
+                            <a href="//www.twitter.com" class="nav-link"><i class="bi bi-twitter color"></i></a>
                         </li>
                         <li>
-                            <a href="//www.instagram.com" class="nav-link"><i class="bi bi-instagram color"></i>
-                            </a>
+                            <a href="//www.instagram.com" class="nav-link"><i class="bi bi-instagram color"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a href="//www.youtube.com" class="nav-link"><i class="bi bi-youtube color"></i>
-                            </a>
+                            <a href="//www.youtube.com" class="nav-link"><i class="bi bi-youtube color"></i></a>
                         </li>
-
                     </ul>
                 </div>
                 </div>
             </div>
-
-
-            <div>
-                <div>
-                    <ul class="d-flex justify-content-center">
-                        <li class="p-3"><a class="btn btn-dark border-0" href="index.php?v=listado">Sobre Nosotros</a></li>
-                        <li class="p-3"><a class="btn btn-dark border-0"  href="index.php?v=listado">Showroom</a></li>
-                        <li class="p-3"><a class="btn btn-dark border-0"  href="index.php?v=contacto">Contactenos</a></li>
-                    </ul>
-                </div>
-
-            </div>
+            <ul class="d-flex justify-content-center flex-column flex-md-row">
+                <li class="p-3 text-center"><a class="btn btn-dark border-0" href="index.php?v=listado">Sobre Nosotros</a></li>
+                <li class="p-3 text-center"><a class="btn btn-dark border-0"  href="index.php?v=listado">Showroom</a></li>
+                <li class="p-3 text-center"><a class="btn btn-dark border-0"  href="index.php?v=contacto">Contactenos</a></li>
+            </ul>
             <div>
                 <p class="text-center">Simpsoneras Indumentaria ® 2023. Todos los derechos reservados.</p>
             </div>
         </div>
-
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
