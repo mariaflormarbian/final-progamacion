@@ -26,9 +26,11 @@ class Usuario extends Modelo
     public function crear(array $data)
     {
         $db = Conexion::getConexion();
-        $query = "INSERT INTO usuarios (email, password, roles_fk) 
-        VALUES (:email, :password, :roles_fk)";
+        $query = "INSERT INTO usuarios (nombre, apellido, email, password, roles_fk) 
+        VALUES (:nombre, :apellido, :email, :password, :roles_fk)";
         $db->prepare($query)->execute([
+            'nombre' => $data['nombre'],
+            'apellido' => $data['apellido'],
             'email' => $data['email'],
             'password' => $data['password'],
             'roles_fk' => $data['roles_fk'],

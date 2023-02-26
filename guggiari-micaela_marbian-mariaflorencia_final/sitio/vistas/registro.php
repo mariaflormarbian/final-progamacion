@@ -12,6 +12,29 @@ $errores = (new \DaVinci\Session\Session())->flash('errores', []);
 
     <form action="acciones/auth-registro.php" method="post">
         <div class="form-fila">
+            <label for="nombre">Nombre</label>
+            <input
+                    type="nombre"
+                    id="nombre"
+                    name="nombre"
+                    class="form-control"
+                    value="<?= e($dataForm['nombre'] ?? '');?>"
+                <?= isset($errores['nombre']) ? 'aria-describedby="error-nombre"' : '';?>
+            >
+        </div>
+        <div class="form-fila">
+            <label for="apellido">Apellido</label>
+            <input
+                    type="apellido"
+                    id="apellido"
+                    name="apellido"
+                    class="form-control"
+                    value="<?= e($dataForm['apellido'] ?? '');?>"
+                <?= isset($errores['apellido']) ? 'aria-describedby="error-apellido"' : '';?>
+            >
+        </div>
+
+        <div class="form-fila">
             <label for="email">Email</label>
             <input
                     type="email"

@@ -4,6 +4,8 @@ use DaVinci\Modelos\Cart;
 
 require_once __DIR__ . '/../bootstrap/init.php';
 
+$nombre = $_POST['nombre'];
+$apellido = $_POST['apellido'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 $password_confirmar = $_POST['password_confirmar'];
@@ -12,6 +14,8 @@ $password_confirmar = $_POST['password_confirmar'];
 
 try {
     (new Usuario)->crear([
+        'nombre' => $nombre,
+        'apellido' => $apellido,
         'email' => $email,
         'password' => password_hash($password, PASSWORD_DEFAULT),
         'roles_fk' => 2,
