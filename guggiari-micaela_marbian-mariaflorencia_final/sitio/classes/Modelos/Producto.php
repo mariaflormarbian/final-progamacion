@@ -131,6 +131,10 @@ class Producto extends Modelo
         $this->etiquetas = $etiquetas;
     }
 
+
+
+
+
     /**
      * Crea un producto en la base de datos.
      * 
