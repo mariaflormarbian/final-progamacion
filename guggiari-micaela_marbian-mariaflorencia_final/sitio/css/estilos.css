@@ -92,6 +92,7 @@
         display: block;
     }
 
+    /* detalle */
     .container-detalle,
     .quienes-somos {
         background-color: white;
@@ -120,6 +121,12 @@
     .precio-detalle {
         font-weight: bold;
         font-size: 2em;
+    }
+
+    .badge {
+        color: #d6a9da;
+        background: #eaf6f9;
+        font-size: 16px;
     }
 
     .form-enviado {
@@ -288,6 +295,8 @@
         color: red;
     }
 
+
+    /* footer */
     footer {
         background-color: #B8E3F8;
     }

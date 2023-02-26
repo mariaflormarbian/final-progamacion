@@ -23,12 +23,12 @@ $producto->cargarEtiquetas();
                 <p class="precio-detalle">$<?= $producto->getPrecio();?></p>
                 <div>
                     <span class="visually-hidden">Etiquetas asociadas a esta noticia:</span>
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled d-flex justify-content-center">
                     <?php
                     foreach($producto->getEtiquetas() as $etiqueta):
                     ?>
-                        <li>
-                            <span class="badge bg-primary">
+                        <li class="pe-1">
+                            <span class="badge">
                                 <?= $etiqueta->getNombre();?>
                             </span>
                         </li>
@@ -39,7 +39,7 @@ $producto->cargarEtiquetas();
                 </div>
                 <div class="mb-4">
                     <label for="cantidad" class="d-block">Cantidad: </label>
-                    <select name="productos_cantidad" id="cantidad" class="w-100 p-1">
+                    <select name="productos_cantidad" id="cantidad" class="w-50 p-1">
                         <?php for ($i = 1; $i <= htmlspecialchars($producto->getStock()); $i++) : ?>
                             <?php
                             if ($i > 10) break;
