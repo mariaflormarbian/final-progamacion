@@ -2,7 +2,6 @@
 use DaVinci\Modelos\Producto;
 
 $productos = (new Producto())->publicadas();
-
 $rutaTexto= [
     'texto' => [
         'quienes-somos' => '<strong>Simpsoneras</strong> nació como un
@@ -37,45 +36,41 @@ $rutaTexto= [
     ]
     ];
 $texto = $rutaTexto['texto'];  
-
 ?>
 
-<section class="container fondo-home">
-
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <h2 class="text-center fondo1 fw-bold p-3 display-6 my-2"> <span> ¡La moda que te inspira!</span>
-            <strong>¡Comprá hoy y recibilo al toque! / Envío dentro de las 24hs. </strong>
-        </h2>
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
+<div class="fondo-home"></div>
+<section>
+    <h2 class="text-center fondo1 p-3 display-6">¡La moda que te inspira! <strong>¡Comprá hoy y recibilo al toque! / Envío dentro de las 24hs. </strong></h2>
+    <div id="carrusel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block" src="./imgs/slider1.png " alt="Remeras desde $1380 promoción">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block" src="./imgs/slider2.png " alt="Compra ahora remera, las más vendidas">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block" src="./imgs/slider3.png" alt="Diseñamos el dibujo o remera que elijas">
-            </div>
+            <picture class="carousel-item active">
+                    <source media="(min-width:768px)" srcset="./imgs/desktop/slider1.png">
+                    <img class="d-block img-fluid" alt="Remeras desde $1380 promoción" src="./imgs/mobile/slider-mobile1.png">
+            </picture>
+            <picture class="carousel-item">
+                    <source media="(min-width:768px)" srcset="./imgs/desktop/slider2.png">
+                    <img class="d-block img-fluid" alt="Compra ahora remera, las más vendidas" src="./imgs/mobile/slider-mobile2.png">
+            </picture>
+            <picture class="carousel-item ">
+                    <source media="(min-width:768px)" class="img-fluid" srcset="./imgs/desktop/slider3.png">
+                    <img class="d-block img-fluid" alt="Diseñamos el dibujo o remera que elijas" src="./imgs/mobile/slider-mobile3.png">
+            </picture>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carrusel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carrusel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+        
     </div>
 </section>
-<section class="container my-5">
+<section>
     <div>
-        <ul class="d-flex" id="home-extraInfo">
-            <li class="col-4">
+        <ul class="d-flex align-items-md-center" id="home-extraInfo">
+            <li class="col-md-4">
                 <picture>
                     <img src=" ./imgs/exchange.png" width=30 alt="Icono cambio y devolución">
                 </picture>
@@ -84,7 +79,7 @@ $texto = $rutaTexto['texto'];
                     <p>Gratis, a todo el país</p>
                 </div>
             </li>
-            <li class=" col-4">
+            <li class="col-md-4">
                 <picture>
                     <img src="./imgs/pago-seguro.png" width=30 alt="Icono pagos seguros">
                 </picture>
@@ -93,7 +88,7 @@ $texto = $rutaTexto['texto'];
                     <p>Tarjeta, efectivo, mercado pago</p>
                 </div>
             </li>
-            <li class=" col-4">
+            <li class="col-md-4">
                 <picture>
                     <img src="./imgs/caja.png" width=30 alt="Icono envio express">
                 </picture>
@@ -104,8 +99,8 @@ $texto = $rutaTexto['texto'];
             </li>
         </ul>
     </div>
-
-<div class=" container my-5">
+</section>
+<section>
     <h2 class="text-center ">¿Quiénes somos?</h2>
     <div class="row container-home">
         <div class="col-12">
@@ -123,5 +118,4 @@ $texto = $rutaTexto['texto'];
         </div>
 
     </div>
-</div>
 </section>

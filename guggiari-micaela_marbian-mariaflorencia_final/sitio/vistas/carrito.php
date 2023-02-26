@@ -14,7 +14,7 @@ $addedProducts = (new AddProduct)->data();
 $list = (new AddProduct)->productList($addedProducts, $authedUser);
 ?>
 
-<section class="container">
+<section>
     <h2 class="text-center fw-bold mt-5 p-3">Mi carrito</h2>
 
     <?php if ($addedProducts != []) : ?>

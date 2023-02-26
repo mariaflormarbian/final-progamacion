@@ -3,7 +3,7 @@ $dataForm = $_SESSION['data_form'] ?? [];
 unset($_SESSION['data_form']);
 ?>
 
-<section class="container">
+<section>
         <h1 class="text-center fw-bold mt-5 p-3">Iniciar sesión</h1>
 
 

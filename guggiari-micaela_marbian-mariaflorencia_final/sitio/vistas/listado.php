@@ -1,23 +1,20 @@
 <?php
-
 use DaVinci\Modelos\Producto;
-
 $productos = (new Producto())->publicadas();
-
 ?>
 
-<section class="container">
+<section class="listado">
     <h2 class="text-center fw-bold mt-5 p-3">Nuestros Productos</h2>
 
-    <ul class="row contenedor-lista">
+    <ul class="row p-0">
         <?php
             foreach($productos as $producto):
         ?>
 
-        <li class="card col-6 producto">
+        <li class="card col-md-4 producto">
             <div class="mx-auto">
                 <picture>
-                    <img class="img-fluid" width="400" src="imgs/<?= $producto->getImagen();?>"
+                    <img class="img-fluid" src="imgs/productos/<?= $producto->getImagen();?>"
                         alt="<?= $producto->getImagenDescripcion();?>">
                 </picture>
                 <div class="audio">
@@ -58,4 +55,3 @@ $productos = (new Producto())->publicadas();
         ?>
     </ul>
 </section>
-
