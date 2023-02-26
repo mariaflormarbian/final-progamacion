@@ -31,10 +31,10 @@ $list = (new AddProduct)->productList($addedProducts, $authedUser);
                         <tr>
                             <td class="p-2"><?= $product->getTitle() ?></td>
                             <td class="p-2">x<?= $product->getQuantity(); ?></td>
-                            <td class="p-2">USD$<?= $product->getSubtotal(); ?></td>
+                            <td class="p-2">$<?= $product->getSubtotal(); ?></td>
 
                             <td>
-                                <form action="actions/delete-from-cart.php" method="POST">
+                                <form action="acciones/delete-from-cart.php" method="POST">
                                     <input type="hidden" name="product_id" value="<?= $product->getAddProductID(); ?>"/>
                                     <button type="submit" class="p-0 m-0 bg-transparent border-0 text-highlight-color text-highlight-hover">Eliminar</button>
                                 </form>
@@ -50,14 +50,14 @@ $list = (new AddProduct)->productList($addedProducts, $authedUser);
                 ?>
                 <div class="bg-light p-4 mb-4">
                     <p class="mb-2 ">Cantidad total de productos: <span class="fw-bold">x<?= $cart->getQuantity(); ?></span></p>
-                    <p class="mb-2 ">Total: <span class="fw-bold">USD$<?= $cart->getTotal(); ?></span></p>
-                    <form action="actions/empty-cart.php" method="POST" class="">
+                    <p class="mb-2 ">Total: <span class="fw-bold">$<?= $cart->getTotal(); ?></span></p>
+                    <form action="acciones/empty-cart.php" method="POST" class="">
                         <input type="hidden" name="product_id" value="<?= $cart->getCartID() ?>"/>
                         <button type="submit" class="p-0 m-0 bg-transparent border-0 text-highlight-color text-highlight-hover">Vaciar carrito</button>
                     </form>
                 </div>
 
-                <form action="actions/auth-buy.php" method="POST" class="text-end">
+                <form action="acciones/auth-buy.php" method="POST" class="text-end">
                     <input type="hidden" name="products_quantity" value="<?= $cart->getQuantity() ?>"/>
                     <input type="hidden" name="products_total" value="<?= $cart->getTotal() ?>"/>
                     <input type="hidden" name="products" value="<?= $list ?>"/>

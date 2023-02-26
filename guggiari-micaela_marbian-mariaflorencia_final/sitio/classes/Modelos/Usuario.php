@@ -36,6 +36,8 @@ class Usuario extends Modelo
     
     }
 
+
+
     /**
      * @param int $usuarios_id
      */

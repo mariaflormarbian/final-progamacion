@@ -14,7 +14,11 @@ try {
         'email' => $email,
         'password' => password_hash($password, PASSWORD_DEFAULT),
         'roles_fk' => 2,
-    ]);	
+    ]);
+
+
+
+
     $_SESSION['mensaje_exito'] = "Usuario creado con éxito. Ya puede iniciar sesión.";
     header("Location: ../index.php?v=iniciar-sesion");
 }catch(Exception $e){
