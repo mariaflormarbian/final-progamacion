@@ -29,6 +29,9 @@ $rutas = [
         'titulo' => 'Confirmar Eliminación de Producto',
         'requiereAutenticacion' => true,
     ],
+    'usuarios' => [
+        'titulo' => 'Usuarios',
+    ],
     '404' => [
         'titulo' => 'Página no Encontrada',
     ],
@@ -93,6 +96,9 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                     <ul class="navbar-nav nav-tabs text-center ms-auto">
                         <li class="nav-item px-2 mx-2">
                             <a class="btn btn-dark border-0" href="index.php?v=productos">Productos</a>
+                        </li>
+                        <li class="nav-item px-2 mx-2">
+                            <a class="btn btn-dark border-0" href="index.php?v=usuarios">Usuarios</a>
                         </li>
                         <li>
                             <form action="acciones/auth-cerrar-sesion.php" method="post">
