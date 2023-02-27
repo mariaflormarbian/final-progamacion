@@ -14,7 +14,7 @@ $addedProducts = (new AddProduct)->data();
 $list = (new AddProduct)->productList($addedProducts, $authedUser);
 ?>
 
-<section>
+<section class="contenedor-carrito">
     <h2 class="text-center fw-bold mt-5 p-3">Mi carrito</h2>
 
     <?php if ($addedProducts != []) : ?>
@@ -68,9 +68,10 @@ $list = (new AddProduct)->productList($addedProducts, $authedUser);
         endforeach;
         ?>
     <?php else: ?>
-        <div>
-            <p class="mb-4">Tu carrito está vacío.</p>
-            <p class="mb-4">Podés llenarlo <a href="index.php?v=listado" class="text-highlight-color text-highlight-hover">desde acá</a></p>
+        <div class="text-center carrito-vacio">
+            <p class="mb-4">Tu carrito está vacío</p>
+            <p class="mb-4">¿No sabés qué comprar? ¡Miles de productos te esperan!</p>
+            <a href="index.php?v=listado" class="btn fs-5">Conocer productos</a></p>
         </div>
     <?php endif;?>
 

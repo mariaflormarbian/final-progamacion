@@ -3,11 +3,10 @@ $dataForm = $_SESSION['data_form'] ?? [];
 unset($_SESSION['data_form']);
 ?>
 
-<div class="container">
+<section class="contenedor-admin-login">
     <div class="login-container">
-        <h2>Iniciar sesión</h2>
-
-        <p>Ingresar al panel de administración.</p>
+        <h2 class="text-center">Iniciar sesión</h2>
+        <p class="text-center">Ingresar al panel de administración.</p>
 
         <form action="acciones/auth-iniciar-sesion.php" method="post">
             <div class="form-fila mb-2">
@@ -26,5 +25,6 @@ unset($_SESSION['data_form']);
         <div class="pass">
             <p>¿Olvidaste tu password?</p>
             <a href="index.php?v=recuperar-password">Solicitá restablecer tu password</a>
-        </div>    </div>
-</div>
+        </div>
+    </div>
+</section>

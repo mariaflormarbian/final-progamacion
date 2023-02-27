@@ -1,324 +1,280 @@
-* {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
+/* default */
+body {
         font-family: "Acme", sans-serif;
         background-image: url(../imgs/fondo.png);
         background-size: cover;
         background-repeat: no-repeat;
-    }
-
-    #logo {
-        background: url("../imgs/logo.png") center center;
-        background-size: cover;
-        width: 70px;
-        height: 70px;
-        background-repeat: no-repeat;
-        font-size: 0;
-    }
-
-    header nav{
-        background: #b8e3f8;
-    }
-    
-    .nav-link{
-        font-size: 19px;
-        color: #947698;
-    }
-    
-    .nav-link:hover, .nav-link:focus, .nav-link.active{
-        color: #a65e83;
-        background: rgb(238 240 245 / 41%);
-        border-radius: 10px;
-    }
-
-    li {
-        list-style: none;
-    }
-    
-    .color {
-        color: black;
-    }
-
-    .color:hover {
-        color: #20e2d2;
-        transition-duration: 1s;
-    }
-    
-    .banner img {
-        margin: 0px auto;
-        display: block;
-    }
-
-    .bg-white {
-        background-color: #9ad7f6;
-    }
-
-    .card {
-        padding-top: 20px;
-        border: none;
-        background:transparent;
-    }
-
-    .producto {
-        margin-top: 5%;
-    }
-
-    .btn {
-        background-color: transparent;
-        color: #db70a9;
-        transition: all 300ms ease;
-        border: 2px solid #f9e54f;
-        cursor: pointer;
-    }
-
-    .btn-primary:hover {
-        background-color: #f9e54f40;
-        color: #db70a9;
-        border-color: #f9e54f;
-        transition-duration: 1s;
-    }
-
-    .audio audio {
-        width: 100%;
-    }
-
-    iframe {
-        width: 80%;
-        margin: 5% auto;
-        display: block;
-    }
-
-    /* detalle */
-    .container-detalle,
-    .quienes-somos {
-        background-color: white;
-        box-shadow: 0px 1px 4px 2px rgb(0 0 0 / 20%);
-        padding: 2em;
-        margin-top: 0px;
-    }
-
-    .seccion-detalle {
-        margin-bottom: 5em;
-    }
-
-    aside {
-        margin-top: 14%;
-    }
-
-    aside h3 {
-        font-size: 1.5em;
-    }
-
-    .tituo-detalle {
-        font-size: 3em;
-        text-transform: uppercase;
-    }
-
-    .precio-detalle {
-        font-weight: bold;
-        font-size: 2em;
-    }
-
-    .badge {
-        color: #d6a9da;
-        background: #eaf6f9;
-        font-size: 16px;
-    }
-
-    .form-enviado {
-        width: 90%;
-        margin: 0 auto;
-        background-color: yellow;
-    }
-
-    .form-enviado p {
-        font-size: 2em;
-    }
-
-    .container-home {
-        margin-top: 5%;
-    }
-
-    .container-home div p {
-        font-size: 1.2em;
-    }
-
-    h2 {
-        font-size: 2.5em;
-    }
-
-    .form-fila {
-        margin-top: 1%;
-    }
-
-    .desahabilitado {
-        pointer-events: none;
-        opacity: 0.6;
-        cursor: default;
-    }
-
-    .fondo1 {
-        background-color: #9d7da2;
-        color: white;
-        text-transform: uppercase;
-        font-size: 1em;
-        letter-spacing: 1px;
-    }
-
-    .fondo1 span {
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        padding-right: 4%;
-    }
-
-    #home-extraInfo  {
-        flex-direction: column;
-        margin: 5% 0;
-    }
-    
-    #home-extraInfo img {
-        float: left;
-    }
-    
-    #home-extraInfo li {
-        margin: 20px 0 20px 0;
-    }
-
-    #home-extraInfo h3 {
-        font-size: 1.5em;
-    }
-
-    #home-extraInfo p {
-        font-size: 1em;
-        color: grey;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
-
-    .fondo-home {
-        background-image: url(../imgs/banner.png);
-        background-repeat: no-repeat;
-        background-position-x: center;
-        background-size: 289px;
-        padding-top: 3%;
-        height: 25vh;
-    }
-    
-    .container-form {
-        margin-top: 10%;
-    }
-    
-    .card-text {
-        font-size: 1.5em;
-    }
-
-    .eliminar-container {
-        margin: 0 auto;
-        width: 50%;
-    }
-
-    .login-container {
-        width: 100%;
-        margin: 10px auto;
-        margin-bottom: 20%;
-        border: 2px solid grey;
-        padding: 5%;
-        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-        background-image: url("../imgs/tecla-cualquiera.jpg");
-        background-repeat: no-repeat;
-        background-position:  center;
-        background-position-y: 400px;
-        background-size: 40%;
-    }
-    
-    .pass {
-        text-align: center;
-    }
-
-    .button-ingresar {
-        margin: 0 auto;
-        margin-bottom: 38%;
-        text-align: center;
-    }
-
-    .msg-success {
-        background-color: #00800029;
-        margin-top: 3%;
-        width: 20%;
-        text-align: center;
-        margin: 4% auto;
-    }
-
-    .eliminar-container {
-        background-image: url("../imgs/homero-red.jpg");
-        background-repeat: no-repeat;
-        background-size: 30%;
-        background-position: bottom center;
-        border: 2px solid grey;
-        padding: 5%;
-        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    }
-
-    .button-eliminar {
-        margin-top: 10%;
-        margin-bottom: 20%;
-    }
-    
-    a {
-        text-decoration: none;
-        color: grey;
-    }
-
-    #error-titulo {
-        color: red;
-    }
-
-    #help-titulo {
-        color: black;
-        background-color: yellow;
-        text-align: center;
-    }
-
-    .msg-error {
-        color: red;
-        text-align: center;
-    }
-
-    .button-small:hover {
-        color: black;
-        text-decoration: none;
-    }
-
-    .button-danger:hover {
-        color: red;
-    }
-
-
-    /* footer */
-    footer {
-        background-color: #B8E3F8;
-    }
-
-    footer div div {
-    flex-direction: column;
+}
+#logo {
+    background: url("../imgs/logo.png") center center;
+    background-size: cover;
+    width: 70px;
+    height: 70px;
+    background-repeat: no-repeat;
+    font-size: 0;
+}
+.btn {
+    background-color: transparent;
+    color: #db70a9;
+    transition: all 300ms ease;
+    border: 2px solid #f9e54f;
+    cursor: pointer;
+}
+.btn-primary:hover,
+.btn:hover {
+    background-color: #f9e54f40;
+    color: #db70a9;
+    border-color: #f9e54f;
+    transition-duration: 1s;
+}
+.audio audio {
+    width: 100%;
+}
+iframe {
+    width: 80%;
+    margin: 5% auto;
+    display: block;
+}
+h2 {
+    font-size: 2.5em;
+}
+.desahabilitado {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: default;
+}
+.button-eliminar {
+    margin-top: 10%;
+    margin-bottom: 20%;
+}
+a {
+    text-decoration: none;
+    color: grey;
+}
+#error-titulo {
+    color: red;
+}
+#help-titulo {
+    color: black;
+    background-color: yellow;
     text-align: center;
-    }
-
-    footer div ul {
-        justify-content: center;
-    }
-
-    footer ul,
-    footer img {
-        margin-right: 30px;
-    }
-
-    footer div {
-        padding: 10px 0 10px 0;
-    }
-
+}
+.msg-error {
+    color: red;
+    text-align: center;
+}
+.button-small:hover {
+    color: black;
+    text-decoration: none;
+}
+.button-danger:hover {
+    color: red;
+}
+.eliminar-container {
+    margin: 0 auto;
+    width: 50%;
+}
+.msg-success {
+    background-color: #00800029;
+    margin-top: 3%;
+    width: 20%;
+    text-align: center;
+    margin: 4% auto;
+}
+/* menu */
+header nav{
+    background: #b8e3f8;
+}
+.nav-link{
+    font-size: 19px;
+    color: #947698;
+}
+.nav-link:hover, .nav-link:focus, .nav-link.active{
+    color: #a65e83;
+    background: rgb(238 240 245 / 41%);
+    border-radius: 10px;
+}
+li {
+    list-style: none;
+}
+.color {
+    color: black;
+}
+.color:hover {
+    color: #20e2d2;
+    transition-duration: 1s;
+}
+.banner img {
+    margin: 0px auto;
+    display: block;
+}
+.bg-white {
+    background-color: #9ad7f6;
+}
+/* iniciar sesion */
+.contenedor-iniciar-sesion,
+.contenedor-carrito {
+    min-height: 56vh;
+}
+/* listado */
+.card {
+    padding-top: 20px;
+    border: none;
+    background:transparent;
+}
+.card-text {
+    font-size: 1.5em;
+}
+.producto {
+    margin-top: 5%;
+}
+/* detalle */
+.container-detalle,
+.quienes-somos {
+    background-color: white;
+    box-shadow: 0px 1px 4px 2px rgb(0 0 0 / 20%);
+    padding: 2em;
+    margin-top: 0px;
+}
+.seccion-detalle {
+    margin-bottom: 5em;
+}
+aside {
+    margin-top: 14%;
+}
+aside h3 {
+    font-size: 1.5em;
+}
+.tituo-detalle {
+    font-size: 3em;
+    text-transform: uppercase;
+}
+.precio-detalle {
+    font-weight: bold;
+    font-size: 2em;
+}
+.badge {
+    color: #d6a9da;
+    background: #eaf6f9;
+    font-size: 16px;
+}
+/* form */
+.form-enviado {
+    width: 90%;
+    margin: 0 auto;
+    background-color: yellow;
+}
+.form-enviado p {
+    font-size: 2em;
+}
+.form-fila {
+    margin-top: 1%;
+}
+.container-form {
+    margin-top: 10%;
+}
+/* inicio */
+.fondo1 {
+    background-color: #9d7da2;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1em;
+    letter-spacing: 1px;
+}
+.container-home {
+    margin-top: 5%;
+}
+.container-home div p {
+    font-size: 1.2em;
+}
+#home-extraInfo  {
+    flex-direction: column;
+    margin: 5% 0;
+}
+#home-extraInfo img {
+    float: left;
+}
+#home-extraInfo li {
+    margin: 20px 0 20px 0;
+}
+#home-extraInfo h3 {
+    font-size: 1.5em;
+}
+#home-extraInfo p {
+    font-size: 1em;
+    color: grey;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.fondo-home {
+    background-image: url(../imgs/banner.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: 289px;
+    padding-top: 3%;
+    height: 25vh;
+}
+/*login*/
+.login-container {
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 20%;
+    padding: 5%;
+    box-shadow: 0px 1px 2px 1px rgb(0 0 0 / 20%);
+    background-image: url("../imgs/tecla-cualquiera.jpg");
+    background-repeat: no-repeat;
+    background-size: 26%;
+    background-position:  center;
+    background-position-y: 400px;
+    background-size: 40%;
+}
+.contenedor-admin-login {min-height: 96vh;}
+.pass {
+    text-align: center;
+}
+.button-ingresar {
+    margin: 0 auto;
+    text-align: center;
+}
+.eliminar-container {
+    background-image: url("../imgs/homero-red.jpg");
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: bottom center;
+    border: 2px solid grey;
+    padding: 5%;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+/* carrito */
+.carrito-vacio {
+    margin-top: 10%;
+    font-size: 19px;
+}
+/*perfil*/
+.mi-perfil {
+    padding: 14px;
+}
+/*panel admin*/
+.container-product{
+    margin-bottom: 65%;
+}
+/* footer */
+footer {
+    background-color: #B8E3F8;
+}
+footer div div {
+flex-direction: column;
+text-align: center;
+}
+footer div ul {
+    justify-content: center;
+}
+footer ul,
+footer img {
+    margin-right: 30px;
+}
+footer div {
+    padding: 10px 0 10px 0;
+}
 @media (min-width: 768px) {
     footer div div {
         flex-direction: row;
@@ -331,39 +287,46 @@
     }
     #home-extraInfo  {
         flex-direction: row;
-    } 
-
+    }
     #home-extraInfo {
         margin-left: 97px;
         margin-right: -97px;
     }
-
     #home-extraInfo img {
         float: left;
     }
-    
     .login-container {
-        width: 30%;
-        background-position-y: 450px;
+        background-position-y: 452px;
+        background-position-x: 279px;
+        background-size: 17%;
     }
+    .contenedor-admin-login{min-height: auto;}
     .pass {
         padding-top: 50px;
-
         text-align: start;
     }
     .button-ingresar {
         text-align: start;
     }
-
     .container-detalle,
     .listado ul{
         margin-top: 10%;
     }
+    .mi-perfil{
+        width: 60%;
+    }
+    .container-product{
+        margin-top: 12%;
+        margin-bottom: 32%;
+        min-height: auto;
+    }
 }
-
 @media (min-width: 768px) and (max-width: 1200px){
     #home-extraInfo {
         margin-left: 0px;
         margin-right: 0px;
+    }
+    .container-product {
+        margin-bottom: 40%;
     }
 }

@@ -3,12 +3,9 @@ $dataForm = $_SESSION['data_form'] ?? [];
 unset($_SESSION['data_form']);
 ?>
 
-<section>
+<section class="contenedor-iniciar-sesion">
         <h1 class="text-center fw-bold mt-5 p-3">Iniciar sesión</h1>
-
-
-        <p>Ingresar al panel de administración.</p>
-
+        <p>Donde podrás ver tu historial de compras y seguimiento de las mismas.</p>
         <form action="acciones/auth-iniciar-sesion.php" method="post">
             <div class="form-fila mb-2">
                 <label for="email">Email</label>

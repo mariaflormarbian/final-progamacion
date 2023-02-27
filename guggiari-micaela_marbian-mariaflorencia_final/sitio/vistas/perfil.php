@@ -8,11 +8,11 @@ $admin = (new Autenticacion)->esAdmin();
 
 ?>
 <section>
-    <h1 class="text-center fw-bold mt-5 p-3">Mi perfil</h1>
-    <div class="row">
-        <div class=" bg-light p-4 rounded py-5 text-center shadow-sm mb-4">
+    <h1 class="text-center fw-bold mt-5 mb-md-5 p-3">Mi perfil</h1>
+    <div class="row justify-content-center p-5">
+        <div class=" bg-light rounded text-center shadow-sm mt-md-5 mb-5 mi-perfil">
             <h2 class="text-title mb-4 fs-4">Datos</h2>
-            <div class="d-flex flex-column gap-2 w-100">
+            <div class="d-flex flex-column  align-items-center gap-2 w-100">
                 <div class="mb-3">
                     <p class="m-0 text-title">Usuario</p>
                     <p class="m-0"> <?= $autenticacion->getUsuario()->getNombreCompleto(); ?> </p>
@@ -24,7 +24,7 @@ $admin = (new Autenticacion)->esAdmin();
                 <?php
                 if($autenticacion->estaAutenticado() && $autenticacion->esAdmin()):
                     ?>
-                    <a class="btn btn-primary" href="admin/index.php?v=productos">Panel de administración</a>
+                    <a class="btn btn-primary w-50" href="admin/index.php?v=productos">Panel de administración</a>
                 <?php endif; ?>
             </div>
         </div>
