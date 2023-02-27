@@ -4,6 +4,9 @@ use DaVinci\Session\Session;
 require_once __DIR__ . '/../bootstrap/init.php';
 
 $rutas = [
+    'home' => [
+        'titulo' => 'Página Principal',
+    ],
     'login' => [
         'titulo' => 'Iniciar Sesión',
     ],
@@ -31,6 +34,9 @@ $rutas = [
     ],
     'usuarios' => [
         'titulo' => 'Usuarios',
+    ],
+    'compras' => [
+        'titulo' => 'Compras',
     ],
     '404' => [
         'titulo' => 'Página no Encontrada',
@@ -94,6 +100,9 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                 if($autenticacion->estaAutenticado() && $autenticacion->esAdmin()):
                 ?>
                     <ul class="navbar-nav nav-tabs text-center ms-auto">
+                        <li class="nav-item px-2 mx-2">
+                            <a class="btn btn-dark border-0" href="../index.php?v=home">Volver</a>
+                        </li>
                         <li class="nav-item px-2 mx-2">
                             <a class="btn btn-dark border-0" href="index.php?v=productos">Productos</a>
                         </li>

@@ -24,7 +24,7 @@ class Compra extends Modelo{
     public function data(): array{
         $db = Conexion::getConexion();
         $query = "SELECT compra.*,
-        GROUP_CONCAT(user.name, ' ' , usuarios.apellido) AS 'usuarios'
+        GROUP_CONCAT(usuarios.nombre, ' ' , usuarios.apellido) AS 'usuarios'
         FROM compra
         INNER JOIN usuarios
         ON compra.usuarios_fk = usuarios.usuarios_id

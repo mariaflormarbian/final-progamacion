@@ -5,13 +5,13 @@ use DaVinci\Auth\Autenticacion;
 use DaVinci\Modelos\Compra;
 
 use DaVinci\Modelos\AddProduct;
-require_once __DIR__ . '/../bootstrap/autoload.php';
+require_once __DIR__ . '/../bootstrap/init.php';
 
 $auth = new Autenticacion;
 
 if(!$auth->estaAutenticado()){
-    $_SESSION['error_text'] = 'Debe iniciar sesión para poder comprar';
-    header('Location: ../index.php?s=login');
+    $_SESSION['mensaje_error'] = 'Debe iniciar sesión para poder comprar';
+    header('Location: ../index.php?v=iniciar-sesion');
     exit;
 }
 
@@ -27,18 +27,18 @@ try{
     (new Compra)->addPurchases([
         "carrito_fk" => $id,
         "usuarios_fk" => $id,
-        "fecha" => fecha('Y-m-d H:i:s'),
+        "fecha" => date('Y-m-d H:i:s'),
         "cantidad" => $cantidad,
         "total" => $total,
         "productos" => $productos
 
     ]);
     $addedProducts->removeAddProduct($id);
-    $_SESSION['success_text'] = '¡Éxito! Gracias por su compra';
+    $_SESSION['mensaje_exito'] = '¡Éxito! Gracias por su compra';
     header('Location: ../index.php?v=perfil');
     exit;
 } catch(Exception $e){
-    $_SESSION['error_text'] = 'Se produjo un error al finalizar la compra. Probá de nuevo más tarde';
+    $_SESSION['mensaje_error'] = 'Se produjo un error al finalizar la compra. Probá de nuevo más tarde';
     header('Location: ../index.php?v=carrito');
     exit;
 }

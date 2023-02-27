@@ -89,7 +89,7 @@ class AddProduct extends Modelo
 
         try{
             $query = "DELETE FROM agregar_producto
-            WHERE add_productos_id = ?";
+            WHERE agregar_producto_id = ?";
             $stmt = $db->prepare($query);
             $stmt->execute([$this->getAddProductID()]);
 

@@ -92,7 +92,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
             <div class="navbar-collapse collapse justify-content-md-end" id="bdNavbar">
                 <ul class="navbar-nav flex-md-row flex-wrap bd-navbar-nav pt-2 py-md-0">
                     <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=home">Home</a></li>
-                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=listado">Listado</a></li>
+                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=listado">Productos</a></li>
                     <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=contacto">Contacto</a>
                     </li>
                     <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=carrito">Carrito</a>

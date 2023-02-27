@@ -11,7 +11,7 @@ if(!$auth->estaAutenticado()){
     header("Location: ../index.php?s=login");
     exit;
 
-    if(!$auth->isAdmin()){
+    if(!$auth->esAdmin()){
         $_SESSION["mensaje_error"] = "No tienes permisos para realizar esta acción";
         header("Location: ../index.php?v=carrito");
         exit;
@@ -35,6 +35,7 @@ try{
     exit;
 } catch (Exception $e){
     $_SESSION["mensaje_error"] = "Se produjo un error al intentar eliminar el producto";
+    $_SESSION["mensaje_error"] = $e;
     header("Location: ../index.php?v=carrito");
     exit;
 }

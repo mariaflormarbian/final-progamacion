@@ -35,8 +35,8 @@ $list = (new AddProduct)->productList($addedProducts, $authedUser);
 
                             <td>
                                 <form action="acciones/delete-from-cart.php" method="POST">
-                                    <input type="hidden" name="product_id" value="<?= $product->getAddProductID(); ?>"/>
-                                    <button type="submit" class="p-0 m-0 bg-transparent border-0 text-highlight-color text-highlight-hover">Eliminar</button>
+                                    <input type="hidden" name="productos_id" value="<?= $product->getAddProductID(); ?>"/>
+                                    <button type="submit" class="p-0 m-0 bg-transparent border-0 button button-small text-danger">Eliminar</button>
                                 </form>
                             </td>
                         </tr>
@@ -52,16 +52,16 @@ $list = (new AddProduct)->productList($addedProducts, $authedUser);
                     <p class="mb-2 ">Cantidad total de productos: <span class="fw-bold">x<?= $cart->getQuantity(); ?></span></p>
                     <p class="mb-2 ">Total: <span class="fw-bold">$<?= $cart->getTotal(); ?></span></p>
                     <form action="acciones/empty-cart.php" method="POST" class="">
-                        <input type="hidden" name="product_id" value="<?= $cart->getCartID() ?>"/>
-                        <button type="submit" class="p-0 m-0 bg-transparent border-0 text-highlight-color text-highlight-hover">Vaciar carrito</button>
+                        <input type="hidden" name="productos_id" value="<?= $cart->getCartID() ?>"/>
+                        <button type="submit" class="p-3 m-0 bg-danger border-0 button button-small text-white">Vaciar carrito</button>
                     </form>
                 </div>
 
                 <form action="acciones/auth-buy.php" method="POST" class="text-end">
-                    <input type="hidden" name="products_quantity" value="<?= $cart->getQuantity() ?>"/>
-                    <input type="hidden" name="products_total" value="<?= $cart->getTotal() ?>"/>
-                    <input type="hidden" name="products" value="<?= $list ?>"/>
-                    <button type="submit" class="d-inline-block text-center text-decoration-none p-3 border-0 text-white text-uppercase bg-highlight-color mb-4">Comprar</button>
+                    <input type="hidden" name="productos_cantidad" value="<?= $cart->getQuantity() ?>"/>
+                    <input type="hidden" name="productos_total" value="<?= $cart->getTotal() ?>"/>
+                    <input type="hidden" name="productos" value="<?= $list ?>"/>
+                    <button type="submit" class="btn btn-primary mb-3">Comprar</button>
                 </form>
             <?php
             endif;

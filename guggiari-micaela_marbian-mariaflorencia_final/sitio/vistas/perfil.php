@@ -10,7 +10,7 @@ $admin = (new Autenticacion)->esAdmin();
 <section>
     <h1 class="text-center fw-bold mt-5 p-3">Mi perfil</h1>
     <div class="row">
-        <div class="col-12 col-md-4 bg-light p-4 rounded py-5 text-center shadow-sm mb-4">
+        <div class=" bg-light p-4 rounded py-5 text-center shadow-sm mb-4">
             <h2 class="text-title mb-4 fs-4">Datos</h2>
             <div class="d-flex flex-column gap-2 w-100">
                 <div class="mb-3">

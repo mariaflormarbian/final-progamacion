@@ -14,6 +14,7 @@ $usuarios = (new Usuario())->todo();
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Email</th>
+            <th>Compras</th>
 
 
         </tr>
@@ -24,19 +25,12 @@ $usuarios = (new Usuario())->todo();
         foreach ($usuarios as $usuario):
         ?>
             <tr>
+                <td><?= $usuario->getUsuariosId(); ?></td>
+                    <td><?= $usuario->getNombre(); ?></td>
+                    <td><?= $usuario->getApellido(); ?></td>
+                    <td><?= $usuario->getEmail(); ?></td>
 
-
-                <td>                                    <?= $usuario->getUsuariosId(); ?>
-                </td>
-                    <td>                                    <?= $usuario->getNombre(); ?>
-                    </td>
-                    <td>                                    <?= $usuario->getApellido(); ?>
-                    </td>
-                    <td>                                    <?= $usuario->getEmail(); ?>
-                    </td>
-
-
-            </tr>
+                <td><a href="index.php?v=compras&id=<?= $usuario->getUsuariosId(); ?>" class="text-highlight-color text-decoration-none text-highlight-hover">Ver compras</a></td>           </tr>
         <?php
         endforeach;
         ?>
