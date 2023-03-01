@@ -2,40 +2,7 @@
 use DaVinci\Modelos\Producto;
 
 $productos = (new Producto())->publicadas();
-$rutaTexto= [
-    'texto' => [
-        'quienes-somos' => '<strong>Simpsoneras</strong> nació como un
-        microemprendimiento
-        durante
-        la pandemia. Detrás de nuestra marca nos encontramos: Vivi y Flor, madre e hija.
-        Así como su nombre lo indica, soy una <strong>fanática de Los Simpsons</strong> y
-        considero que
-        hay una
-        frase de ellos para cada momento de la vida. Nos encontramos en un momento difícil donde
-        al no
-        poder
-        acceder a nuestros trabajos por lo sucedido, buscamos ideas y estos personajes amarillos
-        nos
-        iluminaron.
-        Nos pareció divertido implementar frases, escenas en remeras que podamos usar a lo largo
-        del
-        día.
-        Generando un momento divertido y conectando con la gente, ya sea con un comentario como
-        "Hay ese
-        es el
-        capítulo tal...".
-        Le dimos mucha importancia a que sea un producto canchero, con onda pero especialmente
-        <strong>original</strong>.
-        Las telas que utilizamos son totalmente suaves, cómodas y de una calidad única,
-        trabajamos con
-        una de
-        las fábricas más populares de la Argentina. No sólo buscamos un producto único, sino
-        también
-        cómodo y
-        duradero.'
-    ]
-    ];
-$texto = $rutaTexto['texto'];  
+
 ?>
 
 <div class="fondo-home"></div>
@@ -101,21 +68,7 @@ $texto = $rutaTexto['texto'];
     </div>
 </section>
 <section>
-    <h2 class="text-center ">¿Quiénes somos?</h2>
-    <div class="row container-home">
-        <div class="col-12">
-            <p class="text-ceter text-md-start quienes-somos"> <?= $texto['quienes-somos'];?>
-            </p>
+   
 
-            <div class="row my-5 ">
-                <figure>
-                    <picture>
-                        <img class="img-fluid d-block mx-auto" src="imgs/flor_vivi.jpeg" alt="Foto de Flor y Vivi">
-                    </picture>
-                </figure>
 
-            </div>
-        </div>
-
-    </div>
 </section>

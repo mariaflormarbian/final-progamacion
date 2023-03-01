@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-02-2023 a las 18:58:36
+-- Tiempo de generación: 01-03-2023 a las 21:20:51
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -47,6 +47,13 @@ CREATE TABLE `carrito` (
   `usuarios_fk` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Volcado de datos para la tabla `carrito`
+--
+
+INSERT INTO `carrito` (`carrito_id`, `usuarios_fk`) VALUES
+(3, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -73,6 +80,14 @@ CREATE TABLE `compra` (
   `total` decimal(6,2) DEFAULT NULL,
   `productos` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `compra`
+--
+
+INSERT INTO `compra` (`compra_id`, `carrito_fk`, `usuarios_fk`, `fecha`, `cantidad`, `total`, `productos`) VALUES
+(2, 3, 3, '2023-02-27 03:05:21', 4, '6100.00', '3x Abejas | 1x El resplandor'),
+(3, 3, 3, '2023-02-27 03:14:28', 1, '1500.00', '1x Abejas');
 
 -- --------------------------------------------------------
 
@@ -267,8 +282,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`usuarios_id`, `roles_fk`, `email`, `password`, `nombre`, `apellido`) VALUES
 (2, 2, 'viviana@gmail.com', '$2y$10$7aFp85Ww5uITunSWonCR1.eC7LXfV0yApuEm7KvHsf1fmEXQ8B8aO', 'Viviana', 'Krivokapic'),
 (3, 1, 'micaela.guggiari@davinci.edu.ar', '$2y$10$lVy6CJtx2smQDqvoHBINZ.PB7S47C6wkKGk7qKl4Ifdc9nfa6A6FO', 'Mica', 'Guggiari'),
-(4, 2, 'flor.marbian@davinci.edu.ar', '$2y$10$ker0RZT0QBmqSGNBRLTAy.4x8B0JMhHaZJkiRMBRdtr8ETOKQ5jZm', 'Florencia', 'Marbián'),
-(7, 2, 'pablo@gmail.com', '$2y$10$WAmURsIBqxRk4yiGOGAaB.Oj8.qfNSLVZQIR8sInLVxL6G5RwMj4.', NULL, NULL);
+(4, 2, 'flor.marbian@davinci.edu.ar', '$2y$10$ker0RZT0QBmqSGNBRLTAy.4x8B0JMhHaZJkiRMBRdtr8ETOKQ5jZm', 'Florencia', 'Marbián');
 
 --
 -- Índices para tablas volcadas
@@ -371,13 +385,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `agregar_producto`
 --
 ALTER TABLE `agregar_producto`
-  MODIFY `agregar_producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `agregar_producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `carrito_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `carrito_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -389,7 +403,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `etiquetas`
@@ -425,7 +439,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usuarios_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `usuarios_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas
