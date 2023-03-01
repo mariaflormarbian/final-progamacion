@@ -94,11 +94,11 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                     <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=listado">Productos</a></li>
                     <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=contacto">Contacto</a>
                     </li>
-                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=carrito">Carrito</a>
-                    </li>
                     <?php
                     if ($autenticacion->estaAutenticado()):
                     ?>
+                        <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=carrito">Carrito</a>
+                        </li>
                         <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=perfil">Mi Perfil</a>
                         </li>
                         <li class="nav-item col-6 col-md-auto">
