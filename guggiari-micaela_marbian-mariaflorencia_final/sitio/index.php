@@ -66,10 +66,11 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simpsoneras : <?= $rutaTitulo['titulo'];?></title>
-    <link rel="icon" href="imgs/logo.png" type="image/x-icon" />
+    <link rel="icon" href="imgs/logo.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/estilos.css">
+<<<<<<< Updated upstream
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet" />
@@ -87,6 +88,13 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
         });
     </script>
 
+=======
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="imgs/logo.png" type="image/x-icon">
+>>>>>>> Stashed changes
 </head>
 
 <body>
@@ -205,7 +213,6 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                             <a href="//www.youtube.com" class="nav-link"><i class="bi bi-youtube color"></i></a>
                         </li>
                     </ul>
-                </div>
                 </div>
             </div>
             <ul class="d-flex justify-content-center flex-column flex-md-row">

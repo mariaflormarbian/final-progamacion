@@ -19,8 +19,8 @@ $list = (new AddProduct)->productList($addedProducts, $authedUser);
 
     <?php if ($addedProducts != []) : ?>
         <div class="table-responsive ">
-            <table class="table table-striped table-borderless w-100">
-                <tr class="table-dark">
+            <table class="table">
+                <tr class="fondo1">
                     <th>Producto</th>
                     <th>Cantidad</th>
                     <th>Total</th>
@@ -48,8 +48,8 @@ $list = (new AddProduct)->productList($addedProducts, $authedUser);
         foreach($carts as $i => $cart):
             if($cart->getCartID() == $authedUser):
                 ?>
-                <div class="bg-light p-4 mb-4">
-                    <p class="mb-2 ">Cantidad total de productos: <span class="fw-bold">x<?= $cart->getQuantity(); ?></span></p>
+                <div class=" d-flex flex-column align-items-end pb-4">
+                    <p class="mb-2">Cantidad total de productos: <span class="fw-bold">x<?= $cart->getQuantity(); ?></span></p>
                     <p class="mb-2 ">Total: <span class="fw-bold">$<?= $cart->getTotal(); ?></span></p>
                     <form action="acciones/empty-cart.php" method="POST" class="">
                         <input type="hidden" name="productos_id" value="<?= $cart->getCartID() ?>"/>

@@ -16,7 +16,7 @@ $productos = (new Producto())->traerPorId($_GET['id']);
 $productos->cargarEtiquetas();
 
 ?>
-<section class="container">
+<section>
     <h2 class="mb-1">Editar Producto</h2>
 
     <p class="mb-1">Editá los datos del formulario con el Producto. Cuando estés conforme dale a "Actualizar".</p>

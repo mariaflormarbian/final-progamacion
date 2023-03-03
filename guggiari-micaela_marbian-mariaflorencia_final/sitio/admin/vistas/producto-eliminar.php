@@ -4,7 +4,7 @@ use DaVinci\Modelos\Producto;
 
 $productos = (new Producto())->traerPorId($_GET['id']);
 ?>
-<section class="container eliminar-container">
+<section class="eliminar-container">
     <h2 class="mb-1">Confirmar Eliminación del producto</h2>
 
     <dl class="mb-1">

@@ -12,7 +12,7 @@ $dataForm = $_SESSION['data_form'] ?? [];
 
 unset($_SESSION['errores'], $_SESSION['data_form']);
 ?>
-<section class="container container-nuevo">
+<section class="container-nuevo">
     <h2 class="mb-1">Publicar una Nuevo producto</h2>
 
     <p class="mb-1">Completá los datos del formulario con el producto. Cuando estés conforme dale a "Publicar".</p>

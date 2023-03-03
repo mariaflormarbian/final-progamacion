@@ -11,8 +11,8 @@ $admin = (new Autenticacion)->esAdmin();
 
 ?>
 <section>
-    <h1 class="text-center fw-bold mt-5 mb-md-5 p-3">Mi perfil</h1>
-    <div class="row justify-content-center p-5">
+    <h1 class="text-center fw-bold mt-5 mb-md-4 p-3">Mi perfil</h1>
+    <div class="row justify-content-center p-3">
         <div class=" bg-light rounded text-center shadow-sm mt-md-5 mb-5 mi-perfil">
             <h2 class="text-title mb-4 fs-4">Datos</h2>
             <div class="d-flex flex-column  align-items-center gap-2 w-100">

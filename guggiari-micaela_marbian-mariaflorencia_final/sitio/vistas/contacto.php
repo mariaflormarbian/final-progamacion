@@ -1,7 +1,7 @@
 <section class="mt-5 mb-5">
-    <h2 class="text-center fw-bold mt-5 p-3 ">
+    <h1 class="text-center fw-bold mt-5 p-3 ">
         ¿Dudas?
-    </h2>
+    </h1>
 
     <form action="recursos/enviar.php" method="get" class="row g-3 text-center text-md-start container-form">
         <div class="col-xl-7">
@@ -45,7 +45,7 @@
               m-1
               btn-lg
               text-uppercase
-            " value="Enviar" />
+            " value="Enviar">
         </div>
 
     </form>

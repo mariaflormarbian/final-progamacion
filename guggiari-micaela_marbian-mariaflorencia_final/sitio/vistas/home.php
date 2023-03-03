@@ -5,7 +5,9 @@ $productos = (new Producto())->publicadas();
 
 ?>
 
-<div class="fondo-home"></div>
+<div class="fondo-home">
+    <h1 class=" visually-hidden">Inicio</h1>
+</div>
 <section>
     <h2 class="text-center fondo1 p-3 display-6">¡La moda que te inspira! <strong>¡Comprá hoy y recibilo al toque! / Envío dentro de las 24hs. </strong></h2>
     <div id="carrusel" class="carousel slide" data-ride="carousel">
@@ -31,7 +33,6 @@ $productos = (new Producto())->publicadas();
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        
     </div>
 </section>
 <section>
@@ -66,9 +67,4 @@ $productos = (new Producto())->publicadas();
             </li>
         </ul>
     </div>
-</section>
-<section>
-   
-
-
 </section>

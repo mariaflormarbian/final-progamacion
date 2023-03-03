@@ -1,4 +1,4 @@
-<section class="container">
+<section>
     <h1 class="mb-1">Restablecer Password</h1>
 
     <form action="acciones/auth-actualizar-password.php" method="post">
