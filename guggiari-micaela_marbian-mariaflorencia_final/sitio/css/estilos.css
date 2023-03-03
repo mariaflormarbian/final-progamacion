@@ -60,8 +60,11 @@ a {
     text-align: center;
 }
 .msg-error {
-    color: red;
+    background-color: red;
+    color: white;
     text-align: center;
+    margin: 4% auto;
+
 }
 .button-small:hover {
     color: black;
@@ -76,8 +79,6 @@ a {
 }
 .msg-success {
     background-color: #00800029;
-    margin-top: 3%;
-    width: 50%;
     text-align: center;
     margin: 4% auto;
 }
