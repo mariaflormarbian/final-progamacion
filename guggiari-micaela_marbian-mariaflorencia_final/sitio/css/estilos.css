@@ -64,7 +64,7 @@ a {
     color: white;
     text-align: center;
     margin: 4% auto;
-
+    width: 60%;
 }
 .button-small:hover {
     color: black;

@@ -6,15 +6,15 @@
     <form action="recursos/enviar.php" method="get" class="row g-3 text-center text-md-start container-form">
         <div class="col-xl-7">
             <label class="form-label" for="nombre">Nombre</label>
-            <input class="form-control" name="nombre" id="nombre" type="text" required />
+            <input class="form-control" name="nombre" id="nombre" type="text" required>
         </div>
         <div class="col-xl-7">
             <label class="form-label" for="apellido">Apellido</label>
-            <input class="form-control" name="apellido" id="apellido" type="text" required />
+            <input class="form-control" name="apellido" id="apellido" type="text" required>
         </div>
         <div class="col-xl-7">
             <label class="form-label" for="clave">Mail</label>
-            <input class="form-control" name="clave" id="clave" type="email" required />
+            <input class="form-control" name="clave" id="clave" type="email" required>
         </div>
 
         <div class="col-xl-8">
@@ -24,7 +24,7 @@
 
         <div class="col-xl-7">
             <label class="form-check-label" for="sobre">Desea recibir información</label>
-            <input class="form-check-label" type="checkbox" name="sobre" id="sobre" />
+            <input class="form-check-label" type="checkbox" name="sobre" id="sobre">
         </div>
 
         <div>
