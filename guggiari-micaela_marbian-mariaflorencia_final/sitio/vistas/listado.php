@@ -7,7 +7,7 @@ $productos = (new Producto())->publicadas();
     <h1 class="visually-hidden">Listado de nuestros producos disponibles</h1>
     <h2 class="text-center fw-bold mt-5 p-3">Nuestros Productos</h2>
 
-    <ul class="row">
+    <ul class="row p-0">
         <?php
             foreach($productos as $producto):
         ?>
