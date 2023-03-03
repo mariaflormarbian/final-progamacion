@@ -126,8 +126,14 @@ li {
 .card-text {
     font-size: 1.5em;
 }
-.producto {
+.card-body{
+    padding: 0;
+}
+.productos {
     margin-top: 5%;
+}
+.producto {
+    box-shadow: 0px 1px 2px 1px rgb(0 0 0 / 20%);
 }
 /* detalle */
 .container-detalle,

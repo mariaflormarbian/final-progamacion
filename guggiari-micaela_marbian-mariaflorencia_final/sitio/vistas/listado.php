@@ -4,15 +4,15 @@ $productos = (new Producto())->publicadas();
 ?>
 
 <section class="listado">
+    <h1 class="visually-hidden">Listado de nuestros producos disponibles</h1>
     <h2 class="text-center fw-bold mt-5 p-3">Nuestros Productos</h2>
 
-    <ul class="row p-0">
+    <ul class="row">
         <?php
             foreach($productos as $producto):
         ?>
-
-        <li class="card col-md-4 producto">
-            <div class="mx-auto">
+        <li class="card col-md-4 productos">
+            <div class="producto">
                 <picture>
                     <img class="img-fluid" src="imgs/productos/<?= $producto->getImagen();?>"
                         alt="<?= $producto->getImagenDescripcion();?>">
@@ -39,41 +39,32 @@ $productos = (new Producto())->publicadas();
                     </ul>
                 </div>
                 <div class="card-body text-center">
-
                     <h3 class="card-title"><?= $producto->getTitulo();?></h3>
                     <p class="card-text">$<?= $producto->getPrecio();?></p>
-
                 </div>
-
                 <form action="acciones/add-to-cart.php"  method="POST" class="w-100 text-center">
+                    <div class="mb-4">
+                        <select name="productos_cantidad" id="cantidad" class="w-50 p-1">
+                            <?php for ($i = 1; $i <= htmlspecialchars($producto->getStock()); $i++) : ?>
+                                <?php
+                                if ($i > 10) break;
+                                ?>
 
-                <div class="mb-4">
-                    <select name="productos_cantidad" id="cantidad" class="w-50 p-1">
-                        <?php for ($i = 1; $i <= htmlspecialchars($producto->getStock()); $i++) : ?>
-                            <?php
-                            if ($i > 10) break;
-                            ?>
-
-                            <option value="<?= $i ?>"><?= $i ?>
-                                <?php if ($i <= 1) $option = 'Unidad';
-                                else $option = 'Unidades';
-                                echo $option ?></option>
-                        <?php endfor; ?>
-                    </select>
-                </div>
-
-                <input type="hidden" name="productos_id" value="<?= $producto->getListadoId(); ?>">
-                <input type="hidden" name="productos_titulo" value="<?= $producto->getTitulo(); ?>">
-                <input type="hidden" name="productos_precio" value="<?= $producto->getPrecio(); ?>">
-                <button type="submit" class="btn btn-primary  text-center p-6  text-uppercase  mx-2">Añadir al carrito</button>
-                    <a class="btn btn-primary" href="index.php?v=detalle&id=<?= $producto->getListadoId();?>">Ver
-                        detalle</a>
+                                <option value="<?= $i ?>"><?= $i ?>
+                                    <?php if ($i <= 1) $option = 'Unidad';
+                                    else $option = 'Unidades';
+                                    echo $option ?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+                    <input type="hidden" name="productos_id" value="<?= $producto->getListadoId(); ?>">
+                    <input type="hidden" name="productos_titulo" value="<?= $producto->getTitulo(); ?>">
+                    <input type="hidden" name="productos_precio" value="<?= $producto->getPrecio(); ?>">
+                    <button type="submit" class="btn btn-primary  text-center p-6  text-uppercase  mx-2 mb-2">Añadir al carrito</button>
+                    <a class="btn btn-primary mb-2" href="index.php?v=detalle&id=<?= $producto->getListadoId();?>">Ver detalle</a>
                 </form>
-
             </div>
-
         </li>
-
         <?php
         endforeach;
         ?>

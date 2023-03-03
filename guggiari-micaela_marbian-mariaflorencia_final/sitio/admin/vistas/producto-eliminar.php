@@ -6,9 +6,7 @@ $productos = (new Producto())->traerPorId($_GET['id']);
 ?>
 <section class="eliminar-container">
     <h2 class="mb-1">Confirmar Eliminación del producto</h2>
-
     <dl class="mb-1">
-
         <dt>Título</dt>
         <dd><?= e($productos->getTitulo()); ?></dd>
         <dt>Precio</dt>
@@ -24,7 +22,6 @@ $productos = (new Producto())->traerPorId($_GET['id']);
         <dt>Audio</dt>
         <dd><?= e($productos->getAudio()); ?></dd>
     </dl>
-
     <form action="acciones/producto-eliminar.php" method="post">
         <input type="hidden" name="id" value="<?= $productos->getListadoId(); ?>">
         <button type="submit" class=" btn nav-link button-eliminar">Eliminar</button>
