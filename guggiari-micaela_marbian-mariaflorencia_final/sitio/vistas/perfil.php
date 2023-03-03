@@ -55,7 +55,7 @@ $admin = (new Autenticacion)->esAdmin();
                 </div>
             </article>
         <?php endforeach; ?>
-    </div>
+   
     <?php
     endif;
     ?>
