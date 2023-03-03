@@ -75,6 +75,18 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet" />
     <link rel="shortcut icon" href="imgs/logo.png" type="image/x-icon" />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".msg-success").fadeOut(1500);
+            },3000);
+
+
+        });
+    </script>
+
 </head>
 
 <body>

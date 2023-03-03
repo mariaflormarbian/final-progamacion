@@ -16,6 +16,6 @@ if ($autenticacion->iniciarSesion($email, $password)) {
 } else {
     $_SESSION['mensaje_error'] = "Las credenciales ingresadas no coinciden con ningún usuario registrado en el sistema.";
     $_SESSION['old_data'] = $_POST;
-    header("Location: ../index.php?v=login");
+    header("Location: ../index.php?v=iniciar-sesion");
     exit;
 }
