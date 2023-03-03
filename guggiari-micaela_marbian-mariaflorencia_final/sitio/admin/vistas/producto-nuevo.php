@@ -13,7 +13,7 @@ $dataForm = $_SESSION['data_form'] ?? [];
 unset($_SESSION['errores'], $_SESSION['data_form']);
 ?>
 <section class="container-nuevo">
-    <h2 class="mb-1">Publicar una Nuevo producto</h2>
+    <h1 class="mb-1">Publicar una Nuevo producto</h1>
 
     <p class="mb-1">Completá los datos del formulario con el producto. Cuando estés conforme dale a "Publicar".</p>
     
@@ -80,7 +80,7 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
         </div>
         <div class="form-fila">
             <label for="productos_estados_fk">Estado de Publicación</label>
-            <select type="text" id="productos_estados_fk" name="productos_estados_fk" class="form-control">
+            <select id="productos_estados_fk" name="productos_estados_fk" class="form-control">
                 <?php
                 foreach ($estados as $estado):
                 ?>
@@ -118,5 +118,6 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
         </div>
         <div class="form-fila">
             <button type="submit" class="button btn btn-primary my-3">Publicar</button>
+        </div>
     </form>
 </section>

@@ -27,7 +27,7 @@ $usuarios = (new Usuario())->todo();
                             <td><?= $usuario->getEmail(); ?>
                         </td>
                         <td>
-                            <a class="link-info" href="index.php?v=compras&id=<?= $usuario->getUsuariosId(); ?>" class="text-highlight-color text-decoration-none text-highlight-hover">Ver compras</a>
+                            <a class="link-info text-highlight-color text-decoration-none text-highlight-hover" href="index.php?v=compras&id=<?= $usuario->getUsuariosId(); ?>">Ver compras</a>
                         </td>           
                     </tr>
                 <?php

@@ -5,6 +5,7 @@ unset($_SESSION['data_form']);
 
 <section class="contenedor-admin-login">
     <div class="login-container">
+        <h1 class="visually-hidden">Iniciar Sesion en Panel de Adminsitración</h1>
         <h2 class="text-center">Iniciar sesión</h2>
         <p class="text-center">Ingresar al panel de administración.</p>
 

@@ -4,7 +4,7 @@ $productos = (new Producto())->todo();
 ?>
 
 <section class="container-product">
-    <h2 class="mb-1 text-center">Administración de Productos</h2>
+    <h1 class="mb-1 text-center">Administración de Productos</h1>
 
     <div class="mt-1 mb-1 d-flex justify-content-center">
         <a href="index.php?v=producto-nuevo" class="btn btn-primary">Publicar un nuevo producto</a>

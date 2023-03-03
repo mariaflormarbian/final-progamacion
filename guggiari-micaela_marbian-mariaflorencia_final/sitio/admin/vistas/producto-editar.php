@@ -17,7 +17,7 @@ $productos->cargarEtiquetas();
 
 ?>
 <section>
-    <h2 class="mb-1">Editar Producto</h2>
+    <h1 class="mb-1">Editar Producto</h1>
 
     <p class="mb-1">Editá los datos del formulario con el Producto. Cuando estés conforme dale a "Actualizar".</p>
 
@@ -103,7 +103,7 @@ $productos->cargarEtiquetas();
 
         <div class="form-fila">
             <label for="productos_estados_fk">Estado de Publicación</label>
-            <select type="text" id="productos_estados_fk" name="productos_estados_fk" class="form-control">
+            <select id="productos_estados_fk" name="productos_estados_fk" class="form-control">
                 <?php
                 foreach ($estados as $estado):
                     ?>
