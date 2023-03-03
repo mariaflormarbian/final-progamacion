@@ -56,6 +56,5 @@ try{
 } catch(Exception $e) {
     $_SESSION["mensaje_error"] = "No se pudo añadir el producto. Probá más tarde." . $e;
     header("Location: ../index.php?v=listado");
-    $_SESSION['mensaje_error'] = $e;
     exit;
 }

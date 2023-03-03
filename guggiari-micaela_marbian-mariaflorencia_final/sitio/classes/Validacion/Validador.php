@@ -6,16 +6,7 @@ use Exception;
 
 class Validador
 {
-    /**
-     * @var array Array asociativo con los datos a validar.
-     *            Ej: [
-     *                   'titulo' => 'Soy un título',
-     *                   'descripcion' => '',
-     *                   'precio' => 123.33,
-     *                   'marca_id' => 1,
-     *                   'email' => 'asd@asd.com',
-     *                ]
-     */
+
     private array $data = [];
 
     /**
@@ -49,12 +40,9 @@ class Validador
      */
     private function validar()
     {
-        // Para aplicar las validaciones, vamos a necesitar recorrer las reglas de validación.
-        // Ejemplo de una regla:
-        // 'titulo' => ['required', 'min:4']
+
         foreach($this->reglas as $clave => $listaReglas) {
-            // Como las reglas son potencialmente muchas para cada validación, vamos a recorrer la lista de
-            // reglas para esta clave y aplicar la regla de validación en otro método.
+
             foreach($listaReglas as $regla) {
                 $this->aplicarRegla($clave, $regla);
             }
@@ -71,34 +59,19 @@ class Validador
      */
     private function aplicarRegla(string $clave, string $regla)
     {
-        // Las reglas vienen en dos posibles formatos:
-        // a. Una regla sin "parámetros". Ej: "numeric" o "required".
-        // b. Una regla con "parámetros". Ej: "min:3".
-        // Cada una de las reglas ('required', 'min', 'numeric', 'email', etc) van a ser un método
-        // de esta clase. Este método va a llamarse igual que la regla, pero con un "_" de prefijo.
 
-        // Antes de hacer nada, necesitamos identificar en qué caso estamos, si en a., o en b.
-        // Como el caso b. requiere de que haya parámetros (indicados con un ":"), podemos usar eso
-        // para identificarlo.
         if(strpos($regla, ":") !== false) {
-            // Regla con parámetros.
-            // Separamos la regla de sus parámetros.
+
             $reglaPartes = explode(":", $regla);
 
             $metodo = $this->obtenerNombreMetodo($reglaPartes[0]);
 
             $this->{$metodo}($clave, $reglaPartes[1]);
         } else {
-            // Como los métodos se llaman igual que la regla pero con un "_" de prefijo, lo primero que vamos
-            // a hacer es armar un string con el nombre del método formal y verificar que ese método exista.
+
             $metodo = $this->obtenerNombreMetodo($regla);
 
-            // Ejecutamos el método.
-            // Podemos usar como el nombre de métodos el contenido de una variable.
-            // Por ejemplo, si:
-            //  $metodo = "_required".
-            // El código de abajo quedaría:
-            //  $this->_required($clave)
+
             $this->{$metodo}($clave);
         }
     }
@@ -151,16 +124,6 @@ class Validador
         $this->errores[$clave][] = $mensaje;
     }
 
-    /*
-     |--------------------------------------------------------------------------
-     | Reglas de validación
-     |--------------------------------------------------------------------------
-     | Acá definimos las reglas de validación.
-     | Cada regla va a representarse por un método que se llama igual que la regla, pero con el prefijo
-     | "_" para diferenciarlo de otros métodos.
-     | Cada método va a recibir al menos un argumento que es la clave del campo a validar.
-     | Si la regla requiere de parámetros extras, recibirán argumentos extras.
-     */
 
     /**
      * Valida que el campo no esté vacío.
