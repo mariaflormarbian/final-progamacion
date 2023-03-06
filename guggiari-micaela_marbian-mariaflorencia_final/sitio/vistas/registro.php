@@ -8,9 +8,9 @@ $errores = (new \DaVinci\Session\Session())->flash('errores', []);
 
     <h1 class="text-center fw-bold mt-5 p-3">Registro</h1>
 
-    <p class="mb-1">Crear una cuenta es fácil y gratuito.</p>
+    <p class="text-center mb-1">Crear una cuenta es fácil y gratuito.</p>
 
-    <form action="acciones/auth-registro.php" method="post">
+    <form action="acciones/auth-registro.php" method="post" class="mb-5">
         <div class="form-fila">
             <label for="nombre">Nombre</label>
             <input
