@@ -22,6 +22,7 @@ $productos = (new Producto())->todo();
                     <th>Imagen</th>
                     <th>Video</th>
                     <th>Audio</th>
+                    <th>Stock</th>
                     <th>Subido por</th>
                     <th>Edición</th>
 
@@ -42,6 +43,7 @@ $productos = (new Producto())->todo();
                             alt="<?= e($producto->getImagenDescripcion()); ?>"></td>
                     <td><?= $producto->getVideo(); ?></td>
                     <td><?= $producto->getAudio(); ?></td>
+                    <td><?= $producto->getStock(); ?></td>
 
                     <td><?= e($producto->getAutor()->getNombreCompleto());?></td>
                     <td>

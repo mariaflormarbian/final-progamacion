@@ -90,8 +90,8 @@ $productos->cargarEtiquetas();
                    value="<?= e($dataForm['video'] ?? $productos->getVideo()); ?>">
         </div>
         <div class="form-fila">
-            <label for="video">Audio</label>
-            <input type="text" id="video" name="video" class="form-control"
+            <label for="audio">Audio</label>
+            <input type="text" id="audio" name="audio" class="form-control"
                    placeholder=" Formato mp3"
                    value="<?= e($dataForm['audio'] ?? $productos->getAudio()); ?>">
         </div>

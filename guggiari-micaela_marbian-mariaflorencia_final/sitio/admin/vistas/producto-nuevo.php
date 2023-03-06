@@ -79,6 +79,10 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
                 value="<?= e($dataForm['video'] ?? null); ?>">
         </div>
         <div class="form-fila">
+            <label for="stock">Stock</label>
+            <input id="stock" name="stock" class="form-control" ><?= e($dataForm['stock'] ?? null); ?>
+        </div>
+        <div class="form-fila">
             <label for="productos_estados_fk">Estado de Publicación</label>
             <select id="productos_estados_fk" name="productos_estados_fk" class="form-control">
                 <?php
