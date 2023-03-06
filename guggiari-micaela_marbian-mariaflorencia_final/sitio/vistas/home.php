@@ -5,7 +5,9 @@ $productos = (new Producto())->publicadas();
 
 ?>
 
-<div class="fondo-home"></div>
+<div class="fondo-home">
+    <h1 class="visually-hidden">Inicio</h1>
+</div>
 <section>
     <h2 class="text-center fondo1 p-3 display-6">¡La moda que te inspira! <strong>¡Comprá hoy y recibilo al toque! / Envío dentro de las 24hs. </strong></h2>
     <div id="carrusel" class="carousel slide" data-ride="carousel">
@@ -31,7 +33,6 @@ $productos = (new Producto())->publicadas();
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        
     </div>
 </section>
 <section>
@@ -67,8 +68,44 @@ $productos = (new Producto())->publicadas();
         </ul>
     </div>
 </section>
-<section>
-   
 
+
+<section>
+    <h2 class="text-center fw-bold mt-5 ">Nuestras remeras</h2>
+    <p class="text-center fw-bold  mt-3">¿Querés conocer más sobre nuestros productos?</p>
+
+    <ul class="row p-0">
+        <?php
+        foreach($productos as $i =>$producto):
+            if($i < 3 ):
+                ?>
+
+                <li class="card col-md-4 productos">
+                    <div class="producto">
+                        <picture>
+                            <img class="img-fluid" src="imgs/productos/<?= $producto->getImagen();?>"
+                                 alt="<?= $producto->getImagenDescripcion();?>">
+                        </picture>
+
+
+                        <div class="card-body text-center">
+                            <h3 class="card-title"><?= $producto->getTitulo();?></h3>
+                        </div>
+
+                    </div>
+                </li>
+
+            <?php
+            endif;
+            ?>
+        <?php
+        endforeach;
+        ?>
+
+    </ul>
+    <div class="text-center">
+        <a href="index.php?v=listado" class="btn fs-5">Ver todos</a></p>
+
+    </div>
 
 </section>

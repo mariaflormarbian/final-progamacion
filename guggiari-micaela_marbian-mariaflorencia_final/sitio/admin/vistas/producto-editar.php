@@ -16,11 +16,9 @@ $productos = (new Producto())->traerPorId($_GET['id']);
 $productos->cargarEtiquetas();
 
 ?>
-<section class="container">
-    <h2 class="mb-1">Editar Producto</h2>
-
+<section>
+    <h1 class="mb-1">Editar Producto</h1>
     <p class="mb-1">Editá los datos del formulario con el Producto. Cuando estés conforme dale a "Actualizar".</p>
-
     <form action="acciones/producto-editar.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $productos->getListadoId(); ?>">
         <div class="form-fila">
@@ -81,29 +79,25 @@ $productos->cargarEtiquetas();
             <input type="file" id="imagen" name="imagen" class="form-control">
         </div>
         <div class="form-fila">
-            <label for="imagen_descripcion">Descripción de la Imagen <span class="text-small">(<span
-                        class="visually-hidden">campo </span>opcional)</span></label>
+            <label for="imagen_descripcion">Descripción de la Imagen <span class="text-small">(<span class="visually-hidden">campo </span>opcional)</span></label>
             <input type="text" id="imagen_descripcion" name="imagen_descripcion" class="form-control"
                 value="<?= e($dataForm['imagen_descripcion'] ?? $productos->getImagenDescripcion()); ?>">
         </div>
-
         <div class="form-fila">
             <label for="video">Enlace de Video Youtube, EMBED (opcional)</label>
             <input type="text" id="video" name="video" class="form-control"
                    placeholder=" Ejemplo luego del <iframe> aparece Youtube/ (copiar desde embed y pegar)"
                    value="<?= e($dataForm['video'] ?? $productos->getVideo()); ?>">
         </div>
-
         <div class="form-fila">
-            <label for="video">Audio</label>
-            <input type="text" id="video" name="video" class="form-control"
+            <label for="audio">Audio</label>
+            <input type="text" id="audio" name="audio" class="form-control"
                    placeholder=" Formato mp3"
                    value="<?= e($dataForm['audio'] ?? $productos->getAudio()); ?>">
         </div>
-
         <div class="form-fila">
             <label for="productos_estados_fk">Estado de Publicación</label>
-            <select type="text" id="productos_estados_fk" name="productos_estados_fk" class="form-control">
+            <select id="productos_estados_fk" name="productos_estados_fk" class="form-control">
                 <?php
                 foreach ($estados as $estado):
                     ?>
@@ -121,9 +115,7 @@ $productos->cargarEtiquetas();
         <div>
             <fieldset>
                 <legend>Etiquetas</legend>
-
                 <div class="form-checkbox-list">
-
                     <?php
                     foreach($etiquetas as $etiqueta):
                         ?>
@@ -140,7 +132,6 @@ $productos->cargarEtiquetas();
                     ?>
                 </div>
             </fieldset>
-
         </div>
         <button type="submit" class="button btn btn-primary my-3">Actualizar</button>
     </form>

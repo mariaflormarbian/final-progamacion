@@ -10,8 +10,19 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $password_confirmar = $_POST['password_confirmar'];
 
-// TODO VALIDAR 
+$validador = new \DaVinci\Validacion\Validador($_POST, [
+    'email' => ['required', 'email'],
+    'password' => ['required', 'min:6'],
+    'password_confirmar' => ['required', 'min:6', 'equal:password'],
+]);
 
+if($validador->hayErrores()) {
+    $_SESSION['data_form'] = $_POST;
+    $_SESSION['mensaje_error'] = "Hay errores en los datos del formulario, por favor revisá que todo esté bien.";
+    $_SESSION['errores'] = $validador->getErrores();
+    header("Location: ../index.php?s=registro");
+    exit;
+}
 try {
     (new Usuario)->crear([
         'nombre' => $nombre,

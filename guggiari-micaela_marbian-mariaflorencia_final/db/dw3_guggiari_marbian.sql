@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-03-2023 a las 21:20:51
+-- Tiempo de generación: 03-03-2023 a las 21:44:26
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -36,6 +36,13 @@ CREATE TABLE `agregar_producto` (
   `subtotal` decimal(6,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Volcado de datos para la tabla `agregar_producto`
+--
+
+INSERT INTO `agregar_producto` (`agregar_producto_id`, `productos_fk`, `carrito_fk`, `titulo`, `cantidad`, `subtotal`) VALUES
+(33, 1, 3, 'Abejas', 1, '1500.00');
+
 -- --------------------------------------------------------
 
 --
@@ -52,7 +59,9 @@ CREATE TABLE `carrito` (
 --
 
 INSERT INTO `carrito` (`carrito_id`, `usuarios_fk`) VALUES
-(3, 3);
+(2, 2),
+(3, 3),
+(4, 4);
 
 -- --------------------------------------------------------
 
@@ -87,7 +96,8 @@ CREATE TABLE `compra` (
 
 INSERT INTO `compra` (`compra_id`, `carrito_fk`, `usuarios_fk`, `fecha`, `cantidad`, `total`, `productos`) VALUES
 (2, 3, 3, '2023-02-27 03:05:21', 4, '6100.00', '3x Abejas | 1x El resplandor'),
-(3, 3, 3, '2023-02-27 03:14:28', 1, '1500.00', '1x Abejas');
+(3, 3, 3, '2023-02-27 03:14:28', 1, '1500.00', '1x Abejas'),
+(4, 4, 4, '2023-03-03 21:40:03', 1, '1600.00', '1x El resplandor');
 
 -- --------------------------------------------------------
 
@@ -385,7 +395,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `agregar_producto`
 --
 ALTER TABLE `agregar_producto`
-  MODIFY `agregar_producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `agregar_producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `carrito`
@@ -403,7 +413,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `etiquetas`

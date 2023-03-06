@@ -60,8 +60,11 @@ a {
     text-align: center;
 }
 .msg-error {
-    color: red;
+    background-color: red;
+    color: white;
     text-align: center;
+    margin: 4% auto;
+    width: 60%;
 }
 .button-small:hover {
     color: black;
@@ -76,8 +79,6 @@ a {
 }
 .msg-success {
     background-color: #00800029;
-    margin-top: 3%;
-    width: 20%;
     text-align: center;
     margin: 4% auto;
 }
@@ -125,8 +126,14 @@ li {
 .card-text {
     font-size: 1.5em;
 }
-.producto {
+.card-body{
+    padding: 0;
+}
+.productos {
     margin-top: 5%;
+}
+.producto {
+    box-shadow: 0px 1px 2px 1px rgb(0 0 0 / 20%);
 }
 /* detalle */
 .container-detalle,
@@ -177,7 +184,6 @@ aside h3 {
 .fondo1 {
     background-color: #9d7da2;
     color: white;
-    text-transform: uppercase;
     font-size: 1em;
     letter-spacing: 1px;
 }
@@ -254,8 +260,9 @@ aside h3 {
     padding: 14px;
 }
 /*panel admin*/
-.container-product{
-    margin-bottom: 65%;
+.container-product,
+.error{
+    margin-bottom: 85%;
 }
 /* footer */
 footer {
@@ -315,7 +322,8 @@ footer div {
     .mi-perfil{
         width: 60%;
     }
-    .container-product{
+    .container-product,
+    .error{
         margin-top: 12%;
         margin-bottom: 32%;
         min-height: auto;
@@ -326,7 +334,8 @@ footer div {
         margin-left: 0px;
         margin-right: 0px;
     }
-    .container-product {
-        margin-bottom: 40%;
+    .container-product,
+    .error {
+        margin-bottom: 53%;
     }
 }

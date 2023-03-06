@@ -4,7 +4,7 @@ $productos = (new Producto())->todo();
 ?>
 
 <section class="container-product">
-    <h2 class="mb-1 text-center">Administración de Productos</h2>
+    <h1 class="mb-1 text-center">Administración de Productos</h1>
 
     <div class="mt-1 mb-1 d-flex justify-content-center">
         <a href="index.php?v=producto-nuevo" class="btn btn-primary">Publicar un nuevo producto</a>
@@ -22,6 +22,7 @@ $productos = (new Producto())->todo();
                     <th>Imagen</th>
                     <th>Video</th>
                     <th>Audio</th>
+                    <th>Stock</th>
                     <th>Subido por</th>
                     <th>Edición</th>
 
@@ -42,6 +43,7 @@ $productos = (new Producto())->todo();
                             alt="<?= e($producto->getImagenDescripcion()); ?>"></td>
                     <td><?= $producto->getVideo(); ?></td>
                     <td><?= $producto->getAudio(); ?></td>
+                    <td><?= $producto->getStock(); ?></td>
 
                     <td><?= e($producto->getAutor()->getNombreCompleto());?></td>
                     <td>
