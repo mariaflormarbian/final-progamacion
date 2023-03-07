@@ -1,7 +1,7 @@
 /* default */
 body {
         font-family: "Acme", sans-serif;
-        background-image: url(../imgs/fondo.png);
+        background-image: url(../imgs/otros/fondo.png);
         background-size: cover;
         background-repeat: no-repeat;
 }
@@ -216,7 +216,7 @@ aside h3 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .fondo-home {
-    background-image: url(../imgs/banner.png);
+    background-image: url(../imgs/otros/banner.png);
     background-repeat: no-repeat;
     background-position-x: center;
     background-size: 289px;

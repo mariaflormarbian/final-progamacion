@@ -74,7 +74,6 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="imgs/logo.png" type="image/x-icon">
 </head>
 <body>
     <header class="navbar navbar-expand-md bd-navbar">
@@ -149,7 +148,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <footer class="container-fluid">
         <div class=" pt-6">
             <div class="d-flex pt-6 justify-content-center justify-content-md-evenly">
-                <div  class="mx-6"><img width="100" src="imgs/logo.png" alt="simpsoneras indumentaria logo" title="exoma remeras logo"></div>
+                <div  class="mx-6"><img width="100" src="imgs/otros/logo.png" alt="simpsoneras indumentaria logo" title="exoma remeras logo"></div>
                 <div class="px-6 ">
                     <h3>Encontrános</h3>
                     <ul  class="px-0">

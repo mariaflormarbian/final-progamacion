@@ -105,7 +105,5 @@ $productos = (new Producto())->publicadas();
     </ul>
     <div class="text-center">
         <a href="index.php?v=listado" class="btn fs-5">Ver todos</a></p>
-
     </div>
-
 </section>
