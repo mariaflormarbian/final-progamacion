@@ -36,7 +36,6 @@ $validador = new ProductoValidar([
     'texto' => $texto,
     'imagen' => $imagen,
     'imagen_descripcion' => $imagen_descripcion,
-
 ]);
 
 if ($validador->hayErrores()) {
