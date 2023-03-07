@@ -79,22 +79,20 @@ $productos = (new Producto())->publicadas();
         foreach($productos as $i =>$producto):
             if($i < 3 ):
                 ?>
-
                 <li class="card col-md-4 productos">
+                    <a href="index.php?v=detalle&id=<?= $producto->getListadoId();?>">
+                    
                     <div class="producto">
                         <picture>
                             <img class="img-fluid" src="imgs/productos/<?= $producto->getImagen();?>"
-                                 alt="<?= $producto->getImagenDescripcion();?>">
+                            alt="<?= $producto->getImagenDescripcion();?>">
                         </picture>
-
-
                         <div class="card-body text-center">
                             <h3 class="card-title"><?= $producto->getTitulo();?></h3>
                         </div>
-
                     </div>
+                    </a>
                 </li>
-
             <?php
             endif;
             ?>
