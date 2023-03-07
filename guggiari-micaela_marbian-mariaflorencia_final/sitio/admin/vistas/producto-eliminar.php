@@ -14,7 +14,7 @@ $productos = (new Producto())->traerPorId($_GET['id']);
         <dt>Texto</dt>
         <dd><?= e($productos->getTexto()); ?></dd>
         <dt>Imagen</dt>
-        <dd><img width="500" src="<?= '../imgs/' . e($productos->getImagen()); ?>" alt=""></dd>
+        <dd><img width="416" src="<?= '../imgs/productos/' . e($productos->getImagen()); ?>" alt=""></dd>
         <dt>Descripción de la Imagen</dt>
         <dd><?= e($productos->getImagenDescripcion()); ?></dd>
         <dt>Video</dt>

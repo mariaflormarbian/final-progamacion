@@ -74,7 +74,7 @@ $producto->cargarEtiquetas();
                 </p>
                 <figure>
                     <picture>
-                        <img class="img-fluid" src="imgs/tabla_talles.png" alt="Tabla de talles producto">
+                        <img class="img-fluid" src="imgs/otros/tabla_talles.png" alt="Tabla de talles producto">
                     </picture>
                 </figure>
             </div>

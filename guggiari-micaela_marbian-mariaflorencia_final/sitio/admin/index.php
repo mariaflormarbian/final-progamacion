@@ -83,7 +83,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
-        <link rel="shortcut icon" href="imgs/logo.png" type="image/x-icon">
+        <link rel="shortcut icon" href="imgs/otros/logo.png" type="image/x-icon">
     </head>
     <body>
         <header class="navbar navbar-expand-md bd-navbar">

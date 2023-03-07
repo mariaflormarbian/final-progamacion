@@ -69,7 +69,7 @@ $productos->cargarEtiquetas();
             ?>
             <div class="form-fila">
                 <p>Imagen actual</p>
-                <img src="<?= '../imgs/' . e($productos->getImagen());?>" alt="">
+                <img src="<?= '../imgs/productos/' . e($productos->getImagen());?>" alt="">
             </div>
         <?php
         endif;

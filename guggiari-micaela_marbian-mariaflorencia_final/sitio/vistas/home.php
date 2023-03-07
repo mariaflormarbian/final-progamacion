@@ -40,7 +40,7 @@ $productos = (new Producto())->publicadas();
         <ul class="d-flex align-items-md-center" id="home-extraInfo">
             <li class="col-md-4">
                 <picture>
-                    <img src=" ./imgs/exchange.png" width=30 alt="Icono cambio y devolución">
+                    <img src=" ./imgs/otros/exchange.png" width=30 alt="Icono cambio y devolución">
                 </picture>
                 <div class="linea">
                     <h3>Cambio y devolución</h3>
@@ -49,7 +49,7 @@ $productos = (new Producto())->publicadas();
             </li>
             <li class="col-md-4">
                 <picture>
-                    <img src="./imgs/pago-seguro.png" width=30 alt="Icono pagos seguros">
+                    <img src="./imgs/otros/pago-seguro.png" width=30 alt="Icono pagos seguros">
                 </picture>
                 <div class="linea">
                     <h3>Formas de pago Seguras</h3>
@@ -58,7 +58,7 @@ $productos = (new Producto())->publicadas();
             </li>
             <li class="col-md-4">
                 <picture>
-                    <img src="./imgs/caja.png" width=30 alt="Icono envio express">
+                    <img src="./imgs/otros/caja.png" width=30 alt="Icono envio express">
                 </picture>
                 <div class="linea">
                     <h3>Envíos express</h3>

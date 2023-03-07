@@ -68,9 +68,9 @@ try {
     if (
         isset($nombreImagen) &&
         !empty($productos->getImagen()) &&
-        file_exists(__DIR__ . '/../../imgs/' . $productos->getImagen())
+        file_exists(__DIR__ . '/../../imgs/productos/' . $productos->getImagen())
     ) {
-        unlink(__DIR__ . '/../../imgs/' . $productos->getImagen());
+        unlink(__DIR__ . '/../../imgs/productos/' . $productos->getImagen());
     }
 
     $_SESSION['mensaje_exito'] = "El producto '<b>" . $titulo . "</b>' fue publicado con éxito.";

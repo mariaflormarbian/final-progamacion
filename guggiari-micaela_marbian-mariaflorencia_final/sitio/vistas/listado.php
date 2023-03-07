@@ -14,7 +14,7 @@ $productos = (new Producto())->publicadas();
         <li class="card col-md-4 productos">
             <div class="producto">
                 <picture>
-                    <img class="img-fluid" src="imgs/productos/<?= $producto->getImagen();?>"
+                    <img class="img-listado" src="imgs/productos/<?= $producto->getImagen();?>"
                         alt="<?= $producto->getImagenDescripcion();?>">
                 </picture>
                 <div class="audio">
