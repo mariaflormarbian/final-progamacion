@@ -47,8 +47,8 @@ $producto->cargarEtiquetas();
 
                             <option value="<?= $i ?>"><?= $i ?>
                                 <?php if ($i <= 1) $option = 'Unidad';
-                                else $option = 'Unidades';
-                                echo $option ?></option>
+                                else $option = 'Unidades';?>
+                            </option>
                         <?php endfor; ?>
                     </select>
                 </div>

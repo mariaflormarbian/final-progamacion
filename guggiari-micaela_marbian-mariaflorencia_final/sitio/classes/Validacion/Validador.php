@@ -98,7 +98,7 @@ class Validador
      * @param string $mensaje
      * @return void
      */
-    private function addError(string $clave, string $mensaje)
+    private function agregarError(string $clave, string $mensaje)
     {
         if(!isset($this->errores[$clave])) {
             $this->errores[$clave] = [];
@@ -116,7 +116,7 @@ class Validador
     {
         $dato = $this->data[$clave] ?? null;
         if(empty($dato)) {
-            $this->addError($clave, 'El campo ' . $clave . ' no puede quedar vacío.');
+            $this->agregarError($clave, 'El campo ' . $clave . ' no puede quedar vacío.');
         }
     }
 
@@ -130,7 +130,7 @@ class Validador
     {
         $dato = $this->data[$clave] ?? null;
         if(!is_numeric($dato)) {
-            $this->addError($clave, 'El campo ' . $clave . ' debe ser un valor numérico.');
+            $this->agregarError($clave, 'El campo ' . $clave . ' debe ser un valor numérico.');
         }
     }
 
@@ -144,7 +144,7 @@ class Validador
     {
         $dato = $this->data[$clave] ?? null;
         if(!filter_var($dato, FILTER_VALIDATE_EMAIL)) {
-            $this->addError($clave, 'El campo ' . $clave . ' debe tener formato de email.');
+            $this->agregarError($clave, 'El campo ' . $clave . ' debe tener formato de email.');
         }
     }
 
@@ -159,7 +159,7 @@ class Validador
     {
         $dato = $this->data[$clave] ?? null;
         if(strlen($dato) < $longitud) {
-            $this->addError($clave, 'El campo ' . $clave . ' debe tener al menos ' . $longitud . ' caracteres.');
+            $this->agregarError($clave, 'El campo ' . $clave . ' debe tener al menos ' . $longitud . ' caracteres.');
         }
     }
 
@@ -175,7 +175,7 @@ class Validador
         $dato1 = $this->data[$clave];
         $dato2 = $this->data[$claveCheck];
         if($dato1 != $dato2) {
-            $this->addError('password_confirmar', 'El password no coincide con su confirmación.');
+            $this->agregarError('password_confirmar', 'El password no coincide con su confirmación.');
         }
     }
 }

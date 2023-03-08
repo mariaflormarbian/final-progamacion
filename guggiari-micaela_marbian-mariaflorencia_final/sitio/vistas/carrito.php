@@ -8,7 +8,7 @@ $productosDestacados= (new Producto)->publicadas();
 $carritos = (new Carrito)->data();
 $autenticadoUsuario = (new Autenticacion)->getId();
 $productosAgregados = (new AgregarProducto)->data();
-$list = (new AgregarProducto)->productList($productosAgregados, $autenticadoUsuario);
+$catalogo = (new AgregarProducto)->catalogoProductos($productosAgregados, $autenticadoUsuario);
 ?>
 
 <section class="contenedor-carrito">
@@ -24,11 +24,11 @@ $list = (new AgregarProducto)->productList($productosAgregados, $autenticadoUsua
                     <th></th>
                 </tr>
                 <?php foreach($productosAgregados as $producto) : ?>
-                    <?php if($product->getCarritoFk() == $autenticadoUsuario) : ?>
+                    <?php if($producto->getCarritoFk() == $autenticadoUsuario) : ?>
                         <tr>
-                            <td class="p-2"><?= $product->getTitulo() ?></td>
-                            <td class="p-2">x<?= $product->getCantidad(); ?></td>
-                            <td class="p-2">$<?= $product->getSubtotal(); ?></td>
+                            <td class="p-2"><?= $producto->getTitulo() ?></td>
+                            <td class="p-2">x<?= $producto->getCantidad(); ?></td>
+                            <td class="p-2">$<?= $producto->getSubtotal(); ?></td>
                             <td>
                                 <form action="acciones/borrar-item-carrito.php" method="POST">
                                     <input type="hidden" name="productos_id" value="<?= $product->getAgregarProductoID(); ?>"/>
@@ -56,7 +56,7 @@ $list = (new AgregarProducto)->productList($productosAgregados, $autenticadoUsua
                 <form action="acciones/auth-compra.php" method="POST" class="text-end">
                     <input type="hidden" name="productos_cantidad" value="<?= $carrito->getCantidad() ?>"/>
                     <input type="hidden" name="productos_total" value="<?= $carrito->getTotal() ?>"/>
-                    <input type="hidden" name="productos" value="<?= $list ?>"/>
+                    <input type="hidden" name="productos" value="<?= $catalogo ?>"/>
                     <button type="submit" class="btn btn-primary mb-3">Comprar</button>
                 </form>
             <?php

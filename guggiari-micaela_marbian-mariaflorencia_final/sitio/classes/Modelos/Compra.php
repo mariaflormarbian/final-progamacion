@@ -32,7 +32,7 @@ class Compra extends Modelo{
         return $stmt->fetchAll();
     }
 
-    public function addPurchases(array $data): void
+    public function agregarCompras(array $data): void
     {
         $db = Conexion::getConexion();
         $db->beginTransaction();

@@ -22,7 +22,7 @@ if(!$productoAgregado){
 
 try
 {
-    $productoAgregado->removeAgregarProducto($id);
+    $productoAgregado->eliminarAgregarProducto($id);
     $_SESSION["mensaje_exito"] = "Carrito vaciado correctamente";
     header("Location: ../index.php?v=carrito");
     exit;

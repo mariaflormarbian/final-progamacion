@@ -18,11 +18,11 @@ if(!$auth->estaAutenticado()){
 
 foreach($productos as $producto){
     if($producto->getProductosFk() == $id && $producto->getCarritoFk() == $auth->getId()){
-        $addedProductoID = $producto->getAgregarProductoID();
+        $agregarProductoID = $producto->getAgregarProductoID();
         $actualCantidad = $producto->getCantidad();
         try
         {
-            (new AgregarProducto)->AgregarProducto($addedProductoID, [
+            (new AgregarProducto)->AgregarProducto($agregarProductoID, [
                 "cantidad" => $cantidad + $actualCantidad,
                 "subtotal" => $subtotal * ($cantidad + $actualCantidad)
             ]);
@@ -41,7 +41,7 @@ foreach($productos as $producto){
 
 try
 {
-    (new AgregarProducto)->addList([
+    (new AgregarProducto)->agregarListado([
         "carrito_fk" => $auth->getId(),
         "productos_fk" => $id,
         "titulo" => $titulo,

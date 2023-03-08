@@ -15,12 +15,12 @@ $id = $auth->getId();
 $cantidad = $_POST['productos_cantidad'];
 $total = $_POST['productos_total'];
 $productos = $_POST['productos'];
-$orders = (new Compra)->data();
+$orden = (new Compra)->data();
 $productosAgregados = new AgregarProducto;
 
 try
 {
-    (new Compra)->addPurchases([
+    (new Compra)->agregarCompras([
         "carrito_fk" => $id,
         "usuarios_fk" => $id,
         "fecha" => date('Y-m-d H:i:s'),
@@ -29,7 +29,7 @@ try
         "productos" => $productos
 
     ]);
-    $productosAgregados->removeAgregarProducto($id);
+    $productosAgregados->eliminarAgregarProducto($id);
     $_SESSION['mensaje_exito'] = '¡Éxito! Gracias por su compra';
     header('Location: ../index.php?v=perfil');
     exit;

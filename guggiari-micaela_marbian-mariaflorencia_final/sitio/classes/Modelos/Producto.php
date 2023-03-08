@@ -1,7 +1,5 @@
 <?php
-
 namespace DaVinci\Modelos;
-
 use DaVinci\Database\Conexion;
 use EmptyIterator;
 use PDO;
@@ -229,12 +227,10 @@ class Producto extends Modelo
     public function eliminar(): void
     {
         $this->eliminarEtiquetas();
-
         $db = Conexion::getConexion();
         $query = "DELETE FROM productos
                 WHERE productos_id = ?";
         $db->prepare($query)->execute([$this->getCatalogoId()]);
-
     }
 
     protected function eliminarEtiquetas()

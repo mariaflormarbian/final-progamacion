@@ -28,7 +28,7 @@ if(!$productoAgregado){
 
 try
 {
-    $productoAgregado->delete();
+    $productoAgregado->eliminar();
     $_SESSION["mensaje_exito"] = "Producto eliminado correctamente";
     header("Location: ../index.php?v=carrito");
     exit;

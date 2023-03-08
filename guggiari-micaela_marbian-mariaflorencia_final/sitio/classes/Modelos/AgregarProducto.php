@@ -29,7 +29,7 @@ class AgregarProducto extends Modelo
         return $stmt->fetchAll();
     }
 
-    public function addList(array $data): void
+    public function agregarListado(array $data): void
     {
         $db = Conexion::getConexion();
         $db->beginTransaction();
@@ -57,9 +57,9 @@ class AgregarProducto extends Modelo
         $db->beginTransaction();
         try{
             $query = "UPDATE agregar_producto
-                            SET cantidad = :cantidad,
-                            subtotal = :subtotal
-                            WHERE agregar_producto_id = :agregar_producto_id";
+                         SET cantidad = :cantidad,
+                        subtotal = :subtotal
+                        WHERE agregar_producto_id = :agregar_producto_id";
 
             $stmt = $db->prepare($query);
             $stmt->execute([
@@ -74,7 +74,7 @@ class AgregarProducto extends Modelo
         }
     }
 
-    public function delete(): void
+    public function eliminar(): void
     {
         $db = Conexion::getConexion();
         $db->beginTransaction();
@@ -85,13 +85,15 @@ class AgregarProducto extends Modelo
             $stmt->execute([$this->getAgregarProductotID()]);
 
             $db->commit();
-        } catch (Exception $e) {
+        } 
+        catch (Exception $e) 
+        {
             $db->rollBack();
             throw $e;
         }
     }
 
-    public function removeAgregarProducto($id): void
+    public function eliminarAgregarProducto($id): void
     {
         $db = Conexion::getConexion();
         $query = "DELETE FROM agregar_producto
@@ -102,7 +104,7 @@ class AgregarProducto extends Modelo
         ]);
     }
 
-    public function productList($productos, $authentication): string
+    public function catalogoProductos($productos, $authentication): string
     {
         $array = [];
         foreach($productos as $producto){
