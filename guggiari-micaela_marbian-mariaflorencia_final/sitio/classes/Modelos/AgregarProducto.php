@@ -82,8 +82,7 @@ class AgregarProducto extends Modelo
             $query = "DELETE FROM agregar_producto
             WHERE agregar_producto_id = ?";
             $stmt = $db->prepare($query);
-            $stmt->execute([$this->getAgregarProductotID()]);
-
+            $stmt->execute([$this->getAgregarProductoID()]);
             $db->commit();
         } 
         catch (Exception $e) 
