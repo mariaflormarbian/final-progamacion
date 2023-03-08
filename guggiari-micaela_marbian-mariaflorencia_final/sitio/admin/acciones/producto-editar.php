@@ -41,18 +41,17 @@ $validador = new ProductoValidar([
 if ($validador->hayErrores()) {
     $_SESSION['errores'] = $validador->getErrores();
     $_SESSION['data_form'] = $_POST;
-
     header("Location: ./../index.php?v=producto-editar&id=" . $id);
     exit;
 }
 
 if (!empty($imagen['tmp_name'])) {
     $nombreImagen = date('YmdHis_') . slugify($imagen['name']);
-
     move_uploaded_file($imagen['tmp_name'], __DIR__ . '/../../imgs/productos/' . $nombreImagen);
 }
 
-try {
+try 
+{
     $productos->editar($id, [
         'usuarios_fk' => $autenticacion->getId(),
         'productos_estados_fk' => $productos_estados_fk,
@@ -72,15 +71,14 @@ try {
     ) {
         unlink(__DIR__ . '/../../imgs/productos/' . $productos->getImagen());
     }
-
     $_SESSION['mensaje_exito'] = "El producto '<b>" . $titulo . "</b>' fue publicado con éxito.";
-
     header("Location: ./../index.php?v=productos");
     exit;
-} catch (Exception $e) {
+} 
+catch (Exception $e) 
+{
     $_SESSION['mensaje_error'] = "Ocurrió un error inesperado al tratar de grabar la información, el producto no pudo ser publicado. Por favor, probá de nuevo más tarde.";
     $_SESSION['data_form'] = $_POST;
-
     header("Location: ./../index.php?v=producto-editar&id=" . $id);
     exit;
 }

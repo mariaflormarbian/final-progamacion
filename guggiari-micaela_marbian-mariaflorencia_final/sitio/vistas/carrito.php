@@ -1,23 +1,20 @@
 <?php
 use DaVinci\Modelos\Producto;
-use DaVinci\Modelos\Cart;
-use DaVinci\Modelos\AddProduct;
+use DaVinci\Modelos\Carrito;
+use DaVinci\Modelos\AgregarProducto;
 use DaVinci\Auth\Autenticacion;
 
-$products_featured = (new Producto)->publicadas();
-
-$carts = (new Cart)->data();
-$authedUser = (new Autenticacion)->getId();
-$addedProducts = (new AddProduct)->data();
-
-
-$list = (new AddProduct)->productList($addedProducts, $authedUser);
+$productosDestacados= (new Producto)->publicadas();
+$carritos = (new Carrito)->data();
+$autenticadoUsuario = (new Autenticacion)->getId();
+$productosAgregados = (new AgregarProducto)->data();
+$list = (new AgregarProducto)->productList($productosAgregados, $autenticadoUsuario);
 ?>
 
 <section class="contenedor-carrito">
     <h2 class="text-center fw-bold mt-5 p-3">Mi carrito</h2>
 
-    <?php if ($addedProducts != []) : ?>
+    <?php if ($productosAgregados != []) : ?>
         <div class="table-responsive ">
             <table class="table">
                 <tr class="fondo1">
@@ -26,16 +23,15 @@ $list = (new AddProduct)->productList($addedProducts, $authedUser);
                     <th>Total</th>
                     <th></th>
                 </tr>
-                <?php foreach($addedProducts as $product) : ?>
-                    <?php if($product->getCartFk() == $authedUser) : ?>
+                <?php foreach($productosAgregados as $producto) : ?>
+                    <?php if($product->getCarritoFk() == $autenticadoUsuario) : ?>
                         <tr>
-                            <td class="p-2"><?= $product->getTitle() ?></td>
-                            <td class="p-2">x<?= $product->getQuantity(); ?></td>
+                            <td class="p-2"><?= $product->getTitulo() ?></td>
+                            <td class="p-2">x<?= $product->getCantidad(); ?></td>
                             <td class="p-2">$<?= $product->getSubtotal(); ?></td>
-
                             <td>
-                                <form action="acciones/delete-from-cart.php" method="POST">
-                                    <input type="hidden" name="productos_id" value="<?= $product->getAddProductID(); ?>"/>
+                                <form action="acciones/borrar-item-carrito.php" method="POST">
+                                    <input type="hidden" name="productos_id" value="<?= $product->getAgregarProductoID(); ?>"/>
                                     <button type="submit" class="p-0 m-0 bg-transparent border-0 button button-small text-danger">Eliminar</button>
                                 </form>
                             </td>
@@ -45,21 +41,21 @@ $list = (new AddProduct)->productList($addedProducts, $authedUser);
             </table>
         </div>
         <?php
-        foreach($carts as $i => $cart):
-            if($cart->getCartID() == $authedUser):
+        foreach($carritos as $i => $carrito):
+            if($carrito->getCarritoID() == $autenticadoUsuario):
                 ?>
                 <div class=" d-flex flex-column align-items-end pb-4">
-                    <p class="mb-2">Cantidad total de productos: <span class="fw-bold">x<?= $cart->getQuantity(); ?></span></p>
-                    <p class="mb-2 ">Total: <span class="fw-bold">$<?= $cart->getTotal(); ?></span></p>
-                    <form action="acciones/empty-cart.php" method="POST" class="">
-                        <input type="hidden" name="productos_id" value="<?= $cart->getCartID() ?>"/>
+                    <p class="mb-2">Cantidad total de productos: <span class="fw-bold">x<?= $carrito->getCantidad(); ?></span></p>
+                    <p class="mb-2 ">Total: <span class="fw-bold">$<?= $carrito->getTotal(); ?></span></p>
+                    <form action="acciones/carrito-vacio.php" method="POST" class="">
+                        <input type="hidden" name="productos_id" value="<?= $carrito->getCarritoID() ?>"/>
                         <button type="submit" class="p-3 m-0 bg-danger border-0 button button-small text-white">Vaciar carrito</button>
                     </form>
                 </div>
 
-                <form action="acciones/auth-buy.php" method="POST" class="text-end">
-                    <input type="hidden" name="productos_cantidad" value="<?= $cart->getQuantity() ?>"/>
-                    <input type="hidden" name="productos_total" value="<?= $cart->getTotal() ?>"/>
+                <form action="acciones/auth-compra.php" method="POST" class="text-end">
+                    <input type="hidden" name="productos_cantidad" value="<?= $carrito->getCantidad() ?>"/>
+                    <input type="hidden" name="productos_total" value="<?= $carrito->getTotal() ?>"/>
                     <input type="hidden" name="productos" value="<?= $list ?>"/>
                     <button type="submit" class="btn btn-primary mb-3">Comprar</button>
                 </form>
@@ -71,8 +67,7 @@ $list = (new AddProduct)->productList($addedProducts, $authedUser);
         <div class="text-center carrito-vacio">
             <p class="mb-4">Tu carrito está vacío</p>
             <p class="mb-4">¿No sabés qué comprar? ¡Miles de productos te esperan!</p>
-            <a href="index.php?v=listado" class="btn fs-5">Conocer productos</a></p>
+            <a href="index.php?v=catalogo" class="btn fs-5">Conocer productos</a></p>
         </div>
     <?php endif;?>
-
 </section>

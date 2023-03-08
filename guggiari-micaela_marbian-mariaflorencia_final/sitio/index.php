@@ -5,10 +5,10 @@ require_once __DIR__ . '/bootstrap/init.php';
 require_once __DIR__ . '/bibliotecas/helpers.php';
 
 $rutas = [
-    'home' => [
+    'inicio' => [
     'titulo' => 'Página Principal',
     ],
-    'listado' => [
+    'catalogo' => [
     'titulo' => 'Productos',
     ],
     'detalle' => [
@@ -35,7 +35,7 @@ $rutas = [
     ],
 ];
 
-$vistas = $_GET['v'] ?? 'home';
+$vistas = $_GET['v'] ?? 'inicio';
 
 if(!isset($rutas[$vistas])) {
     $vistas = '404';
@@ -78,7 +78,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
 <body>
     <header class="navbar navbar-expand-md bd-navbar">
         <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="navegacion principal">
-            <a href="index.php?v=home" id="logo" class="navbar-brand p-0 me-2" aria-label="Simpsoneras">
+            <a href="index.php?v=inicio" id="logo" class="navbar-brand p-0 me-2" aria-label="Simpsoneras">
                 Simpsoneras :: <?= $rutaTitulo['titulo'];?>
             </a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,8 +88,8 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
             </button>
             <div class="navbar-collapse collapse justify-content-md-end" id="bdNavbar">
                 <ul class="navbar-nav flex-md-row flex-wrap bd-navbar-nav pt-2 py-md-0">
-                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=home">Home</a></li>
-                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=listado">Productos</a></li>
+                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=inicio">Inicio</a></li>
+                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=catalogo">Productos</a></li>
                     <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=contacto">Contacto</a>
                     </li>
                     <?php
@@ -194,8 +194,8 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                 </div>
             </div>
             <ul class="d-flex justify-content-center flex-column flex-md-row">
-                <li class="p-3 text-center"><a class="btn btn-dark border-0" href="index.php?v=listado">Sobre Nosotros</a></li>
-                <li class="p-3 text-center"><a class="btn btn-dark border-0"  href="index.php?v=listado">Showroom</a></li>
+                <li class="p-3 text-center"><a class="btn btn-dark border-0" href="index.php?v=catalogo">Sobre Nosotros</a></li>
+                <li class="p-3 text-center"><a class="btn btn-dark border-0"  href="index.php?v=catalogo">Showroom</a></li>
                 <li class="p-3 text-center"><a class="btn btn-dark border-0"  href="index.php?v=contacto">Contactenos</a></li>
             </ul>
             <div>

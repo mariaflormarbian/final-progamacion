@@ -117,7 +117,7 @@ li {
 .contenedor-carrito {
     min-height: 56vh;
 }
-/* listado */
+/* catalogo */
 .card {
     padding-top: 20px;
     border: none;
@@ -132,7 +132,7 @@ li {
 .productos {
     margin-top: 5%;
 }
-.img-listado{
+.img-catalogo{
     width: 416;
     height: 373;
 }
@@ -320,7 +320,7 @@ footer div {
         text-align: start;
     }
     .container-detalle,
-    .listado ul{
+    .catalogo ul{
         margin-top: 10%;
     }
     .mi-perfil{

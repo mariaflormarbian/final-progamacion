@@ -7,7 +7,7 @@ $producto->cargarEtiquetas();
 <section class="seccion-detalle">
     <h1 class="text-center  fw-bold p-3  my-5">Detalles</h1>
 
-    <form action="acciones/add-to-cart.php" method="POST" class="w-100">
+    <form action="acciones/agregar-carrito.php" method="POST" class="w-100">
         <div class="row align-items-lg-center container-detalle">
             <div class="col-lg-6">
                 <figure>
@@ -53,7 +53,7 @@ $producto->cargarEtiquetas();
                     </select>
                 </div>
                 
-                <input type="hidden" name="productos_id" value="<?= $producto->getListadoId(); ?>">
+                <input type="hidden" name="productos_id" value="<?= $producto->getCatalogoId(); ?>">
                 <input type="hidden" name="productos_titulo" value="<?= $producto->getTitulo(); ?>">
                 <input type="hidden" name="productos_precio" value="<?= $producto->getPrecio(); ?>">
                 <button type="submit" class="btn btn-primary  text-center p-6  text-uppercase  mb-2">Añadir al carrito</button>

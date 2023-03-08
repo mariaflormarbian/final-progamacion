@@ -13,7 +13,6 @@ class Producto extends Modelo
     protected int $productos_estados_fk;
     protected string $titulo;
     protected int $precio;
-
     protected ?string $imagen;
     protected ?string $imagen_descripcion;
     protected ?string $video;
@@ -21,14 +20,13 @@ class Producto extends Modelo
     protected string $texto;
     protected int $stock;
 
-
     protected ProductoEstado $estado;
     protected Usuario $autor;
     
     protected array $etiquetas_fk = [];
     protected array $etiquetas = [];
 
-    protected string $table = "productos";
+    protected string $tabla = "productos";
     protected string $primaryKey = "productos_id";
 
     protected array $propiedades = ['productos_id', 'usuarios_fk', 'productos_estados_fk', 'titulo', 'texto', 'precio', 'imagen', 'imagen_descripcion', 'video', 'audio', 'stock'];
@@ -116,8 +114,7 @@ class Producto extends Modelo
                 INNER JOIN etiquetas e ON e.etiquetas_id = nte.etiquetas_fk
                 WHERE productos_fk = ?";
         $stmt = $db->prepare($query);
-        $stmt->execute([$this->getListadoId()]);
-
+        $stmt->execute([$this->getCatalogoId()]);
         $etiquetasFk = [];
         $etiquetas = [];
         while($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -131,10 +128,6 @@ class Producto extends Modelo
         $this->etiquetas = $etiquetas;
     }
 
-
-
-
-
     /**
      * Crea un producto en la base de datos.
      * 
@@ -146,9 +139,7 @@ class Producto extends Modelo
         $db = Conexion::getConexion();
         $query = "INSERT INTO productos (usuarios_fk, productos_estados_fk, precio, titulo, texto, imagen, imagen_descripcion, video, stock) 
                 VALUES (:usuarios_fk, :productos_estados_fk, :precio,  :titulo,  :texto, :imagen, :imagen_descripcion, :video, :stock)";
-
         $stmt = $db->prepare($query);
-
         $stmt->execute([
             'usuarios_fk' => $data['usuarios_fk'],
             'productos_estados_fk' => $data['productos_estados_fk'],
@@ -173,8 +164,6 @@ class Producto extends Modelo
      */
     protected function grabarEtiquetas(int $productoId, array $etiquetas)
     {
-        //if(count($etiquetas) === 0) return;
-
         $insertPares = [];
         $valores = [];
 
@@ -230,7 +219,7 @@ class Producto extends Modelo
     {
         $this->eliminarEtiquetas();
         if(!empty($etiquetas)){
-            $this->grabarEtiquetas($this->getListadoId(), $etiquetas);
+            $this->grabarEtiquetas($this->getCatalogoId(), $etiquetas);
         }
     }
     
@@ -244,7 +233,7 @@ class Producto extends Modelo
         $db = Conexion::getConexion();
         $query = "DELETE FROM productos
                 WHERE productos_id = ?";
-        $db->prepare($query)->execute([$this->getListadoId()]);
+        $db->prepare($query)->execute([$this->getCatalogoId()]);
 
     }
 
@@ -253,7 +242,7 @@ class Producto extends Modelo
         $db = Conexion::getConexion();
         $query = "DELETE FROM productos_has_etiquetas
                 WHERE productos_fk = ?";
-        $db->prepare($query)->execute([$this->getListadoId()]);
+        $db->prepare($query)->execute([$this->getCatalogoId()]);
     }
 
     /**
@@ -270,13 +259,12 @@ class Producto extends Modelo
     {
         $this->precio = $precio;
     }
-    public function setListadoId(int $productos_id): void
+    public function setCatalogoId(int $productos_id): void
     {
         $this->$productos_id;
-
     }
 
-    public function getListadoId(): int
+    public function getCatalogoId(): int
     {
         return $this->productos_id;
     }
@@ -356,17 +344,11 @@ class Producto extends Modelo
         return $this->productos_estados_fk;
     }
 
-    /**
-     * @return int
-     */
     public function getProductosId(): int
     {
         return $this->productos_id;
     }
 
-    /**
-     * @param int $productos_id
-     */
     public function setProductosId(int $productos_id): void
     {
         $this->productos_id = $productos_id;
@@ -426,5 +408,4 @@ class Producto extends Modelo
     {
         $this->stock = $stock;
     }
-
 }

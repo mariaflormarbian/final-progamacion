@@ -1,5 +1,4 @@
 <?php
-
 namespace DaVinci\Validacion;
 
 class ProductoValidar
@@ -19,12 +18,8 @@ class ProductoValidar
     public function hayErrores(): bool
     {
         return !empty($this->errores);
-//        return count($this->errores) > 0;
     }
 
-    /**
-     * @return array
-     */
     public function getErrores(): array
     {
         return $this->errores;

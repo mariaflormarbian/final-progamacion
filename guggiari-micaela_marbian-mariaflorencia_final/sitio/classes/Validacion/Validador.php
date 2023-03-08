@@ -1,24 +1,14 @@
 <?php
-
 namespace DaVinci\Validacion;
-
 use Exception;
 
 class Validador
 {
-
     private array $data = [];
 
     /**
-     * @var array Array asociativo con las reglas de validación. Las claves deben coincidir con las claves
-     *              de la $data que tiene que validar, y los valores deben ser un array con la lista de
-     *              reglas a aplicar.
-     *            Ej: [
-     *               'titulo' => ['required', 'min:4'],
-     *               'precio' => ['required', 'numeric'],
-     *               'email' => ['required', 'email'],
-     *               'descripcion' => ['required'],
-     *             ]
+     * Array asociativo con las reglas de validación. Las claves deben coincidir con las claves de la $data que tiene que validar, 
+     * y los valores deben ser un array con la lista de reglas a aplicar.
      */
     private array $reglas = [];
 
@@ -40,7 +30,6 @@ class Validador
      */
     private function validar()
     {
-
         foreach($this->reglas as $clave => $listaReglas) {
 
             foreach($listaReglas as $regla) {
@@ -61,17 +50,11 @@ class Validador
     {
 
         if(strpos($regla, ":") !== false) {
-
             $reglaPartes = explode(":", $regla);
-
             $metodo = $this->obtenerNombreMetodo($reglaPartes[0]);
-
             $this->{$metodo}($clave, $reglaPartes[1]);
         } else {
-
             $metodo = $this->obtenerNombreMetodo($regla);
-
-
             $this->{$metodo}($clave);
         }
     }
@@ -86,7 +69,6 @@ class Validador
     private function obtenerNombreMetodo(string $regla): string
     {
         $metodo = "_" . $regla;
-
         if(!method_exists($this, $metodo)) {
             throw new ReglaNoExistenteException($regla, "No existe la regla de validación '" . $regla . "'.");
         }
@@ -123,7 +105,6 @@ class Validador
         }
         $this->errores[$clave][] = $mensaje;
     }
-
 
     /**
      * Valida que el campo no esté vacío.

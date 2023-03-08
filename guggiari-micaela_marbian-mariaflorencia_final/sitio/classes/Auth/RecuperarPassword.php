@@ -1,5 +1,4 @@
 <?php
-
 namespace DaVinci\Auth;
 use DateTime;
 use DaVinci\Modelos\Usuario;
@@ -11,102 +10,88 @@ class RecuperarPassword
     protected  string  $token;
     protected DateTime $expiracion;
 
-
     public function enviarEmailDeRecuperacion(Usuario  $usuario)
     {
         $this->usuario =$usuario;
         $this->token = $this->generarToken();
-
         $this->almacenarToken();
-
         $this->enviarEmail();
     }
 
-        public function setUsuarioPorId(int $id)
-        {
-            $this->usuario = (new Usuario())->traerPorId($id);
-        }
+    public function setUsuarioPorId(int $id)
+    {
+        $this->usuario = (new Usuario())->traerPorId($id);
+    }
 
-        public function setToken(string $token)
-        {
-            $this->token = $token;
-        }
+    public function setToken(string $token)
+    {
+        $this->token = $token;
+    }
 
-        /**
-         * Verifica si este token corresponde a este usuario.
-         *
-         * @return bool
-         * @todo Implementar
-         */
-        public function esValido()
-        {
-            return true;
-        }
+    /**
+     * Verifica si este token corresponde a este usuario.
+     *
+     * @return bool
+     * @todo Implementar
+     */
+    public function esValido()
+    {
+        return true;
+    }
 
-        /**
-         * Verifica si este token está expirado.
-         *
-         * @return bool
-         * @todo Implementar
-         */
-        public function expirado()
-        {
-            return false;
-        }
+    /**
+     * Verifica si este token está expirado.
+     *
+     * @return bool
+     * @todo Implementar
+     */
+    public function expirado()
+    {
+        return false;
+    }
 
-        public function actualizarPassword(string $password)
-        {
-            // Noten que llamamos al editar password sobre el usuario que ya obtuvimos y tiene todos los
-            // datos de la base. Por eso no necesito pasar el id, ya lo tiene.
-            $this->editarPassword($password);
+    public function actualizarPassword(string $password)
+    {
+        $this->editarPassword($password);
+        $this->eliminarToken();
+    }
 
-            $this->eliminarToken();
-        }
+    protected function eliminarToken()
+    {
+        $db = Conexion::getConexion();
+        $query = "DELETE FROM recuperar_passwords
+            WHERE usuarios_id = ?";
+        $db->prepare($query)->execute([$this->getUsuarioId()]);
+    }
 
-        protected function eliminarToken()
-        {
-            $db = Conexion::getConexion();
-            $query = "DELETE FROM recuperar_passwords
-                WHERE usuarios_id = ?";
-            $db->prepare($query)->execute([$this->getUsuarioId()]);
-        }
+    protected function generarToken(): string
+    {
+        $token = openssl_random_pseudo_bytes(32);
+        return bin2hex($token);
+    }
 
-        /**
-         * Genera un token criptográficamente seguro.
-         *
-         * @return string
-         */
-        protected function generarToken(): string
-        {
-            $token = openssl_random_pseudo_bytes(32);
+    protected function almacenarToken()
+    {
+        $db = Conexion::getConexion();
+        $query = "INSERT INTO recuperar_passwords (usuarios_id, token, expiracion) 
+            VALUES (:usuarios_id, :token, :expiracion)";
+        $stmt = $db->prepare($query);
+        $this->expiracion = new DateTime();
+        $this->expiracion->modify('+1 hour');
+        $stmt->execute([
+            'usuarios_id' => $this->usuario->getUsuariosId(),
+            'token' => $this->token,
+            'expiracion' => $this->expiracion->format('Y-m-d H:i:s'),
+        ]);
+    }
 
-            return bin2hex($token);
-        }
+    protected function enviarEmail()
+    {
 
-        protected function almacenarToken()
-        {
-            $db = Conexion::getConexion();
-            $query = "INSERT INTO recuperar_passwords (usuarios_id, token, expiracion) 
-                VALUES (:usuarios_id, :token, :expiracion)";
-            $stmt = $db->prepare($query);
-
-            $this->expiracion = new DateTime();
-            $this->expiracion->modify('+1 hour');
-
-            $stmt->execute([
-                'usuarios_id' => $this->usuario->getUsuariosId(),
-                'token' => $this->token,
-                'expiracion' => $this->expiracion->format('Y-m-d H:i:s'),
-            ]);
-        }
-
-        protected function enviarEmail()
-        {
-
-            $destinatario = $this->usuario->getEmail();
-            $asunto = "Restablecer Password :: Simpsoneras";
-            $cuerpo = "Estimado/a xxx
-        
+        $destinatario = $this->usuario->getEmail();
+        $asunto = "Restablecer Password :: Simpsoneras";
+        $cuerpo = "Estimado/a xxx
+    
         Recibimos una solicitud para restablecer tu password en Simpsoneras.
         Si no fuiste vos, podés ignorar este email.
         
@@ -117,13 +102,13 @@ class RecuperarPassword
         Saludos cordiales,
         Simpsoneras";
 
-            $headers = "From: no-responder@simpsoneras" . "\r\n";
+        $headers = "From: no-responder@simpsoneras" . "\r\n";
 
-            if(!mail($destinatario, $asunto, $cuerpo, $headers)) {
-                // Si no se puede mandar, vamos a guardarlo en un archivo de texto para poder ver cómo queda.
-                $filename = date('YmdHis_') . "recuperar-password_" . $this->usuario->getEmail() . ".txt";
-                file_put_contents(__DIR__ . '/../../emails-fallidos/' . $filename, $cuerpo);
-//            throw new \Exception();
-            }
+        if(!mail($destinatario, $asunto, $cuerpo, $headers)) {
+            // Si no se puede mandar, vamos a guardarlo en un archivo de texto para poder ver cómo queda.
+            $filename = date('YmdHis_') . "recuperar-password_" . $this->usuario->getEmail() . ".txt";
+            file_put_contents(__DIR__ . '/../../emails-fallidos/' . $filename, $cuerpo);
+            // throw new \Exception();
         }
     }
+}

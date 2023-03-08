@@ -1,5 +1,4 @@
 <?php
-
 use DaVinci\Auth\Autenticacion;
 use DaVinci\Modelos\Producto;
 use DaVinci\Validacion\ProductoValidar;
@@ -38,24 +37,19 @@ $validador = new ProductoValidar([
 ]);
 
 if ($validador->hayErrores()) {
-
     $_SESSION['errores'] = $validador->getErrores();
-
     $_SESSION['data_form'] = $_POST;
-
-
     header("Location: ./../index.php?v=producto-nuevo");
-
     exit;
 }
 
 if (!empty($imagen['tmp_name'])) {
     $nombreImagen = date('YmdHis_') . slugify($imagen['name']);
-
     move_uploaded_file($imagen['tmp_name'], __DIR__ . '/../../imgs/productos/' . $nombreImagen);
 }
 
-try {
+try 
+{
     (new Producto())->crear([
         'usuarios_fk' => $autenticacion->getId(),
         'titulo' => $titulo,
@@ -71,17 +65,13 @@ try {
     ]);
     
     $_SESSION['mensaje_exito'] = "El producto '<b>" . $titulo . "</b>' fue o con éxito.";
-
     header("Location: ./../index.php?v=productos");
     exit;
-
-    // echo "<pre>";
-    // var_dump($producto);
-    // echo "</pre>";
-} catch (\Exception $e) {
+} 
+catch (Exception $e)
+{
     $_SESSION['mensaje_error'] = "Ocurrió un error inesperado al tratar de grabar la información, el producto no pudo ser publicada. Por favor, probá de nuevo más tarde.";
     $_SESSION['data_form'] = $_POST;
-
     header("Location: ./../index.php?v=producto-nuevo");
     exit;
 }

@@ -1,7 +1,6 @@
 <?php
 use DaVinci\Modelos\Usuario;
-use DaVinci\Modelos\Cart;
-
+use DaVinci\Modelos\Carrito;
 require_once __DIR__ . '/../bootstrap/init.php';
 
 $nombre = $_POST['nombre'];
@@ -32,19 +31,16 @@ try {
         'roles_fk' => 2,
     ]);
 
-
-    $user = (new Usuario)->traerPorEmail($email);
-    (new Cart)->createCart([
-        "carrito_id" => $user->getUsuariosId(),
-        "usuarios_fk" => $user->getUsuariosId(),
+    $usuario = (new Usuario)->traerPorEmail($email);
+    (new Carrito)->createCarrito([
+        "carrito_id" => $usuario->getUsuariosId(),
+        "usuarios_fk" => $usuario->getUsuariosId(),
     ]);
-
 
     $_SESSION['mensaje_exito'] = "Usuario creado con éxito. Ya puede iniciar sesión.";
     header("Location: ../index.php?v=iniciar-sesion");
 }catch(Exception $e){
     $_SESSION['mensaje_error'] = "Ocurrio un error inesperado al tratar de crear tu cuenta.";
     $_SESSION['mensaje_error'] = $e;
-
     header("Location: ../index.php?v=iniciar-sesion");
 }

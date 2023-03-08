@@ -1,7 +1,5 @@
 <?php
-
 namespace DaVinci\Auth;
-
 use DaVinci\Modelos\Usuario;
 
 class Autenticacion
@@ -28,10 +26,8 @@ class Autenticacion
 
     public function autenticar(Usuario $usuario)
     {
-
         $_SESSION['usuarios_id'] = $usuario->getUsuariosId();
         $_SESSION['roles_fk']     = $usuario->getRolesFk();
-
     }
 
     public function cerrarSesion()
@@ -59,7 +55,7 @@ class Autenticacion
     public function getUsuario(): ?Usuario
     {
         return $this->estaAutenticado() ?
-            (new Usuario())->traerPorId($_SESSION['usuarios_id']) :
-            null;
+        (new Usuario())->traerPorId($_SESSION['usuarios_id']) :
+        null;
     }
 }

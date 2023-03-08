@@ -1,21 +1,20 @@
 <?php
-
 namespace DaVinci\Modelos;
-
 use DaVinci\Database\Conexion;
 use PDO;
 
-class Cart extends Modelo{
+class Carrito extends Modelo{
     protected int $carrito_id;
     protected int $usuarios_fk;
 
     protected int $cantidad;
     protected float $total;
 
-    protected string $table = "carrito";
+    protected string $tabla = "carrito";
     protected string $primaryKey = "carrito_id";
 
-    public function data(): array{
+    public function data(): array
+    {
         $db = Conexion::getConexion();
         $query = "SELECT carrito.*, 
         SUM(cantidad) AS 'cantidad', 
@@ -30,7 +29,8 @@ class Cart extends Modelo{
         return $stmt->fetchAll();
     }
 
-    public function createCart(array $data): void{
+    public function createCarrito(array $data): void
+    {
         $db = Conexion::getConexion();
         $db->beginTransaction();
 
@@ -49,34 +49,46 @@ class Cart extends Modelo{
         }
     }
 
-    public function getCartID(){
+    public function getCarritoID()
+    {
         return $this->carrito_id;
     }
-    public function setCartID($carrito_id){
+
+    public function setCarritoID($carrito_id)
+    {
         $this->carrito_id = $carrito_id;
         return $this;
     }
 
-    public function getUserFk(){
+    public function getUsuarioFk()
+    {
         return $this->usuarios_fk;
     }
-    public function setUserFk($usuarios_fk){
+
+    public function setUsuarioFk($usuarios_fk)
+    {
         $this->usuarios_fk = $usuarios_fk;
         return $this;
     }
 
-    public function getQuantity(){
+    public function getCantidad()
+    {
         return $this->cantidad;
     }
-    public function setQuantity($cantidad){
+
+    public function setCantidad($cantidad)
+    {
         $this->cantidad = $cantidad;
         return $this;
     }
 
-    public function getTotal(){
+    public function getTotal()
+    {
         return $this->total;
     }
-    public function setTotal($total){
+
+    public function setTotal($total)
+    {
         $this->total = $total;
         return $this;
     }
