@@ -31,7 +31,7 @@ $catalogo = (new AgregarProducto)->catalogoProductos($productosAgregados, $auten
                             <td class="p-2">$<?= $producto->getSubtotal(); ?></td>
                             <td>
                                 <form action="acciones/borrar-item-carrito.php" method="POST">
-                                    <input type="hidden" name="productos_id" value="<?= $product->getAgregarProductoID(); ?>"/>
+                                    <input type="hidden" name="productos_id" value="<?= $producto->getAgregarProductoID(); ?>"/>
                                     <button type="submit" class="p-0 m-0 bg-transparent border-0 button button-small text-danger">Eliminar</button>
                                 </form>
                             </td>
