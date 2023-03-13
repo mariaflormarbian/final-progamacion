@@ -144,8 +144,8 @@ class Producto extends Modelo
     public function crear(array $data): void
     {
         $db = Conexion::getConexion();
-        $query = "INSERT INTO productos (usuarios_fk, productos_estados_fk, precio, titulo, texto, imagen, imagen_descripcion, video, stock) 
-                VALUES (:usuarios_fk, :productos_estados_fk, :precio,  :titulo,  :texto, :imagen, :imagen_descripcion, :video, :stock)";
+        $query = "INSERT INTO productos (usuarios_fk, productos_estados_fk, precio, titulo, texto, imagen, imagen_descripcion, video, stock, audio) 
+                VALUES (:usuarios_fk, :productos_estados_fk, :precio,  :titulo,  :texto, :imagen, :imagen_descripcion, :video, :stock, :audio)";
 
         $stmt = $db->prepare($query);
 
@@ -159,6 +159,7 @@ class Producto extends Modelo
             'imagen_descripcion' => $data['imagen_descripcion'],
             'video' => $data['video'],
             'stock' => $data['stock'],
+            'audio' => $data['audio'],
 
         ]);
 
@@ -204,9 +205,10 @@ class Producto extends Modelo
                     texto                = :texto,
                     imagen               = :imagen,
                     video                = :video,
-                    audio                = :audio,
                     imagen_descripcion   = :imagen_descripcion,
                     stock   = :stock,
+                    audio                = :audio,
+
                     
                 WHERE productos_id = :productos_id";
         $stmt = $db->prepare($query);
@@ -219,9 +221,10 @@ class Producto extends Modelo
             'texto' => $data['texto'],
             'imagen' => $data['imagen'],
             'video' => $data['video'],
-            'audio' => $data['audio'],
             'imagen_descripcion' => $data['imagen_descripcion'],
             'stock' => $data['stock'],
+            'audio' => $data['audio'],
+
         ]);
         $this->actualizarEtiquetas($data['etiquetas']);
     }

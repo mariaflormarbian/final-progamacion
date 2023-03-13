@@ -96,6 +96,11 @@ $productos->cargarEtiquetas();
                    value="<?= e($dataForm['audio'] ?? $productos->getAudio()); ?>">
         </div>
         <div class="form-fila">
+            <label for="stock">Audio</label>
+            <input type="text" id="stock" name="stock" class="form-control"
+                   value="<?= e($dataForm['stock'] ?? $productos->getStock()); ?>">
+        </div>
+        <div class="form-fila">
             <label for="productos_estados_fk">Estado de Publicación</label>
             <select id="productos_estados_fk" name="productos_estados_fk" class="form-control">
                 <?php

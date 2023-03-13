@@ -20,6 +20,10 @@ $texto = $_POST['texto'];
 $imagen_descripcion = $_POST['imagen_descripcion'];
 $imagen = $_FILES['imagen'];
 $etiquetas          = $_POST['etiquetas_id'] ?? [];
+$stock = $_POST['stock'];
+$audio = $_FILES['audio'];
+
+
 
 $productos = (new Producto())->traerPorId($id);
 
@@ -36,6 +40,7 @@ $validador = new ProductoValidar([
     'texto' => $texto,
     'imagen' => $imagen,
     'imagen_descripcion' => $imagen_descripcion,
+    'stock' => $stock,
 
 ]);
 
@@ -63,6 +68,7 @@ try {
         'imagen' => $nombreImagen ?? $productos->getImagen(),
         'imagen_descripcion'  => $imagen_descripcion,
         'etiquetas' => $etiquetas,
+        'stock' => $stock,
 
     ]);
 
