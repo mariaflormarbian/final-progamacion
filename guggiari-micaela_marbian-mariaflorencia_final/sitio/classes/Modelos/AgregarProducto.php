@@ -1,12 +1,10 @@
 <?php
-
 namespace DaVinci\Modelos;
-
 use DaVinci\Database\Conexion;
 use DaVinci\Modelos\Modelo;
 use PDO;
 
-class AddProduct extends Modelo
+class AgregarProducto extends Modelo
 {
     protected int $agregar_producto_id;
     protected int $carrito_fk;
@@ -14,12 +12,9 @@ class AddProduct extends Modelo
     protected string $titulo;
     protected int $cantidad;
     protected float $subtotal;
-
-    protected string $table = 'agregar_producto';
+    protected string $tabla = 'agregar_producto';
     protected string $primaryKey = "agregar_producto_id";
-
     protected array $properties = ['agregar_producto_id', 'carrito_fk', 'productos_fk', 'titulo', 'cantidad', 'subtotal'];
-
 
     public function data(): array
     {
@@ -34,7 +29,7 @@ class AddProduct extends Modelo
         return $stmt->fetchAll();
     }
 
-    public function addList(array $data): void
+    public function agregarListado(array $data): void
     {
         $db = Conexion::getConexion();
         $db->beginTransaction();
@@ -49,7 +44,6 @@ class AddProduct extends Modelo
                 'cantidad' => $data['cantidad'],
                 'subtotal' => $data['subtotal'],
             ]);
-
             $db->commit();
         } catch (Exception $e) {
             $db->rollBack();
@@ -57,16 +51,15 @@ class AddProduct extends Modelo
         }
     }
 
-    public function addProduct(int $id, array $data): void
+    public function AgregarProducto(int $id, array $data): void
     {
         $db = Conexion::getConexion();
         $db->beginTransaction();
-
         try{
             $query = "UPDATE agregar_producto
-                            SET cantidad = :cantidad,
-                            subtotal = :subtotal
-                            WHERE agregar_producto_id = :agregar_producto_id";
+                         SET cantidad = :cantidad,
+                        subtotal = :subtotal
+                        WHERE agregar_producto_id = :agregar_producto_id";
 
             $stmt = $db->prepare($query);
             $stmt->execute([
@@ -74,7 +67,6 @@ class AddProduct extends Modelo
                 'cantidad' => $data['cantidad'],
                 'subtotal' => $data['subtotal'],
             ]);
-
             $db->commit();
         } catch (Exception $e) {
             $db->rollBack();
@@ -82,25 +74,25 @@ class AddProduct extends Modelo
         }
     }
 
-    public function delete(): void
+    public function eliminar(): void
     {
         $db = Conexion::getConexion();
         $db->beginTransaction();
-
         try{
             $query = "DELETE FROM agregar_producto
             WHERE agregar_producto_id = ?";
             $stmt = $db->prepare($query);
-            $stmt->execute([$this->getAddProductID()]);
-
+            $stmt->execute([$this->getAgregarProductoID()]);
             $db->commit();
-        } catch (Exception $e) {
+        } 
+        catch (Exception $e) 
+        {
             $db->rollBack();
             throw $e;
         }
     }
 
-    public function removeAddProduct($id): void
+    public function eliminarAgregarProducto($id): void
     {
         $db = Conexion::getConexion();
         $query = "DELETE FROM agregar_producto
@@ -111,69 +103,62 @@ class AddProduct extends Modelo
         ]);
     }
 
-    public function productList($products, $authentication): string
+    public function catalogoProductos($productos, $authentication): string
     {
         $array = [];
-        foreach($products as $product){
-            if($product->getCartFk() == $authentication){
-                $productQuantity = $product->getQuantity() . "x " . $product->getTitle();
-                array_push($array, $productQuantity);
+        foreach($productos as $producto){
+            if($producto->getCarritoFk() == $authentication){
+                $productoCantidad = $producto->getCantidad() . "x " . $producto->getTitulo();
+                array_push($array, $productoCantidad);
             }
         }
         $stringArray = implode(' | ', $array);
-
         return  $stringArray;
     }
 
-    public function getAddProductID()
+    public function getAgregarProductoID()
     {
         return $this->agregar_producto_id;
     }
 
-    public function setAddProductID($agregar_producto_id)
+    public function setAgregarProductoID($agregar_producto_id)
     {
         $this->agregar_producto_id = $agregar_producto_id;
-
         return $this;
     }
 
-    public function getCartFk()
+    public function getCarritoFk()
     {
         return $this->carrito_fk;
     }
 
-    public function setCartFk($carrito_fk)
+    public function setCarritoFk($carrito_fk)
     {
         $this->carrito_fk = $carrito_fk;
-
         return $this;
     }
 
-    public function getProductsFk()
+    public function getProductosFk()
     {
         return $this->productos_fk;
     }
 
-    public function setProductsFk($productos_fk)
+    public function setProductosFk($productos_fk)
     {
         $this->productos_fk = $productos_fk;
-
         return $this;
     }
 
-    public function getQuantity()
+    public function getCantidad()
     {
         return $this->cantidad;
     }
 
-    public function setQuantity($cantidad)
+    public function setCantidad($cantidad)
     {
         $this->cantidad = $cantidad;
-
         return $this;
     }
-
-
 
     public function getSubtotal()
     {
@@ -183,15 +168,11 @@ class AddProduct extends Modelo
     public function setSubtotal($subtotal)
     {
         $this->subtotal = $subtotal;
-
         return $this;
     }
 
-    public function getTitle()
+    public function getTitulo()
     {
         return $this->titulo;
     }
-
-
-
 }

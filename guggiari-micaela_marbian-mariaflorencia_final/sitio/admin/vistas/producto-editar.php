@@ -1,5 +1,4 @@
 <?php
-
 use DaVinci\Modelos\Producto;
 use DaVinci\Modelos\ProductoEstado;
 use DaVinci\Modelos\Etiqueta;
@@ -11,16 +10,15 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
 
 $estados = (new ProductoEstado())->todo();
 $etiquetas = (new Etiqueta())->todo();
-
 $productos = (new Producto())->traerPorId($_GET['id']);
 $productos->cargarEtiquetas();
-
 ?>
+
 <section>
     <h1 class="mb-1">Editar Producto</h1>
     <p class="mb-1">Editá los datos del formulario con el Producto. Cuando estés conforme dale a "Actualizar".</p>
     <form action="acciones/producto-editar.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<?= $productos->getListadoId(); ?>">
+        <input type="hidden" name="id" value="<?= $productos->getCatalogoId(); ?>">
         <div class="form-fila">
             <label for="titulo">Título</label>
             <input type="text" id="titulo" name="titulo" class="form-control"
@@ -69,7 +67,7 @@ $productos->cargarEtiquetas();
             ?>
             <div class="form-fila">
                 <p>Imagen actual</p>
-                <img src="<?= '../imgs/' . e($productos->getImagen());?>" alt="">
+                <img src="<?= '../imgs/productos/' . e($productos->getImagen());?>" alt="">
             </div>
         <?php
         endif;

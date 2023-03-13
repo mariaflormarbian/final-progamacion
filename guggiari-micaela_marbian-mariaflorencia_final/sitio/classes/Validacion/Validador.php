@@ -1,24 +1,14 @@
 <?php
-
 namespace DaVinci\Validacion;
-
 use Exception;
 
 class Validador
 {
-
     private array $data = [];
 
     /**
-     * @var array Array asociativo con las reglas de validación. Las claves deben coincidir con las claves
-     *              de la $data que tiene que validar, y los valores deben ser un array con la lista de
-     *              reglas a aplicar.
-     *            Ej: [
-     *               'titulo' => ['required', 'min:4'],
-     *               'precio' => ['required', 'numeric'],
-     *               'email' => ['required', 'email'],
-     *               'descripcion' => ['required'],
-     *             ]
+     * Array asociativo con las reglas de validación. Las claves deben coincidir con las claves de la $data que tiene que validar, 
+     * y los valores deben ser un array con la lista de reglas a aplicar.
      */
     private array $reglas = [];
 
@@ -40,7 +30,6 @@ class Validador
      */
     private function validar()
     {
-
         foreach($this->reglas as $clave => $listaReglas) {
 
             foreach($listaReglas as $regla) {
@@ -61,17 +50,11 @@ class Validador
     {
 
         if(strpos($regla, ":") !== false) {
-
             $reglaPartes = explode(":", $regla);
-
             $metodo = $this->obtenerNombreMetodo($reglaPartes[0]);
-
             $this->{$metodo}($clave, $reglaPartes[1]);
         } else {
-
             $metodo = $this->obtenerNombreMetodo($regla);
-
-
             $this->{$metodo}($clave);
         }
     }
@@ -86,7 +69,6 @@ class Validador
     private function obtenerNombreMetodo(string $regla): string
     {
         $metodo = "_" . $regla;
-
         if(!method_exists($this, $metodo)) {
             throw new ReglaNoExistenteException($regla, "No existe la regla de validación '" . $regla . "'.");
         }
@@ -116,14 +98,13 @@ class Validador
      * @param string $mensaje
      * @return void
      */
-    private function addError(string $clave, string $mensaje)
+    private function agregarError(string $clave, string $mensaje)
     {
         if(!isset($this->errores[$clave])) {
             $this->errores[$clave] = [];
         }
         $this->errores[$clave][] = $mensaje;
     }
-
 
     /**
      * Valida que el campo no esté vacío.
@@ -135,7 +116,7 @@ class Validador
     {
         $dato = $this->data[$clave] ?? null;
         if(empty($dato)) {
-            $this->addError($clave, 'El campo ' . $clave . ' no puede quedar vacío.');
+            $this->agregarError($clave, 'El campo ' . $clave . ' no puede quedar vacío.');
         }
     }
 
@@ -149,7 +130,7 @@ class Validador
     {
         $dato = $this->data[$clave] ?? null;
         if(!is_numeric($dato)) {
-            $this->addError($clave, 'El campo ' . $clave . ' debe ser un valor numérico.');
+            $this->agregarError($clave, 'El campo ' . $clave . ' debe ser un valor numérico.');
         }
     }
 
@@ -163,7 +144,7 @@ class Validador
     {
         $dato = $this->data[$clave] ?? null;
         if(!filter_var($dato, FILTER_VALIDATE_EMAIL)) {
-            $this->addError($clave, 'El campo ' . $clave . ' debe tener formato de email.');
+            $this->agregarError($clave, 'El campo ' . $clave . ' debe tener formato de email.');
         }
     }
 
@@ -178,7 +159,7 @@ class Validador
     {
         $dato = $this->data[$clave] ?? null;
         if(strlen($dato) < $longitud) {
-            $this->addError($clave, 'El campo ' . $clave . ' debe tener al menos ' . $longitud . ' caracteres.');
+            $this->agregarError($clave, 'El campo ' . $clave . ' debe tener al menos ' . $longitud . ' caracteres.');
         }
     }
 
@@ -194,7 +175,7 @@ class Validador
         $dato1 = $this->data[$clave];
         $dato2 = $this->data[$claveCheck];
         if($dato1 != $dato2) {
-            $this->addError('password_confirmar', 'El password no coincide con su confirmación.');
+            $this->agregarError('password_confirmar', 'El password no coincide con su confirmación.');
         }
     }
 }

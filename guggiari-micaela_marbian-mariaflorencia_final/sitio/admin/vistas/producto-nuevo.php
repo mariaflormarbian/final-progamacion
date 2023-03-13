@@ -1,17 +1,15 @@
 <?php
 use DaVinci\Session\Session;
-
 use DaVinci\Modelos\ProductoEstado;
 use DaVinci\Modelos\Etiqueta;
 
 $estados = (new ProductoEstado)->todo();
 $etiquetas = (new Etiqueta)->todo();
-
 $errores = $_SESSION['errores'] ?? [];
 $dataForm = $_SESSION['data_form'] ?? [];
-
 unset($_SESSION['errores'], $_SESSION['data_form']);
 ?>
+
 <section class="container-nuevo">
     <h1 class="mb-1">Publicar una Nuevo producto</h1>
 
@@ -20,7 +18,6 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
     <form action="acciones/producto-publicar.php" method="post" enctype="multipart/form-data">
         <div class="form-fila">
             <label for="titulo">Título</label>
-
             <input type="text" id="titulo" name="titulo" class="form-control"
                 value="<?= e($dataForm['titulo'] ?? null); ?>"
                 aria-describedby="<?= isset($errores['titulo']) ? 'error-titulo' : '' ?> help-titulo">
@@ -28,22 +25,23 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
             <?php
             if (isset($errores['titulo'])):
                 ?>
-            <div class="msg-error" id="error-titulo"><span class="visually-hidden">Error:
-                </span><?= $errores['titulo']; ?></div>
+                <div class="msg-error" id="error-titulo">
+                    <p class="visually-hidden">Error:</p><?= $errores['titulo']; ?>
+                </div>
             <?php
             endif;
             ?>
         </div>
-
         <div class="form-fila">
             <label for="texto">Texto completo</label>
             <textarea id="texto" name="texto" class="form-control" <?php if (isset($errores['texto'])): ?>
                 aria-describedby="error-texto" <?php endif; ?>><?= e($dataForm['texto'] ?? null); ?></textarea>
             <?php
             if (isset($errores['texto'])):
-                ?>
-            <div class="msg-error" id="error-texto"><span class="visually-hidden">Error:
-                </span><?= $errores['texto']; ?></div>
+            ?>
+                <div class="msg-error" id="error-texto">
+                    <p class="visually-hidden">Error:</p><?= $errores['texto']; ?>
+                </div>
             <?php
             endif;
             ?>
@@ -54,34 +52,25 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
                 aria-describedby="error-precio" <?php endif; ?>><?= e($dataForm['precio'] ?? null); ?>
             <?php
             if (isset($errores['precio'])):
-                ?>
-            <div class="msg-error" id="error-precio"><span class="visually-hidden">Error:
-                </span><?= $errores['precio']; ?></div>
+            ?>
+                <div class="msg-error" id="error-precio">
+                    <p class="visually-hidden">Error:</p><?= $errores['precio']; ?>
+                </div>
             <?php
             endif;
             ?>
         </div>
         <div class="form-fila">
-            <label for="imagen">Imagen <span class="text-small">(<span class="visually-hidden">campo
-                    </span>opcional)</span></label>
-            <input type="file" id="imagen" name="imagen" class="form-control"><?= e($dataForm['imagen'] ?? null); ?>
+            <label for="imagen">Imagen <span class="text-small">(<span class="visually-hidden">campo</span>opcional)</span></label>
+            <input type="file" id="imagen" name="imagen" class="form-control">
         </div>
         <div class="form-fila">
-            <label for="imagen_descripcion">Descripción de la Imagen <span class="text-small">(<span
-                        class="visually-hidden">campo </span>opcional)</span></label>
-            <input type="text" id="imagen_descripcion" name="imagen_descripcion" class="form-control"
-                value="<?= e($dataForm['imagen_descripcion'] ?? null); ?>">
+            <label for="imagen_descripcion">Descripción de la Imagen <span class="text-small">(<span class="visually-hidden">campo </span>opcional)</span></label>
+            <input type="text" id="imagen_descripcion" name="imagen_descripcion" class="form-control" value="<?= e($dataForm['imagen_descripcion'] ?? null); ?>">
         </div>
         <div class="form-fila">
             <label for="video">Enlace de Video Youtube, EMBED (opcional)</label>
-            <input type="text" id="video" name="video" class="form-control"
-                placeholder=" Ejemplo luego del <iframe> aparece Youtube/ (copiar desde embed y pegar)"
-                value="<?= e($dataForm['video'] ?? null); ?>">
-        </div>
-        <div class="form-fila">
-            <label for="audio">Audio <span class="text-small">(<span class="visually-hidden">campo
-                    </span>opcional)</span></label>
-            <input type="file" id="audio" name="audio" class="form-control"><?= e($dataForm['audio'] ?? null); ?>
+            <input type="text" id="video" name="video" class="form-control" placeholder=" Ejemplo luego del <iframe> aparece Youtube/ (copiar desde embed y pegar)" value="<?= e($dataForm['video'] ?? null); ?>">
         </div>
         <div class="form-fila">
             <label for="stock">Stock</label>
@@ -93,11 +82,11 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
                 <?php
                 foreach ($estados as $estado):
                 ?>
-                <option value="<?= $estado->getProductosEstadosId();?>" <?= $estado->getProductosEstadosId() == ($dataForm['productos_estados_fk'] ?? null) ?
-                    'selected' :
-                    '';?>>
-                    <?=$estado->getNombre();?>
-                </option>
+                    <option value="<?= $estado->getProductosEstadosId();?>" <?= $estado->getProductosEstadosId() == ($dataForm['productos_estados_fk'] ?? null) ?
+                        'selected' :
+                        '';?>>
+                        <?=$estado->getNombre();?>
+                    </option>
                 <?php
                 endforeach;
                 ?>
@@ -106,24 +95,21 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
         <div>
             <fieldset>
                 <legend>Etiquetas</legend>
-
                 <div class="form-checkbox-list">
-
                     <?php
                     foreach($etiquetas as $etiqueta):
                         ?>
-                    <label>
-                        <input type="checkbox" name="etiquetas_id[]" value="<?= $etiqueta->getEtiquetasId();?>" <?= in_array($etiqueta->getEtiquetasId(), $dataForm['etiquetas_id'] ?? [])
-                                ? 'checked'
-                                : ''; ?>>
-                        <?= $etiqueta->getNombre();?>
-                    </label>
+                        <label>
+                            <input type="checkbox" name="etiquetas_id[]" value="<?= $etiqueta->getEtiquetasId();?>" <?= in_array($etiqueta->getEtiquetasId(), $dataForm['etiquetas_id'] ?? [])
+                                    ? 'checked'
+                                    : ''; ?>>
+                            <?= $etiqueta->getNombre();?>
+                        </label>
                     <?php
                     endforeach;
                     ?>
                 </div>
             </fieldset>
-
         </div>
         <div class="form-fila">
             <button type="submit" class="button btn btn-primary my-3">Publicar</button>

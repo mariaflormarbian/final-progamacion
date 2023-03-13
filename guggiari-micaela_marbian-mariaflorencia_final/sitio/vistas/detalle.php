@@ -7,7 +7,7 @@ $producto->cargarEtiquetas();
 <section class="seccion-detalle">
     <h1 class="text-center  fw-bold p-3  my-5">Detalles</h1>
 
-    <form action="acciones/add-to-cart.php" method="POST" class="w-100">
+    <form action="acciones/agregar-carrito.php" method="POST" class="w-100">
         <div class="row align-items-lg-center container-detalle">
             <div class="col-lg-6">
                 <figure>
@@ -47,13 +47,13 @@ $producto->cargarEtiquetas();
 
                             <option value="<?= $i ?>"><?= $i ?>
                                 <?php if ($i <= 1) $option = 'Unidad';
-                                else $option = 'Unidades';
-                                echo $option ?></option>
+                                else $option = 'Unidades';?>
+                            </option>
                         <?php endfor; ?>
                     </select>
                 </div>
                 
-                <input type="hidden" name="productos_id" value="<?= $producto->getListadoId(); ?>">
+                <input type="hidden" name="productos_id" value="<?= $producto->getCatalogoId(); ?>">
                 <input type="hidden" name="productos_titulo" value="<?= $producto->getTitulo(); ?>">
                 <input type="hidden" name="productos_precio" value="<?= $producto->getPrecio(); ?>">
                 <button type="submit" class="btn btn-primary  text-center p-6  text-uppercase  mb-2">Añadir al carrito</button>
@@ -74,7 +74,7 @@ $producto->cargarEtiquetas();
                 </p>
                 <figure>
                     <picture>
-                        <img class="img-fluid" src="imgs/tabla_talles.png" alt="Tabla de talles producto">
+                        <img class="img-fluid" src="imgs/otros/tabla_talles.png" alt="Tabla de talles producto">
                     </picture>
                 </figure>
             </div>

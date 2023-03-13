@@ -5,11 +5,10 @@ use DaVinci\Modelos\Compra;
 $autenticacion = new Autenticacion();
 $usuario = $autenticacion->getUsuario();
 $id = (new Autenticacion())->getId();
-$orders = (new Compra)->getByUser($id);
-
+$orders = (new Compra)->getByUsuario($id);
 $admin = (new Autenticacion)->esAdmin();
-
 ?>
+
 <section>
     <h1 class="text-center fw-bold mt-5 mb-md-4 p-3">Mi perfil</h1>
     <div class="row justify-content-center p-3">
@@ -41,21 +40,20 @@ $admin = (new Autenticacion)->esAdmin();
                 <div class="flex-grow-1 ps-4">
                     <div class="d-flex justify-content-between mb-4">
                         <h2 class="mb-0 text-title fs-5">Compra <?= $i + 1 ?></h2>
-                        <p class="m-0 mini-text"><?= $order->getDate(); ?></p>
+                        <p class="m-0 mini-text"><?= $order->getFecha(); ?></p>
                     </div>
                     <ul class="p-0 m-0 list-unstyled mb-4">
-                        <?php foreach($order->getProducts() as $item): ?>
+                        <?php foreach($order->getProductos() as $item): ?>
                             <li class="mb-2"><?= $item ?></li>
                         <?php endforeach; ?>
                     </ul>
                     <div class="d-flex justify-content-between">
-                        <p class="m-0">Cantidad total de productos: <span class="fw-bold"> x<?= $order->getQuantity(); ?></span></p>
+                        <p class="m-0">Cantidad total de productos: <span class="fw-bold"> x<?= $order->getCantidad(); ?></span></p>
                         <p class="m-0">Total: <span class="fw-bold"> $<?= $order->getTotal(); ?></span></p>
                     </div>
                 </div>
             </article>
         <?php endforeach; ?>
-   
     <?php
     endif;
     ?>

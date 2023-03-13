@@ -180,7 +180,7 @@ CREATE TABLE `productos_estados` (
 --
 
 INSERT INTO `productos_estados` (`productos_estados_id`, `nombre`) VALUES
-(1, 'Draft'),
+(1, 'Borrador'),
 (2, 'Publicada'),
 (3, 'Deshabilitada');
 

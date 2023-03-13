@@ -25,13 +25,15 @@ try {
     $productos->eliminar();
     
     if (!empty($productos->getImagen()) && file_exists(__DIR__ . '/../../imgs/' . $productos->getImagen())) {
-        unlink(__DIR__ . '/../../imgs/' . $productos->getImagen());
+        unlink(__DIR__ . '/../../imgs/productos/' . $productos->getImagen());
     }
 
     $_SESSION['mensaje_exito'] = "El producto  <b>" . $productos->getTitulo() . "</b> fue eliminado con éxito.";
     header("Location: ../index.php?v=productos");
     exit;
-} catch (\Exception $e) {
+} 
+catch (\Exception $e) 
+{
     $_SESSION['mensaje_error'] = "Ocurrió un problema inesperado al tratar de eliminar el producto. Por favor, probá de nuevo más tarde.";
     header("Location: ../index.php?v=productos");
     exit;

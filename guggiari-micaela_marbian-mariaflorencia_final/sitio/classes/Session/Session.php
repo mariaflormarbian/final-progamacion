@@ -1,7 +1,5 @@
 <?php
-
 namespace DaVinci\Session;
-
 
 class Session
 {

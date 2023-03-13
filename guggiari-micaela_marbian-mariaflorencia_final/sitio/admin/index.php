@@ -4,7 +4,7 @@ use DaVinci\Session\Session;
 require_once __DIR__ . '/../bootstrap/init.php';
 
 $rutas = [
-    'home' => [
+    'inicio' => [
         'titulo' => 'Página Principal',
     ],
     'login' => [
@@ -83,12 +83,12 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
-        <link rel="shortcut icon" href="imgs/logo.png" type="image/x-icon">
+        <link rel="shortcut icon" href="imgs/otros/logo.png" type="image/x-icon">
     </head>
     <body>
         <header class="navbar navbar-expand-md bd-navbar">
             <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="navegacion principal">
-                <a href="index.php?v=home" id="logo" class="navbar-brand p-0 me-2" aria-label="Simpsoneras">
+                <a href="index.php?v=inicio" id="logo" class="navbar-brand p-0 me-2" aria-label="Simpsoneras">
                     Simpsoneras :: <?= $rutaTitulo['titulo'];?>
                 </a>
                 <?php
@@ -102,7 +102,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                     <div class="navbar-collapse collapse justify-content-md-end" id="bdNavbar">
                         <ul class="navbar-nav flex-md-row flex-wrap bd-navbar-nav pt-2 py-md-0">
                             <li class="nav-item col-6 col-md-auto">
-                                <a class="nav-link p-2" href="../index.php?v=home">Volver</a>
+                                <a class="nav-link p-2" href="../index.php?v=inicio">Volver</a>
                             </li>
                             <li class="nav-item col-6 col-md-auto">
                                 <a class="nav-link p-2" href="index.php?v=productos">Productos</a>

@@ -1,7 +1,6 @@
 <?php
 use DaVinci\Auth\Autenticacion;
-use DaVinci\Modelos\AddProduct;
-
+use DaVinci\Modelos\AgregarProducto;
 require_once __DIR__ . '/../bootstrap/init.php';
 
 $auth = new Autenticacion;
@@ -19,21 +18,23 @@ if(!$auth->estaAutenticado()){
 }
 
 $id = $_POST["productos_id"];
+$productoAgregado = (new AgregarProducto)->traerPorId($id);
 
-$addedProduct = (new AddProduct)->traerPorId($id);
-
-if(!$addedProduct){
+if(!$productoAgregado){
     $_SESSION["mensaje_error"] = "El producto que estás intentando eliminar no existe";
     header("Location: ../index.php?v=carrito");
     exit;
 }
 
-try{
-    $addedProduct->delete();
+try
+{
+    $productoAgregado->eliminar();
     $_SESSION["mensaje_exito"] = "Producto eliminado correctamente";
     header("Location: ../index.php?v=carrito");
     exit;
-} catch (Exception $e){
+} 
+catch (Exception $e)
+{
     $_SESSION["mensaje_error"] = "Se produjo un error al intentar eliminar el producto";
     $_SESSION["mensaje_error"] = $e;
     header("Location: ../index.php?v=carrito");

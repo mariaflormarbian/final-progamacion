@@ -5,10 +5,10 @@ require_once __DIR__ . '/bootstrap/init.php';
 require_once __DIR__ . '/bibliotecas/helpers.php';
 
 $rutas = [
-    'home' => [
+    'inicio' => [
     'titulo' => 'Página Principal',
     ],
-    'listado' => [
+    'catalogo' => [
     'titulo' => 'Productos',
     ],
     'detalle' => [
@@ -35,7 +35,7 @@ $rutas = [
     ],
 ];
 
-$vistas = $_GET['v'] ?? 'home';
+$vistas = $_GET['v'] ?? 'inicio';
 
 if(!isset($rutas[$vistas])) {
     $vistas = '404';
@@ -66,7 +66,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simpsoneras : <?= $rutaTitulo['titulo'];?></title>
-    <link rel="icon" href="imgs/logo.png" type="image/x-icon">
+    <link rel="icon" href="imgs/otros/logo.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/estilos.css">
@@ -74,12 +74,11 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="imgs/logo.png" type="image/x-icon">
 </head>
 <body>
     <header class="navbar navbar-expand-md bd-navbar">
         <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="navegacion principal">
-            <a href="index.php?v=home" id="logo" class="navbar-brand p-0 me-2" aria-label="Simpsoneras">
+            <a href="index.php?v=inicio" id="logo" class="navbar-brand p-0 me-2" aria-label="Simpsoneras">
                 Simpsoneras :: <?= $rutaTitulo['titulo'];?>
             </a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,8 +88,8 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
             </button>
             <div class="navbar-collapse collapse justify-content-md-end" id="bdNavbar">
                 <ul class="navbar-nav flex-md-row flex-wrap bd-navbar-nav pt-2 py-md-0">
-                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=home">Home</a></li>
-                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=listado">Productos</a></li>
+                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=inicio">Inicio</a></li>
+                    <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=catalogo">Productos</a></li>
                     <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=contacto">Contacto</a>
                     </li>
                     <?php
@@ -149,7 +148,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <footer class="container-fluid">
         <div class=" pt-6">
             <div class="d-flex pt-6 justify-content-center justify-content-md-evenly">
-                <div  class="mx-6"><img width="100" src="imgs/logo.png" alt="simpsoneras indumentaria logo" title="exoma remeras logo"></div>
+                <div  class="mx-6"><img width="100" src="imgs/otros/logo.png" alt="simpsoneras indumentaria logo" title="exoma remeras logo"></div>
                 <div class="px-6 ">
                     <h3>Encontrános</h3>
                     <ul  class="px-0">
@@ -195,8 +194,8 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                 </div>
             </div>
             <ul class="d-flex justify-content-center flex-column flex-md-row">
-                <li class="p-3 text-center"><a class="btn btn-dark border-0" href="index.php?v=listado">Sobre Nosotros</a></li>
-                <li class="p-3 text-center"><a class="btn btn-dark border-0"  href="index.php?v=listado">Showroom</a></li>
+                <li class="p-3 text-center"><a class="btn btn-dark border-0" href="index.php?v=catalogo">Sobre Nosotros</a></li>
+                <li class="p-3 text-center"><a class="btn btn-dark border-0"  href="index.php?v=catalogo">Showroom</a></li>
                 <li class="p-3 text-center"><a class="btn btn-dark border-0"  href="index.php?v=contacto">Contactenos</a></li>
             </ul>
             <div>

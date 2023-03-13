@@ -1,7 +1,7 @@
 /* default */
 body {
         font-family: "Acme", sans-serif;
-        background-image: url(../imgs/fondo.png);
+        background-image: url(../imgs/otros/fondo.png);
         background-size: cover;
         background-repeat: no-repeat;
 }
@@ -117,7 +117,7 @@ li {
 .contenedor-carrito {
     min-height: 56vh;
 }
-/* listado */
+/* catalogo */
 .card {
     padding-top: 20px;
     border: none;
@@ -131,6 +131,10 @@ li {
 }
 .productos {
     margin-top: 5%;
+}
+.img-catalogo{
+    width: 416;
+    height: 373;
 }
 .producto {
     box-shadow: 0px 1px 2px 1px rgb(0 0 0 / 20%);
@@ -212,7 +216,7 @@ aside h3 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .fondo-home {
-    background-image: url(../imgs/banner.png);
+    background-image: url(../imgs/otros/banner.png);
     background-repeat: no-repeat;
     background-position-x: center;
     background-size: 289px;
@@ -316,7 +320,7 @@ footer div {
         text-align: start;
     }
     .container-detalle,
-    .listado ul{
+    .catalogo ul{
         margin-top: 10%;
     }
     .mi-perfil{

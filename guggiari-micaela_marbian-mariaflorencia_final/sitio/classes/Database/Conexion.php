@@ -1,7 +1,5 @@
 <?php
-
 namespace DaVinci\Database;
-
 use PDO;
 use Exception;
 
@@ -13,7 +11,6 @@ class  Conexion
     public const DB_PASS = '';
     public const DB_BASE = 'dw3_guggiari_marbian';
     public const DB_DSN = 'mysql:host=' . self::DB_HOST . ';dbname=' . self::DB_BASE . ';charset=utf8mb4';
-
     protected static ?PDO $db = null;
 
     private static function conectar()

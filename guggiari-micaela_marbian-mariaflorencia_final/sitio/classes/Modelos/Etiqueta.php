@@ -1,5 +1,4 @@
 <?php
-
 namespace DaVinci\Modelos;
 use DaVinci\Database\Conexion;
 use PDO;
