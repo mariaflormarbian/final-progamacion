@@ -80,7 +80,7 @@ $producto->cargarEtiquetas();
             </div>
             <aside class="col-lg-6 ">
                 <h3 class="my-3 text-center">Revivì tu <strong>remera</strong></h3>
-                <iframe width="560" height="315" src="https://www.youtube.com/<?= $producto->getVideo();?>"
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $producto->getVideo();?>"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>

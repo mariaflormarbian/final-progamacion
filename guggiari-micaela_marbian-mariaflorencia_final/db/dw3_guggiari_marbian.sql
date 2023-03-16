@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-03-2023 a las 21:44:26
+-- Tiempo de generación: 16-03-2023 a las 03:17:37
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -33,15 +33,17 @@ CREATE TABLE `agregar_producto` (
   `carrito_fk` int(10) UNSIGNED NOT NULL,
   `titulo` varchar(60) DEFAULT NULL,
   `cantidad` tinyint(4) DEFAULT NULL,
-  `subtotal` decimal(6,2) DEFAULT NULL
+  `subtotal` decimal(6,2) DEFAULT NULL,
+  `precio` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `agregar_producto`
 --
 
-INSERT INTO `agregar_producto` (`agregar_producto_id`, `productos_fk`, `carrito_fk`, `titulo`, `cantidad`, `subtotal`) VALUES
-(33, 1, 3, 'Abejas', 1, '1500.00');
+INSERT INTO `agregar_producto` (`agregar_producto_id`, `productos_fk`, `carrito_fk`, `titulo`, `cantidad`, `subtotal`, `precio`) VALUES
+(38, 2, 3, 'El resplandor', 2, '3200.00', 1100),
+(39, 3, 3, 'El coco', 1, '1450.00', 1450);
 
 -- --------------------------------------------------------
 
@@ -147,22 +149,23 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`productos_id`, `usuarios_fk`, `productos_estados_fk`, `titulo`, `precio`, `imagen`, `imagen_descripcion`, `audio`, `video`, `texto`, `stock`) VALUES
-(1, 3, 2, 'Abejas', 1500, 'abejas.jpg', 'Lisa y las abejas', 'lisa_abejas.mp3', 'embed/wVqRjxSuUXI', 'Estampado de la escena de lisa con las abejas y la goma de mascar. Calidad viscosa. El calce es suelto, con ruedo asimétrico. Está confeccionada en algodón. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 2),
-(2, 3, 2, 'El resplandor', 1600, 'aun-hay-mas.jpg', 'El resplandor', 'aun_hay_mas.mp3', 'embed/gDeW9vxmzDA', 'Remera básica en color blanco. Estampado de la escena del resplandor,  El calce es suelto, con ruedo asimétrico. Está confeccionada en viscosa y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 4),
-(3, 3, 2, 'El coco', 1450, 'coco.jpg', 'El coco está en la casa', 'el_coco.mp3', 'embed/-u62ttx-AJ4', 'Estampado de la escena del coco, calidad algodón y lycra. Disponible en color blanco y negro. El calce es suelto, con ruedo asimétrico. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 1),
-(4, 3, 2, 'Cumbancha', 1500, 'cumbancha.jpg', 'Suba a la cumbancha', 'la_cumbancha.mp3', 'embed/1uN21mjo0IA', 'Estampado de la escena de la cumbancha, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. De las más elegidas. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 6),
-(5, 3, 2, 'Francia', 1400, 'eleagncia.jpg', 'Que elegancia la de francia', 'que_elegancia.mp3', 'embed/QiK273PjpV8', 'Remera blanca y también disponible en color hueso. Estampado de la escena de homero en el casino, calidad algodón y lycra. El calce es suelto, con ruedo asimétrico. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 8),
-(6, 3, 2, 'Nave espacial', 1680, 'espacio.jpg', 'Homero en el espacio', 'nave_espacial.mp3', 'embed/p9VcwN5hsno', 'Remera blanca con estampado de la escena de homero en el espacio. Disponible en color blanco y negro. El calce es suelto, con ruedo asimétrico. Está confeccionada en visco y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 2),
-(7, 3, 2, 'El heredero', 1800, 'joroba.jpg', 'Bart el heredero con joroba', 'joroba.mp3', 'embed/p6CDTqvQFRE', 'Remera blanca con estampado de la escena de bart único heredero de burns, calidad algodón y lycra. Disponible en color blanco y negro. El calce es suelto, con ruedo asimétrico. Calidad super suave y cómoda. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 5),
-(8, 3, 2, 'Un loquito', 1380, 'loquito.jpg', 'Mira bart, esto es un loquito', 'loquito.mp3', 'embed/gF2ACavWTAI', 'Remera básica en color blanco. Estampado de la escena del capiítulo del lider,  El calce es suelto, con ruedo asimétrico. Está confeccionada en visco y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 6),
-(9, 3, 2, 'Maquina invisible', 1540, 'maquina.jpg', 'Maquina de escribir invisible', 'maquina_invisible.mp3', 'embed/DiwON2lHR3c', 'Estampado de la escena de la cumbancha, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Está confeccionada con la mejor calidad del mercado. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 2),
-(10, 3, 2, 'Matrimonio', 1710, 'matrimonio.jpg', 'El matrimonio es igual a una naranja', 'matrimonio_naranja.mp3', 'embed/SMQXM98QneE', 'Estampado de la escena del matrimonio, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Está confeccionada con la mejor calidad del mercado. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 3),
-(11, 3, 2, 'El padrino', 1670, 'padrino.jpg', 'Homero es el padrino', 'homero_padrino.mp3', 'embed/rSvr4akywTQ', 'Estampado de la escena de homero siendo el padrino, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Super cómoda y canchera. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 1),
-(12, 3, 2, 'Burns radiactivo', 1384, 'paz.jpg', 'Les traigo paz', 'les_traigo_paz.mp3', 'embed/JAR1Reihlew', 'Estampado de la escena del señor Burns radioactivo, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Las costuras son espectaculares. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 8),
-(13, 3, 2, 'Stacy', 1625, 'stacy.jpg', 'Soy solo una chica', 'stacy.mp3', 'embed/iHLQiq-XeUQ', 'Remera básica en color blanco. Estampado de la escena de Stacy malibu,  El calce es suelto, con ruedo asimétrico. Está confeccionada en visco y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 2),
-(14, 3, 2, 'Peces del infierno', 1890, 'tanque.jpg', 'Los peces del infierno', 'waterloo_abba.mp3', 'embed/sKO1RUb0Zqs', 'Remera básica en color blanco. Estampado de la escena del señor Burns en el tanque,  El calce es suelto, con ruedo asimétrico. Está confeccionada en viscosa y lycra. Tiene escote redondo y mangas cortas Si estas al limite del talle, te recomendamos ir por el talle siguiente! Este top al tener pecho alto ajusta más.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 3),
-(33, 3, 2, 'Etiqueta probandosadfsf', 34, '20230209185800_326424838_986274602335316_1341095504185387129_n.jpg', 'Carita', '', '', 'probando', 2),
-(36, 3, 2, 'Funcionaaa perraaaa', 234, '20230209192302_326424838_986274602335316_1341095504185387129_n.jpg', 'dsf', '', '', 'sdf', 2);
+(1, 3, 2, 'Abejas', 1500, 'abejas.jpg', 'Lisa y las abejas', 'lisa_abejas.mp3', 'wVqRjxSuUXI', 'Estampado de la escena de lisa con las abejas y la goma de mascar. Calidad viscosa. El calce es suelto, con ruedo asimétrico. Está confeccionada en algodón. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 2),
+(2, 3, 2, 'El resplandor', 1600, 'aun-hay-mas.jpg', 'El resplandor', 'aun_hay_mas.mp3', 'gDeW9vxmzDA', 'Remera básica en color blanco. Estampado de la escena del resplandor,  El calce es suelto, con ruedo asimétrico. Está confeccionada en viscosa y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 4),
+(3, 3, 2, 'El coco', 1450, 'coco.jpg', 'El coco está en la casa', 'el_coco.mp3', 'nZPN6o4GSoY', 'Estampado de la escena del coco, calidad algodón y lycra. Disponible en color blanco y negro. El calce es suelto, con ruedo asimétrico. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 1),
+(4, 3, 2, 'Cumbancha', 1500, 'cumbancha.jpg', 'Suba a la cumbancha', 'la_cumbancha.mp3', 'ELRTmo1Bg18', 'Estampado de la escena de la cumbancha, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. De las más elegidas. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 6),
+(5, 3, 2, 'Francia', 1400, 'eleagncia.jpg', 'Que elegancia la de francia', 'que_elegancia.mp3', 'hJGs4FNXBMA', 'Remera blanca y también disponible en color hueso. Estampado de la escena de homero en el casino, calidad algodón y lycra. El calce es suelto, con ruedo asimétrico. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 8),
+(6, 3, 2, 'Nave espacial', 1680, 'espacio.jpg', 'Homero en el espacio', 'nave_espacial.mp3', 'p9VcwN5hsno', 'Remera blanca con estampado de la escena de homero en el espacio. Disponible en color blanco y negro. El calce es suelto, con ruedo asimétrico. Está confeccionada en visco y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 2),
+(7, 3, 2, 'El heredero', 1800, 'joroba.jpg', 'Bart el heredero con joroba', 'joroba.mp3', 'Hzc40JegDS8', 'Remera blanca con estampado de la escena de bart único heredero de burns, calidad algodón y lycra. Disponible en color blanco y negro. El calce es suelto, con ruedo asimétrico. Calidad super suave y cómoda. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 5),
+(8, 3, 2, 'Un loquito', 1380, 'loquito.jpg', 'Mira bart, esto es un loquito', 'loquito.mp3', 'gF2ACavWTAI', 'Remera básica en color blanco. Estampado de la escena del capiítulo del lider,  El calce es suelto, con ruedo asimétrico. Está confeccionada en visco y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 6),
+(9, 3, 2, 'Maquina invisible', 1540, 'maquina.jpg', 'Maquina de escribir invisible', 'maquina_invisible.mp3', 'DiwON2lHR3c', 'Estampado de la escena de la cumbancha, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Está confeccionada con la mejor calidad del mercado. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 2),
+(10, 3, 2, 'Matrimonio', 1710, 'matrimonio.jpg', 'El matrimonio es igual a una naranja', 'matrimonio_naranja.mp3', 'SMQXM98QneE', 'Estampado de la escena del matrimonio, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Está confeccionada con la mejor calidad del mercado. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 3),
+(11, 3, 2, 'El padrino', 1670, 'padrino.jpg', 'Homero es el padrino', 'homero_padrino.mp3', 'rSvr4akywTQ', 'Estampado de la escena de homero siendo el padrino, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Super cómoda y canchera. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 1),
+(12, 3, 2, 'Burns radiactivo', 1384, 'paz.jpg', 'Les traigo paz', 'les_traigo_paz.mp3', 'JyaElUp4Bro', 'Estampado de la escena del señor Burns radioactivo, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Las costuras son espectaculares. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 8),
+(13, 3, 2, 'Stacy', 1625, 'stacy.jpg', 'Soy solo una chica', 'stacy.mp3', 'pjnHGcAvf7A', 'Remera básica en color blanco. Estampado de la escena de Stacy malibu,  El calce es suelto, con ruedo asimétrico. Está confeccionada en visco y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 2),
+(14, 3, 2, 'Peces del infierno', 1890, 'tanque.jpg', 'Los peces del infierno', 'waterloo_abba.mp3', 'sKO1RUb0Zqs', 'Remera básica en color blanco. Estampado de la escena del señor Burns en el tanque,  El calce es suelto, con ruedo asimétrico. Está confeccionada en viscosa y lycra. Tiene escote redondo y mangas cortas Si estas al limite del talle, te recomendamos ir por el talle siguiente! Este top al tener pecho alto ajusta más.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 3),
+(42, 3, 1, 'Peces del infiernofdsfds', 3, '20230315034730_IF-2021-35485965-GCABA-DGDCIV.pdf', 'sdf', '20230315034730_el_coco.mp3', 'sdf', 'adsasdasd', 3),
+(43, 3, 2, 'Un producto de prueba', 3, '20230315231842_Matrimonio-Mario-Marbian-y-Ana-Luis.PDF', 'asfdasdfasfdasfdasfd', '20230315231842_el_coco.mp3', 'embed', 'Proabdno', 2),
+(45, 3, 3, 'Editando', 3, 'logo.png', 'asdfasfdasfdasfdsafd', '20230316024213_el_coco.mp3', 'embed', 'asfd', 3);
 
 -- --------------------------------------------------------
 
@@ -228,8 +231,10 @@ INSERT INTO `productos_has_etiquetas` (`productos_fk`, `etiquetas_fk`) VALUES
 (12, 5),
 (13, 2),
 (14, 5),
-(33, 6),
-(36, 6);
+(42, 1),
+(43, 1),
+(45, 2),
+(45, 3);
 
 -- --------------------------------------------------------
 
@@ -395,7 +400,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `agregar_producto`
 --
 ALTER TABLE `agregar_producto`
-  MODIFY `agregar_producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `agregar_producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `carrito`
@@ -425,7 +430,7 @@ ALTER TABLE `etiquetas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `productos_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `productos_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_estados`
@@ -449,7 +454,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usuarios_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `usuarios_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Restricciones para tablas volcadas
