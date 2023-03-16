@@ -38,7 +38,11 @@ $productos = (new Producto())->todo();
                         <td><?= e($producto->getTexto()); ?></td>
                         <td> <?= e($producto->getPrecio()); ?></td>
                         <td><img src="<?= "../imgs/productos/" . e($producto->getImagen()); ?>" width="50" alt="<?= e($producto->getImagenDescripcion()); ?>"></td>
-                        <td><?= $producto->getVideo(); ?></td>
+                        <td> <iframe width="200" height="100" src="https://www.youtube.com/embed/<?= $producto->getVideo();?>"
+                                      frameborder="0"
+                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                     allowfullscreen>
+                            </iframe></td>
                         <td><?= $producto->getAudio(); ?></td>
                         <td><?= $producto->getStock(); ?></td>
                         <td><?= e($producto->getAutor()->getNombreCompleto());?></td>
