@@ -56,6 +56,8 @@ $mensajeExito = $_SESSION['mensaje_exito'] ?? null;
 $mensajeError = $_SESSION['mensaje_error'] ?? null;
 
 unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -74,6 +76,8 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
     <header class="navbar navbar-expand-md bd-navbar">
@@ -92,10 +96,16 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                     <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=catalogo">Productos</a></li>
                     <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=contacto">Contacto</a>
                     </li>
+                    <li>
+                        <form action="acciones/buscador.php" method="GET">
+                            <input type="text" name="busqueda">
+                            <input type="submit" name="enviar" value="Buscar">
+                        </form>
+                    </li>
                     <?php
                     if ($autenticacion->estaAutenticado()):
                     ?>
-                        <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=carrito">Carrito</a>
+                        <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=carrito"><i class="fa-solid fa-cart-shopping"></i></a>
                         </li>
                         <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=perfil">Mi Perfil</a>
                         </li>
@@ -110,7 +120,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                     <?php 
                     else:
                     ?>
-                        <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=iniciar-sesion">Iniciar Sesion</a></li>
+                        <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=iniciar-sesion"><i class="fa-solid fa-user"></i>Iniciar Sesion</a></li>
                         <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=registro">Registrarse</a></li>
                     <?php 
                     endif;
@@ -124,14 +134,14 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
         <?php 
         if($mensajeExito):
         ?>
-            <div class="msg-success"><?= $mensajeExito;?></div>
+            <div class="msg-success"><i class="fa-solid fa-circle-check"></i> <?= $mensajeExito;?></div>
         <?php 
         endif;
         ?>
         <?php 
         if($mensajeError):
         ?>
-            <div class="msg-error"><?= $mensajeError;?></div>
+            <div class="msg-error"><i class="fa-solid fa-circle-exclamation"></i><?= $mensajeError;?></div>
         <?php 
         endif;
         ?>   

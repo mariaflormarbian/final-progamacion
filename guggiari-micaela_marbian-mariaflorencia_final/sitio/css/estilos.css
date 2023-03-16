@@ -51,9 +51,7 @@ a {
     text-decoration: none;
     color: grey;
 }
-#error-titulo {
-    color: red;
-}
+
 #help-titulo {
     color: black;
     background-color: yellow;
@@ -66,6 +64,16 @@ a {
     margin: 4% auto;
     width: 60%;
 }
+
+td.picker {
+    border: 2px solid #9d7da2;
+    text-align: center;
+    width: 10%;
+}
+.picker a {
+    padding: 20px;
+}
+
 .button-small:hover {
     color: black;
     text-decoration: none;

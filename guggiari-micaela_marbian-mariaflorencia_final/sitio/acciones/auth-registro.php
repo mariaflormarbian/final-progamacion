@@ -41,6 +41,5 @@ try {
     header("Location: ../index.php?v=iniciar-sesion");
 }catch(Exception $e){
     $_SESSION['mensaje_error'] = "Ocurrio un error inesperado al tratar de crear tu cuenta.";
-    $_SESSION['mensaje_error'] = $e;
     header("Location: ../index.php?v=iniciar-sesion");
 }

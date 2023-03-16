@@ -62,19 +62,32 @@ $productos->cargarEtiquetas();
             endif;
             ?>
         </div>
-        <?php
-        if(!empty($productos->getImagen()) && file_exists(PATH_IMAGES . '/imgs/' . $productos->getImagen())):
+
+        <div class="form-fila">
+            <label for="stock">Stock</label>
+            <textarea id="stock" name="stock" class="form-control" <?php if (isset($errores['stock'])): ?>
+                aria-describedby="error-precio"
+            <?php endif; ?>><?= e($dataForm['stock'] ?? $productos->getStock()); ?></textarea>
+
+        </div>
+
+        <div class="mb-4 w-100 d-flex gap-3 img-icon bg-light p-4 row">
+            <?php
+            if (!empty($productos->getImagen()) && file_exists(__DIR__ . '/../../imgs/productos' . $productos->getImagen())) :
+                ?>
+                <div class="col-12 col-lg-3 mb-4 mb-lg-0">
+                    <p class="">Imagen Actual</p>
+                    <picture>
+                        <img src="<?= '../imgs/productos/' . $productos->getImagen(); ?>" alt="" class="img-fluid">
+                    </picture>
+                </div>
+            <?php
+            endif;
             ?>
-            <div class="form-fila">
-                <p>Imagen actual</p>
-                <img src="<?= '../imgs/productos/' . e($productos->getImagen());?>" alt="">
-            </div>
-        <?php
-        endif;
-        ?>
         <div class="form-fila">
             <label for="imagen">Imagen <span class="text-small">(<span class="visually-hidden">campo </span>opcional)</span></label>
-            <input type="file" id="imagen" name="imagen" class="form-control">
+            <img width="416" src="<?= '../imgs/productos/' . e($productos->getImagen()); ?>" alt="">
+            <input type="file" id="imagen" name="imagen" class="form-control"  value="<?= e($dataForm['imagen'] ?? $productos->getImagen()); ?>">
         </div>
         <div class="form-fila">
             <label for="imagen_descripcion">Descripción de la Imagen <span class="text-small">(<span class="visually-hidden">campo </span>opcional)</span></label>
@@ -87,17 +100,14 @@ $productos->cargarEtiquetas();
                    placeholder=" Ejemplo luego del <iframe> aparece Youtube/ (copiar desde embed y pegar)"
                    value="<?= e($dataForm['video'] ?? $productos->getVideo()); ?>">
         </div>
+
         <div class="form-fila">
-            <label for="audio">Audio</label>
-            <input type="text" id="audio" name="audio" class="form-control"
-                   placeholder=" Formato mp3"
-                   value="<?= e($dataForm['audio'] ?? $productos->getAudio()); ?>">
+            <label for="audio">Audio <span class="text-small">(<span class="visually-hidden">campo </span>opcional)</span></label>
+            <p for="audio"><?=$productos->getAudio()?></p>
+            <input type="file" id="audio" name="audio" class="form-control"  value="<?= e($dataForm['audio'] ?? $productos->getAudio()); ?>">
         </div>
-        <div class="form-fila">
-            <label for="stock">Audio</label>
-            <input type="text" id="stock" name="stock" class="form-control"
-                   value="<?= e($dataForm['stock'] ?? $productos->getStock()); ?>">
-        </div>
+
+
         <div class="form-fila">
             <label for="productos_estados_fk">Estado de Publicación</label>
             <select id="productos_estados_fk" name="productos_estados_fk" class="form-control">

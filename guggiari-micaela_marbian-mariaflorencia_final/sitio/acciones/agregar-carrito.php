@@ -7,6 +7,7 @@ $auth = new Autenticacion;
 $id = $_POST["productos_id"];
 $cantidad = $_POST["productos_cantidad"];
 $subtotal = $_POST["productos_precio"];
+$precio = $_POST["productos_precio"];
 $titulo = $_POST["productos_titulo"];
 $productos = (new AgregarProducto)->data();
 
@@ -46,7 +47,8 @@ try
         "productos_fk" => $id,
         "titulo" => $titulo,
         "cantidad" => $cantidad,
-        "subtotal" => $subtotal * $cantidad
+        "subtotal" => $subtotal * $cantidad,
+        "precio" => $precio
     ]);
     $_SESSION["success_text"] = "Productos añadidos correctamente.";
     $_SESSION['mensaje_error'] = $auth->getId();

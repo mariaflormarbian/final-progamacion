@@ -47,8 +47,12 @@ if (!empty($imagen['tmp_name'])) {
     $nombreImagen = date('YmdHis_') . slugify($imagen['name']);
     move_uploaded_file($imagen['tmp_name'], __DIR__ . '/../../imgs/productos/' . $nombreImagen);
 }
+if (!empty($audio['tmp_name'])) {
+    $nombreAudio = date('YmdHis_') . slugify($audio['name']);
+    move_uploaded_file($audio['tmp_name'], __DIR__ . '/../../audio/' . $nombreAudio);
+}
 
-try 
+try
 {
     (new Producto())->crear([
         'usuarios_fk' => $autenticacion->getId(),
@@ -57,17 +61,17 @@ try
         'precio' => $precio,
         'texto' => $texto,
         'video' => $video,
-        'audio' => $audio,
+        'audio' => $nombreAudio,
         'imagen' => $nombreImagen,
         'imagen_descripcion' => $imagen_descripcion,
         'etiquetas' => $etiquetas,
         'stock' => $stock,
     ]);
-    
+
     $_SESSION['mensaje_exito'] = "El producto '<b>" . $titulo . "</b>' fue o con éxito.";
     header("Location: ./../index.php?v=productos");
     exit;
-} 
+}
 catch (Exception $e)
 {
     $_SESSION['mensaje_error'] = "Ocurrió un error inesperado al tratar de grabar la información, el producto no pudo ser publicada. Por favor, probá de nuevo más tarde.";

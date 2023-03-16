@@ -19,15 +19,24 @@ $catalogo = (new AgregarProducto)->catalogoProductos($productosAgregados, $auten
             <table class="table">
                 <tr class="fondo1">
                     <th>Producto</th>
+                    <th>Precio por Unidad</th>
                     <th>Cantidad</th>
                     <th>Total</th>
                     <th></th>
                 </tr>
                 <?php foreach($productosAgregados as $producto) : ?>
                     <?php if($producto->getCarritoFk() == $autenticadoUsuario) : ?>
-                        <tr>
+                    <tr>
                             <td class="p-2"><?= $producto->getTitulo() ?></td>
-                            <td class="p-2">x<?= $producto->getCantidad(); ?></td>
+                            <td class="p-2">$<?=$producto->getPrecio() ?></td>
+
+                            <td class="p-2 picker">
+                                <a href="">-</a>
+
+                                <?= $producto->getCantidad(); ?>
+                                <a href="">+</a>
+
+                            </td>
                             <td class="p-2">$<?= $producto->getSubtotal(); ?></td>
                             <td>
                                 <form action="acciones/borrar-item-carrito.php" method="POST">
@@ -36,6 +45,7 @@ $catalogo = (new AgregarProducto)->catalogoProductos($productosAgregados, $auten
                                 </form>
                             </td>
                         </tr>
+
                     <?php endif; ?>
                 <?php endforeach; ?>
             </table>

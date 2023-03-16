@@ -61,7 +61,8 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
             ?>
         </div>
         <div class="form-fila">
-            <label for="imagen">Imagen <span class="text-small">(<span class="visually-hidden">campo</span>opcional)</span></label>
+            <label for="imagen">Imagen <span class="text-small">(<span class="visually-hidden">campo
+                    </span>opcional)</span></label>
             <input type="file" id="imagen" name="imagen" class="form-control">
         </div>
         <div class="form-fila">
@@ -71,6 +72,10 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
         <div class="form-fila">
             <label for="video">Enlace de Video Youtube, EMBED (opcional)</label>
             <input type="text" id="video" name="video" class="form-control" placeholder=" Ejemplo luego del <iframe> aparece Youtube/ (copiar desde embed y pegar)" value="<?= e($dataForm['video'] ?? null); ?>">
+        </div>
+        <div class="form-fila">
+            <label for="audio">Audio <span class="text-small">(<span class="visually-hidden">campo</span>opcional)</span></label>
+            <input type="file" id="audio" name="audio" class="form-control" value="<?= e($dataForm['audio'] ?? null); ?>">
         </div>
         <div class="form-fila">
             <label for="stock">Stock</label>

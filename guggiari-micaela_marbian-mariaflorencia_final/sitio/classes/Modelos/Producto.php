@@ -135,8 +135,8 @@ class Producto extends Modelo
     public function crear(array $data): void
     {
         $db = Conexion::getConexion();
-        $query = "INSERT INTO productos (usuarios_fk, productos_estados_fk, precio, titulo, texto, imagen, imagen_descripcion, video, stock) 
-                VALUES (:usuarios_fk, :productos_estados_fk, :precio,  :titulo,  :texto, :imagen, :imagen_descripcion, :video, :stock)";
+        $query = "INSERT INTO productos (usuarios_fk, productos_estados_fk, precio, titulo, texto, imagen, imagen_descripcion, video, audio, stock) 
+                VALUES (:usuarios_fk, :productos_estados_fk, :precio,  :titulo,  :texto, :imagen, :imagen_descripcion, :video, :audio, :stock)";
         $stmt = $db->prepare($query);
         $stmt->execute([
             'usuarios_fk' => $data['usuarios_fk'],
@@ -147,6 +147,7 @@ class Producto extends Modelo
             'imagen' => $data['imagen'],
             'imagen_descripcion' => $data['imagen_descripcion'],
             'video' => $data['video'],
+            'audio' => $data['audio'],
             'stock' => $data['stock'],
 
         ]);
@@ -191,9 +192,9 @@ class Producto extends Modelo
                     texto                = :texto,
                     imagen               = :imagen,
                     video                = :video,
-                    audio                = :audio,
                     imagen_descripcion   = :imagen_descripcion,
-                    stock   = :stock,
+                    audio = :audio,
+                    stock   = :stock
                     
                 WHERE productos_id = :productos_id";
         $stmt = $db->prepare($query);
@@ -206,8 +207,8 @@ class Producto extends Modelo
             'texto' => $data['texto'],
             'imagen' => $data['imagen'],
             'video' => $data['video'],
-            'audio' => $data['audio'],
             'imagen_descripcion' => $data['imagen_descripcion'],
+            'audio' => $data['audio'],
             'stock' => $data['stock'],
         ]);
         $this->actualizarEtiquetas($data['etiquetas']);
@@ -404,4 +405,5 @@ class Producto extends Modelo
     {
         $this->stock = $stock;
     }
+
 }

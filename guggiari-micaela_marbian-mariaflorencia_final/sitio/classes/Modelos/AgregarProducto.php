@@ -12,9 +12,12 @@ class AgregarProducto extends Modelo
     protected string $titulo;
     protected int $cantidad;
     protected float $subtotal;
+    protected int $precio;
     protected string $tabla = 'agregar_producto';
     protected string $primaryKey = "agregar_producto_id";
-    protected array $properties = ['agregar_producto_id', 'carrito_fk', 'productos_fk', 'titulo', 'cantidad', 'subtotal'];
+    protected array $properties = ['agregar_producto_id', 'carrito_fk', 'productos_fk', 'titulo', 'cantidad', 'subtotal', 'precio'];
+
+
 
     public function data(): array
     {
@@ -34,8 +37,8 @@ class AgregarProducto extends Modelo
         $db = Conexion::getConexion();
         $db->beginTransaction();
         try{
-            $query = "INSERT INTO agregar_producto (carrito_fk, productos_fk, titulo, cantidad, subtotal)
-                    VALUES (:carrito_fk, :productos_fk, :titulo, :cantidad, :subtotal)";
+            $query = "INSERT INTO agregar_producto (carrito_fk, productos_fk, titulo, cantidad, subtotal, precio)
+                    VALUES (:carrito_fk, :productos_fk, :titulo, :cantidad, :subtotal, :precio)";
             $stmt = $db->prepare($query);
             $stmt->execute([
                 'carrito_fk' => $data['carrito_fk'],
@@ -43,6 +46,7 @@ class AgregarProducto extends Modelo
                 'titulo' => $data['titulo'],
                 'cantidad' => $data['cantidad'],
                 'subtotal' => $data['subtotal'],
+                'precio' => $data['precio'],
             ]);
             $db->commit();
         } catch (Exception $e) {
@@ -91,6 +95,7 @@ class AgregarProducto extends Modelo
             throw $e;
         }
     }
+
 
     public function eliminarAgregarProducto($id): void
     {
@@ -174,5 +179,16 @@ class AgregarProducto extends Modelo
     public function getTitulo()
     {
         return $this->titulo;
+    }
+
+    public function getPrecio()
+    {
+        return $this->precio;
+    }
+
+    public function setPrecio($precio)
+    {
+        $this->precio = $precio;
+        return $this;
     }
 }
