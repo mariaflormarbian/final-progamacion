@@ -97,9 +97,10 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                     <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=contacto">Contacto</a>
                     </li>
                     <li>
-                        <form action="acciones/buscador.php" method="GET">
-                            <input type="text" name="busqueda">
-                            <input type="submit" name="enviar" value="Buscar">
+
+                        <form action="acciones/buscador.php" method="get">
+                            <input type="text" name="termino_busqueda">
+                            <input type="submit" value="Buscar">
                         </form>
                     </li>
                     <?php

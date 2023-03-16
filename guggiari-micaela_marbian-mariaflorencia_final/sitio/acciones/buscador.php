@@ -1,23 +1,22 @@
 <?php
-use DaVinci\Database\Conexion;
+// Conexión a la base de datos
+$conexion = mysqli_connect("127.0.0.1", "root", "", "dw3_guggiari_marbian");
 
-require_once __DIR__ . '/../bootstrap/init.php';
+// Recuperar el término de búsqueda
+$termino_busqueda = $_GET['termino_busqueda'];
 
-$db = Conexion::getConexion();
+// Realizar la consulta
+$query = "SELECT * FROM productos WHERE titulo LIKE '%$termino_busqueda%'";
+$resultado = mysqli_query($conexion, $query);
 
+// Mostrar los resultados en una tabla
+echo "<table>";
+while ($fila = mysqli_fetch_array($resultado)) {
+    echo "<tr><td>" . $fila['titulo'] . "</td><td>" . $fila['imagen'] . "</td></tr>";
 
-if (isset($_GET['enviar'])) {
-    $busqueda = $_GET['busqueda'];
-    $consulta = $db->query("SELECT * FROM productos WHERE titulo LIKE '%$busqueda%'");
-
-    while  ($row = $consulta->fetch_array()) {
-        echo $row ['titulo'];
-    }
 }
+echo "</table>";
 
-
-$_SESSION['mensaje_exito'] = "Sesión cerrada correctamente.¡Te esperamos pronto!";
-header("Location: ../index.php?v=inicio");
-exit;
-
+// Cerrar la conexión a la base de datos
+mysqli_close($conexion);
 ?>
