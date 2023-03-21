@@ -35,11 +35,15 @@ class Producto extends Modelo
     public function todo(array $where = []): array
     {
         $whereQuery = "";
+        $whereValues = [];
         if(count($where) > 0) {
             $whereCondiciones = [];
-            foreach($where as $columna => $valor) {
-
-                $whereCondiciones[] = "{$columna} = :{$columna}";
+            foreach($where as $valor) {
+                $columna = $valor[0];
+                $operador = $valor[1];
+                $dato = $valor[2];
+                $whereValues[$columna] = $dato;
+                $whereCondiciones[] = "{$columna} {$operador} :{$columna}";
             }
             $whereQuery = " WHERE " . implode(" AND ", $whereCondiciones);
         }
@@ -52,7 +56,7 @@ class Producto extends Modelo
                 ON p.usuarios_fk = u.usuarios_id". $whereQuery;
 
         $stmt = $db->prepare($query);
-        $stmt->execute($where);
+        $stmt->execute($whereValues);
 
         $salida = [];
 
@@ -97,9 +101,16 @@ class Producto extends Modelo
     /**
      * Retorna los productos publicados.
      */
-    public function publicadas(): array 
+    public function publicadas(?array $where = null): array 
     {
-        return $this->todo(['productos_estados_fk' => 2]);
+        // $whereDefault = ['productos_estados_fk' => 2];
+        $whereDefault = [['productos_estados_fk', '=', 2]];
+
+        if($where !== null){
+            $whereDefault = array_merge($whereDefault, $where);
+        }
+
+        return $this->todo($whereDefault);
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 use DaVinci\Modelos\Producto;
-$productos = (new Producto())->publicadas();
+
+$productos = (new Producto())->publicadas($busqueda);
 ?>
 
 <section class="catalogo">
@@ -23,7 +24,7 @@ $productos = (new Producto())->publicadas();
                     </audio>
                 </div>
                 <div>
-                    <span class="visually-hidden">Etiquetas asociadas a esta noticia:</span>
+                    <span class="visually-hidden">Etiquetas asociadas a este producto:</span>
                     <ul class="list-unstyled">
                         <?php
                         foreach($producto->getEtiquetas() as $etiqueta):

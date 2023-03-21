@@ -57,7 +57,12 @@ $mensajeError = $_SESSION['mensaje_error'] ?? null;
 
 unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
 
-
+//Buscador
+$busqueda = [];
+if(!empty($_GET['t'])){
+    $busqueda[] = ['titulo', 'LIKE', '%' . $_GET['t'] . '%'];
+    // $busqueda['titulo'] = $_GET['t'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -97,10 +102,19 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                     <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=contacto">Contacto</a>
                     </li>
                     <li>
-
-                        <form action="acciones/buscador.php" method="get">
-                            <input type="text" name="termino_busqueda">
-                            <input type="submit" value="Buscar">
+                        <form action="index.php" method="get">
+                            <input type="hidden" name="v" value="catalogo">
+                            <div class="form-fila">
+                                <label for="buscar-producto" class="visually-hidden">Buscar remera</label>
+                                <input 
+                                    placeholder="Buscar producto"
+                                    type="search" 
+                                    id="buscar-producto" 
+                                    name="t" 
+                                    value="<?= $_GET['t'] ?? ''; ?>"
+                                >
+                            </div>
+                            <button type="submit" class="btn-sm btn">Buscar</button>
                         </form>
                     </li>
                     <?php
@@ -110,6 +124,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                         </li>
                         <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=perfil">Mi Perfil</a>
                         </li>
+                        
                         <li class="nav-item col-6 col-md-auto">
                             <form action="acciones/auth-cerrar-sesion.php" method="post">
                                 <button class="btn btn-danger" type="submit">

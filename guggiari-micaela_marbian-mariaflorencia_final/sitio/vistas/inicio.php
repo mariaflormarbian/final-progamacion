@@ -1,6 +1,6 @@
 <?php
 use DaVinci\Modelos\Producto;
-$productos = (new Producto())->publicadas();
+$productos = (new Producto())->publicadas(null);
 ?>
 
 <div class="fondo-home">
