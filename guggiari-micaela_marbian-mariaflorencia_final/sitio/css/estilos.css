@@ -91,7 +91,7 @@ td.picker {
 }
 #search { margin-right: 2%; padding: 5px 10px;}
 #search form{display: flex;}
-#search form input { border-color: #9d7da2; background-color: transparent;}
+#search form input { border: none; background-color: white;}
 #search form button { margin-left: 5px;}
 
 /* menu */

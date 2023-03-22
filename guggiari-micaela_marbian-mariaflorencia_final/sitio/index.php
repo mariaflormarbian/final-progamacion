@@ -143,7 +143,7 @@ if(!empty($_GET['t'])){
                             value="<?= $_GET['t'] ?? ''; ?>"
                     >
                 </div>
-                <button type="submit" class="btn-sm btn">Buscar</button>
+                <button type="submit" class="btn-sm btn"><i class="fa-solid fa-search"></i></button>
             </form>
         </div>
     </header>
