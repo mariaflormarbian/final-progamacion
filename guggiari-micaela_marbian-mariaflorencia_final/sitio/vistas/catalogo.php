@@ -1,6 +1,6 @@
 <?php
 use DaVinci\Modelos\Producto;
-
+$busqueda[] = ['titulo', 'LIKE', '%' . $_GET['t'] . '%'];
 $productos = (new Producto())->publicadas($busqueda);
 ?>
 

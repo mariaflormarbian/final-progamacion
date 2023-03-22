@@ -60,6 +60,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
 //Buscador
 $busqueda = [];
 if(!empty($_GET['t'])){
+
     $busqueda[] = ['titulo', 'LIKE', '%' . $_GET['t'] . '%'] ;
     // $busqueda['titulo'] = $_GET['t'];
 }
