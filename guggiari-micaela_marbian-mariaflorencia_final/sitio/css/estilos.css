@@ -89,6 +89,11 @@ td.picker {
     text-align: center;
     margin: 4% auto;
 }
+#search { margin-right: 2%; padding: 5px 10px;}
+#search form{display: flex;}
+#search form input { border-color: #9d7da2; background-color: transparent;}
+#search form button { margin-left: 5px;}
+
 /* menu */
 header nav{
     background: #b8e3f8;
