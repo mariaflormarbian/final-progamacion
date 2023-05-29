@@ -68,7 +68,6 @@ if(!empty($_GET['t'])){
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -86,7 +85,8 @@ if(!empty($_GET['t'])){
 
 </head>
 <body>
-    <header class="navbar navbar-expand-md bd-navbar">
+    <div id="sitio">
+        <header class="navbar navbar-expand-md bd-navbar">
         <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="navegacion principal">
             <a href="index.php?v=inicio" id="logo" class="navbar-brand p-0 me-2" aria-label="Simpsoneras">
                 Simpsoneras :: <?= $rutaTitulo['titulo'];?>
@@ -148,7 +148,7 @@ if(!empty($_GET['t'])){
             </form>
         </div>
     </header>
-    <div class="main-content container">
+        <div class="main-content container">
         <?php 
         if($mensajeExito):
         ?>
@@ -173,8 +173,8 @@ if(!empty($_GET['t'])){
         }
         ?>
     </div>
-    <footer class="container-fluid">
-        <div class=" pt-6">
+        <footer class="container-fluid">
+        <div class="pt-6">
             <div class="d-flex pt-6 justify-content-center justify-content-md-evenly">
                 <div  class="mx-6"><img width="100" src="imgs/otros/logo.png" alt="simpsoneras indumentaria logo" title="exoma remeras logo"></div>
                 <div class="px-6 ">
@@ -231,6 +231,7 @@ if(!empty($_GET['t'])){
             </div>
         </div>
     </footer>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script>
         $(document).ready(function() {
