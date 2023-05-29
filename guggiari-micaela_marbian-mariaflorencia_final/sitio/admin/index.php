@@ -86,7 +86,8 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
         <link rel="shortcut icon" href="imgs/otros/logo.png" type="image/x-icon">
     </head>
     <body>
-        <header class="navbar navbar-expand-md bd-navbar">
+        <div id="sitio">
+            <header class="navbar navbar-expand-md bd-navbar">
             <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="navegacion principal">
                 <a href="index.php?v=inicio" id="logo" class="navbar-brand p-0 me-2" aria-label="Simpsoneras">
                     Simpsoneras :: <?= $rutaTitulo['titulo'];?>
@@ -123,7 +124,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                 ?>
             </nav>
         </header>
-        <main class="container">
+            <main class="container">
             <?php 
             if($mensajeExito):
             ?>
@@ -148,28 +149,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
             }
             ?>
         </main>
-        <footer>
-            <div>
-                <ul class="justify-content-center nav fs-3">
-                    <li class="nav-item">
-                        <a href="//www.facebook.com" class="nav-link"><i class="bi bi-facebook color"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="//www.twitter.com" class="nav-link"><i class="bi bi-twitter color"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="//www.instagram.com" class="nav-link"><i class="bi bi-instagram color"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="//www.youtube.com" class="nav-link"><i class="bi bi-youtube color"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </footer>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>
     </body>
