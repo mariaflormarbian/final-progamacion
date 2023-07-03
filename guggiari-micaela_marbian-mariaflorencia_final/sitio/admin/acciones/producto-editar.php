@@ -52,7 +52,7 @@ if ($validador->hayErrores()) {
 if (!empty($imagen['tmp_name'])) {
     $nombreImagen = date('YmdHis_') . slugify($imagen['name']);
 
-    move_uploaded_file($imagen['tmp_name'], __DIR__ . '/../../imgs/' . $nombreImagen);
+    move_uploaded_file($imagen['tmp_name'], __DIR__ . '/../../imgs/productos/' . $nombreImagen);
 }
 
 if (!empty($audio['tmp_name'])) {

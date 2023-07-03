@@ -29,36 +29,28 @@ $catalogo = (new AgregarProducto)->catalogoProductos($productosAgregados, $auten
             <tr>
                 <td class="p-2"><?= $producto->getTitulo() ?></td>
                 <td class="p-2">$<?=$producto->getPrecio() ?></td>
-
                 <td class="p-2 picker">
                     <div class="mb-4">
-                        <select name="productos_cantidad" id="cantidad" class="w-50 p-1">
-                            <?php for ($i = 1; $i <= htmlspecialchars($producto->getCantidad()); $i++) : ?>
-                            <?php
-                                            if ($i > 10) break;
-                                            ?>
-
-                            <option value="<?= $i ?>"><?= $i ?>
-                                <?php if ($i <= 1) $option = 'Unidad';
-                                                else $option = 'Unidades';?>
-                            </option>
-                            <?php endfor; ?>
-                        </select>
+                        <input type="number" name="cantidad" id="cantidad-<?= $producto->getAgregarProductoID() ?>"
+                            value="<?= $producto->getCantidad() ?>" min="1" max="<?= $producto->getCantidad() ?>"
+                            onchange="actualizarCantidad(<?= $producto->getAgregarProductoID() ?>, this.value)">
                     </div>
                 </td>
-                <td class="p-2">$<?= $producto->getSubtotal(); ?></td>
-                <td>
-                    <form action="acciones/borrar-item-carrito.php" method="POST">
-                        <input type="hidden" name="productos_id" value="<?= $producto->getAgregarProductoID(); ?>" />
-                        <button type="submit"
-                            class="p-0 m-0 bg-transparent border-0 button button-small text-danger">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
+    </div>
+    </td>
+    <td class="p-2">$<?= $producto->getSubtotal(); ?></td>
+    <td>
+        <form action="acciones/borrar-item-carrito.php" method="POST">
+            <input type="hidden" name="productos_id" value="<?= $producto->getAgregarProductoID(); ?>" />
+            <button type="submit"
+                class="p-0 m-0 bg-transparent border-0 button button-small text-danger">Eliminar</button>
+        </form>
+    </td>
+    </tr>
 
-            <?php endif; ?>
-            <?php endforeach; ?>
-        </table>
+    <?php endif; ?>
+    <?php endforeach; ?>
+    </table>
     </div>
     <?php
         foreach($carritos as $i => $carrito):
