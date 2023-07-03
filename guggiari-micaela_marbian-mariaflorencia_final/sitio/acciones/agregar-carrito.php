@@ -51,7 +51,6 @@ try
         "precio" => $precio
     ]);
     $_SESSION["success_text"] = "Productos añadidos correctamente.";
-    $_SESSION['mensaje_error'] = $auth->getId();
     header("Location: ../index.php?v=carrito");
     exit;
 } 

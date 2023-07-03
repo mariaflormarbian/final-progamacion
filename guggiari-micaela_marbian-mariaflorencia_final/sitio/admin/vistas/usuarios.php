@@ -5,7 +5,7 @@ $usuarios = (new Usuario())->todo();
 
 <section class="container-product">
     <h2 class="mt-4 mb-4 text-center">Usuarios registrados</h2>
-    <div class="table-responsive mb-5 mt-5">
+    <div class="table-responsive mb-5 mt-5 bg-light">
         <table class="table">
             <thead>
                 <tr>
@@ -20,16 +20,17 @@ $usuarios = (new Usuario())->todo();
                 <?php
                 foreach ($usuarios as $usuario):
                 ?>
-                    <tr>
-                        <td><?= $usuario->getUsuariosId(); ?></td>
-                            <td><?= $usuario->getNombre(); ?></td>
-                            <td><?= $usuario->getApellido(); ?></td>
-                            <td><?= $usuario->getEmail(); ?>
-                        </td>
-                        <td>
-                            <a class="link-info text-highlight-color text-decoration-none text-highlight-hover" href="index.php?v=compras&id=<?= $usuario->getUsuariosId(); ?>">Ver compras</a>
-                        </td>           
-                    </tr>
+                <tr>
+                    <td><?= $usuario->getUsuariosId(); ?></td>
+                    <td><?= $usuario->getNombre(); ?></td>
+                    <td><?= $usuario->getApellido(); ?></td>
+                    <td><?= $usuario->getEmail(); ?>
+                    </td>
+                    <td>
+                        <a class="link-info text-highlight-color text-decoration-none text-highlight-hover"
+                            href="index.php?v=compras&id=<?= $usuario->getUsuariosId(); ?>">Ver compras</a>
+                    </td>
+                </tr>
                 <?php
                 endforeach;
                 ?>

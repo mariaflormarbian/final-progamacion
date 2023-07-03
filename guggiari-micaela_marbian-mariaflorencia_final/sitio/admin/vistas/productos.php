@@ -10,7 +10,7 @@ $productos = (new Producto())->todo();
         <a href="index.php?v=producto-nuevo" class="btn btn-primary">Publicar un nuevo producto</a>
     </div>
 
-    <div class="table-responsive">
+    <div class="table-responsive bg-light">
         <table class="table">
             <thead>
                 <tr>
@@ -31,28 +31,32 @@ $productos = (new Producto())->todo();
                 <?php
                 foreach ($productos as $producto):
                 ?>
-                    <tr>
-                        <td><?= $producto->getCatalogoId(); ?></td>
-                        <td><span class="text-info bg-white border p-1"><?= $producto->getEstado()->getNombre();?></span></td>
-                        <td><?= e($producto->getTitulo()); ?></td>
-                        <td><?= e($producto->getTexto()); ?></td>
-                        <td> <?= e($producto->getPrecio()); ?></td>
-                        <td><img src="<?= "../imgs/productos/" . e($producto->getImagen()); ?>" width="50" alt="<?= e($producto->getImagenDescripcion()); ?>"></td>
-                        <td> 
-                            <iframe width="200" height="100" src="https://www.youtube.com/embed/<?= $producto->getVideo();?>"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                            </iframe>
-                        </td>
-                        <td><?= $producto->getAudio(); ?></td>
-                        <td><?= $producto->getStock(); ?></td>
-                        <td><?= e($producto->getAutor()->getNombreCompleto());?></td>
-                        <td>
-                            <a href="index.php?v=producto-editar&id=<?= $producto->getCatalogoId(); ?>" class="button button-small">Editar</a>
-                            <a href="index.php?v=producto-eliminar&id=<?= $producto->getCatalogoId(); ?>" class="button button-small text-danger">Eliminar</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td><?= $producto->getCatalogoId(); ?></td>
+                    <td><span class="text-info bg-white border p-1"><?= $producto->getEstado()->getNombre();?></span>
+                    </td>
+                    <td><?= e($producto->getTitulo()); ?></td>
+                    <td><?= e($producto->getTexto()); ?></td>
+                    <td> <?= e($producto->getPrecio()); ?></td>
+                    <td><img src="<?= "../imgs/productos/" . e($producto->getImagen()); ?>" width="50"
+                            alt="<?= e($producto->getImagenDescripcion()); ?>"></td>
+                    <td>
+                        <iframe width="200" height="100"
+                            src="https://www.youtube.com/embed/<?= $producto->getVideo();?>" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </td>
+                    <td><?= $producto->getAudio(); ?></td>
+                    <td><?= $producto->getStock(); ?></td>
+                    <td><?= e($producto->getAutor()->getNombreCompleto());?></td>
+                    <td>
+                        <a href="index.php?v=producto-editar&id=<?= $producto->getCatalogoId(); ?>"
+                            class="button button-small">Editar</a>
+                        <a href="index.php?v=producto-eliminar&id=<?= $producto->getCatalogoId(); ?>"
+                            class="button button-small text-danger">Eliminar</a>
+                    </td>
+                </tr>
                 <?php
                 endforeach;
                 ?>

@@ -9,9 +9,10 @@ unset($_SESSION['data_form']);
         <h2 class="text-center">Iniciar sesión</h2>
         <p class="text-center">Ingresar al panel de administración.</p>
         <form action="acciones/auth-iniciar-sesion.php" method="post">
-            <div class="form-fila mb-2">
+            <div class="form-fila mb-2 bg-light">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control" value="<?= $dataForm['email'] ?? null; ?>">
+                <input type="email" id="email" name="email" class="form-control"
+                    value="<?= $dataForm['email'] ?? null; ?>">
             </div>
             <a href="#">¿Has olvidado tu mail?</a>
             <div class="form-fila mt-4 mb-2">

@@ -14,8 +14,8 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
     <h1 class="mb-1">Publicar una Nuevo producto</h1>
 
     <p class="mb-1">Completá los datos del formulario con el producto. Cuando estés conforme dale a "Publicar".</p>
-    
-    <form action="acciones/producto-publicar.php" method="post" enctype="multipart/form-data">
+
+    <form action="acciones/producto-publicar.php" method="post" enctype="multipart/form-data" class="bg-light">
         <div class="form-fila">
             <label for="titulo">Título</label>
             <input type="text" id="titulo" name="titulo" class="form-control"
@@ -25,9 +25,9 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
             <?php
             if (isset($errores['titulo'])):
                 ?>
-                <div class="msg-error" id="error-titulo">
-                    <p class="visually-hidden">Error:</p><?= $errores['titulo']; ?>
-                </div>
+            <div class="msg-error" id="error-titulo">
+                <p class="visually-hidden">Error:</p><?= $errores['titulo']; ?>
+            </div>
             <?php
             endif;
             ?>
@@ -39,9 +39,9 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
             <?php
             if (isset($errores['texto'])):
             ?>
-                <div class="msg-error" id="error-texto">
-                    <p class="visually-hidden">Error:</p><?= $errores['texto']; ?>
-                </div>
+            <div class="msg-error" id="error-texto">
+                <p class="visually-hidden">Error:</p><?= $errores['texto']; ?>
+            </div>
             <?php
             endif;
             ?>
@@ -53,9 +53,9 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
             <?php
             if (isset($errores['precio'])):
             ?>
-                <div class="msg-error" id="error-precio">
-                    <p class="visually-hidden">Error:</p><?= $errores['precio']; ?>
-                </div>
+            <div class="msg-error" id="error-precio">
+                <p class="visually-hidden">Error:</p><?= $errores['precio']; ?>
+            </div>
             <?php
             endif;
             ?>
@@ -66,20 +66,26 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
             <input type="file" id="imagen" name="imagen" class="form-control">
         </div>
         <div class="form-fila">
-            <label for="imagen_descripcion">Descripción de la Imagen <span class="text-small">(<span class="visually-hidden">campo </span>opcional)</span></label>
-            <input type="text" id="imagen_descripcion" name="imagen_descripcion" class="form-control" value="<?= e($dataForm['imagen_descripcion'] ?? null); ?>">
+            <label for="imagen_descripcion">Descripción de la Imagen <span class="text-small">(<span
+                        class="visually-hidden">campo </span>opcional)</span></label>
+            <input type="text" id="imagen_descripcion" name="imagen_descripcion" class="form-control"
+                value="<?= e($dataForm['imagen_descripcion'] ?? null); ?>">
         </div>
         <div class="form-fila">
             <label for="video">Enlace de Video Youtube, EMBED (opcional)</label>
-            <input type="text" id="video" name="video" class="form-control" placeholder=" Ejemplo luego del <iframe> aparece Youtube/ (copiar desde embed y pegar)" value="<?= e($dataForm['video'] ?? null); ?>">
+            <input type="text" id="video" name="video" class="form-control"
+                placeholder=" Ejemplo luego del <iframe> aparece Youtube/ (copiar desde embed y pegar)"
+                value="<?= e($dataForm['video'] ?? null); ?>">
         </div>
         <div class="form-fila">
-            <label for="audio">Audio <span class="text-small">(<span class="visually-hidden">campo</span>opcional)</span></label>
-            <input type="file" id="audio" name="audio" class="form-control" value="<?= e($dataForm['audio'] ?? null); ?>">
+            <label for="audio">Audio <span class="text-small">(<span
+                        class="visually-hidden">campo</span>opcional)</span></label>
+            <input type="file" id="audio" name="audio" class="form-control"
+                value="<?= e($dataForm['audio'] ?? null); ?>">
         </div>
         <div class="form-fila">
             <label for="stock">Stock</label>
-            <input id="stock" name="stock" class="form-control" ><?= e($dataForm['stock'] ?? null); ?>
+            <input id="stock" name="stock" class="form-control"><?= e($dataForm['stock'] ?? null); ?>
         </div>
         <div class="form-fila">
             <label for="productos_estados_fk">Estado de Publicación</label>
@@ -87,11 +93,11 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
                 <?php
                 foreach ($estados as $estado):
                 ?>
-                    <option value="<?= $estado->getProductosEstadosId();?>" <?= $estado->getProductosEstadosId() == ($dataForm['productos_estados_fk'] ?? null) ?
+                <option value="<?= $estado->getProductosEstadosId();?>" <?= $estado->getProductosEstadosId() == ($dataForm['productos_estados_fk'] ?? null) ?
                         'selected' :
                         '';?>>
-                        <?=$estado->getNombre();?>
-                    </option>
+                    <?=$estado->getNombre();?>
+                </option>
                 <?php
                 endforeach;
                 ?>
@@ -104,12 +110,12 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
                     <?php
                     foreach($etiquetas as $etiqueta):
                         ?>
-                        <label>
-                            <input type="checkbox" name="etiquetas_id[]" value="<?= $etiqueta->getEtiquetasId();?>" <?= in_array($etiqueta->getEtiquetasId(), $dataForm['etiquetas_id'] ?? [])
+                    <label>
+                        <input type="checkbox" name="etiquetas_id[]" value="<?= $etiqueta->getEtiquetasId();?>" <?= in_array($etiqueta->getEtiquetasId(), $dataForm['etiquetas_id'] ?? [])
                                     ? 'checked'
                                     : ''; ?>>
-                            <?= $etiqueta->getNombre();?>
-                        </label>
+                        <?= $etiqueta->getNombre();?>
+                    </label>
                     <?php
                     endforeach;
                     ?>

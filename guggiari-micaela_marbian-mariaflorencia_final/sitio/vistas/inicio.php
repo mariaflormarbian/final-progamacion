@@ -6,21 +6,26 @@ $productos = (new Producto())->publicadas(null);
 <div class="fondo-home">
     <h1 class="visually-hidden">Inicio</h1>
 </div>
+
 <section>
-    <h2 class="text-center fondo1 p-3 display-6">¡La moda que te inspira! <strong>¡Comprá hoy y recibilo al toque! / Envío dentro de las 24hs. </strong></h2>
+    <h2 class="text-center fondo1 p-3 display-6">¡La moda que te inspira! <strong>¡Comprá hoy y recibilo al toque! /
+            Envío dentro de las 24hs. </strong></h2>
     <div id="carrusel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <picture class="carousel-item active">
-                    <source media="(min-width:768px)" srcset="./imgs/desktop/slider1.png">
-                    <img class="d-block img-fluid" alt="Remeras desde $1380 promoción" src="./imgs/mobile/slider-mobile1.png">
+                <source media="(min-width:768px)" srcset="./imgs/desktop/slider1.png">
+                <img class="d-block img-fluid" alt="Remeras desde $1380 promoción"
+                    src="./imgs/mobile/slider-mobile1.png">
             </picture>
             <picture class="carousel-item">
-                    <source media="(min-width:768px)" srcset="./imgs/desktop/slider2.png">
-                    <img class="d-block img-fluid" alt="Compra ahora remera, las más vendidas" src="./imgs/mobile/slider-mobile2.png">
+                <source media="(min-width:768px)" srcset="./imgs/desktop/slider2.png">
+                <img class="d-block img-fluid" alt="Compra ahora remera, las más vendidas"
+                    src="./imgs/mobile/slider-mobile2.png">
             </picture>
             <picture class="carousel-item ">
-                    <source media="(min-width:768px)" class="img-fluid" srcset="./imgs/desktop/slider3.png">
-                    <img class="d-block img-fluid" alt="Diseñamos el dibujo o remera que elijas" src="./imgs/mobile/slider-mobile3.png">
+                <source media="(min-width:768px)" class="img-fluid" srcset="./imgs/desktop/slider3.png">
+                <img class="d-block img-fluid" alt="Diseñamos el dibujo o remera que elijas"
+                    src="./imgs/mobile/slider-mobile3.png">
             </picture>
             <button class="carousel-control-prev" type="button" data-bs-target="#carrusel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -74,20 +79,20 @@ $productos = (new Producto())->publicadas(null);
         foreach($productos as $i =>$producto):
             if($i < 3 ):
                 ?>
-                <li class="card col-md-4 productos">
-                    <a href="index.php?v=detalle&id=<?= $producto->getCatalogoId();?>">
-                        <div class="producto">
-                            <picture>
-                                <img class="img-fluid" src="imgs/productos/<?= $producto->getImagen();?>"
-                                alt="<?= $producto->getImagenDescripcion();?>">
-                            </picture>
-                            <div class="card-body text-center">
-                                <h3 class="card-title"><?= $producto->getTitulo();?></h3>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-            <?php
+        <li class="card col-md-4 productos">
+            <a href="index.php?v=detalle&id=<?= $producto->getCatalogoId();?>">
+                <div class="producto">
+                    <picture>
+                        <img class="img-fluid" src="imgs/productos/<?= $producto->getImagen();?>"
+                            alt="<?= $producto->getImagenDescripcion();?>">
+                    </picture>
+                    <div class="card-body text-center">
+                        <h3 class="card-title"><?= $producto->getTitulo();?></h3>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <?php
             endif;
             ?>
         <?php

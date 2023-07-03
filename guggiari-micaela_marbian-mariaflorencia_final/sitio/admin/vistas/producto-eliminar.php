@@ -5,7 +5,7 @@ $productos = (new Producto())->traerPorId($_GET['id']);
 
 <section class="eliminar-container">
     <h2 class="mb-1">Confirmar Eliminación del producto</h2>
-    <dl class="mb-1">
+    <dl class="mb-1 bg-light">
         <dt>Título</dt>
         <dd><?= e($productos->getTitulo()); ?></dd>
         <dt>Precio</dt>
