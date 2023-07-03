@@ -15,7 +15,7 @@ class Producto extends Modelo
     protected ?string $imagen_descripcion;
     protected ?string $video;
     protected ?string $audio;
-    protected string $texto;
+    protected ?string $texto;
     protected int $stock;
 
     protected ProductoEstado $estado;

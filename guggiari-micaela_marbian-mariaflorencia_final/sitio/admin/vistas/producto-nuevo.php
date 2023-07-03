@@ -17,7 +17,7 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
 
     <form action="acciones/producto-publicar.php" method="post" enctype="multipart/form-data" class="bg-light">
         <div class="form-fila">
-            <label for="titulo">Título</label>
+            <label for="titulo">Título *</label>
             <input type="text" id="titulo" name="titulo" class="form-control"
                 value="<?= e($dataForm['titulo'] ?? null); ?>"
                 aria-describedby="<?= isset($errores['titulo']) ? 'error-titulo' : '' ?> help-titulo">
@@ -47,7 +47,7 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
             ?>
         </div>
         <div class="form-fila">
-            <label for="precio">Precio</label>
+            <label for="precio">Precio *</label>
             <input id="precio" name="precio" class="form-control" <?php if (isset($errores['precio'])): ?>
                 aria-describedby="error-precio" <?php endif; ?>><?= e($dataForm['precio'] ?? null); ?>
             <?php
@@ -84,7 +84,7 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
                 value="<?= e($dataForm['audio'] ?? null); ?>">
         </div>
         <div class="form-fila">
-            <label for="stock">Stock</label>
+            <label for="stock">Stock *</label>
             <input id="stock" name="stock" class="form-control"><?= e($dataForm['stock'] ?? null); ?>
         </div>
         <div class="form-fila">
