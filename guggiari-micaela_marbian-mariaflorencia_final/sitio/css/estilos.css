@@ -24,7 +24,22 @@ body {
   background-repeat: no-repeat;
   font-size: 0;
 }
-
+.quantity input {
+  width: 10%;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+.quantity button {
+  background-color: #b8e3f8;
+  width: 10%;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  color: #947698;
+}
 .btn {
   background-color: transparent;
   color: #db70a9;

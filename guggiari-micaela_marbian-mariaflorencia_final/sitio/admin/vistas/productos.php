@@ -36,13 +36,13 @@ $productos = (new Producto())->todo();
                     <td><span class="text-info bg-white border p-1"><?= $producto->getEstado()->getNombre();?></span>
                     </td>
                     <td><?= e($producto->getTitulo()); ?></td>
-                    <td><?= e($producto->getTexto()); ?></td>
+                    <td><?= e(substr($producto->getTexto(), 0, 100) . '...'); ?></td>
                     <td> <?= e($producto->getPrecio()); ?></td>
                     <td><img src="<?= "../imgs/productos/" . e($producto->getImagen()); ?>" width="50"
                             alt="<?= e($producto->getImagenDescripcion()); ?>"></td>
                     <td>
-                        <iframe width="200" height="100"
-                            src="https://www.youtube.com/embed/<?= $producto->getVideo();?>" frameborder="0"
+                        <iframe width="50" height="30" src="https://www.youtube.com/embed/<?= $producto->getVideo();?>"
+                            frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                         </iframe>

@@ -64,8 +64,9 @@ function increment(productId) {
     var inputElement = document.getElementById('cantidad' + productId);
     var currentValue = parseInt(inputElement.value);
     var stock = parseInt(<?= $producto->getStock(); ?>);
-    inputElement.value = currentValue + 1;
-}
+    if (currentValue < stock) {
+        inputElement.value = currentValue + 1;
+    }
 }
 
 function decrement(productId) {
