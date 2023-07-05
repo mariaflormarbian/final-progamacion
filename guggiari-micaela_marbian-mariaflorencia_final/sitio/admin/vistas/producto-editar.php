@@ -14,10 +14,12 @@ $productos = (new Producto())->traerPorId($_GET['id']);
 $productos->cargarEtiquetas();
 ?>
 
-<section>
-    <h1 class="mb-1">Editar Producto</h1>
-    <p class="mb-1">Editá los datos del formulario con el Producto. Cuando estés conforme dale a "Actualizar".</p>
-    <form action="acciones/producto-editar.php" method="post" enctype="multipart/form-data">
+<section class="container-product">
+    <h1 class="mb-1 text-center">Editar Producto</h1>
+    <p class="mb-1 text-center">Editá los datos del formulario con el Producto. Cuando estés conforme dale a
+        "Actualizar".</p>
+    <form action="acciones/producto-editar.php" method="post" class="bg-light p-5 rounded  shadow-sm mt-md-5 mb-5"
+        enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $productos->getCatalogoId(); ?>">
         <div class="form-fila bg-light">
             <label for="titulo">Título</label>
@@ -71,9 +73,9 @@ $productos->cargarEtiquetas();
 
         </div>
 
-        <div class="mb-4 w-100 d-flex gap-3 img-icon bg-light p-4 row">
+        <div class="mb-4 w-100 d-flex gap-3 img-icon bg-light  row">
             <?php
-            if (!empty($productos->getImagen()) && file_exists(__DIR__ . '/../../imgs/productos' . $productos->getImagen())) :
+            if (!empty($productos->getImagen()) && file_exists(__DIR__ . '/../../imgs/productos/' . $productos->getImagen())) :
                 ?>
             <div class="col-12 col-lg-3 mb-4 mb-lg-0">
                 <p class="">Imagen Actual</p>

@@ -73,7 +73,7 @@ $productos = (new Producto())->publicadas(null);
 </section>
 <section>
     <h2 class="text-center fw-bold mt-5 ">Nuestras remeras</h2>
-    <p class="text-center fw-bold  mt-3">¿Querés conocer más sobre nuestros productos?</p>
+    <p class="text-center mt-3">¿Querés conocer más sobre nuestros productos?</p>
     <ul class="row p-0">
         <?php
         foreach($productos as $i =>$producto):

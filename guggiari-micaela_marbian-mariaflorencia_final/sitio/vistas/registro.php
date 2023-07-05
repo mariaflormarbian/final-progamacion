@@ -10,7 +10,8 @@ $errores = (new \DaVinci\Session\Session())->flash('errores', []);
 
     <p class="text-center mb-1">Crear una cuenta es fácil y gratuito.</p>
 
-    <form action="acciones/auth-registro.php" method="post" class="mb-5">
+    <form action="acciones/auth-registro.php" class="bg-light p-5 rounded  shadow-sm mt-md-5 mb-5" method="post"
+        class="mb-5">
         <div class="form-fila bg-light">
             <label for="nombre">Nombre</label>
             <input type="nombre" id="nombre" name="nombre" class="form-control"
@@ -25,7 +26,7 @@ $errores = (new \DaVinci\Session\Session())->flash('errores', []);
         </div>
 
         <div class="form-fila">
-            <label for="email">Email</label>
+            <label for="email">Email <span class="required"> * </span></label>
             <input type="email" id="email" name="email" class="form-control" value="<?= e($dataForm['email'] ?? '');?>"
                 <?= isset($errores['email']) ? 'aria-describedby="error-email"' : '';?>>
             <?php
@@ -37,9 +38,12 @@ $errores = (new \DaVinci\Session\Session())->flash('errores', []);
             ?>
         </div>
         <div class="form-fila">
-            <label for="password">Password</label>
+            <label for="password">Password <span class="required"> * </span>
+            </label>
             <input type="password" id="password" name="password" class="form-control"
                 <?= isset($errores['password']) ? 'aria-describedby="error-password"' : '';?>>
+            <div class="form-help" id="help-titulo">La contraseña debe tener al menos 6 caracteres</div>
+
             <?php
             if(isset($errores['password'])):
                 ?>
@@ -49,7 +53,8 @@ $errores = (new \DaVinci\Session\Session())->flash('errores', []);
             ?>
         </div>
         <div class="form-fila">
-            <label for="password_confirmar">Confirmar Password</label>
+            <label for="password_confirmar">Confirmar Password <span class="required"> * </span>
+            </label>
             <input type="password" id="password_confirmar" name="password_confirmar" class="form-control"
                 <?= isset($errores['password_confirmar']) ? 'aria-describedby="error-password_confirmar"' : '';?>>
             <?php

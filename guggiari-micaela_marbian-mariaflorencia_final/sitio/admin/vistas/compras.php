@@ -7,9 +7,9 @@ $orders = (new Compra)->getByUsuario($id);
 ?>
 
 <section class="container-product">
-    <h1 class="mb-3">Historial de compras <?= $usuario->getNombre() . ' ' . $usuario->getApellido()?></h1>
-    <div class="table-responsive bg-light">
-        <table class="table">
+    <h1 class="mb-1 text-center">Historial de compras <?= $usuario->getNombre() . ' ' . $usuario->getApellido()?></h1>
+    <div class="table-responsivebg-light p-5 rounded shadow-sm mt-md-5 mb-5">
+        <table class=" table">
             <thead>
                 <tr>
                     <th>Compra</th>

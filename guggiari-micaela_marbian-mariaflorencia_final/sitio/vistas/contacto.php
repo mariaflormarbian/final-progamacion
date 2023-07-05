@@ -3,7 +3,8 @@
         ¿Dudas?
     </h1>
 
-    <form action="recursos/enviar.php" method="get" class="row g-3 text-center text-md-start container-form">
+    <form action="recursos/enviar.php" method="get" class=" bg-light p-5 rounded shadow-sm mt-md-5 mb-5 row g-3
+        text-center text-md-start container-form">
         <div class="col-xl-7">
             <label class="form-label" for="nombre">Nombre</label>
             <input class="form-control" name="nombre" id="nombre" type="text" required>

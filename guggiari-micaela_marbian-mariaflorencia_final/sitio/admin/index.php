@@ -93,7 +93,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <div id="sitio">
         <header class="navbar navbar-expand-md bd-navbar">
             <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="navegacion principal">
-                <a href="index.php?v=inicio" id="logo" class="navbar-brand p-0 me-2" aria-label="Simpsoneras">
+                <a href="../index.php?v=inicio" id="logo" class="navbar-brand p-0 me-2" aria-label="Simpsoneras">
                     Simpsoneras :: <?= $rutaTitulo['titulo'];?>
                 </a>
                 <?php
@@ -108,18 +108,10 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                         </path>
                     </svg>
                 </button>
-                <ul>
-                    <li class="nav-item col-6 col-md-auto">
-                        <a class="nav-link p-2" href="index.php?v=productos"><i class="bi bi-arrow-left-circle"></i>
-                        </a>
-                    </li>
-                </ul>
+
 
                 <div class="navbar-collapse collapse justify-content-md-end" id="bdNavbar">
                     <ul class="navbar-nav flex-md-row flex-wrap bd-navbar-nav pt-2 py-md-0">
-                        <li class="nav-item col-6 col-md-auto">
-                            <a class="nav-link p-2" href="../index.php?v=inicio">Página principal</a>
-                        </li>
 
                         <li class="nav-item col-6 col-md-auto">
                             <a class="nav-link p-2" href="index.php?v=productos">Productos</a>
@@ -130,7 +122,9 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                         <li class="nav-item col-6 col-md-auto">
                             <form action="acciones/auth-cerrar-sesion.php" method="post">
                                 <button type="submit" class="cerrar-sesion btn btn-dark border-0">
-                                    <?= $autenticacion->getUsuario()->getEmail(); ?> (Cerrar Sesión)</button>
+                                    <?= $autenticacion->getUsuario()->getEmail(); ?><span class="text-danger">(Cerrar
+                                        Sesión)</span>
+                                </button>
                             </form>
                         </li>
                     </ul>
@@ -155,7 +149,12 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
             <?php 
             endif;
             ?>
-
+            <ul class="back">
+                <li class="nav-item col-6 col-md-auto">
+                    <a class="nav-link p-2" href="index.php?v=productos"><i class="bi bi-arrow-left-circle"></i>
+                    </a>
+                </li>
+            </ul>
             <?php
             $filename = __DIR__ . '/vistas/' . $vistas . '.php';
             if (file_exists($filename)) {

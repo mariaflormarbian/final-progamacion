@@ -4,7 +4,7 @@ use DaVinci\Modelos\Carrito;
 use DaVinci\Modelos\AgregarProducto;
 use DaVinci\Auth\Autenticacion;
 
-$productosDestacados= (new Producto)->publicadas();
+$productosDestacados = (new Producto)->publicadas();
 $carritos = (new Carrito)->data();
 $autenticadoUsuario = (new Autenticacion)->getId();
 $productosAgregados = (new AgregarProducto)->data();
@@ -14,8 +14,8 @@ $catalogo = (new AgregarProducto)->catalogoProductos($productosAgregados, $auten
 <section class="contenedor-carrito">
     <h2 class="text-center fw-bold mt-5 p-3">Mi carrito</h2>
 
-    <?php if ($productosAgregados != []) : ?>
-    <div class="table-responsive bg-light ">
+    <?php if (!empty($productosAgregados)) : ?>
+    <div class="table-responsive ">
         <table class="table">
             <tr class="fondo1">
                 <th>Producto</th>
@@ -24,44 +24,43 @@ $catalogo = (new AgregarProducto)->catalogoProductos($productosAgregados, $auten
                 <th>Total</th>
                 <th></th>
             </tr>
-            <?php foreach($productosAgregados as $producto) : ?>
-            <?php if($producto->getCarritoFk() == $autenticadoUsuario) : ?>
+            <?php foreach ($productosAgregados as $producto) : ?>
+            <?php if ($producto->getCarritoFk() == $autenticadoUsuario) : ?>
             <tr>
                 <td class="p-2"><?= $producto->getTitulo() ?></td>
-                <td class="p-2">$<?=$producto->getPrecio() ?></td>
-                <td class="p-2 picker">
-                    <div class="mb-4">
-                        <input type="number" name="cantidad" id="cantidad-<?= $producto->getAgregarProductoID() ?>"
-                            value="<?= $producto->getCantidad() ?>" min="1" max="<?= $producto->getCantidad() ?>"
-                            onchange="actualizarCantidad(<?= $producto->getAgregarProductoID() ?>, this.value)">
-                    </div>
-                </td>
-    </div>
-    </td>
-    <td class="p-2">$<?= $producto->getSubtotal(); ?></td>
-    <td>
-        <form action="acciones/borrar-item-carrito.php" method="POST">
-            <input type="hidden" name="productos_id" value="<?= $producto->getAgregarProductoID(); ?>" />
-            <button type="submit"
-                class="p-0 m-0 bg-transparent border-0 button button-small text-danger">Eliminar</button>
-        </form>
-    </td>
-    </tr>
+                <td class="p-2">$<?= $producto->getPrecio() ?></td>
+                <td class="p-2 ">
 
-    <?php endif; ?>
-    <?php endforeach; ?>
-    </table>
+                    <?= $producto->getCantidad() ?>
+                </td>
+                <td class="p-2">$<?= $producto->getSubtotal(); ?></td>
+                <td>
+                    <form action="acciones/borrar-item-carrito.php" method="POST">
+                        <input type="hidden" name="productos_id" value="<?= $producto->getAgregarProductoID(); ?>" />
+                        <button type="submit"
+                            class="p-0 m-0 bg-transparent border-0 button button-small text-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+
+            <?php endif; ?>
+            <?php endforeach; ?>
+        </table>
+
     </div>
     <?php
         foreach($carritos as $i => $carrito):
             if($carrito->getCarritoID() == $autenticadoUsuario):
                 ?>
     <div class=" d-flex flex-column align-items-end pb-4">
-        <p class="mb-2">Cantidad total de productos: <span class="fw-bold">x<?= $carrito->getCantidad(); ?></span></p>
-        <p class="mb-2 ">Total: <span class="fw-bold">$<?= $carrito->getTotal(); ?></span></p>
-        <form action="acciones/carrito-vacio.php" method="POST" class="">
+        <p class="mb-2">Cantidad total de productos: <span class="fw-bold"
+                id="cantidad-total">x<?= $carrito->getCantidad(); ?></span></p>
+
+
+        <p class=" mb-2 ">Total: <span class=" fw-bold" id="precio-total">$<?= $carrito->getTotal(); ?></span></p>
+        <form action=" acciones/carrito-vacio.php" method="POST" class="">
             <input type="hidden" name="productos_id" value="<?= $carrito->getCarritoID() ?>" />
-            <button type="submit" class="p-3 m-0 bg-danger border-0 button button-small text-white">Vaciar
+            <button type="submit" class="p-1 m-0 bg-danger border-0 button button-small text-white">Vaciar
                 carrito</button>
         </form>
     </div>
@@ -70,7 +69,7 @@ $catalogo = (new AgregarProducto)->catalogoProductos($productosAgregados, $auten
         <input type="hidden" name="productos_cantidad" value="<?= $carrito->getCantidad() ?>" />
         <input type="hidden" name="productos_total" value="<?= $carrito->getTotal() ?>" />
         <input type="hidden" name="productos" value="<?= $catalogo ?>" />
-        <button type="submit" class="btn btn-primary mb-3">Comprar</button>
+        <button type="submit" class="btn btn-primary mb-3 p-3">Comprar</button>
     </form>
     <?php
             endif;
@@ -84,3 +83,41 @@ $catalogo = (new AgregarProducto)->catalogoProductos($productosAgregados, $auten
     </div>
     <?php endif;?>
 </section>
+<script>
+function increment(productId) {
+    var inputElement = document.getElementById('cantidad' + productId);
+    var currentValue = parseInt(inputElement.value);
+    inputElement.value = currentValue + 1;
+    actualizarResumenCarrito();
+}
+
+function decrement(productId) {
+    var inputElement = document.getElementById('cantidad' + productId);
+    var currentValue = parseInt(inputElement.value);
+    if (currentValue > 1) {
+        inputElement.value = currentValue - 1;
+        actualizarResumenCarrito();
+    }
+}
+
+function actualizarResumenCarrito() {
+    var cantidadTotal = 0;
+    var precioTotal = 0;
+
+    var productos = document.querySelectorAll('[data-carrito-id]');
+    productos.forEach(function(producto) {
+        var carritoId = producto.getAttribute('data-carrito-id');
+        var cantidad = parseInt(producto.value);
+
+        cantidadTotal += cantidad;
+        var precio = parseFloat(producto.closest('form').querySelector('[name="productos_precio"]').value);
+        precioTotal += cantidad * precio;
+    });
+
+    var cantidadTotalElement = document.getElementById('cantidad-total');
+    cantidadTotalElement.innerText = 'x' + cantidadTotal;
+
+    var precioTotalElement = document.getElementById('precio-total');
+    precioTotalElement.innerText = '$' + precioTotal.toFixed(2);
+}
+</script>

@@ -3,9 +3,9 @@ use DaVinci\Modelos\Producto;
 $productos = (new Producto())->traerPorId($_GET['id']);
 ?>
 
-<section class="eliminar-container">
-    <h2 class="mb-1">Confirmar Eliminación del producto</h2>
-    <dl class="mb-1 bg-light">
+<section class="container-product">
+    <h2 class="mb-1 text-center">Confirmar Eliminación del producto</h2>
+    <dl class="bg-light p-5 rounded  shadow-sm mt-md-5 mb-5">
         <dt>Título</dt>
         <dd><?= e($productos->getTitulo()); ?></dd>
         <dt>Precio</dt>

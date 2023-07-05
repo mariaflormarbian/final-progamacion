@@ -4,9 +4,9 @@ $usuarios = (new Usuario())->todo();
 ?>
 
 <section class="container-product">
-    <h2 class="mt-4 mb-4 text-center">Usuarios registrados</h2>
-    <div class="table-responsive mb-5 mt-5 bg-light">
-        <table class="table">
+    <h2 class="mb-1 text-center">Usuarios registrados</h2>
+    <div class="table-responsive mt-5 p-5 rounded shadow-sm mt-md-5 mb-5">
+        <table class=" table">
             <thead>
                 <tr>
                     <th>ID</th>

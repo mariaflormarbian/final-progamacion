@@ -37,11 +37,21 @@ class ProductoValidar
         // Precio
         if (empty($this->data['precio'])) {
             $this->errores['precio'] = "*Tenés que escribir el precio del producto";
+        } else if (strlen($this->data['precio']) < 1) {
+            $this->errores['precio'] = "*Tenés que escribir al menos 1 caracter para el precio del producto";
         }
 
         // Texto
         if (empty($this->data['texto'])) {
             $this->errores['texto'] = "*Tenés que escribir el texto del producto";
+        }else if (strlen($this->data['texto']) < 10) {
+            $this->errores['texto'] = "*Tenés que escribir al menos 10 caracteres para el texto del producto";
+        }
+        
+        if (empty ($this->data['stock'])) {
+            $this->errores['stock'] = "*Tenés que escribir el stock del producto";
+        } else if (strlen($this->data['stock']) < 1) {
+            $this->errores['stock'] = "*Tenés que escribir al menos 1 caracter para el stock del producto";
         }
     }
 }

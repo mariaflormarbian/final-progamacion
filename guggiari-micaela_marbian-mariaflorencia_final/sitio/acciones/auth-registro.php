@@ -19,7 +19,7 @@ if($validador->hayErrores()) {
     $_SESSION['data_form'] = $_POST;
     $_SESSION['mensaje_error'] = "Hay errores en los datos del formulario, por favor revisá que todo esté bien.";
     $_SESSION['errores'] = $validador->getErrores();
-    header("Location: ../index.php?s=registro");
+    header("Location: ../index.php?v=registro");
     exit;
 }
 try {

@@ -129,15 +129,15 @@ if(!empty($_GET['t'])){
                             <form action="acciones/auth-cerrar-sesion.php" method="post">
                                 <button class="btn btn-danger" type="submit">
                                     <?= $autenticacion->getUsuario()->getEmail(); ?>
-                                    (Cerrar Sesion)
-                                </button>
+                                    <span class="text-danger">(Cerrar
+                                        Sesión)</span> </button>
                             </form>
                         </li>
                         <?php 
                     else:
                     ?>
                         <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2"
-                                href="index.php?v=iniciar-sesion"><i class="fa-solid fa-user"></i>Iniciar Sesion</a>
+                                href="index.php?v=iniciar-sesion">Iniciar Sesion</a>
                         </li>
                         <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2"
                                 href="index.php?v=registro">Registrarse</a></li>
@@ -257,6 +257,7 @@ if(!empty($_GET['t'])){
     $(document).ready(function() {
         setTimeout(function() {
             $(".msg-success").fadeOut(1500);
+            $(".msg-error").fadeOut(1500);
         }, 3000);
     });
     </script>
