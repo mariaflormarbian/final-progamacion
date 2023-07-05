@@ -1,6 +1,7 @@
 <?php
 namespace DaVinci\Modelos;
 use DaVinci\Database\Conexion;
+use Exeption;
 use PDO;
 
 class Carrito extends Modelo{

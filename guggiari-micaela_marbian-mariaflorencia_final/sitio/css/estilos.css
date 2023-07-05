@@ -188,14 +188,14 @@ header nav {
 .nav-link:hover,
 .nav-link:focus,
 .nav-link.active {
-  color: yellow;
+  color: #ad9900;
 }
 li {
   list-style: none;
 }
 
 .color:hover {
-  color: yellow;
+  color: #ad9900;
   transition-duration: 1s;
 }
 input {

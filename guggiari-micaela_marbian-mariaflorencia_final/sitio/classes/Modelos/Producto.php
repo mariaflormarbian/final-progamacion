@@ -3,6 +3,7 @@ namespace DaVinci\Modelos;
 use DaVinci\Database\Conexion;
 use EmptyIterator;
 use PDO;
+use PDOException;
 
 class Producto extends Modelo
 {

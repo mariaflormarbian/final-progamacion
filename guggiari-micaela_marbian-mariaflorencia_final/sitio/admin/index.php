@@ -7,15 +7,8 @@ $rutas = [
     'inicio' => [
         'titulo' => 'Página Principal',
     ],
-    
     'login' => [
         'titulo' => 'Iniciar Sesión',
-    ],
-    'recuperar-password' => [
-        'titulo' => 'Restablecer password',
-    ],
-    'actualizar-password' => [
-        'titulo' => 'Restablecer Password',
     ],
     'productos' => [
         'titulo' => 'Administración de productos',
@@ -88,7 +81,6 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="imgs/otros/logo.png" type="image/x-icon">
 </head>
-
 <body>
     <div id="sitio">
         <header class="navbar navbar-expand-md bd-navbar">
@@ -108,8 +100,6 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
                         </path>
                     </svg>
                 </button>
-
-
                 <div class="navbar-collapse collapse justify-content-md-end" id="bdNavbar">
                     <ul class="navbar-nav flex-md-row flex-wrap bd-navbar-nav pt-2 py-md-0">
 
@@ -169,5 +159,4 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 </body>
-
 </html>
