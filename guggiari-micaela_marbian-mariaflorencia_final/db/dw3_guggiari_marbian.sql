@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-03-2023 a las 03:17:37
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Tiempo de generación: 06-07-2023 a las 01:03:32
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,15 +35,15 @@ CREATE TABLE `agregar_producto` (
   `cantidad` tinyint(4) DEFAULT NULL,
   `subtotal` decimal(6,2) DEFAULT NULL,
   `precio` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `agregar_producto`
 --
 
 INSERT INTO `agregar_producto` (`agregar_producto_id`, `productos_fk`, `carrito_fk`, `titulo`, `cantidad`, `subtotal`, `precio`) VALUES
-(38, 2, 3, 'El resplandor', 2, '3200.00', 1100),
-(39, 3, 3, 'El coco', 1, '1450.00', 1450);
+(64, 1, 24, 'Abejas', 3, '4500.00', 1500),
+(87, 1, 3, 'Abejas', 1, '1500.00', 1500);
 
 -- --------------------------------------------------------
 
@@ -54,16 +54,16 @@ INSERT INTO `agregar_producto` (`agregar_producto_id`, `productos_fk`, `carrito_
 CREATE TABLE `carrito` (
   `carrito_id` int(10) UNSIGNED NOT NULL,
   `usuarios_fk` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `carrito`
 --
 
 INSERT INTO `carrito` (`carrito_id`, `usuarios_fk`) VALUES
-(2, 2),
 (3, 3),
-(4, 4);
+(23, 23),
+(24, 24);
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ INSERT INTO `carrito` (`carrito_id`, `usuarios_fk`) VALUES
 CREATE TABLE `categorias` (
   `categorias_id` smallint(5) UNSIGNED NOT NULL,
   `nombre` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -90,16 +90,21 @@ CREATE TABLE `compra` (
   `cantidad` tinyint(4) NOT NULL,
   `total` decimal(6,2) DEFAULT NULL,
   `productos` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `compra`
 --
 
 INSERT INTO `compra` (`compra_id`, `carrito_fk`, `usuarios_fk`, `fecha`, `cantidad`, `total`, `productos`) VALUES
-(2, 3, 3, '2023-02-27 03:05:21', 4, '6100.00', '3x Abejas | 1x El resplandor'),
-(3, 3, 3, '2023-02-27 03:14:28', 1, '1500.00', '1x Abejas'),
-(4, 4, 4, '2023-03-03 21:40:03', 1, '1600.00', '1x El resplandor');
+(10, 23, 23, '2023-07-04 00:53:51', 1, '1500.00', '1x Abejas'),
+(11, 24, 24, '2023-07-04 00:55:33', 5, '7650.00', '2x Abejas | 2x El resplandor | 1x El coco'),
+(12, 3, 3, '2023-07-04 01:39:38', 1, '1500.00', '1x Abejas'),
+(13, 3, 3, '2023-07-04 18:50:50', 2, '9000.00', '2x Abejas'),
+(14, 23, 23, '2023-07-04 18:52:52', 2, '3200.00', '2x El resplandor'),
+(15, 23, 23, '2023-07-04 18:53:05', 2, '3000.00', '2x Abejas'),
+(16, 23, 23, '2023-07-04 19:05:22', 2, '3000.00', '2x Abejas'),
+(17, 3, 3, '2023-07-05 01:57:52', 2, '3200.00', '2x El resplandor');
 
 -- --------------------------------------------------------
 
@@ -110,7 +115,7 @@ INSERT INTO `compra` (`compra_id`, `carrito_fk`, `usuarios_fk`, `fecha`, `cantid
 CREATE TABLE `etiquetas` (
   `etiquetas_id` smallint(5) UNSIGNED NOT NULL,
   `nombre` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `etiquetas`
@@ -137,12 +142,12 @@ CREATE TABLE `productos` (
   `titulo` varchar(100) NOT NULL,
   `precio` int(11) NOT NULL,
   `imagen` varchar(255) DEFAULT NULL,
-  `imagen_descripcion` varchar(255) NOT NULL,
-  `audio` varchar(255) NOT NULL,
-  `video` varchar(255) NOT NULL,
+  `imagen_descripcion` varchar(255) DEFAULT NULL,
+  `audio` varchar(255) DEFAULT NULL,
+  `video` varchar(255) DEFAULT NULL,
   `texto` text NOT NULL,
   `stock` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `productos`
@@ -163,9 +168,10 @@ INSERT INTO `productos` (`productos_id`, `usuarios_fk`, `productos_estados_fk`, 
 (12, 3, 2, 'Burns radiactivo', 1384, 'paz.jpg', 'Les traigo paz', 'les_traigo_paz.mp3', 'JyaElUp4Bro', 'Estampado de la escena del señor Burns radioactivo, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Las costuras son espectaculares. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 8),
 (13, 3, 2, 'Stacy', 1625, 'stacy.jpg', 'Soy solo una chica', 'stacy.mp3', 'pjnHGcAvf7A', 'Remera básica en color blanco. Estampado de la escena de Stacy malibu,  El calce es suelto, con ruedo asimétrico. Está confeccionada en visco y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 2),
 (14, 3, 2, 'Peces del infierno', 1890, 'tanque.jpg', 'Los peces del infierno', 'waterloo_abba.mp3', 'sKO1RUb0Zqs', 'Remera básica en color blanco. Estampado de la escena del señor Burns en el tanque,  El calce es suelto, con ruedo asimétrico. Está confeccionada en viscosa y lycra. Tiene escote redondo y mangas cortas Si estas al limite del talle, te recomendamos ir por el talle siguiente! Este top al tener pecho alto ajusta más.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 3),
-(42, 3, 1, 'Peces del infiernofdsfds', 3, '20230315034730_IF-2021-35485965-GCABA-DGDCIV.pdf', 'sdf', '20230315034730_el_coco.mp3', 'sdf', 'adsasdasd', 3),
-(43, 3, 2, 'Un producto de prueba', 3, '20230315231842_Matrimonio-Mario-Marbian-y-Ana-Luis.PDF', 'asfdasdfasfdasfdasfd', '20230315231842_el_coco.mp3', 'embed', 'Proabdno', 2),
-(45, 3, 3, 'Editando', 3, 'logo.png', 'asdfasfdasfdasfdsafd', '20230316024213_el_coco.mp3', 'embed', 'asfd', 3);
+(48, 3, 1, 'Imagen por defecto', 100, 'abejas.jpg', 'asfd', '20230703045903_el_coco.mp3', '', 'assfasdfasfdsafasdf', 3),
+(49, 3, 2, 'probando imagen por defecto', 3, '20230705010435_user.png', '', NULL, '', 'asfdasff', 3),
+(50, 3, 1, 'Producto de prueba', 2, '20230706004009_Laboratorio-2-html.jpg', '', NULL, '', 'probadnoasfdasfdasfasfdasd', 3),
+(51, 3, 1, 'Micaaaaa', 12, 'imagen_por_defecto.jpg', '', NULL, '', 'asdfasfdasfdasfdasfdasfdsdf', 21);
 
 -- --------------------------------------------------------
 
@@ -176,7 +182,7 @@ INSERT INTO `productos` (`productos_id`, `usuarios_fk`, `productos_estados_fk`, 
 CREATE TABLE `productos_estados` (
   `productos_estados_id` tinyint(3) UNSIGNED NOT NULL,
   `nombre` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `productos_estados`
@@ -196,7 +202,7 @@ INSERT INTO `productos_estados` (`productos_estados_id`, `nombre`) VALUES
 CREATE TABLE `productos_has_categorias` (
   `productos_fk` int(10) UNSIGNED NOT NULL,
   `categorias_fk` smallint(5) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -207,7 +213,7 @@ CREATE TABLE `productos_has_categorias` (
 CREATE TABLE `productos_has_etiquetas` (
   `productos_fk` int(10) UNSIGNED NOT NULL,
   `etiquetas_fk` smallint(5) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `productos_has_etiquetas`
@@ -231,10 +237,8 @@ INSERT INTO `productos_has_etiquetas` (`productos_fk`, `etiquetas_fk`) VALUES
 (12, 5),
 (13, 2),
 (14, 5),
-(42, 1),
-(43, 1),
-(45, 2),
-(45, 3);
+(48, 1),
+(50, 1);
 
 -- --------------------------------------------------------
 
@@ -246,15 +250,7 @@ CREATE TABLE `recuperar_passwords` (
   `usuarios_id` int(10) UNSIGNED NOT NULL,
   `token` varchar(255) NOT NULL,
   `expiracion` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Volcado de datos para la tabla `recuperar_passwords`
---
-
-INSERT INTO `recuperar_passwords` (`usuarios_id`, `token`, `expiracion`) VALUES
-(2, '9cb2d38203c80d7dcf7e41d4cd308c51ce32a61ed6e078b52f37ba3142f993cc', '2022-07-28 01:58:08'),
-(4, '0b2818b14a1c59695a5adb5f300bbe84e02e2fadef1818bf875835c5653a3a41', '2023-02-07 23:17:43');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -265,7 +261,7 @@ INSERT INTO `recuperar_passwords` (`usuarios_id`, `token`, `expiracion`) VALUES
 CREATE TABLE `roles` (
   `roles_id` tinyint(3) UNSIGNED NOT NULL,
   `nombre` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `roles`
@@ -288,16 +284,16 @@ CREATE TABLE `usuarios` (
   `password` varchar(60) NOT NULL,
   `nombre` varchar(60) DEFAULT NULL,
   `apellido` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`usuarios_id`, `roles_fk`, `email`, `password`, `nombre`, `apellido`) VALUES
-(2, 2, 'viviana@gmail.com', '$2y$10$7aFp85Ww5uITunSWonCR1.eC7LXfV0yApuEm7KvHsf1fmEXQ8B8aO', 'Viviana', 'Krivokapic'),
 (3, 1, 'micaela.guggiari@davinci.edu.ar', '$2y$10$lVy6CJtx2smQDqvoHBINZ.PB7S47C6wkKGk7qKl4Ifdc9nfa6A6FO', 'Mica', 'Guggiari'),
-(4, 2, 'flor.marbian@davinci.edu.ar', '$2y$10$ker0RZT0QBmqSGNBRLTAy.4x8B0JMhHaZJkiRMBRdtr8ETOKQ5jZm', 'Florencia', 'Marbián');
+(23, 2, 'florencia.marbian@davinci.edu.ar', '$2y$10$Q7vUCV17brHIIAawwj.hTuzYzJJRdPWE1ct2CsMHWN8l.Du4q2.Y2', 'María Florencia ', 'Marbian'),
+(24, 2, 'agustina.perez@davinci.edu.ar', '$2y$10$UlhOhTOSGc.lro8MuPiu6eoFVq57krpUyeLCzXubLMyRdSsfGxvym', 'Agustina', 'Perez');
 
 --
 -- Índices para tablas volcadas
@@ -400,13 +396,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `agregar_producto`
 --
 ALTER TABLE `agregar_producto`
-  MODIFY `agregar_producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `agregar_producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `carrito_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `carrito_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -418,7 +414,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `etiquetas`
@@ -430,7 +426,7 @@ ALTER TABLE `etiquetas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `productos_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `productos_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_estados`
@@ -454,7 +450,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usuarios_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `usuarios_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Restricciones para tablas volcadas
