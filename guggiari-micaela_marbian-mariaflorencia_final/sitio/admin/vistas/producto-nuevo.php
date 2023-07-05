@@ -11,7 +11,7 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
 ?>
 
 <section class="container-product">
-    <h1 class="mb-1 text-center">Publicar una Nuevo producto</h1>
+    <h1 class="mb-1 mt-5 text-center">Publicar una Nuevo producto</h1>
 
     <p class="mb-1 text-center">Completá los datos del formulario con el producto. Cuando estés conforme dale a
         "Publicar".</p>
@@ -39,7 +39,6 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
             <textarea id="texto" name="texto" class="form-control" <?php if (isset($errores['texto'])): ?>
                 aria-describedby="error-texto" <?php endif; ?>><?= e($dataForm['texto'] ?? null); ?></textarea>
             <div class="form-help" id="help-titulo">El texto tiene que tener al menos 10 caracteres</div>
-
             <?php
             if (isset($errores['texto'])):
             ?>
@@ -51,18 +50,17 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
             ?>
         </div>
         <div class="form-fila">
-            <label for="precio" class="w-100">Precio <span class="required"> * </span>
-                < /label>
-                    <input id="precio" name="precio" type="number" class="form-control"
-                        <?php if (isset($errores['precio'])): ?> aria-describedby="error-precio"
-                        <?php endif; ?>><?= e($dataForm['precio'] ?? null); ?>
+            <label for="precio" class="w-100">Precio <span class="required"> * </span> </label>
+                <input id="precio" name="precio" type="number" class="form-control"
+                    <?php if (isset($errores['precio'])): ?> aria-describedby="error-precio"
+                    <?php endif; ?>><?= e($dataForm['precio'] ?? null); ?>
                     <?php
             if (isset($errores['precio'])):
             ?>
-                    <div class="msg-error" id="error-precio">
-                        <p class="visually-hidden">Error:</p><?= $errores['precio']; ?>
-                    </div>
-                    <?php
+                <div class="msg-error" id="error-precio">
+                    <p class="visually-hidden">Error:</p><?= $errores['precio']; ?>
+                </div>
+                <?php
             endif;
             ?>
         </div>
@@ -91,7 +89,7 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
         </div>
         <div class="form-fila">
             <label for="stock" class="w-100">Stock <span class="required"> * </span>
-                < /label>
+                </label>
                     <input id="stock" type="number" name="stock"
                         class="form-control"><?= e($dataForm['stock'] ?? null); ?>
         </div>
@@ -111,7 +109,7 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
                 ?>
             </select>
         </div>
-        <div>
+        <div class="form-fila">
             <fieldset>
                 <legend>Etiquetas</legend>
                 <div class="form-checkbox-list">
@@ -130,8 +128,11 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
                 </div>
             </fieldset>
         </div>
-        <div class="form-fila">
+        <div class="d-flex flex-column">
             <button type="submit" class="button btn btn-primary my-3">Publicar</button>
+            <a class="nav-link p-2" href="index.php?v=productos">
+                <i class="bi bi-arrow-left-circle"></i> Volver al Panel de Administración
+            </a>
         </div>
     </form>
 </section>

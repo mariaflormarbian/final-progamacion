@@ -4,13 +4,11 @@ $productos = (new Producto())->todo();
 ?>
 
 <section class="container-product">
-    <h1 class="mb-1 text-center">Administración de Productos</h1>
-
-    <div class="mt-1 mb-1 d-flex justify-content-center">
-        <a href="index.php?v=producto-nuevo" class="button btn btn-primary my-3">Publicar un nuevo producto</a>
+    <div class="mt-5 mb-2 d-flex flex-column flex-md-row justify-content-between aling-items-center">
+        <h1 class="mb-3 mb-md-0">Administración de Productos</h1>
+        <a href="index.php?v=producto-nuevo" class="button btn btn-primary d-flex aling-items-center">Publicar un nuevo producto</a>
     </div>
-
-    <div class="table-responsive bg-light p-5 rounded shadow-sm mt-md-5 mb-5"">
+    <div class="table-responsive bg-light p-5 rounded shadow-sm mt-3 mb-5">
         <table class=" table">
         <thead>
             <tr>

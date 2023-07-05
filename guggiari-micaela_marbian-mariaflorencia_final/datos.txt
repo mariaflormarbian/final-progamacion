@@ -7,5 +7,5 @@ Apellido y Nombre: Guggiari Micaela
 
 USUARIOS
 1 admin: micaela.guggiari@davinci.edu.ar -   pass: mica 
-2 usuario: viviana@gmail.com  - pass: pacho
-3 usuario: flor.marbian@davinci.edu.ar - pass: flor2
+2 usuario: sol.lopez@davinci.edu.ar  - pass: olvidate132
+3 usuario: flor.marbian@davinci.edu.ar - pass: pacho123

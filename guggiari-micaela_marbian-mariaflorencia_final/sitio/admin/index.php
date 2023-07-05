@@ -79,7 +79,7 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="imgs/otros/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../imgs/otros/logo.png" type="image/x-icon">
 </head>
 <body>
     <div id="sitio">
@@ -139,12 +139,6 @@ unset($_SESSION['mensaje_exito'], $_SESSION['mensaje_error']);
             <?php 
             endif;
             ?>
-            <ul class="back">
-                <li class="nav-item col-6 col-md-auto">
-                    <a class="nav-link p-2" href="index.php?v=productos"><i class="bi bi-arrow-left-circle"></i>
-                    </a>
-                </li>
-            </ul>
             <?php
             $filename = __DIR__ . '/vistas/' . $vistas . '.php';
             if (file_exists($filename)) {

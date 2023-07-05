@@ -4,8 +4,8 @@ $usuarios = (new Usuario())->todo();
 ?>
 
 <section class="container-product">
-    <h2 class="mb-1 text-center">Usuarios registrados</h2>
-    <div class="table-responsive mt-5 p-5 rounded shadow-sm mt-md-5 mb-5">
+    <h1 class="mt-5">Usuarios registrados</h1>
+    <div class="table-responsive mt-3 p-5 rounded shadow-sm mt-md-3 mb-5">
         <table class=" table">
             <thead>
                 <tr>
@@ -37,4 +37,7 @@ $usuarios = (new Usuario())->todo();
             </tbody>
         </table>
     </div>
+    <a class="nav-link p-2 text-md-end" href="index.php?v=productos">
+        <i class="bi bi-arrow-left-circle"></i> Volver al Panel de Administración
+    </a>
 </section>
