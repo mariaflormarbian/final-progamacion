@@ -76,10 +76,26 @@ h2 {
   opacity: 0.6;
   cursor: default;
 }
+
 .button-eliminar {
-  margin-top: 10%;
-  margin-bottom: 20%;
+  background-color: #ab0f04;
+  color: #FFF;
+  transition: all 300ms ease;
+  border: 2px solid #ab0f04;
+  cursor: pointer;
+  padding: 6px 33px;
+}	
+
+.button-eliminar:hover {
+  background-color: #7d0d05;
+  color: #FFF;
+  border: 2px solid #7d0d05;
 }
+
+.color-eliminacion {
+  color: #7d0d05;
+}
+
 a {
   text-decoration: none;
   color: grey;
@@ -188,14 +204,14 @@ header nav {
 .nav-link:hover,
 .nav-link:focus,
 .nav-link.active {
-  color: yellow;
+  color: #ad9900;
 }
 li {
   list-style: none;
 }
 
 .color:hover {
-  color: yellow;
+  color: #ad9900;
   transition-duration: 1s;
 }
 input {
@@ -432,9 +448,11 @@ footer div {
   }
   .container-product,
   .error {
-    margin-top: 12%;
     margin-bottom: 32%;
     min-height: auto;
+  }
+  .container-product div a {
+    align-items: center;
   }
 }
 @media (min-width: 768px) and (max-width: 1200px) {

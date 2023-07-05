@@ -15,7 +15,7 @@ $productos->cargarEtiquetas();
 ?>
 
 <section class="container-product">
-    <h1 class="mb-1 text-center">Editar Producto</h1>
+    <h1 class="mb-1 text-center mt-5">Editar Producto</h1>
     <p class="mb-1 text-center">Editá los datos del formulario con el Producto. Cuando estés conforme dale a
         "Actualizar".</p>
     <form action="acciones/producto-editar.php" method="post" class="bg-light p-5 rounded  shadow-sm mt-md-5 mb-5"
@@ -64,7 +64,6 @@ $productos->cargarEtiquetas();
             endif;
             ?>
         </div>
-
         <div class="form-fila">
             <label for="stock">Stock</label>
             <textarea id="stock" name="stock" class="form-control" <?php if (isset($errores['stock'])): ?>
@@ -72,7 +71,6 @@ $productos->cargarEtiquetas();
                 <?php endif; ?>><?= e($dataForm['stock'] ?? $productos->getStock()); ?></textarea>
 
         </div>
-
         <div class="mb-4 w-100 d-flex gap-3 img-icon bg-light  row">
             <?php
             if (!empty($productos->getImagen()) && file_exists(__DIR__ . '/../../imgs/productos/' . $productos->getImagen())) :
@@ -89,7 +87,7 @@ $productos->cargarEtiquetas();
             <div class="form-fila">
                 <label for="imagen">Imagen <span class="text-small">(<span class="visually-hidden">campo
                         </span>opcional)</span></label>
-                <img width="416" src="<?= '../imgs/productos/' . e($productos->getImagen()); ?>" alt="">
+                <img width="416" src="<?= '../imgs/productos/' . e($productos->getImagen()); ?>" alt="" class="img-fluid">
                 <input type="file" id="imagen" name="imagen" class="form-control"
                     value="<?= e($dataForm['imagen'] ?? $productos->getImagen()); ?>">
             </div>
@@ -105,7 +103,6 @@ $productos->cargarEtiquetas();
                     placeholder=" Ejemplo luego del <iframe> aparece Youtube/ (copiar desde embed y pegar)"
                     value="<?= e($dataForm['video'] ?? $productos->getVideo()); ?>">
             </div>
-
             <div class="form-fila">
                 <label for="audio">Audio <span class="text-small">(<span class="visually-hidden">campo
                         </span>opcional)</span></label>
@@ -113,8 +110,6 @@ $productos->cargarEtiquetas();
                 <input type="file" id="audio" name="audio" class="form-control"
                     value="<?= e($dataForm['audio'] ?? $productos->getAudio()); ?>">
             </div>
-
-
             <div class="form-fila">
                 <label for="productos_estados_fk">Estado de Publicación</label>
                 <select id="productos_estados_fk" name="productos_estados_fk" class="form-control">
@@ -152,6 +147,12 @@ $productos->cargarEtiquetas();
                     </div>
                 </fieldset>
             </div>
-            <button type="submit" class="button btn btn-primary my-3">Actualizar</button>
+            <div class="d-flex flex-column">
+                <button type="submit" class="button btn btn-primary my-3">Actualizar</button>
+                <a class="nav-link p-2" href="index.php?v=productos">
+                    <i class="bi bi-arrow-left-circle"></i> Volver al Panel de Administración
+                </a>
+            </div>
+        </div>
     </form>
 </section>

@@ -24,9 +24,5 @@ unset($_SESSION['data_form']);
                 <button type="submit" class="button btn btn-primary">Ingresar</button>
             </div>
         </form>
-        <div class="pass">
-            <p>¿Olvidaste tu password?</p>
-            <a href="index.php?v=recuperar-password">Solicitá restablecer tu password</a>
-        </div>
     </div>
 </section>

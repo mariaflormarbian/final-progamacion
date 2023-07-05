@@ -2,6 +2,7 @@
 namespace DaVinci\Modelos;
 use DaVinci\Database\Conexion;
 use PDO;
+use Exception;
 
 class Compra extends Modelo{
 
@@ -143,12 +144,12 @@ class Compra extends Modelo{
 
     public function getUsuario()
     {
-        return $this->usuarios;
+        return $this->usuarios_fk;
     }
 
     public function setUsuario($usuarios)
     {
-        $this->usuarios = $usuarios;
+        $this->usuarios_fk = $usuarios;
         return $this;
     }
 }

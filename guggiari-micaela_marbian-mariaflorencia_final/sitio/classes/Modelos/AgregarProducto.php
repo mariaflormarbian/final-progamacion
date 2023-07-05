@@ -2,6 +2,7 @@
 namespace DaVinci\Modelos;
 use DaVinci\Database\Conexion;
 use DaVinci\Modelos\Modelo;
+use Exception;
 use PDO;
 
 class AgregarProducto extends Modelo
@@ -16,8 +17,6 @@ class AgregarProducto extends Modelo
     protected string $tabla = 'agregar_producto';
     protected string $primaryKey = "agregar_producto_id";
     protected array $properties = ['agregar_producto_id', 'carrito_fk', 'productos_fk', 'titulo', 'cantidad', 'subtotal', 'precio'];
-
-
 
     public function data(): array
     {
@@ -61,10 +60,9 @@ class AgregarProducto extends Modelo
         $db->beginTransaction();
         try{
             $query = "UPDATE agregar_producto
-                         SET cantidad = :cantidad,
+                        SET cantidad = :cantidad,
                         subtotal = :subtotal
                         WHERE agregar_producto_id = :agregar_producto_id";
-
             $stmt = $db->prepare($query);
             $stmt->execute([
                 'agregar_producto_id' => $id,
@@ -95,7 +93,6 @@ class AgregarProducto extends Modelo
             throw $e;
         }
     }
-
 
     public function eliminarAgregarProducto($id): void
     {
