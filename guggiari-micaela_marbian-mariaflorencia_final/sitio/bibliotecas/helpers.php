@@ -22,3 +22,20 @@ function e(?string $string): string
 {
     return htmlspecialchars($string);
 }
+
+/**
+ * Retorna un string con el query string omitiendo los valores indicados en excepciones.
+ */
+function queryStringExcepto(array $excepciones = []): string
+{
+	$queryStringPartes = explode('&', $_SERVER['QUERY_STRING']);
+	$filtrados = [];
+	foreach($queryStringPartes as $valor) {
+		// Si la clave no está en el array de $excepciones, la agregamos.
+		[$clave, $dato] = explode('=', $valor);
+		if(!in_array($clave, $excepciones)) {
+			$filtrados[$clave] = $valor;
+		}
+	}
+	return implode('&', $filtrados);
+}

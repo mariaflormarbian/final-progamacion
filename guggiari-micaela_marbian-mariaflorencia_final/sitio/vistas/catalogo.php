@@ -1,6 +1,9 @@
 <?php
 use DaVinci\Modelos\Producto;
-$productos = (new Producto())->publicadas($busqueda);
+
+$productoPaginado = (new Producto);
+$productos = $productoPaginado->publicadas($busqueda, 5);
+$paginador = $productoPaginado->getPaginador();
 ?>
 
 <section class="catalogo">
@@ -9,7 +12,7 @@ $productos = (new Producto())->publicadas($busqueda);
 
     <ul class="row p-0">
         <?php foreach($productos as $producto): ?>
-        <li class="card col-md-4 productos">
+        <li class="card col-md-4 productos mt-3">
             <div class="producto">
                 <picture>
                     <img class="img-fluid" src="imgs/productos/<?= $producto->getImagen();?>"
@@ -57,6 +60,11 @@ $productos = (new Producto())->publicadas($busqueda);
         </li>
         <?php endforeach; ?>
     </ul>
+    
+    <?php 
+    $paginador->setUrlBase('index.php?' . queryStringExcepto(['p']));
+    $paginador->generarPaginacion();
+    ?>
 </section>
 
 <script>

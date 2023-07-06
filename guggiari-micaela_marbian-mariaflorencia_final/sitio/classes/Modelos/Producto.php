@@ -1,6 +1,7 @@
 <?php
 namespace DaVinci\Modelos;
 use DaVinci\Database\Conexion;
+use DaVinci\Paginacion\Paginador;
 use EmptyIterator;
 use PDO;
 use PDOException;
@@ -28,13 +29,17 @@ class Producto extends Modelo
     protected string $tabla = "productos";
     protected string $primaryKey = "productos_id";
 
+    protected Paginador $paginador;
+
     protected array $propiedades = ['productos_id', 'usuarios_fk', 'productos_estados_fk', 'titulo', 'texto', 'precio', 'imagen', 'imagen_descripcion', 'video', 'audio', 'stock'];
 
     /**
      * Obtiene todos los productos.
      */
-    public function todo(array $where = []): array
+    public function todo(array $where = [], int $registrosPorPagina =  10): array
     {
+        $this->paginador = new Paginador($registrosPorPagina);
+
         $whereQuery = "";
         $whereValues = [];
         if(count($where) > 0) {
@@ -50,11 +55,40 @@ class Producto extends Modelo
         }
 
         $db = Conexion::getConexion();
-        $query = "SELECT p.*, u.*, pe.productos_estados_id, pe.nombre AS 'estado' FROM productos p
+        $query = "SELECT p.*,
+                u.*, 
+                pe.productos_estados_id, 
+                pe.nombre AS 'estado' 
+                FROM productos p
                 INNER JOIN productos_estados pe 
                 ON p.productos_estados_fk = pe.productos_estados_id
                 INNER JOIN usuarios u 
-                ON p.usuarios_fk = u.usuarios_id". $whereQuery;
+                    ON  p.usuarios_fk = u.usuarios_id
+                LEFT JOIN productos_has_etiquetas nte
+                    ON nte.productos_fk = p.productos_id
+                LEFT JOIN etiquetas e
+                    ON nte.etiquetas_fk = e.etiquetas_id
+                {$whereQuery}
+                GROUP BY p.productos_id
+                LIMIT {$this->paginador->getRegistrosPorPagina()} 
+                OFFSET {$this->paginador->getRegistroInicial()}";
+                $stmt = $db->prepare($query);
+                $stmt->execute($whereValues); 
+
+        // if($registrosPorPagina !== null ) {
+        //     $this->paginacion['pagina'] = (int) ($_GET['p'] ?? 1);
+        //     $this->paginacion['registrosPorPagina'] = $registrosPorPagina;
+        //     $this->paginacion['registroInicial'] = ($registrosPorPagina * $this->paginacion['pagina']) - $registrosPorPagina;
+
+        //     $query .= " LIMIT " . $this->paginacion['registroInicial'] .", " .  $this->paginacion['registrosPorPagina'];
+
+        //     $queryTotal = "SELECT COUNT(*) AS total FROM productos" . $whereQuery;
+        //     $stmPaginas = $db->prepare($queryTotal);
+        //     $stmPaginas->execute($where);
+        //     $filaPagina = $stmPaginas->fetch(PDO::FETCH_ASSOC);
+        //     $this->paginacion['registrosTotales'] = $filaPagina['total'];
+        //     $this->paginacion['totalPaginas'] = ceil($this->paginacion['registrosTotales'] / $this->paginacion['registrosPorPagina']);
+        // }
 
         $stmt = $db->prepare($query);
         $stmt->execute($whereValues);
@@ -64,6 +98,14 @@ class Producto extends Modelo
         while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)){
             $salida[] = $this->generarProductoFila($fila);
         }
+
+        $queryPaginacion = "SELECT COUNT(*) AS 'total' FROM productos
+        {$whereQuery}";
+        $stmtPag = $db->prepare($queryPaginacion);
+        $stmtPag->execute($whereValues);
+        $filaPag = $stmtPag->fetch();
+        $this->paginador->setRegistrosTotales($filaPag['total']);
+
         return $salida;
     }
 
@@ -102,7 +144,7 @@ class Producto extends Modelo
     /**
      * Retorna los productos publicados.
      */
-    public function publicadas(?array $where = null): array 
+    public function publicadas(?array $where = null, int $registrosPorPagina = 10): array 
     {
         // $whereDefault = ['productos_estados_fk' => 2];
         $whereDefault = [['productos_estados_fk', '=', 2]];
@@ -111,7 +153,7 @@ class Producto extends Modelo
             $whereDefault = array_merge($whereDefault, $where);
         }
 
-        return $this->todo($whereDefault);
+        return $this->todo($whereDefault, $registrosPorPagina);
     }
 
     /**
@@ -418,4 +460,8 @@ class Producto extends Modelo
         $this->stock = $stock;
     }
 
+    public function getPaginador(): Paginador
+    {
+        return $this->paginador;
+    }
 }
