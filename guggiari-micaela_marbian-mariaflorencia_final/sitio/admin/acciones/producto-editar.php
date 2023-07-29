@@ -8,19 +8,7 @@ require_once __DIR__ . '/../../bootstrap/autoload.php';
 $autenticacion = new Autenticacion();
 
 $id = $_POST['id'];
-$titulo = $_POST['titulo'];
-$productos_estados_fk = $_POST['productos_estados_fk'];
-$precio = $_POST['precio'];
-$texto = $_POST['texto'];
-$imagen_descripcion = $_POST['imagen_descripcion'];
-$imagen = $_FILES['imagen'];
-$etiquetas          = $_POST['etiquetas_id'] ?? [];
-$audio = $_FILES['audio'];
-$stock              =  $_POST['stock'];
-$video              =  $_POST['video'];
 $productos = (new Producto())->traerPorId($id);
-
-
 
 if (!$productos) {
     $_SESSION['mensaje_error'] = "El producto que estás tratando de editar no existe.";
@@ -28,17 +16,44 @@ if (!$productos) {
     exit;
 }
 
+$titulo = $_POST['titulo'];
+$productos_estados_fk = $_POST['productos_estados_fk'];
+$precio = $_POST['precio'];
+$texto = $_POST['texto'];
+$imagen_descripcion = $_POST['imagen_descripcion'];
+$etiquetas = $_POST['etiquetas_id'] ?? [];
+$audio = $_FILES['audio'];
+$stock =  $_POST['stock'];
+$video =  $_POST['video'];
+
+$nombreImagen = '';
+if (!empty($_FILES['imagen']['tmp_name'])) {
+    $nombreImagen = date('YmdHis_') . slugify($_FILES['imagen']['name']);
+    move_uploaded_file($_FILES['imagen']['tmp_name'], __DIR__ . '/../../imgs/productos/' . $nombreImagen);
+} else {
+    // Si no se ha seleccionado una nueva imagen, mantener la imagen existente
+    $nombreImagen = $productos->getImagen();
+}
+
+$nombreAudio = '';
+if (!empty($_FILES['audio']['tmp_name'])) {
+    $nombreAudio = date('YmdHis_') . slugify($_FILES['audio']['name']);
+    move_uploaded_file($_FILES['audio']['tmp_name'], __DIR__ . '/../../audio/' . $nombreAudio);
+} else {
+    // Si no se ha seleccionado un nuevo audio, mantener el audio existente
+    $nombreAudio = $productos->getAudio();
+}
+
 $validador = new ProductoValidar([
     'titulo' => $titulo,
     'productos_estados_fk' => $productos_estados_fk,
     'precio' => $precio,
     'texto' => $texto,
-    'imagen' => $imagen,
+    'imagen' => $_FILES['imagen'], // Pasamos el archivo directamente al validador
     'imagen_descripcion' => $imagen_descripcion,
-    'audio' => $audio,
+    'audio' => $_FILES['audio'], // Pasamos el archivo directamente al validador
     'stock' => $stock,
     'video' => $video,
-
 ]);
 
 if ($validador->hayErrores()) {
@@ -49,17 +64,6 @@ if ($validador->hayErrores()) {
     exit;
 }
 
-if (!empty($imagen['tmp_name'])) {
-    $nombreImagen = date('YmdHis_') . slugify($imagen['name']);
-
-    move_uploaded_file($imagen['tmp_name'], __DIR__ . '/../../imgs/productos/' . $nombreImagen);
-}
-
-if (!empty($audio['tmp_name'])) {
-    $nombreAudio = date('YmdHis_') . slugify($audio['name']);
-    move_uploaded_file($audio['tmp_name'], __DIR__ . '/../../audio/' . $nombreAudio);
-}
-
 try {
     $productos->editar($id, [
         'usuarios_fk' => $autenticacion->getId(),
@@ -67,36 +71,22 @@ try {
         'titulo' => $titulo,
         'precio' => $precio,
         'texto' => $texto,
-        'imagen' => $nombreImagen ?? 'logo.png',
+        'imagen' => $nombreImagen, // Utilizamos la variable $nombreImagen
         'imagen_descripcion' => $imagen_descripcion,
-        'etiquetas'             => $etiquetas,
-        'audio' => $nombreAudio,
+        'etiquetas' => $etiquetas,
+        'audio' => $nombreAudio, // Utilizamos la variable $nombreAudio
         'stock' => $stock,
         'video' => $video,
-
     ]);
 
-    if (
-        isset($nombreImagen) &&
-        !empty($productos->getImagen()) &&
-        file_exists(__DIR__ . '/../../imgs/' . $productos->getImagen())
-    ) {
+    // Eliminar imágenes y audios antiguos solo si se seleccionaron nuevos archivos
+    if (!empty($_FILES['imagen']['tmp_name']) && !empty($productos->getImagen()) && file_exists(__DIR__ . '/../../imgs/' . $productos->getImagen())) {
         unlink(__DIR__ . '/../../imgs/' . $productos->getImagen());
     }
 
-
-
-    if (
-        isset($nombreAudio) &&
-        !empty($productos->getAudio()) &&
-        file_exists(__DIR__ . '/../../audio/' . $productos->getAudio())
-    ) {
+    if (!empty($_FILES['audio']['tmp_name']) && !empty($productos->getAudio()) && file_exists(__DIR__ . '/../../audio/' . $productos->getAudio())) {
         unlink(__DIR__ . '/../../audio/' . $productos->getAudio());
     }
-
-
-
-
 
     $_SESSION['mensaje_exito'] = "El producto '<b>" . $titulo . "</b>' fue publicado con éxito.";
 

@@ -161,7 +161,6 @@ class Producto extends Modelo
             'video' => $data['video'],
             'audio' => $data['audio'],
             'stock' => $data['stock'],
-
         ]);
 
         $id = $db->lastInsertId();
@@ -194,37 +193,82 @@ class Producto extends Modelo
      * Editar el producto.
      */
     public function editar(int $id, array $data): void
-    {
-        $db = Conexion::getConexion();
-        $query = "UPDATE productos
-                SET usuarios_fk          = :usuarios_fk,
-                    productos_estados_fk = :productos_estados_fk,
-                    titulo               = :titulo,
-                    precio               = :precio,
-                    texto                = :texto,
-                    imagen               = :imagen,
-                    video                = :video,
-                    imagen_descripcion   = :imagen_descripcion,
-                    audio = :audio,
-                    stock   = :stock
-                    
-                WHERE productos_id = :productos_id";
-        $stmt = $db->prepare($query);
-        $stmt->execute([
-            'productos_id' => $id,
-            'usuarios_fk' => $data['usuarios_fk'],
-            'productos_estados_fk' => $data ['productos_estados_fk'],
-            'titulo' => $data['titulo'],
-            'precio' => $data['precio'],
-            'texto' => $data['texto'],
-            'imagen' => $data['imagen'],
-            'video' => $data['video'],
-            'imagen_descripcion' => $data['imagen_descripcion'],
-            'audio' => $data['audio'],
-            'stock' => $data['stock'],
-        ]);
-        $this->actualizarEtiquetas($data['etiquetas']);
+{
+    $db = Conexion::getConexion();
+    $query = "UPDATE productos
+            SET usuarios_fk          = :usuarios_fk,
+                productos_estados_fk = :productos_estados_fk,
+                titulo               = :titulo,
+                precio               = :precio,
+                texto                = :texto,
+                video                = :video,
+                imagen_descripcion   = :imagen_descripcion,
+                audio = :audio,
+                stock   = :stock";
+
+    // Comprobar si se ha seleccionado una nueva imagen
+    if (!empty($data['imagen'])) {
+        $query .= ", imagen = :imagen";
     }
+
+    $query .= " WHERE productos_id = :productos_id";
+
+    $stmt = $db->prepare($query);
+
+    // Unir los datos para la consulta
+    $params = [
+        'productos_id' => $id,
+        'usuarios_fk' => $data['usuarios_fk'],
+        'productos_estados_fk' => $data['productos_estados_fk'],
+        'titulo' => $data['titulo'],
+        'precio' => $data['precio'],
+        'texto' => $data['texto'],
+        'video' => $data['video'],
+        'imagen_descripcion' => $data['imagen_descripcion'],
+        'audio' => $data['audio'],
+        'stock' => $data['stock'],
+    ];
+
+    // Comprobar si se ha seleccionado una nueva imagen y añadirla a los parámetros
+    if (!empty($data['imagen'])) {
+        $params['imagen'] = $data['imagen'];
+    }
+
+    $stmt->execute($params);
+    $this->actualizarEtiquetas($data['etiquetas']);
+}
+    // public function editar(int $id, array $data): void
+    // {
+    //     $db = Conexion::getConexion();
+    //     $query = "UPDATE productos
+    //             SET usuarios_fk          = :usuarios_fk,
+    //                 productos_estados_fk = :productos_estados_fk,
+    //                 titulo               = :titulo,
+    //                 precio               = :precio,
+    //                 texto                = :texto,
+    //                 imagen               = :imagen,
+    //                 video                = :video,
+    //                 imagen_descripcion   = :imagen_descripcion,
+    //                 audio = :audio,
+    //                 stock   = :stock
+                    
+    //             WHERE productos_id = :productos_id";
+    //     $stmt = $db->prepare($query);
+    //     $stmt->execute([
+    //         'productos_id' => $id,
+    //         'usuarios_fk' => $data['usuarios_fk'],
+    //         'productos_estados_fk' => $data ['productos_estados_fk'],
+    //         'titulo' => $data['titulo'],
+    //         'precio' => $data['precio'],
+    //         'texto' => $data['texto'],
+    //         'imagen' => $data['imagen'],
+    //         'video' => $data['video'],
+    //         'imagen_descripcion' => $data['imagen_descripcion'],
+    //         'audio' => $data['audio'],
+    //         'stock' => $data['stock'],
+    //     ]);
+    //     $this->actualizarEtiquetas($data['etiquetas']);
+    // }
 
     protected function actualizarEtiquetas(array $etiquetas)
     {

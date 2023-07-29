@@ -7,7 +7,6 @@ use PDO;
 class Carrito extends Modelo{
     protected int $carrito_id;
     protected int $usuarios_fk;
-
     protected int $cantidad;
     protected float $total;
 

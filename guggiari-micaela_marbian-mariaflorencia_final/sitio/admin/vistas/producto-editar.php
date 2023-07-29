@@ -69,7 +69,6 @@ $productos->cargarEtiquetas();
             <textarea id="stock" name="stock" class="form-control" <?php if (isset($errores['stock'])): ?>
                 aria-describedby="error-precio"
                 <?php endif; ?>><?= e($dataForm['stock'] ?? $productos->getStock()); ?></textarea>
-
         </div>
         <div class="mb-4 w-100 d-flex gap-3 img-icon bg-light  row">
             <?php
@@ -87,7 +86,7 @@ $productos->cargarEtiquetas();
             <div class="form-fila">
                 <label for="imagen">Imagen <span class="text-small">(<span class="visually-hidden">campo
                         </span>opcional)</span></label>
-                <img width="416" src="<?= '../imgs/productos/' . e($productos->getImagen()); ?>" alt="" class="img-fluid">
+                <img width="416" src="<?= '/../../imgs/productos/' . e($productos->getImagen()); ?>" alt="" class="img-fluid">
                 <input type="file" id="imagen" name="imagen" class="form-control"
                     value="<?= e($dataForm['imagen'] ?? $productos->getImagen()); ?>">
             </div>

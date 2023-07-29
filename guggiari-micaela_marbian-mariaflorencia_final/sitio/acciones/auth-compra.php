@@ -27,7 +27,6 @@ try
         "cantidad" => $cantidad,
         "total" => $total,
         "productos" => $productos
-
     ]);
     $productosAgregados->eliminarAgregarProducto($id);
     $_SESSION['mensaje_exito'] = '¡Éxito! Gracias por su compra';

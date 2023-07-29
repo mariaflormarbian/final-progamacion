@@ -1,15 +1,11 @@
 <?php
 use DaVinci\Modelos\Producto;
-
-$productoPaginado = (new Producto);
-$productos = $productoPaginado->publicadas($busqueda);
-$paginador = $productoPaginado->getPaginador();
+$productos = (new Producto())->publicadas($busqueda);
 ?>
 
 <section class="catalogo">
     <h1 class="visually-hidden">Catálogo de nuestros productos disponibles</h1>
     <h2 class="text-center fw-bold mt-5 p-3">Nuestros Productos</h2>
-
     <ul class="row p-0">
         <?php foreach($productos as $producto): ?>
         <li class="card col-md-4 productos mt-3">
@@ -60,11 +56,6 @@ $paginador = $productoPaginado->getPaginador();
         </li>
         <?php endforeach; ?>
     </ul>
-    
-    <?php 
-    $paginador->setUrlBase('index.php?' . queryStringExcepto(['p']));
-    $paginador->generarPaginacion();
-    ?>
 </section>
 
 <script>

@@ -1,6 +1,8 @@
 <?php
 use DaVinci\Modelos\Producto;
-$productos = (new Producto())->todo();
+$productoPaginado = (new Producto);
+$productos = $productoPaginado->todo();
+$paginador = $productoPaginado->getPaginador();
 ?>
 
 <section class="container-product">
@@ -61,4 +63,8 @@ $productos = (new Producto())->todo();
         </tbody>
         </table>
     </div>
+    <?php 
+    $paginador->setUrlBase('index.php?' . queryStringExcepto(['p']));
+    $paginador->generarPaginacion();
+    ?>
 </section>

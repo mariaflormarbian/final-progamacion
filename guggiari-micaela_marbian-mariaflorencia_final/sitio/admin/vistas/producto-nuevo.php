@@ -11,7 +11,7 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
 ?>
 
 <section class="container-product">
-    <h1 class="mb-1 mt-5 text-center">Publicar una Nuevo producto</h1>
+    <h1 class="mb-1 mt-5 text-center">Publicar un Nuevo producto</h1>
 
     <p class="mb-1 text-center">Completá los datos del formulario con el producto. Cuando estés conforme dale a
         "Publicar".</p>

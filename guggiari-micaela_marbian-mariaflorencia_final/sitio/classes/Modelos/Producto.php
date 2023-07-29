@@ -171,7 +171,6 @@ class Producto extends Modelo
         $etiquetas = [];
         while($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $etiquetasFk[] = $fila['etiquetas_id'];
-
             $etiqueta = new Etiqueta();
             $etiqueta->cargarPropiedades($fila);
             $etiquetas[] = $etiqueta;
