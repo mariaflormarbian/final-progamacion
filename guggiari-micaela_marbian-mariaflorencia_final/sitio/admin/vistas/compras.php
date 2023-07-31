@@ -25,7 +25,7 @@ $orders = (new Compra)->getByUsuario($id);
                     <td> <?= $i + 1 ?></td>
                     <td><?= $order->getFecha(); ?></td>
                     <td> <?php foreach($order->getProductos() as $item): ?>
-                        <li class="mb-2"><?= $item ?></li>
+                        <?= $item ?>
                         <?php endforeach; ?>
                     </td>
                     <td><?= $order->getCantidad(); ?></td>

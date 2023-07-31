@@ -13,7 +13,7 @@ $producto->cargarEtiquetas();
                 <figure>
                     <picture>
                         <img class="img-fluid" src="imgs/productos/<?= $producto->getImagen();?>"
-                        alt="<?= $producto->getImagenDescripcion();?>">
+                            alt="<?= $producto->getImagenDescripcion();?>">
                     </picture>
                 </figure>
             </div>
@@ -24,7 +24,7 @@ $producto->cargarEtiquetas();
                 <div>
                     <span class="visually-hidden">Etiquetas asociadas a esta noticia:</span>
                     <ul class="list-unstyled d-flex justify-content-center">
-                    <?php
+                        <?php
                     foreach($producto->getEtiquetas() as $etiqueta):
                     ?>
                         <li class="pe-1">
@@ -32,7 +32,7 @@ $producto->cargarEtiquetas();
                                 <?= $etiqueta->getNombre();?>
                             </span>
                         </li>
-                    <?php
+                        <?php
                     endforeach;
                     ?>
                     </ul>
@@ -41,22 +41,23 @@ $producto->cargarEtiquetas();
                     <label for="cantidad" class="d-block">Cantidad: </label>
                     <select name="productos_cantidad" id="cantidad" class="w-50 p-1">
                         <?php for ($i = 1; $i <= htmlspecialchars($producto->getStock()); $i++) : ?>
-                            <?php
+                        <?php
                             if ($i > 10) break;
                             ?>
 
-                            <option value="<?= $i ?>"><?= $i ?>
-                                <?php if ($i <= 1) $option = 'Unidad';
+                        <option value="<?= $i ?>"><?= $i ?>
+                            <?php if ($i <= 1) $option = 'Unidad';
                                 else $option = 'Unidades';?>
-                            </option>
+                        </option>
                         <?php endfor; ?>
                     </select>
                 </div>
-                
+
                 <input type="hidden" name="productos_id" value="<?= $producto->getCatalogoId(); ?>">
                 <input type="hidden" name="productos_titulo" value="<?= $producto->getTitulo(); ?>">
                 <input type="hidden" name="productos_precio" value="<?= $producto->getPrecio(); ?>">
-                <button type="submit" class="btn btn-primary  text-center p-6  text-uppercase  mb-2">Añadir al carrito</button>
+                <button type="submit" class="btn btn-primary  text-center p-6  text-uppercase  mb-2">Añadir al
+                    carrito</button>
             </div>
         </div>
     </form>
@@ -80,8 +81,7 @@ $producto->cargarEtiquetas();
             </div>
             <aside class="col-lg-6 ">
                 <h3 class="my-3 text-center">Reviví tu <strong>remera</strong></h3>
-                <iframe src="https://www.youtube.com/embed/<?= $producto->getVideo();?>"
-                    title="YouTube video player" frameborder="0"
+                <iframe src="https://www.youtube.com/embed/<?= $producto->getVideo();?>" title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                 </iframe>

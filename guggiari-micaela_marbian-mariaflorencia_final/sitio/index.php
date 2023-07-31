@@ -68,6 +68,7 @@ if(!empty($_GET['t'])){
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,8 +85,9 @@ if(!empty($_GET['t'])){
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
+
 <body>
     <div id="sitio">
         <header class="navbar navbar-expand-md bd-navbar">
@@ -115,8 +117,8 @@ if(!empty($_GET['t'])){
                     if ($autenticacion->estaAutenticado()):
                     ?>
                         <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=carrito">
-                            Carrito
-                        </a>
+                                Carrito
+                            </a>
                         </li>
                         <li class="nav-item col-6 col-md-auto"><a class="nav-link p-2" href="index.php?v=perfil">Mi
                                 Perfil</a>

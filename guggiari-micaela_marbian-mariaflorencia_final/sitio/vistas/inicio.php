@@ -100,6 +100,6 @@ $productos = (new Producto())->publicadas(null);
         ?>
     </ul>
     <div class="text-center">
-        <a href="index.php?v=catalogo" class="btn fs-5">Ver todos</a></p>
+        <a href="index.php?v=catalogo" class="btn fs-5">Ver todos</a>
     </div>
 </section>

@@ -79,16 +79,16 @@ h2 {
 
 .button-eliminar {
   background-color: #ab0f04;
-  color: #FFF;
+  color: #fff;
   transition: all 300ms ease;
   border: 2px solid #ab0f04;
   cursor: pointer;
   padding: 6px 33px;
-}	
+}
 
 .button-eliminar:hover {
   background-color: #7d0d05;
-  color: #FFF;
+  color: #fff;
   border: 2px solid #7d0d05;
 }
 
@@ -102,6 +102,16 @@ a {
 }
 
 #help-titulo {
+  color: #8f7e48;
+  background-color: #fff3cd;
+  text-align: center;
+}
+.help-titulo {
+  color: #8f7e48;
+  background-color: #fff3cd;
+  text-align: center;
+}
+.help-texto {
   color: #8f7e48;
   background-color: #fff3cd;
   text-align: center;
@@ -196,7 +206,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin:20px;
+  margin: 20px;
 }
 
 .paginador p {
@@ -446,7 +456,6 @@ footer div {
   padding: 10px 0 10px 0;
 }
 @media (min-width: 768px) {
-  
   footer div div {
     flex-direction: row;
     text-align: start;

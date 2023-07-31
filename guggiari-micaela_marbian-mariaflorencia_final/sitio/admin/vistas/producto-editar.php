@@ -86,7 +86,8 @@ $productos->cargarEtiquetas();
             <div class="form-fila">
                 <label for="imagen">Imagen <span class="text-small">(<span class="visually-hidden">campo
                         </span>opcional)</span></label>
-                <img width="416" src="<?= '/../../imgs/productos/' . e($productos->getImagen()); ?>" alt="" class="img-fluid">
+                <img width="416" src="<?= '/../../imgs/productos/' . e($productos->getImagen()); ?>" alt=""
+                    class="img-fluid">
                 <input type="file" id="imagen" name="imagen" class="form-control"
                     value="<?= e($dataForm['imagen'] ?? $productos->getImagen()); ?>">
             </div>
@@ -105,7 +106,7 @@ $productos->cargarEtiquetas();
             <div class="form-fila">
                 <label for="audio">Audio <span class="text-small">(<span class="visually-hidden">campo
                         </span>opcional)</span></label>
-                <p for="audio"><?=$productos->getAudio()?></p>
+                <label for="audio"><?=$productos->getAudio()?></label>
                 <input type="file" id="audio" name="audio" class="form-control"
                     value="<?= e($dataForm['audio'] ?? $productos->getAudio()); ?>">
             </div>

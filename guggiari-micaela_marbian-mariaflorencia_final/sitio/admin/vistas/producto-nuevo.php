@@ -23,7 +23,7 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
             <input type="text" id="titulo" name="titulo" class="form-control"
                 value="<?= e($dataForm['titulo'] ?? null); ?>"
                 aria-describedby="<?= isset($errores['titulo']) ? 'error-titulo' : '' ?> help-titulo">
-            <div class="form-help" id="help-titulo">El título tiene que tener al menos 5 caracteres</div>
+            <div class="form-help">El título tiene que tener al menos 5 caracteres</div>
             <?php
             if (isset($errores['titulo'])):
                 ?>
@@ -38,7 +38,7 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
             <label for="texto" class="w-100">Texto <span class="required"> * </span> </label>
             <textarea id="texto" name="texto" class="form-control" <?php if (isset($errores['texto'])): ?>
                 aria-describedby="error-texto" <?php endif; ?>><?= e($dataForm['texto'] ?? null); ?></textarea>
-            <div class="form-help" id="help-titulo">El texto tiene que tener al menos 10 caracteres</div>
+            <div class="form-help" class="help-texto">El texto tiene que tener al menos 10 caracteres</div>
             <?php
             if (isset($errores['texto'])):
             ?>
@@ -51,16 +51,15 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
         </div>
         <div class="form-fila">
             <label for="precio" class="w-100">Precio <span class="required"> * </span> </label>
-                <input id="precio" name="precio" type="number" class="form-control"
-                    <?php if (isset($errores['precio'])): ?> aria-describedby="error-precio"
-                    <?php endif; ?>><?= e($dataForm['precio'] ?? null); ?>
-                    <?php
+            <input id="precio" name="precio" type="number" class="form-control" <?php if (isset($errores['precio'])): ?>
+                aria-describedby="error-precio" <?php endif; ?>><?= e($dataForm['precio'] ?? null); ?>
+            <?php
             if (isset($errores['precio'])):
             ?>
-                <div class="msg-error" id="error-precio">
-                    <p class="visually-hidden">Error:</p><?= $errores['precio']; ?>
-                </div>
-                <?php
+            <div class="msg-error" id="error-precio">
+                <p class="visually-hidden">Error:</p><?= $errores['precio']; ?>
+            </div>
+            <?php
             endif;
             ?>
         </div>
@@ -89,9 +88,8 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
         </div>
         <div class="form-fila">
             <label for="stock" class="w-100">Stock <span class="required"> * </span>
-                </label>
-                    <input id="stock" type="number" name="stock"
-                        class="form-control"><?= e($dataForm['stock'] ?? null); ?>
+            </label>
+            <input id="stock" type="number" name="stock" class="form-control"><?= e($dataForm['stock'] ?? null); ?>
         </div>
         <div class="form-fila">
             <label for="productos_estados_fk">Estado de Publicación</label>
