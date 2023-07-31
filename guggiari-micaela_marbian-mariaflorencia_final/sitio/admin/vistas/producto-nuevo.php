@@ -38,7 +38,7 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
             <label for="texto" class="w-100">Texto <span class="required"> * </span> </label>
             <textarea id="texto" name="texto" class="form-control" <?php if (isset($errores['texto'])): ?>
                 aria-describedby="error-texto" <?php endif; ?>><?= e($dataForm['texto'] ?? null); ?></textarea>
-            <div class="form-help" class="help-texto">El texto tiene que tener al menos 10 caracteres</div>
+            <div class="form-help help-texto">El texto tiene que tener al menos 10 caracteres</div>
             <?php
             if (isset($errores['texto'])):
             ?>
