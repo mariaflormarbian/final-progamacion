@@ -38,15 +38,9 @@ $paginador = $productoPaginado->getPaginador();
                     <p class="card-text">$<?= $producto->getPrecio();?></p>
                 </div>
                 <form action="acciones/agregar-carrito.php" method="POST" class="w-100 text-center">
-                    <div class="mb-4">
-                        <div class="quantity">
-                            <button class="minus-btn" type="button"
-                                onclick="decrement(<?= $producto->getCatalogoId(); ?>)">-</button>
-                            <input type="text" name="productos_cantidad" id="cantidad<?= $producto->getCatalogoId(); ?>"
-                                value="1">
-                            <button class="plus-btn" type="button"
-                                onclick="increment(<?= $producto->getCatalogoId(); ?>)">+</button>
-                        </div>
+                    <div class="quantity">
+                        <input type="hidden" name="productos_cantidad" id="cantidad<?= $producto->getCatalogoId(); ?>"
+                            value="1">
                     </div>
                     <input type="hidden" name="productos_id" value="<?= $producto->getCatalogoId(); ?>">
                     <input type="hidden" name="productos_titulo" value="<?= $producto->getTitulo(); ?>">
@@ -60,25 +54,9 @@ $paginador = $productoPaginado->getPaginador();
         </li>
         <?php endforeach; ?>
     </ul>
-    
+
     <?php 
     $paginador->setUrlBase('index.php?' . queryStringExcepto(['p']));
     $paginador->generarPaginacion();
     ?>
 </section>
-
-<script>
-function increment(productId) {
-    var inputElement = document.getElementById('cantidad' + productId);
-    var currentValue = parseInt(inputElement.value);
-    inputElement.value = currentValue + 1;
-}
-
-function decrement(productId) {
-    var inputElement = document.getElementById('cantidad' + productId);
-    var currentValue = parseInt(inputElement.value);
-    if (currentValue > 1) {
-        inputElement.value = currentValue - 1;
-    }
-}
-</script>
