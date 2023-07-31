@@ -64,12 +64,6 @@ $productos->cargarEtiquetas();
             endif;
             ?>
         </div>
-        <div class="form-fila">
-            <label for="stock">Stock</label>
-            <textarea id="stock" name="stock" class="form-control" <?php if (isset($errores['stock'])): ?>
-                aria-describedby="error-precio"
-                <?php endif; ?>><?= e($dataForm['stock'] ?? $productos->getStock()); ?></textarea>
-        </div>
         <div class="mb-4 w-100 d-flex gap-3 img-icon bg-light  row">
             <?php
             if (!empty($productos->getImagen()) && file_exists(__DIR__ . '/../../imgs/productos/' . $productos->getImagen())) :

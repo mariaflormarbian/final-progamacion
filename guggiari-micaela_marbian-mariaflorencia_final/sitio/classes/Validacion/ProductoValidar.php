@@ -48,10 +48,6 @@ class ProductoValidar
             $this->errores['texto'] = "*Tenés que escribir al menos 10 caracteres para el texto del producto";
         }
         
-        if (empty ($this->data['stock'])) {
-            $this->errores['stock'] = "*Tenés que escribir el stock del producto";
-        } else if (strlen($this->data['stock']) < 1) {
-            $this->errores['stock'] = "*Tenés que escribir al menos 1 caracter para el stock del producto";
-        }
+      
     }
 }

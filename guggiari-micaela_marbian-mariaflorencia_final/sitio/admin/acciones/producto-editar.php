@@ -23,7 +23,6 @@ $texto = $_POST['texto'];
 $imagen_descripcion = $_POST['imagen_descripcion'];
 $etiquetas = $_POST['etiquetas_id'] ?? [];
 $audio = $_FILES['audio'];
-$stock =  $_POST['stock'];
 $video =  $_POST['video'];
 
 $nombreImagen = '';
@@ -52,7 +51,6 @@ $validador = new ProductoValidar([
     'imagen' => $_FILES['imagen'], // Pasamos el archivo directamente al validador
     'imagen_descripcion' => $imagen_descripcion,
     'audio' => $_FILES['audio'], // Pasamos el archivo directamente al validador
-    'stock' => $stock,
     'video' => $video,
 ]);
 
@@ -75,7 +73,6 @@ try {
         'imagen_descripcion' => $imagen_descripcion,
         'etiquetas' => $etiquetas,
         'audio' => $nombreAudio, // Utilizamos la variable $nombreAudio
-        'stock' => $stock,
         'video' => $video,
     ]);
 

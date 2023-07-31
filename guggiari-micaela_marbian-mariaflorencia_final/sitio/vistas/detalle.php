@@ -37,21 +37,8 @@ $producto->cargarEtiquetas();
                     ?>
                     </ul>
                 </div>
-                <div class="mb-4">
-                    <label for="cantidad" class="d-block">Cantidad: </label>
-                    <select name="productos_cantidad" id="cantidad" class="w-50 p-1">
-                        <?php for ($i = 1; $i <= htmlspecialchars($producto->getStock()); $i++) : ?>
-                        <?php
-                            if ($i > 10) break;
-                            ?>
-
-                        <option value="<?= $i ?>"><?= $i ?>
-                            <?php if ($i <= 1) $option = 'Unidad';
-                                else $option = 'Unidades';?>
-                        </option>
-                        <?php endfor; ?>
-                    </select>
-                </div>
+                <input type="hidden" name="productos_cantidad" id="cantidad<?= $producto->getCatalogoId(); ?>"
+                    value="1">
 
                 <input type="hidden" name="productos_id" value="<?= $producto->getCatalogoId(); ?>">
                 <input type="hidden" name="productos_titulo" value="<?= $producto->getTitulo(); ?>">

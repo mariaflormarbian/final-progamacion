@@ -23,7 +23,6 @@ $paginador = $productoPaginado->getPaginador();
                     <th>Imagen</th>
                     <th>Video</th>
                     <th>Audio</th>
-                    <th>Stock</th>
                     <th>Subido por</th>
                     <th>Acciones</th>
                 </tr>
@@ -48,7 +47,6 @@ $paginador = $productoPaginado->getPaginador();
                         </iframe>
                     </td>
                     <td><?= $producto->getAudio(); ?></td>
-                    <td><?= $producto->getStock(); ?></td>
                     <td><?= e($producto->getAutor()->getNombreCompleto());?></td>
                     <td>
                         <a href="index.php?v=producto-editar&id=<?= $producto->getCatalogoId(); ?>"

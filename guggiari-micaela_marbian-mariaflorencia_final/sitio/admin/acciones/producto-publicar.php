@@ -21,7 +21,6 @@ $video = $_POST['video'];
 $imagen = $_FILES['imagen'];
 $audio = $_FILES['audio'];
 $etiquetas= $_POST['etiquetas_id'] ?? [];
-$stock = $_POST['stock'];
 
 
 
@@ -33,7 +32,6 @@ $validador = new ProductoValidar([
     'video' => $video,
     'audio' => $audio,
     'imagen_descripcion' => $imagen_descripcion,
-    'stock' => $stock,
 ]);
 
 if ($validador->hayErrores()) {
@@ -68,7 +66,6 @@ try
         'imagen' => $nombreImagen,
         'imagen_descripcion' => $imagen_descripcion,
         'etiquetas' => $etiquetas,
-        'stock' => $stock,
     ]);
 
     $_SESSION['mensaje_exito'] = "El producto '<b>" . $titulo . "</b>' fue o con éxito.";
