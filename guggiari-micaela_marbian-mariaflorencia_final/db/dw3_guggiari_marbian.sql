@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-07-2023 a las 01:03:32
+-- Tiempo de generación: 02-08-2023 a las 21:16:02
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -36,14 +36,6 @@ CREATE TABLE `agregar_producto` (
   `subtotal` decimal(6,2) DEFAULT NULL,
   `precio` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `agregar_producto`
---
-
-INSERT INTO `agregar_producto` (`agregar_producto_id`, `productos_fk`, `carrito_fk`, `titulo`, `cantidad`, `subtotal`, `precio`) VALUES
-(64, 1, 24, 'Abejas', 3, '4500.00', 1500),
-(87, 1, 3, 'Abejas', 1, '1500.00', 1500);
 
 -- --------------------------------------------------------
 
