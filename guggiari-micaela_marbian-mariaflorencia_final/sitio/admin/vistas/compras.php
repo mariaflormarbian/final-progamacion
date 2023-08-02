@@ -37,4 +37,7 @@ $orders = (new Compra)->getByUsuario($id);
             </tbody>
         </table>
     </div>
+    <a class="nav-link p-2 text-md-end" href="index.php?v=usuarios">
+        <i class="bi bi-arrow-left-circle"></i> Volver al Panel de Administración
+    </a>
 </section>

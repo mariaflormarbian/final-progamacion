@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-08-2023 a las 21:16:02
+-- Tiempo de generación: 03-08-2023 a las 00:48:16
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -54,8 +54,7 @@ CREATE TABLE `carrito` (
 
 INSERT INTO `carrito` (`carrito_id`, `usuarios_fk`) VALUES
 (3, 3),
-(23, 23),
-(24, 24);
+(25, 25);
 
 -- --------------------------------------------------------
 
@@ -89,14 +88,10 @@ CREATE TABLE `compra` (
 --
 
 INSERT INTO `compra` (`compra_id`, `carrito_fk`, `usuarios_fk`, `fecha`, `cantidad`, `total`, `productos`) VALUES
-(10, 23, 23, '2023-07-04 00:53:51', 1, '1500.00', '1x Abejas'),
-(11, 24, 24, '2023-07-04 00:55:33', 5, '7650.00', '2x Abejas | 2x El resplandor | 1x El coco'),
 (12, 3, 3, '2023-07-04 01:39:38', 1, '1500.00', '1x Abejas'),
 (13, 3, 3, '2023-07-04 18:50:50', 2, '9000.00', '2x Abejas'),
-(14, 23, 23, '2023-07-04 18:52:52', 2, '3200.00', '2x El resplandor'),
-(15, 23, 23, '2023-07-04 18:53:05', 2, '3000.00', '2x Abejas'),
-(16, 23, 23, '2023-07-04 19:05:22', 2, '3000.00', '2x Abejas'),
-(17, 3, 3, '2023-07-05 01:57:52', 2, '3200.00', '2x El resplandor');
+(17, 3, 3, '2023-07-05 01:57:52', 2, '3200.00', '2x El resplandor'),
+(18, 25, 25, '2023-08-03 00:23:21', 1, '1400.00', '1x Francia');
 
 -- --------------------------------------------------------
 
@@ -160,10 +155,7 @@ INSERT INTO `productos` (`productos_id`, `usuarios_fk`, `productos_estados_fk`, 
 (12, 3, 2, 'Burns radiactivo', 1384, 'paz.jpg', 'Les traigo paz', 'les_traigo_paz.mp3', 'JyaElUp4Bro', 'Estampado de la escena del señor Burns radioactivo, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Las costuras son espectaculares. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 8),
 (13, 3, 2, 'Stacy', 1625, 'stacy.jpg', 'Soy solo una chica', 'stacy.mp3', 'pjnHGcAvf7A', 'Remera básica en color blanco. Estampado de la escena de Stacy malibu,  El calce es suelto, con ruedo asimétrico. Está confeccionada en visco y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 2),
 (14, 3, 2, 'Peces del infierno', 1890, 'tanque.jpg', 'Los peces del infierno', 'waterloo_abba.mp3', 'sKO1RUb0Zqs', 'Remera básica en color blanco. Estampado de la escena del señor Burns en el tanque,  El calce es suelto, con ruedo asimétrico. Está confeccionada en viscosa y lycra. Tiene escote redondo y mangas cortas Si estas al limite del talle, te recomendamos ir por el talle siguiente! Este top al tener pecho alto ajusta más.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 3),
-(48, 3, 1, 'Imagen por defecto', 100, 'abejas.jpg', 'asfd', '20230703045903_el_coco.mp3', '', 'assfasdfasfdsafasdf', 3),
-(49, 3, 2, 'probando imagen por defecto', 3, '20230705010435_user.png', '', NULL, '', 'asfdasff', 3),
-(50, 3, 1, 'Producto de prueba', 2, '20230706004009_Laboratorio-2-html.jpg', '', NULL, '', 'probadnoasfdasfdasfasfdasd', 3),
-(51, 3, 1, 'Micaaaaa', 12, 'imagen_por_defecto.jpg', '', NULL, '', 'asdfasfdasfdasfdasfdasfdsdf', 21);
+(48, 3, 1, 'Imagen por defecto', 100, 'abejas.jpg', 'asfd', '20230703045903_el_coco.mp3', '', 'assfasdfasfdsafasdf', 3);
 
 -- --------------------------------------------------------
 
@@ -229,8 +221,7 @@ INSERT INTO `productos_has_etiquetas` (`productos_fk`, `etiquetas_fk`) VALUES
 (12, 5),
 (13, 2),
 (14, 5),
-(48, 1),
-(50, 1);
+(48, 1);
 
 -- --------------------------------------------------------
 
@@ -284,8 +275,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`usuarios_id`, `roles_fk`, `email`, `password`, `nombre`, `apellido`) VALUES
 (3, 1, 'micaela.guggiari@davinci.edu.ar', '$2y$10$lVy6CJtx2smQDqvoHBINZ.PB7S47C6wkKGk7qKl4Ifdc9nfa6A6FO', 'Mica', 'Guggiari'),
-(23, 2, 'florencia.marbian@davinci.edu.ar', '$2y$10$Q7vUCV17brHIIAawwj.hTuzYzJJRdPWE1ct2CsMHWN8l.Du4q2.Y2', 'María Florencia ', 'Marbian'),
-(24, 2, 'agustina.perez@davinci.edu.ar', '$2y$10$UlhOhTOSGc.lro8MuPiu6eoFVq57krpUyeLCzXubLMyRdSsfGxvym', 'Agustina', 'Perez');
+(25, 2, 'maria.marbian@davinci.edu.ar', '$2y$10$2VGL444RtBalSJ53xWtgS.8czsOSNOGwG9LahRpkMYM1fUsUHLYJ.', 'Florencia', 'Marbián');
 
 --
 -- Índices para tablas volcadas
@@ -388,13 +378,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `agregar_producto`
 --
 ALTER TABLE `agregar_producto`
-  MODIFY `agregar_producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `agregar_producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `carrito_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `carrito_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -406,7 +396,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `etiquetas`
@@ -418,7 +408,7 @@ ALTER TABLE `etiquetas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `productos_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `productos_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_estados`
@@ -442,7 +432,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usuarios_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `usuarios_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Restricciones para tablas volcadas

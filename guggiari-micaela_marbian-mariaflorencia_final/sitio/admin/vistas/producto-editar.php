@@ -92,9 +92,9 @@ $productos->cargarEtiquetas();
                     value="<?= e($dataForm['imagen_descripcion'] ?? $productos->getImagenDescripcion()); ?>">
             </div>
             <div class="form-fila">
-                <label for="video">Enlace de Video Youtube, EMBED (opcional)</label>
+                <label for="video">Enlace de Video Youtube (opcional)</label>
                 <input type="text" id="video" name="video" class="form-control"
-                    placeholder=" Ejemplo luego del <iframe> aparece Youtube/ (copiar desde embed y pegar)"
+                    placeholder="https://www.youtube.com/..."
                     value="<?= e($dataForm['video'] ?? $productos->getVideo()); ?>">
             </div>
             <div class="form-fila">

@@ -74,21 +74,6 @@ class Producto extends Modelo
                 $stmt = $db->prepare($query);
                 $stmt->execute($whereValues); 
 
-        // if($registrosPorPagina !== null ) {
-        //     $this->paginacion['pagina'] = (int) ($_GET['p'] ?? 1);
-        //     $this->paginacion['registrosPorPagina'] = $registrosPorPagina;
-        //     $this->paginacion['registroInicial'] = ($registrosPorPagina * $this->paginacion['pagina']) - $registrosPorPagina;
-
-        //     $query .= " LIMIT " . $this->paginacion['registroInicial'] .", " .  $this->paginacion['registrosPorPagina'];
-
-        //     $queryTotal = "SELECT COUNT(*) AS total FROM productos" . $whereQuery;
-        //     $stmPaginas = $db->prepare($queryTotal);
-        //     $stmPaginas->execute($where);
-        //     $filaPagina = $stmPaginas->fetch(PDO::FETCH_ASSOC);
-        //     $this->paginacion['registrosTotales'] = $filaPagina['total'];
-        //     $this->paginacion['totalPaginas'] = ceil($this->paginacion['registrosTotales'] / $this->paginacion['registrosPorPagina']);
-        // }
-
         $stmt = $db->prepare($query);
         $stmt->execute($whereValues);
 

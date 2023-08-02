@@ -6,7 +6,6 @@ require_once __DIR__ . '/../../bootstrap/init.php';
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-// TODO: Validar... verificar que los valores estén, que el email tenga formato correcto, etc.
 $autenticacion = new Autenticacion();
 
 if ($autenticacion->iniciarSesion($email, $password)) {

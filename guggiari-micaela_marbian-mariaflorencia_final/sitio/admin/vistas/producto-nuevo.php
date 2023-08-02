@@ -49,13 +49,15 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
             endif;
             ?>
         </div>
+
         <div class="form-fila">
-            <label for="precio" class="w-100">Precio <span class="required"> * </span> </label>
-            <input id="precio" name="precio" type="number" class="form-control" <?php if (isset($errores['precio'])): ?>
-                aria-describedby="error-precio" <?php endif; ?>><?= e($dataForm['precio'] ?? null); ?>
+            <label for="titulo">Precio <span class="required"> * </span></label>
+            <input type="number" id="precio" name="precio" class="form-control"
+                value="<?= e($dataForm['precio'] ?? null); ?>"
+                aria-describedby="<?= isset($errores['precio']) ? 'error-precio' : '' ?> ">
             <?php
             if (isset($errores['precio'])):
-            ?>
+                ?>
             <div class="msg-error" id="error-precio">
                 <p class="visually-hidden">Error:</p><?= $errores['precio']; ?>
             </div>
@@ -75,9 +77,8 @@ unset($_SESSION['errores'], $_SESSION['data_form']);
                 value="<?= e($dataForm['imagen_descripcion'] ?? null); ?>">
         </div>
         <div class="form-fila">
-            <label for="video">Enlace de Video Youtube, EMBED (opcional)</label>
-            <input type="text" id="video" name="video" class="form-control"
-                placeholder=" Ejemplo luego del <iframe> aparece Youtube/ (copiar desde embed y pegar)"
+            <label for="video">Enlace de Video Youtube (opcional)</label>
+            <input type="text" id="video" name="video" class="form-control" placeholder="https://www.youtube.com/..."
                 value="<?= e($dataForm['video'] ?? null); ?>">
         </div>
         <div class="form-fila">

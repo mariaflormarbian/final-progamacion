@@ -29,8 +29,6 @@ class Paginador
 	 */
 	public function generarPaginacion()
 	{
-		// $paginador = $this;
-		// require_once __DIR__ . '/../../vistas-parciales/paginador.php';
 		PaginacionLinks::generar($this);
 	}
 
