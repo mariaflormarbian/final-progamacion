@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-08-2023 a las 00:48:16
+-- Tiempo de generación: 03-08-2023 a las 01:05:50
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -91,7 +91,8 @@ INSERT INTO `compra` (`compra_id`, `carrito_fk`, `usuarios_fk`, `fecha`, `cantid
 (12, 3, 3, '2023-07-04 01:39:38', 1, '1500.00', '1x Abejas'),
 (13, 3, 3, '2023-07-04 18:50:50', 2, '9000.00', '2x Abejas'),
 (17, 3, 3, '2023-07-05 01:57:52', 2, '3200.00', '2x El resplandor'),
-(18, 25, 25, '2023-08-03 00:23:21', 1, '1400.00', '1x Francia');
+(18, 25, 25, '2023-08-03 00:23:21', 1, '1400.00', '1x Francia'),
+(19, 3, 3, '2023-08-03 01:02:05', 1, '1600.00', '1x El resplandor');
 
 -- --------------------------------------------------------
 
@@ -154,8 +155,7 @@ INSERT INTO `productos` (`productos_id`, `usuarios_fk`, `productos_estados_fk`, 
 (11, 3, 2, 'El padrino', 1670, 'padrino.jpg', 'Homero es el padrino', 'homero_padrino.mp3', 'rSvr4akywTQ', 'Estampado de la escena de homero siendo el padrino, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Super cómoda y canchera. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 1),
 (12, 3, 2, 'Burns radiactivo', 1384, 'paz.jpg', 'Les traigo paz', 'les_traigo_paz.mp3', 'JyaElUp4Bro', 'Estampado de la escena del señor Burns radioactivo, calidad algodón y lycra o en 100% lycra. Disponible en color blanco únicamente. El calce es suelto, con ruedo asimétrico. Las costuras son espectaculares. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 8),
 (13, 3, 2, 'Stacy', 1625, 'stacy.jpg', 'Soy solo una chica', 'stacy.mp3', 'pjnHGcAvf7A', 'Remera básica en color blanco. Estampado de la escena de Stacy malibu,  El calce es suelto, con ruedo asimétrico. Está confeccionada en visco y lycra. Tiene escote redondo y mangas cortas.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 2),
-(14, 3, 2, 'Peces del infierno', 1890, 'tanque.jpg', 'Los peces del infierno', 'waterloo_abba.mp3', 'sKO1RUb0Zqs', 'Remera básica en color blanco. Estampado de la escena del señor Burns en el tanque,  El calce es suelto, con ruedo asimétrico. Está confeccionada en viscosa y lycra. Tiene escote redondo y mangas cortas Si estas al limite del talle, te recomendamos ir por el talle siguiente! Este top al tener pecho alto ajusta más.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 3),
-(48, 3, 1, 'Imagen por defecto', 100, 'abejas.jpg', 'asfd', '20230703045903_el_coco.mp3', '', 'assfasdfasfdsafasdf', 3);
+(14, 3, 2, 'Peces del infierno', 1890, 'tanque.jpg', 'Los peces del infierno', 'waterloo_abba.mp3', 'sKO1RUb0Zqs', 'Remera básica en color blanco. Estampado de la escena del señor Burns en el tanque,  El calce es suelto, con ruedo asimétrico. Está confeccionada en viscosa y lycra. Tiene escote redondo y mangas cortas Si estas al limite del talle, te recomendamos ir por el talle siguiente! Este top al tener pecho alto ajusta más.<br> Chequeá la tabla de medidas (para conecer las medidas de la prenda) y la tabla de talles (para tener de referencia a la hora de elegir tu remera)!', 3);
 
 -- --------------------------------------------------------
 
@@ -220,8 +220,7 @@ INSERT INTO `productos_has_etiquetas` (`productos_fk`, `etiquetas_fk`) VALUES
 (11, 1),
 (12, 5),
 (13, 2),
-(14, 5),
-(48, 1);
+(14, 5);
 
 -- --------------------------------------------------------
 
@@ -378,7 +377,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `agregar_producto`
 --
 ALTER TABLE `agregar_producto`
-  MODIFY `agregar_producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `agregar_producto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT de la tabla `carrito`
@@ -396,7 +395,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `compra_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `etiquetas`
@@ -408,7 +407,7 @@ ALTER TABLE `etiquetas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `productos_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `productos_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_estados`
